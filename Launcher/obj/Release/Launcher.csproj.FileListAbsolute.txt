@@ -37,3 +37,16 @@ D:\UE4\Splash\GameLauncher-master\Launcher\obj\Release\Launcher.csproj.CoreCompi
 D:\UE4\Splash\GameLauncher-master\Launcher\obj\Release\Launcher.csproj.CopyComplete
 D:\UE4\Splash\GameLauncher-master\Launcher\obj\Release\Winds of Almerra.exe
 D:\UE4\Splash\GameLauncher-master\Launcher\obj\Release\Winds of Almerra.pdb
+D:\Reposit\Almerra\Launcher\bin\Release\Winds of Almerra.exe.config
+D:\Reposit\Almerra\Launcher\bin\Release\Winds of Almerra.exe
+D:\Reposit\Almerra\Launcher\bin\Release\Winds of Almerra.pdb
+D:\Reposit\Almerra\Launcher\bin\Release\MetroFramework.Design.dll
+D:\Reposit\Almerra\Launcher\bin\Release\MetroFramework.dll
+D:\Reposit\Almerra\Launcher\bin\Release\MetroFramework.Fonts.dll
+D:\Reposit\Almerra\Launcher\obj\Release\Launcher.main.resources
+D:\Reposit\Almerra\Launcher\obj\Release\Launcher.Properties.Resources.resources
+D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.GenerateResource.cache
+D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.CoreCompileInputs.cache
+D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.CopyComplete
+D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.exe
+D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.pdb

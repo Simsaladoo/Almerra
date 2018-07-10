@@ -1009,11 +1009,9 @@ namespace Launcher
 
                 //name csv from image
                 File.WriteAllText(@"D:\Test\Converted\" + file + ".csv", sb.ToString());
-                Console.WriteLine(file + " CSV Written");
-                richTextBox1.AppendText(Environment.NewLine + file + " Written");
+                richTextBox1.AppendText(Environment.NewLine + file + " Written...");
+                richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");
             }
-
-            richTextBox1.AppendText(Environment.NewLine + "All CSVs Written");
         }
 
 
