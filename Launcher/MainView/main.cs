@@ -521,7 +521,9 @@ namespace Launcher
             int x, y;
             DataTable dta = new DataTable();
 
-            Bitmap testimage = new Bitmap(@"D:\test.jpg");
+
+            //Fake image used as initial variable, this gets set through the loop
+            Bitmap testimage = new Bitmap(@"D:\test.png");
 
 
 
@@ -534,8 +536,7 @@ namespace Launcher
             DirectoryInfo di = new DirectoryInfo(path);
             DirectoryInfo[] directories = di.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly);
             FileInfo[] files = di.GetFiles(searchPattern, SearchOption.TopDirectoryOnly);
-            Console.WriteLine(
-            "Directories that begin with the letter \"t\" in {0}", path);
+            Console.WriteLine("Directories that begin with the letter \"t\" in {0}", path);
             dta.Columns.Add(" ");
             dta.Columns.Add("Type1CellY000");
             dta.Columns.Add("Type1CellY001");
