@@ -19,6 +19,7 @@ namespace Launcher
         public Button _Play { get { return play; } }
         public Button _button1 { get { return play; } }
         public Button _button2 { get { return play; } }
+        public Button _button11 { get { return play; } }
 
         public static string intVar { get; set; }
 
@@ -368,15 +369,26 @@ namespace Launcher
             Console.WriteLine(valueString);
 
             play.BackColor = Color.Transparent;
-            
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
+            button3.BackColor = Color.Transparent;
+            button4.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
+            button7.BackColor = Color.Transparent;
+            button8.BackColor = Color.Transparent;
+            button9.BackColor = Color.Transparent;
+            button10.BackColor = Color.Transparent;
+            button11.BackColor = Color.Transparent;
+
             play.Parent = font;
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
+            ToolsPanel.BackColor = Color.Transparent;
+            ToMainButton.BackColor = Color.Transparent;
 
 
-      
+
         }
 
 
@@ -409,22 +421,11 @@ namespace Launcher
             mouseDown = true;
         }
 
-
-
         /* The text box */
-
-
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            string valueString = "Text Changed";
-            Console.WriteLine(valueString);
+
         }
-
-
-
-
-
-
 
         /* Startup Load event */
 
@@ -523,7 +524,7 @@ namespace Launcher
 
 
             //Fake image used as initial variable, this gets set through the loop
-            Bitmap testimage = new Bitmap(@"D:\test.png");
+            Bitmap testimage = new Bitmap(@"D:\Test\test.bmp");
 
 
 
@@ -532,7 +533,7 @@ namespace Launcher
 
 
             string path = @"D:\Test";
-            string searchPattern = "t*";
+            string searchPattern = "A*";
             DirectoryInfo di = new DirectoryInfo(path);
             DirectoryInfo[] directories = di.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly);
             FileInfo[] files = di.GetFiles(searchPattern, SearchOption.TopDirectoryOnly);
@@ -1011,8 +1012,9 @@ namespace Launcher
                 //name csv from image
                 File.WriteAllText(@"D:\Test\Converted\" + file + ".csv", sb.ToString());
                 richTextBox1.AppendText(Environment.NewLine + file + " Written...");
-                richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");
             }
+
+            richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");
         }
 
 
@@ -1104,6 +1106,13 @@ namespace Launcher
         private void button5_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Write 128s clicked");
+            richTextBox1.AppendText(Environment.NewLine + "Writing 128s clicked...");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Minimizing...");
+            this.WindowState = FormWindowState.Minimized;
         }
 
         /* clicking on background image */

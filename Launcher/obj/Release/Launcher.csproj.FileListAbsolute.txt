@@ -50,4 +50,3 @@ D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.CoreCompileInputs.cache
 D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.CopyComplete
 D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.exe
 D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.pdb
-D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache

@@ -48,6 +48,7 @@
             this.ToPanelButton = new System.Windows.Forms.Button();
             this.ToMainButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -364,6 +365,25 @@
             this.webBrowser1.Url = new System.Uri("http://www.almerra.com/updates", System.UriKind.Absolute);
             this.webBrowser1.Visible = false;
             // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.BackColor = System.Drawing.Color.Lime;
+            this.button11.BackgroundImage = global::Launcher.Properties.Resources.mini;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(944, 4);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(29, 29);
+            this.button11.TabIndex = 27;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +392,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1010, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.ToMainButton);
             this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.ToolsPanel);
@@ -416,6 +437,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button button11;
     }
 }
 
