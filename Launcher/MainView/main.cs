@@ -549,7 +549,7 @@ namespace Launcher
             //Fake image used as initial variable, this gets set through the loop
             //Bitmap testimage = new Bitmap(@"D:\Test\test.bmp");
             // All the other settings
-            string path = @"D:\Test";
+            string path = @"H:\UE4\Tailwind_R E B U I L D\Environment\World Machine 93e\PNGs\12\BMPs";
             string searchPattern = "A*";
             DirectoryInfo di = new DirectoryInfo(path);
             DirectoryInfo[] directories = di.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly);
@@ -565,18 +565,18 @@ namespace Launcher
             foreach (FileInfo file in files)
             {
                 Console.WriteLine("Found file " + file);
-                richTextBox1.AppendText(Environment.NewLine + "Found file " + file);
+                //richTextBox1.AppendText(Environment.NewLine + "Found file " + file);
                 string readfilepath = (path + "/" + file);
 
                 Console.WriteLine("Current file to process: " + readfilepath);
-                richTextBox1.AppendText(Environment.NewLine + "Current file to process: " + readfilepath);
+                //richTextBox1.AppendText(Environment.NewLine + "Current file to process: " + readfilepath);
 
                 Bitmap testimage = new Bitmap(readfilepath);
 
                 try
                 {
                     Console.WriteLine(file + " ... clearing previous data from variables... ");
-                    richTextBox1.AppendText(Environment.NewLine + file + " ... clearing previous data from variables... ");
+                    //richTextBox1.AppendText(Environment.NewLine + file + " ... clearing previous data from variables... ");
                     try
                     {
                         dta.Clear();
@@ -590,7 +590,7 @@ namespace Launcher
                     // x is actually the column, y is the row
 
                     Console.WriteLine(file + " ... processing");
-                    richTextBox1.AppendText(Environment.NewLine + file + " ... processing");
+                    //richTextBox1.AppendText(Environment.NewLine + file + " ... processing");
 
                     // Need to set the testimage variable as the 'current' file[] in view for loop
                     
@@ -992,7 +992,7 @@ namespace Launcher
 
                 //Add new rows with fake data
                 Console.WriteLine(file + " Adding values to data table...");
-                richTextBox1.AppendText(Environment.NewLine + file + " Adding values to data table...");
+                //richTextBox1.AppendText(Environment.NewLine + file + " Adding values to data table...");
                 dta.Rows.Add("cellX000", X000Y000, X000Y001, X000Y002, X000Y003, X000Y004, X000Y005, X000Y006, X000Y007, X000Y008, X000Y009, X000Y010, X000Y011);
                 dta.Rows.Add("cellX001", X001Y000, X001Y001, X001Y002, X001Y003, X001Y004, X001Y005, X001Y006, X001Y007, X001Y008, X001Y009, X001Y010, X001Y011);
                 dta.Rows.Add("cellX002", X002Y000, X002Y001, X002Y002, X002Y003, X002Y004, X002Y005, X002Y006, X002Y007, X002Y008, X002Y009, X002Y010, X002Y011);
@@ -1029,15 +1029,25 @@ namespace Launcher
                     // Uses Append line after each.  Counts by number of columns to know when to go to next line.
                     for (int i = 0; i < dta.Columns.Count; i++)
                     {
-                        sb.Append(row[i].ToString() + ",");
+
+                        if (i < 12) 
+                        {
+                            sb.Append(row[i].ToString() + ",");
+                        }
+
+                        else
+                        {
+                            sb.Append(row[i].ToString());
+                        }
+                        
                     }
 
                     sb.AppendLine();
                 }
 
                 //name csv from image
-                File.WriteAllText(@"D:\Test\Converted\" + file + ".csv", sb.ToString());
-                richTextBox1.AppendText(Environment.NewLine + file + " Written...");
+                File.WriteAllText(@"H:\UE4\Tailwind_R E B U I L D\Environment\World Machine 93e\PNGs\12\BMPs\Converted\" + file + ".csv", sb.ToString());
+                //richTextBox1.AppendText(Environment.NewLine + file + " Written...");
             }
 
             richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");

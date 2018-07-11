@@ -50,3 +50,16 @@ D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.CoreCompileInputs.cache
 D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csproj.CopyComplete
 D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.exe
 D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.exe.config
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.exe
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\MetroFramework.Design.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\MetroFramework.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\MetroFramework.Fonts.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.main.resources
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.cache
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CoreCompileInputs.cache
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
