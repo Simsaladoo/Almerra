@@ -105,8 +105,7 @@
             this.font.Size = new System.Drawing.Size(1000, 600);
             this.font.TabIndex = 16;
             this.font.TabStop = false;
-            this.font.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.font_LoadCompleted);
-            this.font.Click += new System.EventHandler(this.label1_Click);
+            this.font.Click += new System.EventHandler(this.font_Click);
             this.font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.font_MouseDown);
             // 
             // button1
@@ -148,7 +147,7 @@
             this.ToolsPanel.Controls.Add(this.button3);
             this.ToolsPanel.Location = new System.Drawing.Point(2, 66);
             this.ToolsPanel.Name = "ToolsPanel";
-            this.ToolsPanel.Size = new System.Drawing.Size(1000, 465);
+            this.ToolsPanel.Size = new System.Drawing.Size(996, 465);
             this.ToolsPanel.TabIndex = 24;
             // 
             // richTextBox1
@@ -357,13 +356,15 @@
             // webBrowser1
             // 
             this.webBrowser1.AllowNavigation = false;
+            this.webBrowser1.AllowWebBrowserDrop = false;
             this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
             this.webBrowser1.Location = new System.Drawing.Point(2, 66);
+            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(1006, 465);
+            this.webBrowser1.Size = new System.Drawing.Size(996, 465);
             this.webBrowser1.TabIndex = 23;
             this.webBrowser1.Url = new System.Uri("http://www.almerra.com/updates", System.UriKind.Absolute);
             this.webBrowser1.Visible = false;

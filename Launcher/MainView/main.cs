@@ -404,47 +404,21 @@ namespace Launcher
         /*******************************
             handle the moving window
         /********************************/
-        int mouseX, mouseY = 0;
-        bool mouseDown;
 
-
-        private void TopPanel_MouseMove(object sender, MouseEventArgs e)
+        private void font_Click(object sender, EventArgs e)
         {
-            if (mouseDown)
-            {
-                mouseX = MousePosition.X;
-                mouseY = MousePosition.Y;
-
-                this.SetDesktopLocation(mouseX, mouseY);
-            }
-        }
-        private void TopPanel_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
-        private void TopPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseDown = true;
+            Console.WriteLine("Background Clicked");
         }
 
-
+        /* clicking on background image */
 
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-
-        /* clicking on background image */
-
-        private void font_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void font_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            Console.WriteLine("Background Clicked");
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
@@ -454,15 +428,13 @@ namespace Launcher
 
 
 
-
-
         /* Clicking anywhere in The richtext box */
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        /* Startup Load event */
+        /* Startup Load events */
 
 
         private void font_LoadCompleted(object sender, EventArgs e)
@@ -476,18 +448,6 @@ namespace Launcher
             string valueString = "NotifyIcon Loaded";
             Console.WriteLine(valueString);
 
-        }
-
-        private void TopPanel_Paint(object sender, PaintEventArgs e)
-        {
-            string valueString = "TopPanel, painted?";
-            Console.WriteLine(valueString);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            string valueString = "lable1 Click";
-            Console.WriteLine(valueString);
         }
 
 
