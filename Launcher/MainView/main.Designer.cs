@@ -49,6 +49,7 @@
             this.ToMainButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(977, 4);
+            this.button2.Location = new System.Drawing.Point(967, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(29, 29);
             this.button2.TabIndex = 22;
@@ -83,7 +84,7 @@
             this.play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.play.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.play.ForeColor = System.Drawing.Color.White;
-            this.play.Location = new System.Drawing.Point(789, 538);
+            this.play.Location = new System.Drawing.Point(792, 544);
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(206, 54);
             this.play.TabIndex = 20;
@@ -98,13 +99,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.font.BackColor = System.Drawing.Color.Black;
             this.font.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.font.Image = global::Launcher.Properties.Resources.font;
             this.font.Location = new System.Drawing.Point(0, 0);
             this.font.Name = "font";
-            this.font.Size = new System.Drawing.Size(1010, 600);
+            this.font.Size = new System.Drawing.Size(1000, 600);
             this.font.TabIndex = 16;
             this.font.TabStop = false;
             this.font.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.font_LoadCompleted);
-            this.font.Click += new System.EventHandler(this.font_Click);
+            this.font.Click += new System.EventHandler(this.label1_Click);
+            this.font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.font_MouseDown);
             // 
             // button1
             // 
@@ -117,7 +120,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(569, 538);
+            this.button1.Location = new System.Drawing.Point(587, 544);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 54);
             this.button1.TabIndex = 21;
@@ -145,7 +148,7 @@
             this.ToolsPanel.Controls.Add(this.button3);
             this.ToolsPanel.Location = new System.Drawing.Point(2, 66);
             this.ToolsPanel.Name = "ToolsPanel";
-            this.ToolsPanel.Size = new System.Drawing.Size(1010, 465);
+            this.ToolsPanel.Size = new System.Drawing.Size(1000, 465);
             this.ToolsPanel.TabIndex = 24;
             // 
             // richTextBox1
@@ -322,9 +325,9 @@
             this.ToPanelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.ToPanelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
             this.ToPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ToPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToPanelButton.ForeColor = System.Drawing.Color.White;
-            this.ToPanelButton.Location = new System.Drawing.Point(19, 538);
+            this.ToPanelButton.Location = new System.Drawing.Point(2, 544);
             this.ToPanelButton.Name = "ToPanelButton";
             this.ToPanelButton.Size = new System.Drawing.Size(206, 54);
             this.ToPanelButton.TabIndex = 25;
@@ -341,9 +344,9 @@
             this.ToMainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.ToMainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
             this.ToMainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ToMainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToMainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToMainButton.ForeColor = System.Drawing.Color.White;
-            this.ToMainButton.Location = new System.Drawing.Point(19, 538);
+            this.ToMainButton.Location = new System.Drawing.Point(2, 544);
             this.ToMainButton.Name = "ToMainButton";
             this.ToMainButton.Size = new System.Drawing.Size(206, 54);
             this.ToMainButton.TabIndex = 26;
@@ -377,12 +380,31 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(944, 4);
+            this.button11.Location = new System.Drawing.Point(934, 4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(29, 29);
             this.button11.TabIndex = 27;
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Lime;
+            this.button12.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(207, 544);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(206, 54);
+            this.button12.TabIndex = 28;
+            this.button12.Text = "News";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // main
             // 
@@ -390,8 +412,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(15)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1010, 600);
+            this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.ToMainButton);
             this.Controls.Add(this.ToPanelButton);
@@ -438,6 +461,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 

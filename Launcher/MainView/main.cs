@@ -16,10 +16,15 @@ namespace Launcher
 {
     public partial class main : Form   //MetroFramework.Forms.MetroForm
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
         public Button _Play { get { return play; } }
         public Button _button1 { get { return play; } }
         public Button _button2 { get { return play; } }
+        public Button _ToPanelButton { get { return play; } }
         public Button _button11 { get { return play; } }
+        public Button _button12 { get { return play; } }
 
         public static string intVar { get; set; }
 
@@ -380,13 +385,14 @@ namespace Launcher
             button9.BackColor = Color.Transparent;
             button10.BackColor = Color.Transparent;
             button11.BackColor = Color.Transparent;
+            button12.BackColor = Color.Transparent;
 
             play.Parent = font;
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
-
+            ToPanelButton.BackColor = Color.Transparent;
 
 
         }
@@ -421,7 +427,36 @@ namespace Launcher
             mouseDown = true;
         }
 
-        /* The text box */
+
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+        /* clicking on background image */
+
+        private void font_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void font_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            Console.WriteLine("Background Clicked");
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+
+
+
+
+        /* Clicking anywhere in The richtext box */
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -464,26 +499,40 @@ namespace Launcher
 
 
 
-
+            //  Show only the Tools menu //
         private void ToPanelButton_Click(object sender, EventArgs e)
         {
-            string valueString = "ToPanelButton clicked";
-            Console.WriteLine(valueString);
+            Console.WriteLine("ToPanelButton clicked");
             ToolsPanel.Visible = true;
-            ToMainButton.Visible = true;
+            ToMainButton.Visible = true; // tools panel and button to get back
             ToPanelButton.Visible = false;
+            webBrowser1.Visible = false;
+            button12.Visible = true;
+
         }
 
+            //  Hide Everything--just show image background //
         private void ToMainButton_Click(object sender, EventArgs e)
         {
-            string valueString = "ToMainButton clicked";
-            Console.WriteLine(valueString);
+            Console.WriteLine("ToMainButton clicked");
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
-            ToPanelButton.Visible = true;
+            ToPanelButton.Visible = true; // back to main only shows tools button
+            webBrowser1.Visible = false;
+            button12.Visible = true;
         }
 
-
+        
+            //  Show only the news + main menu buttons //
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Show News");
+            ToolsPanel.Visible = false;
+            webBrowser1.Visible = true; // back to main and news button
+            ToMainButton.Visible = true;
+            ToPanelButton.Visible = false;
+            button12.Visible = false;
+        }
 
 
 
@@ -1073,13 +1122,13 @@ namespace Launcher
             Console.WriteLine("Write 64s clicked");
             richTextBox1.AppendText(Environment.NewLine + "Writing 64s clicked...");
         }
-        
-
         private void button10_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Nothing");
         }
 
+
+        // future button event for 128s
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -1087,17 +1136,12 @@ namespace Launcher
             richTextBox1.AppendText(Environment.NewLine + "Writing 128s clicked...");
         }
 
+        // minimize button
+
         private void button11_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Minimizing...");
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        /* clicking on background image */
-
-        private void font_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Background Clicked");
         }
 
         // Test button to check output... 
