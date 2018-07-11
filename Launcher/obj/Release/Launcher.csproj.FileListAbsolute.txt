@@ -63,3 +63,4 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.Cor
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache

@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Data;
 using System.Xml;
 using System.Linq;
+using System.Media;
 
 namespace Launcher
 {
@@ -186,12 +187,13 @@ namespace Launcher
 
         private StateHandler myState = new StateHandler();
         private DateTime startTime = DateTime.Now;
-
-
-
-        //internal RichTextBox NotesBox1;
+        SoundPlayer startupsong = new SoundPlayer(@"H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\Resources\done.wav");
+        SoundPlayer completesong = new SoundPlayer(@"H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\Resources\start.wav");
 
         
+        //internal RichTextBox NotesBox1;
+
+
 
 
 
@@ -220,6 +222,16 @@ namespace Launcher
             myState.changeButtonState(LauncherState.Idle, this);
             this.Shown += new System.EventHandler(this.AfterLoading);
             Console.WriteLine("main loaded");
+
+/////////////////////////*                                    Startup Song                                      *///////////////////////////
+            System.Media.SoundPlayer sp = (startupsong);
+            sp.Play();
+
+
+
+
+
+
 
             if (WindowState == FormWindowState.Minimized)
             {
@@ -1051,6 +1063,8 @@ namespace Launcher
             }
 
             richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");
+            System.Media.SoundPlayer sp = (completesong);
+            sp.Play();
         }
 
 

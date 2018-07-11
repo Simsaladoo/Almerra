@@ -159,6 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Resources\done.wav" />
+    <Content Include="Resources\start.wav" />
     <None Include="Resources\mini.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
