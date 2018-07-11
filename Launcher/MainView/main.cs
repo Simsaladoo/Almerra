@@ -187,8 +187,8 @@ namespace Launcher
 
         private StateHandler myState = new StateHandler();
         private DateTime startTime = DateTime.Now;
-        SoundPlayer startupsong = new SoundPlayer(@"H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\Resources\done.wav");
-        SoundPlayer completesong = new SoundPlayer(@"H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\Resources\start.wav");
+        SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
+        SoundPlayer completesong = new SoundPlayer("Resources/start.wav");
 
         
         //internal RichTextBox NotesBox1;
@@ -443,8 +443,13 @@ namespace Launcher
         /* Clicking anywhere in The richtext box */
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
+            richTextBox1.Focus();
 
         }
+
+
+
+
 
         /* Startup Load events */
 

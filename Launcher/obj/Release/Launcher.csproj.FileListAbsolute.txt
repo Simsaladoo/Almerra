@@ -64,3 +64,5 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.Cop
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\done.wav
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\start.wav
