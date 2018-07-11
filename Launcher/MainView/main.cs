@@ -290,9 +290,7 @@ namespace Launcher
 
 
 
-        /******************************************* THE PLAY BUTTON ************************************/
-
-
+        /******************************************* THE PLAY GAME BUTTON ************************************/
 
         /*******************************
             play latest build button pressed
@@ -308,7 +306,10 @@ namespace Launcher
             {
                 var dirInfo = new DirectoryInfo(gdirectory);
                 var file = (from f in dirInfo.GetFiles(pattern) orderby f.LastWriteTime descending select f).First();
-                Console.WriteLine(file);
+
+                string activegame = ("" + file); /*  Out hacky-ass way of making a string from a filepath*/
+                Console.WriteLine(activegame + " Playing latest build");
+                System.Diagnostics.Process.Start(activegame);
             }
             
             catch
@@ -320,34 +321,20 @@ namespace Launcher
                 DialogResult result;
                 result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
+                {Application.Exit();}
                 if (result == DialogResult.No)
-                {
-
-                    Console.WriteLine("Ignoring error '" + caption + "'");
-                }
-            }
-          
-
-            //Console.WriteLine("Closing...");
-            //System.Diagnostics.Process.Start( @"H:\UE4\builds\Archive\WoA_0049\Tailwind_1501.exe");
-            //Application.Exit();
-
-            
+                {Console.WriteLine("Ignoring error '" + caption + "'");}
+            }           
         }
 
 
 
 
-
+        /******************************************* THE LOAD ENGINE BUTTON ************************************/
 
         /*******************************
             start engine button pressed
         /********************************/
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -373,36 +360,16 @@ namespace Launcher
                 DialogResult result;
                 result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
+                {Application.Exit();}
                 if (result == DialogResult.No)
-                {
-                    Console.WriteLine("Ignoring error '" + caption + "'");
-                }
+                {Console.WriteLine("Ignoring error '" + caption + "'");}
             }           
         }
 
 
 
 
-
-
-
-        /*******************************
-            close button pressed
-        /********************************/
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-         Console.WriteLine("Closing Launcher");
-         Application.Exit();
-        }
-
-
-
-
-
+      
 
 
 
@@ -410,13 +377,11 @@ namespace Launcher
 
 
         /*******************************
-            Set transparency  -- this is basically like a css section for da shit
+            Set transparency  -- this is basically like a css section for button settings
         /********************************/
         private void main_Load(object sender, EventArgs e)
         {
-            string valueString = "Main Loaded";
-            Console.WriteLine(valueString);
-
+            Console.WriteLine("Main Window Loaded");
             play.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
@@ -430,7 +395,6 @@ namespace Launcher
             button10.BackColor = Color.Transparent;
             button11.BackColor = Color.Transparent;
             button12.BackColor = Color.Transparent;
-
             play.Parent = font;
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
@@ -451,7 +415,7 @@ namespace Launcher
 
         private void font_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Background Clicked");
+            // DOes nothing, clicking on background image is ignored since mouseDown handles dragging the window
         }
 
         /* clicking on background image */
@@ -472,10 +436,12 @@ namespace Launcher
 
 
 
-        /* Clicking anywhere in The richtext box */
+        /* Any updates to richTextBox1 reenable focus so it'll scroll */
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
 
         }
 
@@ -485,18 +451,14 @@ namespace Launcher
 
         /* Startup Load events */
 
-
         private void font_LoadCompleted(object sender, EventArgs e)
         {
-            string valueString = "font Load Complete";
-            Console.WriteLine(valueString);
+            Console.WriteLine("Background image loaded");
         }
 
         private void notifyIcon1_LoadCompleted(object sender, MouseEventArgs e)
         {
-            string valueString = "NotifyIcon Loaded";
-            Console.WriteLine(valueString);
-
+            Console.WriteLine("NotifyIcon (The Taskbar Icon) Loaded");
         }
 
 
@@ -504,11 +466,20 @@ namespace Launcher
 
 
 
-        /* Navigation buttons */ 
 
 
 
-            //  Show only the Tools menu //
+
+
+
+
+
+
+
+        
+        /******************************************* NAVIGATION BUTTONS ************************************/
+
+        //  Show only the Tools menu //
         private void ToPanelButton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("ToPanelButton clicked");
@@ -543,6 +514,22 @@ namespace Launcher
             button12.Visible = false;
         }
 
+   
+            // Close 'X' Button clicked
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Closing Launcher");
+            Application.Exit();
+        }
+
+
+            // Minimize button clicked
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Minimizing...");
+            this.WindowState = FormWindowState.Minimized;
+        }
 
 
 
@@ -568,10 +555,9 @@ namespace Launcher
 
 
 
+        /******************************************* TOOLS/ACTION BUTTONS ************************************/
 
         /* Action buttons in TOols frame */
-
-
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -592,38 +578,29 @@ namespace Launcher
             dta.Columns.Add("Type1CellY009");
             dta.Columns.Add("Type1CellY010");
             dta.Columns.Add("Type1CellY011");
-
-
-
-            //Fake image used as initial variable, this gets set through the loop
-            //Bitmap testimage = new Bitmap(@"D:\Test\test.bmp");
-            // All the other settings
             string path = @"H:\UE4\Tailwind_R E B U I L D\Environment\World Machine 93e\PNGs\12\BMPs";
+            //string altpath = @"D:\Test";
             string searchPattern = "A*";
             DirectoryInfo di = new DirectoryInfo(path);
             DirectoryInfo[] directories = di.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly);
             FileInfo[] files = di.GetFiles(searchPattern, SearchOption.TopDirectoryOnly);
 
             Console.WriteLine("Searching for files that begin with the letter \"A\" in {0}", path);
-            richTextBox1.AppendText(Environment.NewLine + "Searching for files that begin with the letter A in" + path);
+            richTextBox1.AppendText(Environment.NewLine + "Searching for files that begin with the letter A in " + path);
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
 
 
-
-
-            // Now we loop through the directory for files and begin processing
+            // loop through the directory for files and begin processing
             foreach (FileInfo file in files)
             {
-                Console.WriteLine("Found file " + file);
-                //richTextBox1.AppendText(Environment.NewLine + "Found file " + file);
-                string readfilepath = (path + "/" + file);
-
-                Console.WriteLine("Current file to process: " + readfilepath);
-                //richTextBox1.AppendText(Environment.NewLine + "Current file to process: " + readfilepath);
-
-                Bitmap testimage = new Bitmap(readfilepath);
-
                 try
                 {
+                    Console.WriteLine("Found file " + file);
+                    string readfilepath = (path + "/" + file);
+                    Console.WriteLine("Current file to process: " + readfilepath);
+                    Bitmap testimage = new Bitmap(readfilepath);
                     Console.WriteLine(file + " ... clearing previous data from variables... ");
                     //richTextBox1.AppendText(Environment.NewLine + file + " ... clearing previous data from variables... ");
                     try
@@ -634,21 +611,15 @@ namespace Launcher
                     {
 
                     }
-                    // Loop through the images pixels -- for every pixel in width, look up every pixel in height
-                    // left to right, by columns going down??? 
-                    // x is actually the column, y is the row
-
-                    Console.WriteLine(file + " ... processing");
-                    //richTextBox1.AppendText(Environment.NewLine + file + " ... processing");
-
-                    // Need to set the testimage variable as the 'current' file[] in view for loop
-                    
+                    Console.WriteLine(file + " ... processing ...");
+                    // richTextBox1.AppendText(Environment.NewLine + file + " ... processing ...");
+                    // richTextBox1.Focus();
+                    // richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                    // richTextBox1.ScrollToCaret();
 
 
 
-
-
-                    //        Image processing        //
+                    /******************************************* IMAGE PROCESSING LOOP ************************************/
 
                     // x++ increment through all pixels
                     for (x = 0; x < testimage.Width; x++)
@@ -1033,13 +1004,27 @@ namespace Launcher
 
                     }
                 }
+
+                /******************************************* PROCESSING LOOP EXCEPTIONS ************************************/
                 catch (ArgumentException)
                 {
-                    Console.WriteLine("Something bad happened -- file array loop");
+
+                    string message = "No applicable files were found, close application?";
+                    string caption = "Tools Fail!";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
+                    { Application.Exit(); }
+                    if (result == DialogResult.No)
+                    { Console.WriteLine("Ignoring error '" + caption + "'"); }
+                    richTextBox1.AppendText(Environment.NewLine + "not applicable");
+                    richTextBox1.Focus();
+                    richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                    richTextBox1.ScrollToCaret();
+
                 }
 
-
-                //Add new rows with fake data
                 Console.WriteLine(file + " Adding values to data table...");
                 //richTextBox1.AppendText(Environment.NewLine + file + " Adding values to data table...");
                 dta.Rows.Add("cellX000", X000Y000, X000Y001, X000Y002, X000Y003, X000Y004, X000Y005, X000Y006, X000Y007, X000Y008, X000Y009, X000Y010, X000Y011);
@@ -1055,9 +1040,7 @@ namespace Launcher
                 dta.Rows.Add("cellX010", X010Y000, X010Y001, X010Y002, X010Y003, X010Y004, X010Y005, X010Y006, X010Y007, X010Y008, X010Y009, X010Y010, X010Y011);
                 dta.Rows.Add("cellX011", X011Y000, X011Y001, X011Y002, X011Y003, X011Y004, X011Y005, X011Y006, X011Y007, X011Y008, X011Y009, X011Y010, X011Y011);
 
-
-                // Below is how we take the data into csv format and output
-
+                
                 StringBuilder sb = new StringBuilder();
 
                 foreach (DataColumn col in dta.Columns)
@@ -1094,14 +1077,48 @@ namespace Launcher
                     sb.AppendLine();
                 }
 
-                //name csv from image
-                File.WriteAllText(@"H:\UE4\Tailwind_R E B U I L D\Environment\World Machine 93e\PNGs\12\BMPs\Converted\" + file + ".csv", sb.ToString());
-                //richTextBox1.AppendText(Environment.NewLine + file + " Written...");
+
+
+                /*  Write everything to csvs */
+
+                try
+                {
+                    // name csv from images, this goes off for every file converted --commented out the richtextbox updater for performance
+                    File.WriteAllText(path + file + ".csv", sb.ToString());
+                    // richTextBox1.AppendText(Environment.NewLine + file + " Written...");
+                    // richTextBox1.Focus();
+                    // richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                    // richTextBox1.ScrollToCaret();
+                }
+                catch
+                {
+                    // Initializes the variables to pass to the MessageBox.Show method.
+                    string message = "No valid directory for CSVs in " + path + ", close application?";
+                    string caption = "CSV folder found!";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
+                    { Application.Exit(); }
+                    if (result == DialogResult.No)
+                    { Console.WriteLine("Ignoring error '" + caption + "'"); }
+                }
+
+
+
+                
             }
 
             richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");
+
+
+            // Play a little tune when we're done processing
             System.Media.SoundPlayer sp = (completesong);
             sp.Play();
+
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
         }
 
 
@@ -1118,6 +1135,9 @@ namespace Launcher
         {
             Console.WriteLine("Write 64s clicked");
             richTextBox1.AppendText(Environment.NewLine + "Writing 64s clicked...");
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
         }
         private void button10_Click(object sender, EventArgs e)
         {
@@ -1131,14 +1151,9 @@ namespace Launcher
         {
             Console.WriteLine("Write 128s clicked");
             richTextBox1.AppendText(Environment.NewLine + "Writing 128s clicked...");
-        }
-
-        // minimize button
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Minimizing...");
-            this.WindowState = FormWindowState.Minimized;
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
         }
 
         // Test button to check output... 
@@ -1147,6 +1162,10 @@ namespace Launcher
         private void button6_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Nothing");
+            richTextBox1.AppendText(Environment.NewLine + "Nothing");
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
 
         }
 
