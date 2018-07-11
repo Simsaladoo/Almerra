@@ -517,27 +517,10 @@ namespace Launcher
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Writing 12s...");
+            Console.WriteLine("Writing 12s clicked...");
             richTextBox1.AppendText(Environment.NewLine + "Writing 12s clicked...");
             int x, y;
             DataTable dta = new DataTable();
-
-
-            //Fake image used as initial variable, this gets set through the loop
-            Bitmap testimage = new Bitmap(@"D:\Test\test.bmp");
-
-
-
-
-
-
-
-            string path = @"D:\Test";
-            string searchPattern = "A*";
-            DirectoryInfo di = new DirectoryInfo(path);
-            DirectoryInfo[] directories = di.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly);
-            FileInfo[] files = di.GetFiles(searchPattern, SearchOption.TopDirectoryOnly);
-            Console.WriteLine("Directories that begin with the letter \"t\" in {0}", path);
             dta.Columns.Add(" ");
             dta.Columns.Add("Type1CellY000");
             dta.Columns.Add("Type1CellY001");
@@ -554,16 +537,37 @@ namespace Launcher
 
 
 
+            //Fake image used as initial variable, this gets set through the loop
+            //Bitmap testimage = new Bitmap(@"D:\Test\test.bmp");
+            // All the other settings
+            string path = @"D:\Test";
+            string searchPattern = "A*";
+            DirectoryInfo di = new DirectoryInfo(path);
+            DirectoryInfo[] directories = di.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly);
+            FileInfo[] files = di.GetFiles(searchPattern, SearchOption.TopDirectoryOnly);
+
+            Console.WriteLine("Searching for files that begin with the letter \"A\" in {0}", path);
+            richTextBox1.AppendText(Environment.NewLine + "Searching for files that begin with the letter A in" + path);
 
 
 
+
+            // Now we loop through the directory for files and begin processing
             foreach (FileInfo file in files)
             {
-                richTextBox1.AppendText(Environment.NewLine + "Found file" + file + "... processing");
+                Console.WriteLine("Found file " + file);
+                richTextBox1.AppendText(Environment.NewLine + "Found file " + file);
+                string readfilepath = (path + "/" + file);
+
+                Console.WriteLine("Current file to process: " + readfilepath);
+                richTextBox1.AppendText(Environment.NewLine + "Current file to process: " + readfilepath);
+
+                Bitmap testimage = new Bitmap(readfilepath);
 
                 try
                 {
-                    richTextBox1.AppendText(Environment.NewLine + "Found file" + file + "... processing");
+                    Console.WriteLine(file + " ... clearing previous data from variables... ");
+                    richTextBox1.AppendText(Environment.NewLine + file + " ... clearing previous data from variables... ");
                     try
                     {
                         dta.Clear();
@@ -576,17 +580,30 @@ namespace Launcher
                     // left to right, by columns going down??? 
                     // x is actually the column, y is the row
 
+                    Console.WriteLine(file + " ... processing");
+                    richTextBox1.AppendText(Environment.NewLine + file + " ... processing");
+
+                    // Need to set the testimage variable as the 'current' file[] in view for loop
+                    
+
+
+
+
+
+                    //        Image processing        //
+
+                    // x++ increment through all pixels
                     for (x = 0; x < testimage.Width; x++)
                     {
                         for (y = 0; y < testimage.Height; y++)
                         {
-
+                            //This is where we setup ALL that data into a Row.  
                             // row start
                             if (y == 0)
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X000Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -617,7 +634,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X001Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -648,7 +665,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X002Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -679,7 +696,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X003Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -710,7 +727,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X004Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -741,7 +758,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X005Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -772,7 +789,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X006Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -803,7 +820,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X007Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -834,7 +851,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X008Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -865,7 +882,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X009Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -896,7 +913,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X010Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -927,7 +944,7 @@ namespace Launcher
                             {
                                 Color pixelColor = testimage.GetPixel(x, y);
                                 string pixelColorStringValue = pixelColor.B.ToString("D3");
-                                Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
+                                //Console.WriteLine(x + ", " + y + " = " + pixelColorStringValue);
                                 if (x == 0)
                                 { X011Y000 = pixelColorStringValue; }
                                 if (x == 1)
@@ -964,9 +981,9 @@ namespace Launcher
                 }
 
 
-
-              
                 //Add new rows with fake data
+                Console.WriteLine(file + " Adding values to data table...");
+                richTextBox1.AppendText(Environment.NewLine + file + " Adding values to data table...");
                 dta.Rows.Add("cellX000", X000Y000, X000Y001, X000Y002, X000Y003, X000Y004, X000Y005, X000Y006, X000Y007, X000Y008, X000Y009, X000Y010, X000Y011);
                 dta.Rows.Add("cellX001", X001Y000, X001Y001, X001Y002, X001Y003, X001Y004, X001Y005, X001Y006, X001Y007, X001Y008, X001Y009, X001Y010, X001Y011);
                 dta.Rows.Add("cellX002", X002Y000, X002Y001, X002Y002, X002Y003, X002Y004, X002Y005, X002Y006, X002Y007, X002Y008, X002Y009, X002Y010, X002Y011);
@@ -1047,45 +1064,6 @@ namespace Launcher
 
 
 
-        // Test button to check output... 
-
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Pixel Test Corners");
-
-            // Create a Bitmap object from an image file.
-            Bitmap myBitmap = new Bitmap(@"D:\test.jpg");
-
-
-
-            // Test top corners
-            Color pixelColor1 = myBitmap.GetPixel(0, 0);
-            string pixelColorStringValue1 = pixelColor1.B.ToString("D3");
-            Console.WriteLine("0,0" + pixelColorStringValue1);
-            richTextBox1.AppendText(Environment.NewLine + "Pixel (0, 0) = " + pixelColorStringValue1);
-
-            Color pixelColor3 = myBitmap.GetPixel(11, 0);
-            string pixelColorStringValue3 = pixelColor3.B.ToString("D3");
-            Console.WriteLine("11,0" + pixelColorStringValue3);
-            richTextBox1.AppendText(Environment.NewLine + "Pixel (11, 0) = " + pixelColorStringValue3);
-
-
-            // Test bottom corners
-            Color pixelColor2 = myBitmap.GetPixel(0, 11);
-            string pixelColorStringValue2 = pixelColor2.B.ToString("D3");
-            Console.WriteLine("0,11" + pixelColorStringValue2);
-            richTextBox1.AppendText(Environment.NewLine + "Pixel (0, 11) = " + pixelColorStringValue2);
-
-            Color pixelColor4 = myBitmap.GetPixel(11, 11);
-            string pixelColorStringValue4 = pixelColor4.B.ToString("D3");
-            Console.WriteLine("11,11" + pixelColorStringValue4);
-            richTextBox1.AppendText(Environment.NewLine + "Pixel (11, 11) = " + pixelColorStringValue4);
-
-        }
-
-
-
 
 
         /* Unused buttons below */
@@ -1122,7 +1100,14 @@ namespace Launcher
             Console.WriteLine("Background Clicked");
         }
 
-        
+        // Test button to check output... 
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Nothing");
+
+        }
 
     }
 }
