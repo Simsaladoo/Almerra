@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
-using System.Reflection;
 using System.Text;
-using System.Diagnostics;
 using System.Drawing;
 using System.Data;
-using System.Xml;
 using System.Linq;
 using System.Media;
+using System.Runtime.InteropServices;
+
+ 
+//                    .____                                    .__                                   //
+//                    |    |    _____    __ __   ____    ____  |  |__    ____ _______                //
+//                    |    |    \__  \  |  |  \ /    \ _/ ___\ |  |  \ _/ __ \\_  __ \               //
+//                    |    |___  / __ \_|  |  /|   |  \\  \___ |   Y  \\  ___/ |  | \/               //
+//                    |_______ \(____  /|____/ |___|  / \___  >|___|  / \___  >|__|                  //
+//                            \/     \/             \/      \/      \/      \/                       //
+//                                                                                                   //
+ 
 
 namespace Launcher
 {
@@ -190,31 +197,19 @@ namespace Launcher
         SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
         SoundPlayer completesong = new SoundPlayer("Resources/start.wav");
 
-        
-        //internal RichTextBox NotesBox1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        /* Unused Settings for message box to close itself, n shit */
+      //  private bool m_killHim;
+      //  private bool m_threadAlive;
+      //  private Thread m_killThread;
+      //  private const uint GW_HWNDFIRST = 0;
+      //  private const int WM_CLOSE = 0x0010;
+      //  [DllImport("coredll.dll", EntryPoint = "FindWindowW", SetLastError = true)]
+      //  private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
 
 
         /*******************************
-            this is ou main function
+            this is our main startup function for the program
         /********************************/
         public main()
         {
@@ -223,16 +218,19 @@ namespace Launcher
             this.Shown += new System.EventHandler(this.AfterLoading);
             Console.WriteLine("main loaded");
 
-/////////////////////////*                                    Startup Song                                      *///////////////////////////
+            /////////////////////////                *Startup media                     *///////////////////////////
+//                                                                                                                          //
+//                                    _________  __                    __                                                   //
+//                                   /   _____/_/  |_ _____  _______ _/  |_  __ __ ______                                   //
+//                                   \_____  \ \   __\\__  \ \_  __ \\   __\|  |  \\____ \                                  //
+//                                   /        \ |  |   / __ \_|  | \/ |  |  |  |  /|  |_> >                                 //
+//                                  /_______  / |__|  (____  /|__|    |__|  |____/ |   __/                                  //
+//                                          \/             \/                      |__|                                     //
+//                                                                                                                          //
+
+
             System.Media.SoundPlayer sp = (startupsong);
             sp.Play();
-
-
-
-
-
-
-
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
@@ -260,7 +258,7 @@ namespace Launcher
 
 
         /*******************************
-            formater to get the bytes suffix
+            formater to get the bytes suffix -- for displaying download speeds
         /********************************/
         private static string FormatBytes(long bytes)
         {
@@ -275,11 +273,12 @@ namespace Launcher
         }
 
         /*******************************
-            called when the window is created
+            called AFTER the window is created
         /********************************/
         private void AfterLoading(object sender, EventArgs e)
         {
             Console.WriteLine("Post Load Completed");
+
         }
 
 
@@ -301,17 +300,42 @@ namespace Launcher
 
         private void play_Click(object sender, EventArgs e)
         {
-            if (myState.getLauncherState() == LauncherState.Idle)
+
+            /*      play our last build -- first make sure its even there, if not display the messgae box */
+            var gdirectory = (@"H:/UE4/Builds/");
+            string pattern = "*.exe";
+            try
             {
-                /*      play our last build  */
-
-                string valueString = "Closing...";
-                Console.WriteLine(valueString);
-
-                //System.Diagnostics.Process.Start( @"H:\UE4\builds\Archive\WoA_0049\Tailwind_1501.exe");
-                Application.Exit();
-
+                var dirInfo = new DirectoryInfo(gdirectory);
+                var file = (from f in dirInfo.GetFiles(pattern) orderby f.LastWriteTime descending select f).First();
+                Console.WriteLine(file);
             }
+            
+            catch
+            {
+                // Initializes the variables to pass to the MessageBox.Show method.
+                string message = "No Winds of Almerra builds were found in " + gdirectory + ", close application?";
+                string caption = "Project not found!";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                if (result == DialogResult.No)
+                {
+
+                    Console.WriteLine("Ignoring error '" + caption + "'");
+                }
+            }
+          
+
+            //Console.WriteLine("Closing...");
+            //System.Diagnostics.Process.Start( @"H:\UE4\builds\Archive\WoA_0049\Tailwind_1501.exe");
+            //Application.Exit();
+
+            
         }
 
 
@@ -327,19 +351,36 @@ namespace Launcher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-         /*     startup the engine    */
 
-         
-
-         string valueString = "Engine Starting";
-         Console.WriteLine(valueString);
-
-
-         System.Diagnostics.Process.Start(@"H:\UE4\Projects\WoA_1902\WoA_1902.uproject");
-
-         Application.Exit();
-            
+            /*     startup the engine    */
+            var pdirectory = (@"H:/UE4/Projects/");
+            string pattern = "*.uproject";
+            try
+            {
+                var dirInfo = new DirectoryInfo(pdirectory);
+                var file = (from f in dirInfo.GetFiles(pattern) orderby f.LastWriteTime descending select f).First();
+               
+                string activeproject = ("" + file); /*  Out hacky-ass way of making a string from a filepath*/
+                Console.WriteLine(activeproject + " Engine Starting");
+                System.Diagnostics.Process.Start(activeproject);
+            }
+            catch
+            {
+                // Initializes the variables to pass to the MessageBox.Show method.
+                string message = "No Almerra project files were found in " + pdirectory + ", close application?";
+                string caption = "Project not found!";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                if (result == DialogResult.No)
+                {
+                    Console.WriteLine("Ignoring error '" + caption + "'");
+                }
+            }           
         }
 
 
@@ -352,19 +393,10 @@ namespace Launcher
             close button pressed
         /********************************/
 
-
-
         private void button2_Click(object sender, EventArgs e)
         {
-
-            
-
-
-         string valueString = "Launcher Closing";
-         Console.WriteLine(valueString);
-
+         Console.WriteLine("Closing Launcher");
          Application.Exit();
-
         }
 
 
@@ -1073,31 +1105,7 @@ namespace Launcher
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 
