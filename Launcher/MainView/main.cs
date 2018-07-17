@@ -300,18 +300,25 @@ namespace Launcher
         {
 
             /*      play our last build -- first make sure its even there, if not display the messgae box */
-            var gdirectory = (@"H:/UE4/Builds/");
-            string pattern = "*.exe";
+            var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0050\");
             try
             {
-                var dirInfo = new DirectoryInfo(gdirectory);
-                var file = (from f in dirInfo.GetFiles(pattern) orderby f.LastWriteTime descending select f).First();
-
-                string activegame = ("" + file); /*  Out hacky-ass way of making a string from a filepath*/
-                Console.WriteLine(activegame + " Playing latest build");
-                System.Diagnostics.Process.Start(activegame);
+                string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
+                Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
+                foreach (string dir in dirs)
+                {
+                    string letsdothis = dir;
+                    Console.WriteLine(dir);
+                    if (dir != null)
+                    {
+                        System.Diagnostics.Process.Start(dir);
+                    }
+                }
             }
-            
+
+
+
+
             catch
             {
                 // Initializes the variables to pass to the MessageBox.Show method.
@@ -321,9 +328,9 @@ namespace Launcher
                 DialogResult result;
                 result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
-                {Application.Exit();}
+                { Application.Exit(); }
                 if (result == DialogResult.No)
-                {Console.WriteLine("Ignoring error '" + caption + "'");}
+                { Console.WriteLine("Ignoring error '" + caption + "'"); }
             }           
         }
 
@@ -340,17 +347,25 @@ namespace Launcher
         {
 
             /*     startup the engine    */
-            var pdirectory = (@"H:/UE4/Projects/");
-            string pattern = "*.uproject";
+            var pdirectory = (@"H:\UE4\Projects\WoA_1902");
+
             try
             {
-                var dirInfo = new DirectoryInfo(pdirectory);
-                var file = (from f in dirInfo.GetFiles(pattern) orderby f.LastWriteTime descending select f).First();
-                Console.WriteLine(pdirectory);
 
-                string activeproject = ("" + file); /*  Out hacky-ass way of making a string from a filepath*/
-                Console.WriteLine(activeproject + " Engine Starting");
-                System.Diagnostics.Process.Start(activeproject);
+                // Only get files that begin with the letter "c."
+                string[] dirs = Directory.GetFiles(pdirectory, "*WoA_1902.uproject*", SearchOption.TopDirectoryOnly);
+                Console.WriteLine(pdirectory + ", The number of files starting with W is " + dirs.Length);
+                foreach (string dir in dirs)
+                {
+                    string letsdothis = dir;
+                    Console.WriteLine(dir);
+
+                    if (dir != null)
+                    {
+                        System.Diagnostics.Process.Start(dir);
+                    }
+                }
+                
             }
             catch
             {
@@ -364,8 +379,11 @@ namespace Launcher
                 {Application.Exit();}
                 if (result == DialogResult.No)
                 {Console.WriteLine("Ignoring error '" + caption + "'");}
-            }           
-        }
+            }
+
+
+            }
+            
 
 
 
