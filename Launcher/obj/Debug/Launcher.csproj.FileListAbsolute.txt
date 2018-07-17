@@ -25,3 +25,16 @@ H:\UE4\Splash\GameLauncher-master\Launcher\bin\Debug\Winds of Almerra.exe
 H:\UE4\Splash\GameLauncher-master\Launcher\bin\Debug\Winds of Almerra.pdb
 H:\UE4\Splash\GameLauncher-master\Launcher\obj\Debug\Winds of Almerra.exe
 H:\UE4\Splash\GameLauncher-master\Launcher\obj\Debug\Winds of Almerra.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe.config
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.exe
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\done.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\start.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Design.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache

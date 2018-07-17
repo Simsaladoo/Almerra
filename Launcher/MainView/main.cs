@@ -346,7 +346,8 @@ namespace Launcher
             {
                 var dirInfo = new DirectoryInfo(pdirectory);
                 var file = (from f in dirInfo.GetFiles(pattern) orderby f.LastWriteTime descending select f).First();
-               
+                Console.WriteLine(pdirectory);
+
                 string activeproject = ("" + file); /*  Out hacky-ass way of making a string from a filepath*/
                 Console.WriteLine(activeproject + " Engine Starting");
                 System.Diagnostics.Process.Start(activeproject);
