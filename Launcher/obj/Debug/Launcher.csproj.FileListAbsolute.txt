@@ -56,3 +56,6 @@ D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CopyComplete
 D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.exe
 D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.pdb
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\zulu.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\NAudio.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\NAudio.xml

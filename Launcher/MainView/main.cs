@@ -36,6 +36,17 @@ namespace Launcher
         public Button _ToPanelButton { get { return play; } }
         public Button _button11 { get { return play; } }
         public Button _button12 { get { return play; } }
+        public Button _CloseButton { get { return play; } }
+        public Button _MinimizeButton { get { return play; } }
+        public Button _button3 { get { return play; } }
+        public Button _button4 { get { return play; } }
+        public Button _button5 { get { return play; } }
+        public Button _button6 { get { return play; } }
+        public Button _button7 { get { return play; } }
+        public Button _button8 { get { return play; } }
+        public Button _button9 { get { return play; } }
+        public Button _button10 { get { return play; } }
+        public Button _ToMainButton { get { return play; } }
 
         public static string intVar { get; set; }
 
@@ -217,7 +228,7 @@ namespace Launcher
         public main()
         {
             InitializeComponent();
-            myState.changeButtonState(LauncherState.Idle, this);
+            //myState.changeButtonState(LauncherState.Idle, this);
             this.Shown += new System.EventHandler(this.AfterLoading);
             Console.WriteLine("main loaded");
 
@@ -256,24 +267,6 @@ namespace Launcher
         }
 
 
-
-
-
-
-        /*******************************
-            formater to get the bytes suffix -- for displaying download speeds
-        /********************************/
-        private static string FormatBytes(long bytes)
-        {
-            string[] Suffix = { "B", "KB", "MB", "GB", "TB" };
-            int i;
-            double dblSByte = bytes;
-            for (i = 0; i < Suffix.Length && bytes >= 1024; i++, bytes /= 1024)
-            {
-                dblSByte = bytes / 1024.0;
-            }
-            return String.Format("{0:0.##} {1}", dblSByte, Suffix[i]);
-        }
 
         /*******************************
             called AFTER the window is created
@@ -315,6 +308,7 @@ namespace Launcher
                     if (dir != null)
                     {
                         System.Diagnostics.Process.Start(dir);
+                        this.WindowState = FormWindowState.Minimized;
                     }
                 }
             }
@@ -366,6 +360,7 @@ namespace Launcher
                     if (dir != null)
                     {
                         System.Diagnostics.Process.Start(dir);
+                        this.WindowState = FormWindowState.Minimized;
                     }
                 }
                 
@@ -406,7 +401,7 @@ namespace Launcher
             Console.WriteLine("Main Window Loaded");
             play.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
-            button2.BackColor = Color.Transparent;
+            CloseButton.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
@@ -415,15 +410,25 @@ namespace Launcher
             button8.BackColor = Color.Transparent;
             button9.BackColor = Color.Transparent;
             button10.BackColor = Color.Transparent;
-            button11.BackColor = Color.Transparent;
+            MinimizeButton.BackColor = Color.Transparent;
             button12.BackColor = Color.Transparent;
-            play.Parent = font;
-            ToolsPanel.Visible = false;
-            ToMainButton.Visible = false;
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
             waveViewer1.Visible = false;
+            ToolsPanel.Visible = false;
+            ToMainButton.Visible = false;
+
+
+
+            play.Parent = font;
+            button1.Parent = font;
+            CloseButton.Parent = font;
+            MinimizeButton.Parent = font;
+            ToolsPanel.Parent = font;
+            ToMainButton.Parent = font;
+            ToPanelButton.Parent = font;
+            button12.Parent = font;
 
         }
 

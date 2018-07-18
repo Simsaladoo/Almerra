@@ -65,7 +65,10 @@ D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.exe
 D:\Reposit\Almerra\Launcher\obj\Release\Winds of Almerra.pdb
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\done.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\start.wav
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
 D:\Reposit\Almerra\Launcher\bin\Release\NAudio.dll
 D:\Reposit\Almerra\Launcher\bin\Release\NAudio.xml
 D:\Reposit\Almerra\Launcher\bin\Release\Resources\zulu.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\zulu.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\NAudio.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\NAudio.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache

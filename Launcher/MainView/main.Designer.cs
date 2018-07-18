@@ -30,13 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            this.button2 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.play = new System.Windows.Forms.Button();
             this.font = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolsPanel = new System.Windows.Forms.Panel();
+            this.waveViewer1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -49,50 +50,51 @@
             this.ToPanelButton = new System.Windows.Forms.Button();
             this.ToMainButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.button11 = new System.Windows.Forms.Button();
+            this.MinimizeButton = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.waveViewer1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waveViewer1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // CloseButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.BackgroundImage = global::Launcher.Properties.Resources.close;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(967, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(29, 29);
-            this.button2.TabIndex = 22;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.BackColor = System.Drawing.Color.Transparent;
+            this.CloseButton.BackgroundImage = global::Launcher.Properties.Resources.close;
+            this.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.ForeColor = System.Drawing.Color.White;
+            this.CloseButton.Location = new System.Drawing.Point(969, 2);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(29, 29);
+            this.CloseButton.TabIndex = 22;
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // play
             // 
-            this.play.BackColor = System.Drawing.Color.Lime;
+            this.play.BackColor = System.Drawing.Color.Transparent;
             this.play.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.play.FlatAppearance.BorderSize = 0;
-            this.play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.play.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.play.ForeColor = System.Drawing.Color.White;
-            this.play.Location = new System.Drawing.Point(792, 544);
+            this.play.Location = new System.Drawing.Point(794, 547);
+            this.play.Margin = new System.Windows.Forms.Padding(0);
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(206, 54);
-            this.play.TabIndex = 20;
+            this.play.TabIndex = 30;
             this.play.Text = "Find Latest";
-            this.play.UseVisualStyleBackColor = true;
+            this.play.UseVisualStyleBackColor = false;
             this.play.Click += new System.EventHandler(this.play_Click);
             // 
             // font
@@ -113,21 +115,22 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(587, 544);
+            this.button1.Location = new System.Drawing.Point(588, 547);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 54);
-            this.button1.TabIndex = 21;
+            this.button1.TabIndex = 29;
             this.button1.Text = "Load";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // notifyIcon1
@@ -139,6 +142,7 @@
             // 
             // ToolsPanel
             // 
+            this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
             this.ToolsPanel.Controls.Add(this.waveViewer1);
             this.ToolsPanel.Controls.Add(this.richTextBox1);
             this.ToolsPanel.Controls.Add(this.button7);
@@ -149,10 +153,23 @@
             this.ToolsPanel.Controls.Add(this.button5);
             this.ToolsPanel.Controls.Add(this.button4);
             this.ToolsPanel.Controls.Add(this.button3);
-            this.ToolsPanel.Location = new System.Drawing.Point(2, 66);
+            this.ToolsPanel.Location = new System.Drawing.Point(0, 73);
+            this.ToolsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.ToolsPanel.Name = "ToolsPanel";
-            this.ToolsPanel.Size = new System.Drawing.Size(996, 465);
+            this.ToolsPanel.Size = new System.Drawing.Size(1000, 476);
             this.ToolsPanel.TabIndex = 24;
+            // 
+            // waveViewer1
+            // 
+            this.waveViewer1.BorderlineWidth = 0;
+            chartArea2.Name = "ChartArea1";
+            this.waveViewer1.ChartAreas.Add(chartArea2);
+            this.waveViewer1.Location = new System.Drawing.Point(505, 55);
+            this.waveViewer1.Name = "waveViewer1";
+            this.waveViewer1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.waveViewer1.Size = new System.Drawing.Size(438, 204);
+            this.waveViewer1.TabIndex = 36;
+            this.waveViewer1.Text = "waveViewer1";
             // 
             // richTextBox1
             // 
@@ -172,8 +189,8 @@
             this.button7.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
@@ -191,8 +208,8 @@
             this.button8.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
@@ -321,40 +338,41 @@
             // 
             // ToPanelButton
             // 
-            this.ToPanelButton.BackColor = System.Drawing.Color.Lime;
+            this.ToPanelButton.BackColor = System.Drawing.Color.Transparent;
             this.ToPanelButton.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.ToPanelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ToPanelButton.FlatAppearance.BorderSize = 0;
-            this.ToPanelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.ToPanelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.ToPanelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.ToPanelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.ToPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ToPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToPanelButton.ForeColor = System.Drawing.Color.White;
-            this.ToPanelButton.Location = new System.Drawing.Point(2, 544);
+            this.ToPanelButton.Location = new System.Drawing.Point(-1, 547);
             this.ToPanelButton.Name = "ToPanelButton";
-            this.ToPanelButton.Size = new System.Drawing.Size(206, 54);
+            this.ToPanelButton.Size = new System.Drawing.Size(207, 54);
             this.ToPanelButton.TabIndex = 25;
             this.ToPanelButton.Text = "Tools";
-            this.ToPanelButton.UseVisualStyleBackColor = true;
+            this.ToPanelButton.UseVisualStyleBackColor = false;
             this.ToPanelButton.Click += new System.EventHandler(this.ToPanelButton_Click);
             // 
             // ToMainButton
             // 
-            this.ToMainButton.BackColor = System.Drawing.Color.Lime;
+            this.ToMainButton.BackColor = System.Drawing.Color.Transparent;
             this.ToMainButton.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.ToMainButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ToMainButton.FlatAppearance.BorderSize = 0;
-            this.ToMainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.ToMainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.ToMainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.ToMainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.ToMainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ToMainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToMainButton.ForeColor = System.Drawing.Color.White;
-            this.ToMainButton.Location = new System.Drawing.Point(2, 544);
+            this.ToMainButton.Location = new System.Drawing.Point(-1, 547);
+            this.ToMainButton.Margin = new System.Windows.Forms.Padding(0);
             this.ToMainButton.Name = "ToMainButton";
-            this.ToMainButton.Size = new System.Drawing.Size(206, 54);
+            this.ToMainButton.Size = new System.Drawing.Size(207, 54);
             this.ToMainButton.TabIndex = 26;
             this.ToMainButton.Text = "Main Menu";
-            this.ToMainButton.UseVisualStyleBackColor = true;
+            this.ToMainButton.UseVisualStyleBackColor = false;
             this.ToMainButton.Click += new System.EventHandler(this.ToMainButton_Click);
             // 
             // webBrowser1
@@ -362,65 +380,56 @@
             this.webBrowser1.AllowNavigation = false;
             this.webBrowser1.AllowWebBrowserDrop = false;
             this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser1.Location = new System.Drawing.Point(2, 66);
+            this.webBrowser1.Location = new System.Drawing.Point(0, 73);
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(996, 465);
+            this.webBrowser1.Size = new System.Drawing.Size(1000, 476);
             this.webBrowser1.TabIndex = 23;
             this.webBrowser1.Url = new System.Uri("http://www.almerra.com/updates", System.UriKind.Absolute);
             this.webBrowser1.Visible = false;
             // 
-            // button11
+            // MinimizeButton
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackColor = System.Drawing.Color.Lime;
-            this.button11.BackgroundImage = global::Launcher.Properties.Resources.mini;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(934, 4);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(29, 29);
-            this.button11.TabIndex = 27;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.MinimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinimizeButton.BackColor = System.Drawing.Color.Transparent;
+            this.MinimizeButton.BackgroundImage = global::Launcher.Properties.Resources.mini;
+            this.MinimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MinimizeButton.FlatAppearance.BorderSize = 0;
+            this.MinimizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.MinimizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MinimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimizeButton.ForeColor = System.Drawing.Color.White;
+            this.MinimizeButton.Location = new System.Drawing.Point(936, 2);
+            this.MinimizeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.MinimizeButton.Name = "MinimizeButton";
+            this.MinimizeButton.Size = new System.Drawing.Size(29, 29);
+            this.MinimizeButton.TabIndex = 27;
+            this.MinimizeButton.UseVisualStyleBackColor = false;
+            this.MinimizeButton.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
-            this.button12.BackColor = System.Drawing.Color.Lime;
+            this.button12.BackColor = System.Drawing.Color.Transparent;
             this.button12.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(207, 544);
+            this.button12.Location = new System.Drawing.Point(204, 547);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(206, 54);
             this.button12.TabIndex = 28;
             this.button12.Text = "News";
-            this.button12.UseVisualStyleBackColor = true;
+            this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // waveViewer1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.waveViewer1.ChartAreas.Add(chartArea1);
-            this.waveViewer1.Location = new System.Drawing.Point(505, 55);
-            this.waveViewer1.Name = "waveViewer1";
-            this.waveViewer1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.waveViewer1.Size = new System.Drawing.Size(438, 204);
-            this.waveViewer1.TabIndex = 36;
-            this.waveViewer1.Text = "waveViewer1";
             // 
             // main
             // 
@@ -431,13 +440,13 @@
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.ToMainButton);
             this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.ToolsPanel);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.play);
             this.Controls.Add(this.font);
             this.ForeColor = System.Drawing.Color.White;
@@ -462,7 +471,7 @@
         private System.Windows.Forms.PictureBox font;
         private System.Windows.Forms.Button play;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Panel ToolsPanel;
         private System.Windows.Forms.Button ToPanelButton;
@@ -477,7 +486,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.DataVisualization.Charting.Chart waveViewer1;
     }
