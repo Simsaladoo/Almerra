@@ -38,3 +38,21 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\done.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\start.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.exe.config
+D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.exe
+D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.pdb
+D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.Design.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.Fonts.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\NAudio.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\NAudio.xml
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.main.resources
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CopyComplete
+D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.exe
+D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.pdb
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\zulu.wav

@@ -9,6 +9,9 @@ using System.Data;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
+using NAudio.Wave;
+using System.Collections.Generic;
+
 
  
 //                    .____                                    .__                                   //
@@ -420,7 +423,7 @@ namespace Launcher
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
-
+            waveViewer1.Visible = false;
 
         }
 
@@ -507,6 +510,7 @@ namespace Launcher
             ToPanelButton.Visible = false;
             webBrowser1.Visible = false;
             button12.Visible = true;
+            waveViewer1.Visible = false;
 
         }
 
@@ -519,6 +523,7 @@ namespace Launcher
             ToPanelButton.Visible = true; // back to main only shows tools button
             webBrowser1.Visible = false;
             button12.Visible = true;
+            waveViewer1.Visible = false;
         }
 
         
@@ -531,6 +536,7 @@ namespace Launcher
             ToMainButton.Visible = true;
             ToPanelButton.Visible = false;
             button12.Visible = false;
+            waveViewer1.Visible = false;
         }
 
    
@@ -1175,18 +1181,69 @@ namespace Launcher
             richTextBox1.ScrollToCaret();
         }
 
-        // Test button to check output... 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Test button to check output... 
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Nothing");
-            richTextBox1.AppendText(Environment.NewLine + "Nothing");
+            Console.WriteLine("Audio Processing...");
+            richTextBox1.AppendText(Environment.NewLine + "Audio Processing...");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
 
+            // adds the wave file to the popup viewer for waveforms
+            waveViewer1.Visible = true;
+            var filename = ("Resources/zulu.wav");
+
+            //chart settings
+            waveViewer1.Series.Add("wave");
+            waveViewer1.Series["wave"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            waveViewer1.Series["wave"].ChartArea = "ChartArea1";
+
+            //decode and format conversion
+            NAudio.Wave.WaveChannel32 wave = new NAudio.Wave.WaveChannel32(new NAudio.Wave.WaveFileReader(filename));
+
+            //in Wavs, there are 4 bytes in every floating point number -- we can use the bit converter to translate from float to byte
+            byte[] buffer = new byte[16384];
+            int read = 0;
+
+            while (wave.Position < wave.Length)
+            {
+                read = wave.Read(buffer, 0, 16384);
+
+                for (int i = 0; i < read / 4; i++)
+                {
+                    waveViewer1.Series["wave"].Points.Add(BitConverter.ToSingle(buffer, i * 4));
+                }
+            }
+
+
         }
+
+        
+
 
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.button2 = new System.Windows.Forms.Button();
             this.play = new System.Windows.Forms.Button();
             this.font = new System.Windows.Forms.PictureBox();
@@ -50,8 +51,10 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.waveViewer1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.waveViewer1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -136,6 +139,7 @@
             // 
             // ToolsPanel
             // 
+            this.ToolsPanel.Controls.Add(this.waveViewer1);
             this.ToolsPanel.Controls.Add(this.richTextBox1);
             this.ToolsPanel.Controls.Add(this.button7);
             this.ToolsPanel.Controls.Add(this.button8);
@@ -254,7 +258,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(206, 54);
             this.button6.TabIndex = 30;
-            this.button6.Text = "Pixel Test Corners";
+            this.button6.Text = "Process Audio";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -407,6 +411,17 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // waveViewer1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.waveViewer1.ChartAreas.Add(chartArea1);
+            this.waveViewer1.Location = new System.Drawing.Point(505, 55);
+            this.waveViewer1.Name = "waveViewer1";
+            this.waveViewer1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.waveViewer1.Size = new System.Drawing.Size(438, 204);
+            this.waveViewer1.TabIndex = 36;
+            this.waveViewer1.Text = "waveViewer1";
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +453,7 @@
             this.Load += new System.EventHandler(this.main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.font)).EndInit();
             this.ToolsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.waveViewer1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -463,6 +479,7 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.DataVisualization.Charting.Chart waveViewer1;
     }
 }
 
