@@ -59,3 +59,7 @@ D:\Reposit\Almerra\Launcher\bin\Debug\Resources\zulu.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\NAudio.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\NAudio.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png

@@ -26,9 +26,12 @@ using System.Collections.Generic;
 namespace Launcher
 {
     public partial class main : Form   //MetroFramework.Forms.MetroForm
+
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+
+
 
         public Button _Play { get { return play; } }
         public Button _button1 { get { return play; } }
@@ -210,15 +213,116 @@ namespace Launcher
         private DateTime startTime = DateTime.Now;
         SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
         SoundPlayer completesong = new SoundPlayer("Resources/start.wav");
+        SoundPlayer patsoft = new SoundPlayer("Resources/patsoft.wav");
+        SoundPlayer patwarnings = new SoundPlayer("Resources/patwarning.wav");
+        bool soundenabled = true;
 
         /* Unused Settings for message box to close itself, n shit */
-      //  private bool m_killHim;
-      //  private bool m_threadAlive;
-      //  private Thread m_killThread;
-      //  private const uint GW_HWNDFIRST = 0;
-      //  private const int WM_CLOSE = 0x0010;
-      //  [DllImport("coredll.dll", EntryPoint = "FindWindowW", SetLastError = true)]
-      //  private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        //  private bool m_killHim;
+        //  private bool m_threadAlive;
+        //  private Thread m_killThread;
+        //  private const uint GW_HWNDFIRST = 0;
+        //  private const int WM_CLOSE = 0x0010;
+        //  [DllImport("coredll.dll", EntryPoint = "FindWindowW", SetLastError = true)]
+        //  private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+        int nLeftRect, // x-coordinate of upper-left corner
+        int nTopRect, // y-coordinate of upper-left corner
+        int nRightRect, // x-coordinate of lower-right corner
+        int nBottomRect, // y-coordinate of lower-right corner
+        int nWidthEllipse, // height of ellipse
+        int nHeightEllipse // width of ellipse
+        );
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
+
+        private bool m_aeroEnabled;                     // variables for box shadow
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCPAINT = 0x0085;
+        private const int WM_ACTIVATEAPP = 0x001C;
+
+        public struct MARGINS                           // struct for box shadow
+        {
+            public int leftWidth;
+            public int rightWidth;
+            public int topHeight;
+            public int bottomHeight;
+        }
+
+        private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
+        private const int HTCLIENT = 0x1;
+        private const int HTCAPTION = 0x2;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                m_aeroEnabled = CheckAeroEnabled();
+
+                CreateParams cp = base.CreateParams;
+                if (!m_aeroEnabled)
+                    cp.ClassStyle |= CS_DROPSHADOW;
+
+                return cp;
+            }
+        }
+
+        private bool CheckAeroEnabled()
+        {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                int enabled = 0;
+                DwmIsCompositionEnabled(ref enabled);
+                return (enabled == 1) ? true : false;
+            }
+            return false;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_NCPAINT:                        // box shadow
+                    if (m_aeroEnabled)
+                    {
+                        var v = 2;
+                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
+                        MARGINS margins = new MARGINS()
+                        {
+                            bottomHeight = 1,
+                            leftWidth = 1,
+                            rightWidth = 1,
+                            topHeight = 1
+                        };
+                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
+                m.Result = (IntPtr)HTCAPTION;
+
+        }
+
+
+
+
+
+
 
 
 
@@ -252,6 +356,11 @@ namespace Launcher
                 notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
+
+            m_aeroEnabled = false;
+
+            this.FormBorderStyle = FormBorderStyle.None;
+
         }
 
 
@@ -285,6 +394,16 @@ namespace Launcher
 
 
 
+        /****************** Setup for Shadowing below window ***************************/
+
+
+        
+
+
+
+
+
+
 
         /******************************************* THE PLAY GAME BUTTON ************************************/
 
@@ -295,22 +414,54 @@ namespace Launcher
         private void play_Click(object sender, EventArgs e)
         {
 
-            /*      play our last build -- first make sure its even there, if not display the messgae box */
-            var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0050\");
+                    /*      play our last build -- first make sure its even there, if not display the messgae box */
+            var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0051\");
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patsoft);
+                sp.Play();
+            };
+
             try
             {
-                string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
-                Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
-                foreach (string dir in dirs)
+
+                var processExists = System.Diagnostics.Process.GetProcesses().Any(p => p.ProcessName.Contains("Tailwinds_1501.exe"));
+
+                try
                 {
-                    string letsdothis = dir;
-                    Console.WriteLine(dir);
-                    if (dir != null)
+                    string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
+                    Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
+                    foreach (string dir in dirs)
                     {
-                        System.Diagnostics.Process.Start(dir);
-                        this.WindowState = FormWindowState.Minimized;
+                        string letsdothis = dir;
+                        Console.WriteLine(dir);
+                        if (dir != null)
+                        {
+                            System.Diagnostics.Process.Start(dir);
+                            this.WindowState = FormWindowState.Minimized;
+                        }
                     }
                 }
+
+
+
+                catch
+                {
+                    // it is already running 
+
+                    // Initializes the variables to pass to the MessageBox.Show method.
+                    string message = "No Winds of Almerra builds were found in " + gdirectory + ", close application?";
+                    string caption = "Project not found!";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
+                    { Application.Exit(); }
+                    if (result == DialogResult.No)
+                    { Console.WriteLine("Ignoring error '" + caption + "'"); }
+
+                }
+
             }
 
 
@@ -318,16 +469,11 @@ namespace Launcher
 
             catch
             {
-                // Initializes the variables to pass to the MessageBox.Show method.
-                string message = "No Winds of Almerra builds were found in " + gdirectory + ", close application?";
-                string caption = "Project not found!";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
-                result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
-                { Application.Exit(); }
-                if (result == DialogResult.No)
-                { Console.WriteLine("Ignoring error '" + caption + "'"); }
+                // it is already running 
+                Console.WriteLine("Already Active");
+
+
+
             }           
         }
 
@@ -345,10 +491,15 @@ namespace Launcher
 
             /*     startup the engine    */
             var pdirectory = (@"H:\UE4\Projects\WoA_1902");
+            var processExists = System.Diagnostics.Process.GetProcesses().Any(p => p.ProcessName.Contains("WoA_1902.exe"));
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patsoft);
+                sp.Play();
+            };
 
             try
             {
-
                 // Only get files that begin with the letter "c."
                 string[] dirs = Directory.GetFiles(pdirectory, "*WoA_1902.uproject*", SearchOption.TopDirectoryOnly);
                 Console.WriteLine(pdirectory + ", The number of files starting with W is " + dirs.Length);
@@ -363,7 +514,7 @@ namespace Launcher
                         this.WindowState = FormWindowState.Minimized;
                     }
                 }
-                
+
             }
             catch
             {
@@ -374,13 +525,20 @@ namespace Launcher
                 DialogResult result;
                 result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
-                {Application.Exit();}
+                { Application.Exit(); }
                 if (result == DialogResult.No)
-                {Console.WriteLine("Ignoring error '" + caption + "'");}
+                { Console.WriteLine("Ignoring error '" + caption + "'"); }
             }
+            
+
+            
+            
+            Console.WriteLine("Project already running");
 
 
-            }
+            
+                
+        }
             
 
 
@@ -403,6 +561,7 @@ namespace Launcher
             button1.BackColor = Color.Transparent;
             CloseButton.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
+            button2.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
@@ -429,6 +588,7 @@ namespace Launcher
             ToMainButton.Parent = font;
             ToPanelButton.Parent = font;
             button12.Parent = font;
+            button2.Parent = font;
 
         }
 
@@ -509,6 +669,11 @@ namespace Launcher
         //  Show only the Tools menu //
         private void ToPanelButton_Click(object sender, EventArgs e)
         {
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
             Console.WriteLine("ToPanelButton clicked");
             ToolsPanel.Visible = true;
             ToMainButton.Visible = true; // tools panel and button to get back
@@ -522,6 +687,11 @@ namespace Launcher
             //  Hide Everything--just show image background //
         private void ToMainButton_Click(object sender, EventArgs e)
         {
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
             Console.WriteLine("ToMainButton clicked");
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
@@ -535,6 +705,11 @@ namespace Launcher
             //  Show only the news + main menu buttons //
         private void button12_Click(object sender, EventArgs e)
         {
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
             Console.WriteLine("Show News");
             ToolsPanel.Visible = false;
             webBrowser1.Visible = true; // back to main and news button
@@ -548,6 +723,7 @@ namespace Launcher
             // Close 'X' Button clicked
         private void button2_Click(object sender, EventArgs e)
         {
+
             Console.WriteLine("Closing Launcher");
             Application.Exit();
         }
@@ -557,6 +733,7 @@ namespace Launcher
 
         private void button11_Click(object sender, EventArgs e)
         {
+
             Console.WriteLine("Minimizing...");
             this.WindowState = FormWindowState.Minimized;
         }
@@ -1247,9 +1424,35 @@ namespace Launcher
 
         }
 
-        
+        private void button2_Click_1(object sender, EventArgs e)
+        {
 
 
+            if (soundenabled == true)
+
+            {
+                soundenabled = false;
+                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
+                Console.WriteLine("Snound is OFF");
+                richTextBox1.AppendText(Environment.NewLine + "Snound is OFF");
+                richTextBox1.Focus();
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                richTextBox1.ScrollToCaret();
+
+            }
+
+            else
+            {
+                soundenabled = true;
+                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
+                Console.WriteLine("Snound is ON");
+                richTextBox1.AppendText(Environment.NewLine + "Snound is ON");
+                richTextBox1.Focus();
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                richTextBox1.ScrollToCaret();
+            }
+
+        }
     }
 }
 

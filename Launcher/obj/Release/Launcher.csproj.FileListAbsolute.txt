@@ -71,4 +71,7 @@ D:\Reposit\Almerra\Launcher\bin\Release\Resources\zulu.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\zulu.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\NAudio.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\NAudio.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\patsoft.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\patwarning.wav
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\speakerOFF.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\speakerON.png

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.CloseButton = new System.Windows.Forms.Button();
             this.play = new System.Windows.Forms.Button();
             this.font = new System.Windows.Forms.PictureBox();
@@ -52,6 +52,7 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waveViewer1)).BeginInit();
@@ -162,8 +163,8 @@
             // waveViewer1
             // 
             this.waveViewer1.BorderlineWidth = 0;
-            chartArea2.Name = "ChartArea1";
-            this.waveViewer1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.waveViewer1.ChartAreas.Add(chartArea3);
             this.waveViewer1.Location = new System.Drawing.Point(505, 55);
             this.waveViewer1.Name = "waveViewer1";
             this.waveViewer1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
@@ -431,6 +432,26 @@
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = global::Launcher.Properties.Resources.speakerON;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(855, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(29, 29);
+            this.button2.TabIndex = 31;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,6 +460,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.ToMainButton);
@@ -489,6 +511,7 @@
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.DataVisualization.Charting.Chart waveViewer1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
