@@ -337,18 +337,16 @@ namespace Launcher
             Console.WriteLine("main loaded");
 
             /////////////////////////                *Startup media                     *///////////////////////////
-//                                                                                                                          //
-//                                    _________  __                    __                                                   //
-//                                   /   _____/_/  |_ _____  _______ _/  |_  __ __ ______                                   //
-//                                   \_____  \ \   __\\__  \ \_  __ \\   __\|  |  \\____ \                                  //
-//                                   /        \ |  |   / __ \_|  | \/ |  |  |  |  /|  |_> >                                 //
-//                                  /_______  / |__|  (____  /|__|    |__|  |____/ |   __/                                  //
-//                                          \/             \/                      |__|                                     //
-//                                                                                                                          //
+            //                                                                                                                          //
+            //                                    _________  __                    __                                                   //
+            //                                   /   _____/_/  |_ _____  _______ _/  |_  __ __ ______                                   //
+            //                                   \_____  \ \   __\\__  \ \_  __ \\   __\|  |  \\____ \                                  //
+            //                                   /        \ |  |   / __ \_|  | \/ |  |  |  |  /|  |_> >                                 //
+            //                                  /_______  / |__|  (____  /|__|    |__|  |____/ |   __/                                  //
+            //                                          \/             \/                      |__|                                     //
+            //                                                                                                                          //
 
-
-            System.Media.SoundPlayer sp = (startupsong);
-            sp.Play();
+            
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
@@ -358,8 +356,36 @@ namespace Launcher
             }
 
             m_aeroEnabled = false;
-
             this.FormBorderStyle = FormBorderStyle.None;
+            bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
+
+            if (VolumeOn == true)
+            {
+
+                soundenabled = true;
+                System.Media.SoundPlayer sp = (startupsong);
+                sp.Play();
+                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
+            }
+
+            else
+            {
+                soundenabled = false;
+                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
+
+            }
+
+
+     
+
+            // var processExists = System.Diagnostics.Process.GetProcesses().Any(p => p.ProcessName.Contains("Tailwinds_1501.exe"));
+            System.Diagnostics.Process[] pname = System.Diagnostics.Process.GetProcessesByName("WoALauncher.exe");
+            if (pname.Length == 0)
+                Console.WriteLine("No Other Consoles Running... starting up");
+
+            else
+                Console.WriteLine("Another process was found, closing...");
+
 
         }
 
@@ -422,59 +448,44 @@ namespace Launcher
                 sp.Play();
             };
 
+
+
+
             try
             {
-
-                var processExists = System.Diagnostics.Process.GetProcesses().Any(p => p.ProcessName.Contains("Tailwinds_1501.exe"));
-
-                try
+                string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
+                Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
+                foreach (string dir in dirs)
                 {
-                    string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
-                    Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
-                    foreach (string dir in dirs)
+                    string letsdothis = dir;
+                    Console.WriteLine(dir);
+                    if (dir != null)
                     {
-                        string letsdothis = dir;
-                        Console.WriteLine(dir);
-                        if (dir != null)
-                        {
-                            System.Diagnostics.Process.Start(dir);
-                            this.WindowState = FormWindowState.Minimized;
-                        }
+                        System.Diagnostics.Process.Start(dir);
+                        this.WindowState = FormWindowState.Minimized;
                     }
                 }
-
-
-
-                catch
-                {
-                    // it is already running 
-
-                    // Initializes the variables to pass to the MessageBox.Show method.
-                    string message = "No Winds of Almerra builds were found in " + gdirectory + ", close application?";
-                    string caption = "Project not found!";
-                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                    DialogResult result;
-                    result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                    if (result == DialogResult.Yes)
-                    { Application.Exit(); }
-                    if (result == DialogResult.No)
-                    { Console.WriteLine("Ignoring error '" + caption + "'"); }
-
-                }
-
             }
-
 
 
 
             catch
             {
                 // it is already running 
-                Console.WriteLine("Already Active");
 
+                // Initializes the variables to pass to the MessageBox.Show method.
+                string message = "No Winds of Almerra builds were found in " + gdirectory + ", close application?";
+                string caption = "Project not found!";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                { Application.Exit(); }
+                if (result == DialogResult.No)
+                { Console.WriteLine("Ignoring error '" + caption + "'"); }
 
-
-            }           
+            }
+     
         }
 
 
@@ -726,6 +737,7 @@ namespace Launcher
 
             Console.WriteLine("Closing Launcher");
             Application.Exit();
+            Properties.Settings.Default.VolumeOn = true;
         }
 
 
@@ -1432,17 +1444,20 @@ namespace Launcher
 
             {
                 soundenabled = false;
+                Properties.Settings.Default.VolumeOn = false;
                 button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
                 Console.WriteLine("Snound is OFF");
                 richTextBox1.AppendText(Environment.NewLine + "Snound is OFF");
                 richTextBox1.Focus();
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
+                Properties.Settings.Default.Save();
 
             }
 
             else
             {
+                Properties.Settings.Default.VolumeOn = true;
                 soundenabled = true;
                 button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
                 Console.WriteLine("Snound is ON");
@@ -1450,6 +1465,7 @@ namespace Launcher
                 richTextBox1.Focus();
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
+                Properties.Settings.Default.Save();
             }
 
         }
