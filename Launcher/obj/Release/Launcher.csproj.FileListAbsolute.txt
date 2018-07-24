@@ -81,3 +81,4 @@ D:\Reposit\Almerra\Launcher\bin\Release\Resources\speakerOFF.png
 D:\Reposit\Almerra\Launcher\bin\Release\Resources\speakerON.png
 D:\Reposit\Almerra\Launcher\bin\Release\SpeechLib.Models.dll
 D:\Reposit\Almerra\Launcher\bin\Release\SpeechLib.Recognition.dll
+D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache
