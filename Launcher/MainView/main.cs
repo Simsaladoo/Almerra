@@ -10,10 +10,14 @@ using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
 using NAudio.Wave;
+using NAudio.MediaFoundation;
 using System.Collections.Generic;
+using System.Speech.Synthesis;
+using System.Speech.Recognition;
 
 
- 
+
+
 //                    .____                                    .__                                   //
 //                    |    |    _____    __ __   ____    ____  |  |__    ____ _______                //
 //                    |    |    \__  \  |  |  \ /    \ _/ ___\ |  |  \ _/ __ \\_  __ \               //
@@ -21,7 +25,7 @@ using System.Collections.Generic;
 //                    |_______ \(____  /|____/ |___|  / \___  >|___|  / \___  >|__|                  //
 //                            \/     \/             \/      \/      \/      \/                       //
 //                                                                                                   //
- 
+
 
 namespace Launcher
 {
@@ -33,6 +37,13 @@ namespace Launcher
 
 
 
+
+
+        /***********************************************  Wave File shit ****************************************************/
+
+
+
+        
         public Button _Play { get { return play; } }
         public Button _button1 { get { return play; } }
         public Button _button2 { get { return play; } }
@@ -50,6 +61,10 @@ namespace Launcher
         public Button _button9 { get { return play; } }
         public Button _button10 { get { return play; } }
         public Button _ToMainButton { get { return play; } }
+        public Button _button13 { get { return play; } }
+        bool mastercancel = false;
+
+        
 
         public static string intVar { get; set; }
 
@@ -216,6 +231,8 @@ namespace Launcher
         SoundPlayer patsoft = new SoundPlayer("Resources/patsoft.wav");
         SoundPlayer patwarnings = new SoundPlayer("Resources/patwarning.wav");
         bool soundenabled = true;
+        bool isShowingViz = false;
+        int loopnum = 10;
 
         /* Unused Settings for message box to close itself, n shit */
         //  private bool m_killHim;
@@ -225,6 +242,33 @@ namespace Launcher
         //  private const int WM_CLOSE = 0x0010;
         //  [DllImport("coredll.dll", EntryPoint = "FindWindowW", SetLastError = true)]
         //  private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        //This is a replacement for Cursor.Position in WinForms
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern bool SetCursorPos(int x, int y);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        //This simulates a left mouse click
+        public static void LeftMouseClick(int xpos, int ypos)
+        {
+            SetCursorPos(xpos, ypos);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+        }
+
+        // We need to use unmanaged code
+
+        [DllImport("user32.dll")]
+
+        // GetCursorPos() makes everything possible
+
+        static extern bool GetCursorPos(ref Point lpPoint);
+
+
+        public const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        public const int MOUSEEVENTF_LEFTUP = 0x04;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -325,7 +369,6 @@ namespace Launcher
 
 
 
-
         /*******************************
             this is our main startup function for the program
         /********************************/
@@ -335,7 +378,6 @@ namespace Launcher
             //myState.changeButtonState(LauncherState.Idle, this);
             this.Shown += new System.EventHandler(this.AfterLoading);
             Console.WriteLine("main loaded");
-
             /////////////////////////                *Startup media                     *///////////////////////////
             //                                                                                                                          //
             //                                    _________  __                    __                                                   //
@@ -346,7 +388,7 @@ namespace Launcher
             //                                          \/             \/                      |__|                                     //
             //                                                                                                                          //
 
-            
+
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
@@ -376,18 +418,9 @@ namespace Launcher
             }
 
 
-     
-
-            // var processExists = System.Diagnostics.Process.GetProcesses().Any(p => p.ProcessName.Contains("Tailwinds_1501.exe"));
-            System.Diagnostics.Process[] pname = System.Diagnostics.Process.GetProcessesByName("WoALauncher.exe");
-            if (pname.Length == 0)
-                Console.WriteLine("No Other Consoles Running... starting up");
-
-            else
-                Console.WriteLine("Another process was found, closing...");
-
-
         }
+
+
 
 
 
@@ -423,7 +456,7 @@ namespace Launcher
         /****************** Setup for Shadowing below window ***************************/
 
 
-        
+
 
 
 
@@ -440,7 +473,7 @@ namespace Launcher
         private void play_Click(object sender, EventArgs e)
         {
 
-                    /*      play our last build -- first make sure its even there, if not display the messgae box */
+            /*      play our last build -- first make sure its even there, if not display the messgae box */
             var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0051\");
             if (soundenabled == true)
             {
@@ -485,7 +518,7 @@ namespace Launcher
                 { Console.WriteLine("Ignoring error '" + caption + "'"); }
 
             }
-     
+
         }
 
 
@@ -540,22 +573,22 @@ namespace Launcher
                 if (result == DialogResult.No)
                 { Console.WriteLine("Ignoring error '" + caption + "'"); }
             }
-            
 
-            
-            
+
+
+
             Console.WriteLine("Project already running");
 
 
-            
-                
+
+
         }
-            
 
 
 
 
-      
+
+
 
 
 
@@ -568,6 +601,8 @@ namespace Launcher
         private void main_Load(object sender, EventArgs e)
         {
             Console.WriteLine("Main Window Loaded");
+
+
             play.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             CloseButton.BackColor = Color.Transparent;
@@ -581,15 +616,29 @@ namespace Launcher
             button9.BackColor = Color.Transparent;
             button10.BackColor = Color.Transparent;
             MinimizeButton.BackColor = Color.Transparent;
+            button11.BackColor = Color.Transparent;
             button12.BackColor = Color.Transparent;
+            button13.BackColor = Color.Transparent;
+            button14.BackColor = Color.Transparent;
+            button15.BackColor = Color.Transparent;
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
-            waveViewer1.Visible = false;
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
+            ConverterPanel.Visible = false;
+            AudioPanel.Visible = false;
+            FaunaPanel.Visible = false;
+            ENVPanel.Visible = false;
 
 
+
+            //       __________        __    __                    _________ __          .__                           //
+            //       \______   \__ ___/  |__/  |_  ____   ____    /   _____//  |_ ___.__.|  |   ___________            //
+            //        |    |  _/  |  \   __\   __\/  _ \ /    \   \_____  \\   __<   |  ||  | _/ __ \_  __ \           //
+            //        |    |   \  |  /|  |  |  | (  <_> )   |  \  /        \|  |  \___  ||  |_\  ___/|  | \/           //
+            //        |______  /____/ |__|  |__|  \____/|___|  / /_______  /|__|  / ____||____/\___  >__|              //
+            //               \/                              \/          \/       \/               \/                  //
 
             play.Parent = font;
             button1.Parent = font;
@@ -600,6 +649,8 @@ namespace Launcher
             ToPanelButton.Parent = font;
             button12.Parent = font;
             button2.Parent = font;
+
+
 
         }
 
@@ -614,6 +665,7 @@ namespace Launcher
         private void font_Click(object sender, EventArgs e)
         {
             // DOes nothing, clicking on background image is ignored since mouseDown handles dragging the window
+            mastercancel = true;
         }
 
         /* clicking on background image */
@@ -627,6 +679,7 @@ namespace Launcher
         {
             if (e.Button == MouseButtons.Left)
             {
+                mastercancel = true;
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
@@ -652,6 +705,7 @@ namespace Launcher
         private void font_LoadCompleted(object sender, EventArgs e)
         {
             Console.WriteLine("Background image loaded");
+            
         }
 
         private void notifyIcon1_LoadCompleted(object sender, MouseEventArgs e)
@@ -663,19 +717,18 @@ namespace Launcher
 
 
 
+        //           _______              .__              __  .__                                 //
+        //           \      \ _____ ___  _|__| _________ _/  |_|__| ____   ____                    //
+        //           /   |   \\__  \\  \/ /  |/ ___\__  \\   __\  |/  _ \ /    \                   //
+        //          /    |    \/ __ \\   /|  / /_/  > __ \|  | |  (  <_> )   |  \                  //
+        //          \____|__  (____  /\_/ |__\___  (____  /__| |__|\____/|___|  /                  //
+        //                  \/     \/       /_____/     \/                    \/                   //
 
 
-
-
-
-
-
-
-
-
-
-        
         /******************************************* NAVIGATION BUTTONS ************************************/
+        /******************************************* Main Menu ************************************/
+
+
 
         //  Show only the Tools menu //
         private void ToPanelButton_Click(object sender, EventArgs e)
@@ -691,11 +744,19 @@ namespace Launcher
             ToPanelButton.Visible = false;
             webBrowser1.Visible = false;
             button12.Visible = true;
-            waveViewer1.Visible = false;
+
+
+            ConverterPanel.Visible = false;
+            AudioPanel.Visible = false;
+            FaunaPanel.Visible = false;
+            ENVPanel.Visible = false;
+
+            Point coordinates = Cursor.Position;
+            Console.WriteLine("Coordinates are: " + coordinates);
 
         }
 
-            //  Hide Everything--just show image background //
+        //  Hide Everything--just show image background //
         private void ToMainButton_Click(object sender, EventArgs e)
         {
             if (soundenabled == true)
@@ -709,11 +770,15 @@ namespace Launcher
             ToPanelButton.Visible = true; // back to main only shows tools button
             webBrowser1.Visible = false;
             button12.Visible = true;
-            waveViewer1.Visible = false;
+
+            ConverterPanel.Visible = false;
+            AudioPanel.Visible = false;
+            FaunaPanel.Visible = false;
+            ENVPanel.Visible = false;
+
         }
 
-        
-            //  Show only the news + main menu buttons //
+        //  Show only the news + main menu buttons //
         private void button12_Click(object sender, EventArgs e)
         {
             if (soundenabled == true)
@@ -727,11 +792,123 @@ namespace Launcher
             ToMainButton.Visible = true;
             ToPanelButton.Visible = false;
             button12.Visible = false;
-            waveViewer1.Visible = false;
+
+            ConverterPanel.Visible = false;
+            AudioPanel.Visible = false;
+            FaunaPanel.Visible = false;
+            ENVPanel.Visible = false;
+
         }
 
-   
-            // Close 'X' Button clicked
+
+        /******************************************* NAVIGATION BUTTONS ************************************/
+        /******************************************* Tools menus ************************************/
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            FaunaPanel.Visible = true;
+            ConverterPanel.Visible = false;
+            AudioPanel.Visible = false;
+            ENVPanel.Visible = false;
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
+            Console.WriteLine("Fauna Data Tools");
+            richTextBox1.AppendText(Environment.NewLine + "Fauna Data Tools");
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
+
+
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ENVPanel.Visible = true;
+            ConverterPanel.Visible = false;
+            AudioPanel.Visible = false;
+            FaunaPanel.Visible = false;
+
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
+            Console.WriteLine("Environment Data Tools");
+            richTextBox1.AppendText(Environment.NewLine + "Environment Data Tools");
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            AudioPanel.Visible = true;
+            FaunaPanel.Visible = false;
+            ENVPanel.Visible = false;
+            ConverterPanel.Visible = false;
+
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
+            Console.WriteLine("Audio Data Tools");
+            richTextBox1.AppendText(Environment.NewLine + "Audio Data Tools");
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
+        }
+
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            ConverterPanel.Visible = true;
+            AudioPanel.Visible = false;
+            FaunaPanel.Visible = false;
+            ENVPanel.Visible = false;
+
+            if (soundenabled == true)
+            {
+                System.Media.SoundPlayer sp = (patwarnings);
+                sp.Play();
+            };
+            Console.WriteLine("Audio Converter Tools");
+            richTextBox1.AppendText(Environment.NewLine + "Audio Converter Tools");
+            richTextBox1.Focus();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
+        }
+
+
+        // Visualizer for audio testing of frequencies
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            if (isShowingViz == true)
+            {
+                bool isShowingViz = false;
+
+
+            }
+            else
+            {
+                bool isShowingViz = true;
+
+            }
+
+
+
+        }
+
+
+        /******************************************* NAVIGATION BUTTONS ************************************/
+        // Close 'X' Button clicked
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -741,7 +918,7 @@ namespace Launcher
         }
 
 
-            // Minimize button clicked
+        // Minimize button clicked
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -1259,7 +1436,7 @@ namespace Launcher
                 dta.Rows.Add("cellX010", X010Y000, X010Y001, X010Y002, X010Y003, X010Y004, X010Y005, X010Y006, X010Y007, X010Y008, X010Y009, X010Y010, X010Y011);
                 dta.Rows.Add("cellX011", X011Y000, X011Y001, X011Y002, X011Y003, X011Y004, X011Y005, X011Y006, X011Y007, X011Y008, X011Y009, X011Y010, X011Y011);
 
-                
+
                 StringBuilder sb = new StringBuilder();
 
                 foreach (DataColumn col in dta.Columns)
@@ -1281,7 +1458,7 @@ namespace Launcher
                     for (int i = 0; i < dta.Columns.Count; i++)
                     {
 
-                        if (i < 12) 
+                        if (i < 12)
                         {
                             sb.Append(row[i].ToString() + ",");
                         }
@@ -1290,7 +1467,7 @@ namespace Launcher
                         {
                             sb.Append(row[i].ToString());
                         }
-                        
+
                     }
 
                     sb.AppendLine();
@@ -1325,7 +1502,7 @@ namespace Launcher
 
 
 
-                
+
             }
 
             richTextBox1.AppendText(Environment.NewLine + "... Finished Writing All CSVs!");
@@ -1341,7 +1518,7 @@ namespace Launcher
         }
 
 
-        
+
 
 
 
@@ -1358,10 +1535,8 @@ namespace Launcher
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
         }
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Nothing");
-        }
+
+
 
 
         // future button event for 128s
@@ -1397,44 +1572,53 @@ namespace Launcher
 
 
 
-        // Test button to check output... 
+        // Test button to Process Audio... 
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Audio Processing...");
+            Console.WriteLine("Audio Processing... doing nothing");
             richTextBox1.AppendText(Environment.NewLine + "Audio Processing...");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
 
-            // adds the wave file to the popup viewer for waveforms
-            waveViewer1.Visible = true;
-            var filename = ("Resources/zulu.wav");
-
-            //chart settings
-            waveViewer1.Series.Add("wave");
-            waveViewer1.Series["wave"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            waveViewer1.Series["wave"].ChartArea = "ChartArea1";
-
-            //decode and format conversion
-            NAudio.Wave.WaveChannel32 wave = new NAudio.Wave.WaveChannel32(new NAudio.Wave.WaveFileReader(filename));
-
-            //in Wavs, there are 4 bytes in every floating point number -- we can use the bit converter to translate from float to byte
-            byte[] buffer = new byte[16384];
-            int read = 0;
-
-            while (wave.Position < wave.Length)
-            {
-                read = wave.Read(buffer, 0, 16384);
-
-                for (int i = 0; i < read / 4; i++)
-                {
-                    waveViewer1.Series["wave"].Points.Add(BitConverter.ToSingle(buffer, i * 4));
-                }
-            }
+            // test wav file
+            var fileName = ("Resources/zulu.wav");
 
 
+
+            // Initialize a new instance of the SpeechSynthesizer.
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output. 
+            synth.SetOutputToDefaultAudioDevice();
+
+            // Speak a string.
+            synth.Speak("This example demonstrates a basic use of Speech Synthesizer");
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -1468,6 +1652,101 @@ namespace Launcher
                 Properties.Settings.Default.Save();
             }
 
+        }
+
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            // nothing
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+            mastercancel = false;
+            // need to set this thru UI for safing -- also need a cancel boolean if we clicked anywhere
+
+
+            for (int i = 0; i < loopnum; i++)
+            {
+                if (mastercancel == false)
+                {
+
+                    // mouse import procedure for FaunaEcoSubcellType1's
+                    // select all and import, then run this while Data Table Import Options is in focus()
+
+                    //first click location -- accesses the dropdown
+                    int xpos1 = 1240;
+                    int ypos1 = 720;
+                    //Console.WriteLine("First click");
+                    SetCursorPos(xpos1, ypos1);
+                    System.Threading.Thread.Sleep(400);
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, xpos1, ypos1, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                    mouse_event(MOUSEEVENTF_LEFTUP, xpos1, ypos1, 0, 0);
+
+                    // second click -- selects the type of data table (type1 here)
+                    int xpos2 = 1240;
+                    int ypos2 = 878;
+                    //Console.WriteLine("Second click");
+                    SetCursorPos(xpos2, ypos2);
+                    System.Threading.Thread.Sleep(400);
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, xpos2, ypos2, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                    mouse_event(MOUSEEVENTF_LEFTUP, xpos2, ypos2, 0, 0);
+
+                    // Third click -- hits OK!
+                    int xpos3 = 1051;
+                    int ypos3 = 743;
+                    //Console.WriteLine("OK click");
+                    SetCursorPos(xpos3, ypos3);
+                    System.Threading.Thread.Sleep(400);
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, xpos3, ypos3, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                    mouse_event(MOUSEEVENTF_LEFTUP, xpos3, ypos3, 0, 0);
+
+                    // final wait task for unreal to catchup
+
+                    System.Threading.Thread.Sleep(200);
+                    Console.WriteLine("Done with loop " + i + "/" + loopnum);
+                    richTextBox1.AppendText(Environment.NewLine + "Done with loop " + i + "/" + loopnum);
+                    richTextBox1.Focus();
+                    richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                    richTextBox1.ScrollToCaret();
+                }
+            }
+
+
+
+        }
+
+        private void font_MouseMove(object sender, MouseEventArgs e)
+        {
+            //Point coordinates = Cursor.Position;
+            //Console.WriteLine("Coordinates are: " + coordinates);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            // add 
+            loopnum = loopnum + 10;
+            button13.Text = "Run (" + loopnum.ToString() + ")";
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (loopnum == 10)
+            {
+                // dont continue past 10 since 0 is pointless
+            }
+
+            else
+            {
+                // subtract
+                loopnum = loopnum - 10;
+                button13.Text = "Run (" + loopnum.ToString() + ")";
+            }
         }
     }
 }

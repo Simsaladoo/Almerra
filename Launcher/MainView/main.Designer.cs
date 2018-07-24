@@ -30,32 +30,42 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.CloseButton = new System.Windows.Forms.Button();
             this.play = new System.Windows.Forms.Button();
             this.font = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolsPanel = new System.Windows.Forms.Panel();
-            this.waveViewer1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.AudioPanel = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.ConverterPanel = new System.Windows.Forms.Panel();
+            this.FaunaPanel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.ENVPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.ToPanelButton = new System.Windows.Forms.Button();
             this.ToMainButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.waveViewer1)).BeginInit();
+            this.AudioPanel.SuspendLayout();
+            this.FaunaPanel.SuspendLayout();
+            this.ENVPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -89,7 +99,7 @@
             this.play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.play.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.play.ForeColor = System.Drawing.Color.White;
-            this.play.Location = new System.Drawing.Point(794, 547);
+            this.play.Location = new System.Drawing.Point(794, 549);
             this.play.Margin = new System.Windows.Forms.Padding(0);
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(206, 54);
@@ -113,6 +123,7 @@
             this.font.TabStop = false;
             this.font.Click += new System.EventHandler(this.font_Click);
             this.font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.font_MouseDown);
+            this.font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.font_MouseMove);
             // 
             // button1
             // 
@@ -125,7 +136,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(588, 547);
+            this.button1.Location = new System.Drawing.Point(588, 549);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 54);
@@ -144,122 +155,48 @@
             // ToolsPanel
             // 
             this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
-            this.ToolsPanel.Controls.Add(this.waveViewer1);
             this.ToolsPanel.Controls.Add(this.richTextBox1);
-            this.ToolsPanel.Controls.Add(this.button7);
+            this.ToolsPanel.Controls.Add(this.FaunaPanel);
+            this.ToolsPanel.Controls.Add(this.ConverterPanel);
+            this.ToolsPanel.Controls.Add(this.AudioPanel);
+            this.ToolsPanel.Controls.Add(this.ENVPanel);
+            this.ToolsPanel.Controls.Add(this.button11);
             this.ToolsPanel.Controls.Add(this.button8);
             this.ToolsPanel.Controls.Add(this.button9);
             this.ToolsPanel.Controls.Add(this.button10);
-            this.ToolsPanel.Controls.Add(this.button6);
-            this.ToolsPanel.Controls.Add(this.button5);
-            this.ToolsPanel.Controls.Add(this.button4);
-            this.ToolsPanel.Controls.Add(this.button3);
+            this.ToolsPanel.Controls.Add(this.label2);
             this.ToolsPanel.Location = new System.Drawing.Point(0, 73);
             this.ToolsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.ToolsPanel.Name = "ToolsPanel";
             this.ToolsPanel.Size = new System.Drawing.Size(1000, 476);
             this.ToolsPanel.TabIndex = 24;
             // 
-            // waveViewer1
-            // 
-            this.waveViewer1.BorderlineWidth = 0;
-            chartArea3.Name = "ChartArea1";
-            this.waveViewer1.ChartAreas.Add(chartArea3);
-            this.waveViewer1.Location = new System.Drawing.Point(505, 55);
-            this.waveViewer1.Name = "waveViewer1";
-            this.waveViewer1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.waveViewer1.Size = new System.Drawing.Size(438, 204);
-            this.waveViewer1.TabIndex = 36;
-            this.waveViewer1.Text = "waveViewer1";
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.DetectUrls = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(70, 53);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 368);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(875, 208);
-            this.richTextBox1.TabIndex = 35;
-            this.richTextBox1.Text = "stomthing";
+            this.richTextBox1.ShortcutsEnabled = false;
+            this.richTextBox1.Size = new System.Drawing.Size(1001, 107);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "richTextBox1";
+            this.richTextBox1.ZoomFactor = 0.6F;
             // 
-            // button7
+            // AudioPanel
             // 
-            this.button7.BackColor = System.Drawing.Color.Lime;
-            this.button7.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(777, 384);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(206, 54);
-            this.button7.TabIndex = 34;
-            this.button7.Text = "None";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Lime;
-            this.button8.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(528, 384);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(206, 54);
-            this.button8.TabIndex = 33;
-            this.button8.Text = "None";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Visible = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Lime;
-            this.button9.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(278, 384);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(206, 54);
-            this.button9.TabIndex = 32;
-            this.button9.Text = "None";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Visible = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.Lime;
-            this.button10.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(31, 384);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(206, 54);
-            this.button10.TabIndex = 31;
-            this.button10.Text = "Create Table";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.AudioPanel.BackColor = System.Drawing.Color.Black;
+            this.AudioPanel.Controls.Add(this.button6);
+            this.AudioPanel.Controls.Add(this.button7);
+            this.AudioPanel.Location = new System.Drawing.Point(199, 3);
+            this.AudioPanel.Name = "AudioPanel";
+            this.AudioPanel.Size = new System.Drawing.Size(798, 363);
+            this.AudioPanel.TabIndex = 38;
             // 
             // button6
             // 
@@ -272,7 +209,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(777, 297);
+            this.button6.Location = new System.Drawing.Point(31, 278);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(206, 54);
             this.button6.TabIndex = 30;
@@ -280,43 +217,46 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button5
+            // button7
             // 
-            this.button5.BackColor = System.Drawing.Color.Lime;
-            this.button5.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(528, 297);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(206, 54);
-            this.button5.TabIndex = 29;
-            this.button5.Text = "Write 128s CSVs";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button7.BackColor = System.Drawing.Color.Lime;
+            this.button7.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(31, 23);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(206, 54);
+            this.button7.TabIndex = 34;
+            this.button7.Text = "Visualizer";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button4
+            // ConverterPanel
             // 
-            this.button4.BackColor = System.Drawing.Color.Lime;
-            this.button4.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(278, 297);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(206, 54);
-            this.button4.TabIndex = 28;
-            this.button4.Text = "Write 64s CSVs";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.ConverterPanel.BackColor = System.Drawing.Color.Black;
+            this.ConverterPanel.Location = new System.Drawing.Point(199, 3);
+            this.ConverterPanel.Name = "ConverterPanel";
+            this.ConverterPanel.Size = new System.Drawing.Size(798, 363);
+            this.ConverterPanel.TabIndex = 40;
+            // 
+            // FaunaPanel
+            // 
+            this.FaunaPanel.BackColor = System.Drawing.Color.Black;
+            this.FaunaPanel.Controls.Add(this.button15);
+            this.FaunaPanel.Controls.Add(this.button14);
+            this.FaunaPanel.Controls.Add(this.button13);
+            this.FaunaPanel.Controls.Add(this.button3);
+            this.FaunaPanel.Controls.Add(this.button4);
+            this.FaunaPanel.Controls.Add(this.button5);
+            this.FaunaPanel.Location = new System.Drawing.Point(199, 3);
+            this.FaunaPanel.Name = "FaunaPanel";
+            this.FaunaPanel.Size = new System.Drawing.Size(798, 363);
+            this.FaunaPanel.TabIndex = 37;
             // 
             // button3
             // 
@@ -329,26 +269,170 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(31, 297);
+            this.button3.Location = new System.Drawing.Point(31, 23);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(206, 54);
+            this.button3.Size = new System.Drawing.Size(194, 54);
             this.button3.TabIndex = 27;
             this.button3.Text = "Write 12s CSVs";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Lime;
+            this.button4.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Enabled = false;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(306, 23);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(194, 54);
+            this.button4.TabIndex = 28;
+            this.button4.Text = "Write 64s CSVs";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Lime;
+            this.button5.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Enabled = false;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(584, 23);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(194, 54);
+            this.button5.TabIndex = 29;
+            this.button5.Text = "Write 128s CSVs";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // ENVPanel
+            // 
+            this.ENVPanel.BackColor = System.Drawing.Color.Black;
+            this.ENVPanel.Controls.Add(this.label1);
+            this.ENVPanel.Location = new System.Drawing.Point(199, 3);
+            this.ENVPanel.Name = "ENVPanel";
+            this.ENVPanel.Size = new System.Drawing.Size(798, 363);
+            this.ENVPanel.TabIndex = 39;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(322, 172);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "No Environment Tools";
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.Lime;
+            this.button11.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(-1, 180);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(193, 54);
+            this.button11.TabIndex = 40;
+            this.button11.Text = "Audio Converter";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Lime;
+            this.button8.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(0, 120);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(193, 54);
+            this.button8.TabIndex = 33;
+            this.button8.Text = "Audio Data";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Lime;
+            this.button9.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(-1, 60);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(194, 54);
+            this.button9.TabIndex = 32;
+            this.button9.Text = "Environment Data";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.Lime;
+            this.button10.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(-1, 0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(194, 54);
+            this.button10.TabIndex = 31;
+            this.button10.Text = "Fauna Data";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(440, 199);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 13);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "Pick a Tool from the left";
+            // 
             // ToPanelButton
             // 
             this.ToPanelButton.BackColor = System.Drawing.Color.Transparent;
             this.ToPanelButton.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.ToPanelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ToPanelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ToPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.ToPanelButton.FlatAppearance.BorderSize = 0;
             this.ToPanelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.ToPanelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.ToPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ToPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToPanelButton.ForeColor = System.Drawing.Color.White;
-            this.ToPanelButton.Location = new System.Drawing.Point(-1, 547);
+            this.ToPanelButton.Location = new System.Drawing.Point(-1, 549);
             this.ToPanelButton.Name = "ToPanelButton";
             this.ToPanelButton.Size = new System.Drawing.Size(207, 54);
             this.ToPanelButton.TabIndex = 25;
@@ -367,10 +451,10 @@
             this.ToMainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ToMainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToMainButton.ForeColor = System.Drawing.Color.White;
-            this.ToMainButton.Location = new System.Drawing.Point(-1, 547);
+            this.ToMainButton.Location = new System.Drawing.Point(0, 547);
             this.ToMainButton.Margin = new System.Windows.Forms.Padding(0);
             this.ToMainButton.Name = "ToMainButton";
-            this.ToMainButton.Size = new System.Drawing.Size(207, 54);
+            this.ToMainButton.Size = new System.Drawing.Size(206, 54);
             this.ToMainButton.TabIndex = 26;
             this.ToMainButton.Text = "Main Menu";
             this.ToMainButton.UseVisualStyleBackColor = false;
@@ -423,7 +507,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(204, 547);
+            this.button12.Location = new System.Drawing.Point(204, 549);
             this.button12.Margin = new System.Windows.Forms.Padding(0);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(206, 54);
@@ -452,6 +536,63 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Lime;
+            this.button13.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(67, 278);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(122, 54);
+            this.button13.TabIndex = 30;
+            this.button13.Text = "Run (10)";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Lime;
+            this.button14.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.Location = new System.Drawing.Point(31, 278);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(30, 54);
+            this.button14.TabIndex = 31;
+            this.button14.Text = "<";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.Lime;
+            this.button15.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(195, 278);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(30, 54);
+            this.button15.TabIndex = 32;
+            this.button15.Text = ">";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,16 +601,16 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.MinimizeButton);
-            this.Controls.Add(this.ToMainButton);
-            this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.ToolsPanel);
-            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.MinimizeButton);
+            this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.play);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.ToMainButton);
+            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.font);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -484,7 +625,11 @@
             this.Load += new System.EventHandler(this.main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.font)).EndInit();
             this.ToolsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.waveViewer1)).EndInit();
+            this.ToolsPanel.PerformLayout();
+            this.AudioPanel.ResumeLayout(false);
+            this.FaunaPanel.ResumeLayout(false);
+            this.ENVPanel.ResumeLayout(false);
+            this.ENVPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -510,8 +655,17 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.DataVisualization.Charting.Chart waveViewer1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel ENVPanel;
+        private System.Windows.Forms.Panel AudioPanel;
+        private System.Windows.Forms.Panel FaunaPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Panel ConverterPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
     }
 }
 

@@ -75,3 +75,9 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\patsoft.w
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\patwarning.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\speakerOFF.png
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\speakerON.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\patsoft.wav
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\patwarning.wav
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\speakerOFF.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\speakerON.png
+D:\Reposit\Almerra\Launcher\bin\Release\SpeechLib.Models.dll
+D:\Reposit\Almerra\Launcher\bin\Release\SpeechLib.Recognition.dll
