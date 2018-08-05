@@ -544,20 +544,36 @@ namespace Launcher
 
             try
             {
-                // Only get files that begin with the letter "c."
-                string[] dirs = Directory.GetFiles(pdirectory, "*WoA_1902.uproject*", SearchOption.TopDirectoryOnly);
-                Console.WriteLine(pdirectory + ", The number of files starting with W is " + dirs.Length);
-                foreach (string dir in dirs)
+                var sProcessName = ("UE4Editor");
+                System.Diagnostics.Process[] proc = System.Diagnostics.Process.GetProcessesByName(sProcessName);
+                if (proc.Length > 0)
                 {
-                    string letsdothis = dir;
-                    Console.WriteLine(dir);
-
-                    if (dir != null)
-                    {
-                        System.Diagnostics.Process.Start(dir);
-                        this.WindowState = FormWindowState.Minimized;
-                    }
+                    MessageBox.Show(String.Format("{0} is already running!", sProcessName), sProcessName);
                 }
+                else
+                {
+
+                    // Only get files that begin with the letter "c."
+                    string[] dirs = Directory.GetFiles(pdirectory, "*WoA_1902.uproject*", SearchOption.TopDirectoryOnly);
+                    Console.WriteLine(pdirectory + ", The number of files starting with W is " + dirs.Length);
+                    foreach (string dir in dirs)
+                    {
+                        string letsdothis = dir;
+                        Console.WriteLine(dir);
+
+                        if (dir != null)
+                        {
+                            System.Diagnostics.Process.Start(dir);
+                            this.WindowState = FormWindowState.Minimized;
+                        }
+                    }
+
+                    // end of start engine button
+
+                }
+
+
+                
 
             }
             catch
@@ -1583,7 +1599,7 @@ namespace Launcher
             richTextBox1.ScrollToCaret();
 
             // test wav file
-            var fileName = ("Resources/zulu.wav");
+            // var fileName = ("Resources/zulu.wav");
 
 
 
@@ -1594,10 +1610,10 @@ namespace Launcher
             synth.SetOutputToDefaultAudioDevice();
 
             // Speak a string.
-            synth.Speak("This example demonstrates a basic use of Speech Synthesizer");
+            synth.Speak("Good Evening.");
 
-            Console.WriteLine();
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("Audio Spoken");
+            
         }
 
 
@@ -1676,9 +1692,9 @@ namespace Launcher
                     // mouse import procedure for FaunaEcoSubcellType1's
                     // select all and import, then run this while Data Table Import Options is in focus()
 
-                    //first click location -- accesses the dropdown
-                    int xpos1 = 1240;
-                    int ypos1 = 720;
+                    //first click location -- accesses the dropdown -- comment is for 1440p
+                    int xpos1 = 1850;     // int xpos1 = 1240;
+                    int ypos1 = 1084;      // int ypos1 = 720;
                     //Console.WriteLine("First click");
                     SetCursorPos(xpos1, ypos1);
                     System.Threading.Thread.Sleep(400);
@@ -1687,8 +1703,8 @@ namespace Launcher
                     mouse_event(MOUSEEVENTF_LEFTUP, xpos1, ypos1, 0, 0);
 
                     // second click -- selects the type of data table (type1 here)
-                    int xpos2 = 1240;
-                    int ypos2 = 878;
+                    int xpos2 = 1770;        // int xpos2 = 1240;
+                    int ypos2 = 1241;         // int ypos2 = 878;
                     //Console.WriteLine("Second click");
                     SetCursorPos(xpos2, ypos2);
                     System.Threading.Thread.Sleep(400);
@@ -1697,8 +1713,8 @@ namespace Launcher
                     mouse_event(MOUSEEVENTF_LEFTUP, xpos2, ypos2, 0, 0);
 
                     // Third click -- hits OK!
-                    int xpos3 = 1051;
-                    int ypos3 = 743;
+                    int xpos3 = 1696;       // int xpos3 = 1051;
+                    int ypos3 = 1104;        // int ypos3 = 743;
                     //Console.WriteLine("OK click");
                     SetCursorPos(xpos3, ypos3);
                     System.Threading.Thread.Sleep(400);
@@ -1723,8 +1739,8 @@ namespace Launcher
 
         private void font_MouseMove(object sender, MouseEventArgs e)
         {
-            //Point coordinates = Cursor.Position;
-            //Console.WriteLine("Coordinates are: " + coordinates);
+            // Point coordinates = Cursor.Position;
+            // Console.WriteLine("Coordinates are: " + coordinates);
         }
 
         private void button15_Click(object sender, EventArgs e)
