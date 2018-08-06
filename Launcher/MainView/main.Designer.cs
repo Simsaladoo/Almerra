@@ -283,7 +283,6 @@
             this.button4.BackColor = System.Drawing.Color.Lime;
             this.button4.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Enabled = false;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
