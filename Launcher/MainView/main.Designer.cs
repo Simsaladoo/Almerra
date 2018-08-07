@@ -61,6 +61,9 @@
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.FaunaPanel.SuspendLayout();
@@ -191,6 +194,9 @@
             // FaunaPanel
             // 
             this.FaunaPanel.BackColor = System.Drawing.Color.Black;
+            this.FaunaPanel.Controls.Add(this.button17);
+            this.FaunaPanel.Controls.Add(this.button18);
+            this.FaunaPanel.Controls.Add(this.button16);
             this.FaunaPanel.Controls.Add(this.button15);
             this.FaunaPanel.Controls.Add(this.button14);
             this.FaunaPanel.Controls.Add(this.button13);
@@ -592,6 +598,63 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.Lime;
+            this.button16.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.ForeColor = System.Drawing.Color.White;
+            this.button16.Location = new System.Drawing.Point(342, 278);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(122, 54);
+            this.button16.TabIndex = 33;
+            this.button16.Text = "Run (10)";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.Lime;
+            this.button17.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(470, 278);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(30, 54);
+            this.button17.TabIndex = 35;
+            this.button17.Text = ">";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.Lime;
+            this.button18.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.ForeColor = System.Drawing.Color.White;
+            this.button18.Location = new System.Drawing.Point(306, 278);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(30, 54);
+            this.button18.TabIndex = 34;
+            this.button18.Text = "<";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,6 +728,9 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button16;
     }
 }
 

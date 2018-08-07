@@ -4772,6 +4772,9 @@ namespace Launcher
             button13.BackColor = Color.Transparent;
             button14.BackColor = Color.Transparent;
             button15.BackColor = Color.Transparent;
+            button16.BackColor = Color.Transparent;
+            button17.BackColor = Color.Transparent;
+            button18.BackColor = Color.Transparent;
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
@@ -10880,6 +10883,89 @@ namespace Launcher
                 // subtract
                 loopnum = loopnum - 10;
                 button13.Text = "Run (" + loopnum.ToString() + ")";
+            }
+        }
+
+
+
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            mastercancel = false;
+            // need to set this thru UI for safing -- also need a cancel boolean if we clicked anywhere
+
+
+            for (int i = 0; i < loopnum; i++)
+            {
+                if (mastercancel == false)
+                {
+
+                    // mouse import procedure for FaunaEcoSubcellType1's
+                    // select all and import, then run this while Data Table Import Options is in focus()
+
+                    //first click location -- accesses the dropdown -- comment is for 1440p
+                    int xpos1 = 1850;     // int xpos1 = 1240;
+                    int ypos1 = 1084;      // int ypos1 = 720;
+                    //Console.WriteLine("First click");
+                    SetCursorPos(xpos1, ypos1);
+                    System.Threading.Thread.Sleep(400);
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, xpos1, ypos1, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                    mouse_event(MOUSEEVENTF_LEFTUP, xpos1, ypos1, 0, 0);
+
+                    // second click -- selects the type of data table (type1 here)
+                    int xpos2 = 1770;        // int xpos2 = 1240;
+                    int ypos2 = 1241;         // int ypos2 = 878;
+                    //Console.WriteLine("Second click");
+                    SetCursorPos(xpos2, ypos2);
+                    System.Threading.Thread.Sleep(400);
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, xpos2, ypos2, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                    mouse_event(MOUSEEVENTF_LEFTUP, xpos2, ypos2, 0, 0);
+
+                    // Third click -- hits OK!
+                    int xpos3 = 1696;       // int xpos3 = 1051;
+                    int ypos3 = 1104;        // int ypos3 = 743;
+                    //Console.WriteLine("OK click");
+                    SetCursorPos(xpos3, ypos3);
+                    System.Threading.Thread.Sleep(400);
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, xpos3, ypos3, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                    mouse_event(MOUSEEVENTF_LEFTUP, xpos3, ypos3, 0, 0);
+
+                    // final wait task for unreal to catchup
+
+                    System.Threading.Thread.Sleep(200);
+                    Console.WriteLine("Done with loop " + i + "/" + loopnum);
+                    richTextBox1.AppendText(Environment.NewLine + "Done with loop " + i + "/" + loopnum);
+                    richTextBox1.Focus();
+                    richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                    richTextBox1.ScrollToCaret();
+                }
+            }
+        }
+
+
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            // add 
+            loopnum = loopnum + 10;
+            button16.Text = "Run (" + loopnum.ToString() + ")";
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (loopnum == 10)
+            {
+                // dont continue past 10 since 0 is pointless
+            }
+
+            else
+            {
+                // subtract
+                loopnum = loopnum - 10;
+                button16.Text = "Run (" + loopnum.ToString() + ")";
             }
         }
     }
