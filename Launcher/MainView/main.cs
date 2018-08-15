@@ -4523,6 +4523,10 @@ namespace Launcher
             //                                          \/             \/                      |__|                                     //
             //                                                                                                                          //
 
+            m_aeroEnabled = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
+            this.FormBorderStyle = FormBorderStyle.None;
 
             if (WindowState == FormWindowState.Minimized)
             {
@@ -4531,10 +4535,28 @@ namespace Launcher
                 notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
+            
+            if (VolumeOn == true)
+            {
+                soundenabled = true;
+                System.Media.SoundPlayer sp = (startupsong);
+                sp.Play();
+                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
+            }
+            
+            else
+            {
+                soundenabled = false;
+                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
+            }
 
-            m_aeroEnabled = false;
-            this.FormBorderStyle = FormBorderStyle.None;
-            bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
+            if (WindowState == FormWindowState.Minimized)
+            {
+                ShowIcon = false;
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(1000);
+                Console.WriteLine("Window State Minimized?");
+            }
 
             if (VolumeOn == true)
             {
@@ -4552,11 +4574,7 @@ namespace Launcher
 
             }
 
-
         }
-
-
-
 
 
 
@@ -4577,11 +4595,16 @@ namespace Launcher
         private void AfterLoading(object sender, EventArgs e)
         {
             Console.WriteLine("Post Load Completed");
+            // serlf check
+            var sProcessName = ("Winds of Almerra");
+            System.Diagnostics.Process[] proc = System.Diagnostics.Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 1)
+            {
+                Console.WriteLine("Multiple instances detected");
+                Application.Exit();
+            }
 
         }
-
-
-
 
 
 
@@ -10834,7 +10857,7 @@ namespace Launcher
                     mouse_event(MOUSEEVENTF_LEFTUP, xpos2, ypos2, 0, 0);
 
                     // Third click -- hits OK!
-                    int xpos3 = 1696;       // int xpos3 = 1051;
+                    int xpos3 = 1676;       // int xpos3 = 1051;
                     int ypos3 = 1104;        // int ypos3 = 743;
                     //Console.WriteLine("OK click");
                     SetCursorPos(xpos3, ypos3);
@@ -10915,7 +10938,7 @@ namespace Launcher
 
                     // second click -- selects the type of data table (type1 here)
                     int xpos2 = 1770;        // int xpos2 = 1240;
-                    int ypos2 = 1241;         // int ypos2 = 878;
+                    int ypos2 = 1255;         // int ypos2 = 878;
                     //Console.WriteLine("Second click");
                     SetCursorPos(xpos2, ypos2);
                     System.Threading.Thread.Sleep(400);
@@ -10924,7 +10947,7 @@ namespace Launcher
                     mouse_event(MOUSEEVENTF_LEFTUP, xpos2, ypos2, 0, 0);
 
                     // Third click -- hits OK!
-                    int xpos3 = 1696;       // int xpos3 = 1051;
+                    int xpos3 = 1676;       // int xpos3 = 1051;
                     int ypos3 = 1104;        // int ypos3 = 743;
                     //Console.WriteLine("OK click");
                     SetCursorPos(xpos3, ypos3);
