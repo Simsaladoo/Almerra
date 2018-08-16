@@ -71,3 +71,4 @@ D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Models.dll
 D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Recognition.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Models.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition.dll
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
