@@ -3,9 +3,8 @@
 
 Startup Launcher for Winds of Almerra
 
-This tool acts as a Launcher for the Development Engine as well as the latest version of the game builds.  
-Also included is a tools menu, which will be populated with useful actions for building various parts of 
-the game.  First tool included is the BMP -> CSV database creator to convert Blue Channels into code for 
-sound cells, fauna locations, etc.  Only working with size 12 cells currently.
+This tool acts as a Launcher for the Engine as well as to play the latest version of the game builds.  
+Included is a tools menu which will be populated with useful actions for building various parts of 
+the game, consisting of the BMP -> CSV database creator to convert map data into Fauna, Foliage and Sound locators.  Currently working with Type1s and Type2s for 550ft and 105ft respectively.
 
 -Sim
