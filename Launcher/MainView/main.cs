@@ -4789,6 +4789,7 @@ namespace Launcher
             button8.BackColor = Color.Transparent;
             button9.BackColor = Color.Transparent;
             button10.BackColor = Color.Transparent;
+
             MinimizeButton.BackColor = Color.Transparent;
             button11.BackColor = Color.Transparent;
             button12.BackColor = Color.Transparent;
@@ -4798,6 +4799,20 @@ namespace Launcher
             button16.BackColor = Color.Transparent;
             button17.BackColor = Color.Transparent;
             button18.BackColor = Color.Transparent;
+
+            button19.BackColor = Color.Transparent;
+            button20.BackColor = Color.Transparent;
+            button21.BackColor = Color.Transparent;
+            button22.BackColor = Color.Transparent;
+            button23.BackColor = Color.Transparent;
+            button24.BackColor = Color.Transparent;
+            button25.BackColor = Color.Transparent;
+            button26.BackColor = Color.Transparent;
+            button27.BackColor = Color.Transparent;
+            button28.BackColor = Color.Transparent;
+            button29.BackColor = Color.Transparent;
+            button30.BackColor = Color.Transparent;
+
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
@@ -5004,7 +5019,7 @@ namespace Launcher
 
         private void button9_Click(object sender, EventArgs e)
         {
-            ENVPanel.Visible = true;
+            ENVPanel.Visible = true; // ENVPanel is now the Options Menu for swapping configs and golobal shit
             ConverterPanel.Visible = false;
             AudioPanel.Visible = false;
             FaunaPanel.Visible = false;
@@ -5014,8 +5029,8 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patwarnings);
                 sp.Play();
             };
-            Console.WriteLine("Environment Data Tools");
-            richTextBox1.AppendText(Environment.NewLine + "Environment Data Tools");
+            Console.WriteLine("Options Data Tools");
+            richTextBox1.AppendText(Environment.NewLine + "Options Data Tools");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
@@ -10992,9 +11007,83 @@ namespace Launcher
             }
         }
 
+
+
+
+
+        //  Foliage Data section
+
         private void button19_Click(object sender, EventArgs e)
         {
+            // Foliage Data not use yet
+        }
+        private void button20_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+        private void button25_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            // Foliage Data not use yet
+        }
+
+
+
+
+
+
+
+        //Settings for main graphics presets. // will need to find and check config.ini
+
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            // high graphics settings
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            // ultra graphics settings
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            // medium graphics settings
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            // low grapihcs settings
 
         }
+
+
+
+
+
     }
 }
