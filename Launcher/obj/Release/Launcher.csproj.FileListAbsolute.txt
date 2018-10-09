@@ -85,3 +85,5 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\SpeechLib.Models.dl
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\SpeechLib.Recognition.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CoreCompileInputs.cache
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\Cardinal.ttf
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\KellyAnnGothic.ttf

@@ -14,6 +14,7 @@ using NAudio.MediaFoundation;
 using System.Collections.Generic;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
+using System.Drawing.Text;
 
 
 
@@ -29,11 +30,19 @@ using System.Speech.Recognition;
 
 namespace Launcher
 {
+
+
+
+
+
+
     public partial class main : Form   //MetroFramework.Forms.MetroForm
 
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+
+
 
 
 
@@ -4392,6 +4401,7 @@ namespace Launcher
             mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
 
+
         // We need to use unmanaged code
 
         [DllImport("user32.dll")]
@@ -4783,7 +4793,6 @@ namespace Launcher
             button3.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             button7.BackColor = Color.Transparent;
             button8.BackColor = Color.Transparent;
@@ -4808,10 +4817,7 @@ namespace Launcher
             button24.BackColor = Color.Transparent;
             button25.BackColor = Color.Transparent;
             button26.BackColor = Color.Transparent;
-            button27.BackColor = Color.Transparent;
-            button28.BackColor = Color.Transparent;
-            button29.BackColor = Color.Transparent;
-            button30.BackColor = Color.Transparent;
+
 
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
@@ -5007,8 +5013,9 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patwarnings);
                 sp.Play();
             };
+            richTextBox1.Clear();
             Console.WriteLine("Fauna Data Tools");
-            richTextBox1.AppendText(Environment.NewLine + "Fauna Data Tools");
+            richTextBox1.AppendText("Fauna Data Tools");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
@@ -5029,8 +5036,9 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patwarnings);
                 sp.Play();
             };
+            richTextBox1.Clear();
             Console.WriteLine("Options Data Tools");
-            richTextBox1.AppendText(Environment.NewLine + "Options Data Tools");
+            richTextBox1.AppendText("Options Data Tools");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
@@ -5049,8 +5057,9 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patwarnings);
                 sp.Play();
             };
+            richTextBox1.Clear();
             Console.WriteLine("Audio Data Tools");
-            richTextBox1.AppendText(Environment.NewLine + "Audio Data Tools");
+            richTextBox1.AppendText("Audio Data Tools");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
@@ -5069,8 +5078,9 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patwarnings);
                 sp.Play();
             };
+            richTextBox1.Clear();
             Console.WriteLine("Audio Converter Tools");
-            richTextBox1.AppendText(Environment.NewLine + "Audio Converter Tools");
+            richTextBox1.AppendText("Audio Converter Tools");
             richTextBox1.Focus();
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
@@ -11060,30 +11070,10 @@ namespace Launcher
         //Settings for main graphics presets. // will need to find and check config.ini
 
 
-        private void button27_Click(object sender, EventArgs e)
-        {
-            // high graphics settings
-        }
 
-        private void button28_Click(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // ultra graphics settings
-        }
-
-        private void button29_Click(object sender, EventArgs e)
-        {
-            // medium graphics settings
-        }
-
-        private void button30_Click(object sender, EventArgs e)
-        {
-            // low grapihcs settings
 
         }
-
-
-
-
-
     }
 }
