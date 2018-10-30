@@ -1,5 +1,5 @@
 # Almerra Launcher
-![alt tag](https://static.wixstatic.com/media/0cc0b4_9abc3d7d26cd4d86bbdbc5f0b2bc7251~mv2.png/v1/fit/w_375,h_375/0cc0b4_9abc3d7d26cd4d86bbdbc5f0b2bc7251~mv2.png)
+![alt tag](https://static.wixstatic.com/media/0cc0b4_4dbb9f55054f4343b43f9af477d18545~mv2.png?dn=Capture0.PNG.png)
 
 Startup Launcher for Winds of Almerra
 
