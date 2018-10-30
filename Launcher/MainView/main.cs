@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
 using System.Drawing.Text;
+using System.Speech.AudioFormat;
 
 
 
@@ -41,7 +42,7 @@ namespace Launcher
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
-
+        private SpeechRecognitionEngine recognitionEngine;
 
 
 
@@ -52,7 +53,7 @@ namespace Launcher
 
 
 
-        
+
         public Button _Play { get { return play; } }
         public Button _button1 { get { return play; } }
         public Button _button2 { get { return play; } }
@@ -4588,6 +4589,12 @@ namespace Launcher
 
 
 
+
+
+
+
+
+
         private void notifyIcon1_LoadCompleted(object sender, EventArgs e)
 
         {
@@ -4613,6 +4620,12 @@ namespace Launcher
                 Console.WriteLine("Multiple instances detected");
                 Application.Exit();
             }
+
+
+            Directory.CreateDirectory(Path.Combine("Game"));
+
+
+
 
         }
 
@@ -4642,7 +4655,7 @@ namespace Launcher
         {
 
             /*      play our last build -- first make sure its even there, if not display the messgae box */
-            var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0051\");
+            var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0055\");
             if (soundenabled == true)
             {
                 System.Media.SoundPlayer sp = (patsoft);
@@ -5088,26 +5101,37 @@ namespace Launcher
 
 
         // Visualizer for audio testing of frequencies
+        public int ZoomAmount = 200;
 
         private void button7_Click(object sender, EventArgs e)
         {
+            int ZoomAmount = 100;
+            // open a demo file
 
-            if (isShowingViz == true)
-            {
-                bool isShowingViz = false;
+            //var maxPeakProvider = new MaxPeakProvider();
+            //var rmsPeakProvider = new RmsPeakProvider(blockSize); // e.g. 200
+            //var samplingPeakProvider = new SamplingPeakProvider(sampleInterval); // e.g. 200
+            //var averagePeakProvider = new AveragePeakProvider(scaleFactor); // e.g. 4
+            string path = @"Resources/greetings.wav";
 
 
-            }
-            else
-            {
-                bool isShowingViz = true;
-
-            }
-
+            waveViewer1.SamplesPerPixel = ZoomAmount;
+            waveViewer1.WaveStream = new NAudio.Wave.WaveFileReader(path);
+            //waveViewer1.WaveStream.Read
 
 
         }
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            waveViewer1.SamplesPerPixel = ZoomAmount + 50;
+            // plus sign to zoom into visualizer
+        }
 
+        private void button27_Click(object sender, EventArgs e)
+        {
+            // minus sign to zoom out of visualizer
+            waveViewer1.SamplesPerPixel = ZoomAmount - 50;
+        }
 
         /******************************************* NAVIGATION BUTTONS ************************************/
         // Close 'X' Button clicked
@@ -11075,5 +11099,6 @@ namespace Launcher
         {
 
         }
+
     }
 }

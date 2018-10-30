@@ -37,6 +37,25 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolsPanel = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.AudioPanel = new System.Windows.Forms.Panel();
+            this.waveViewer1 = new NAudio.Gui.WaveViewer();
+            this.Audio_HeaderLabel = new System.Windows.Forms.Label();
+            this.AudioHLine = new System.Windows.Forms.Label();
+            this.AudioPageTitle = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.ConverterPanel = new System.Windows.Forms.Panel();
+            this.Foliage_HeaderLabel = new System.Windows.Forms.Label();
+            this.FoliageHLine = new System.Windows.Forms.Label();
+            this.FoliagePageTitle = new System.Windows.Forms.Label();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.ENVPanel = new System.Windows.Forms.Panel();
             this.Game_NoteLabel = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -52,24 +71,6 @@
             this.GamePageTitle = new System.Windows.Forms.Label();
             this.Game_HeaderLabel = new System.Windows.Forms.Label();
             this.GameHLine = new System.Windows.Forms.Label();
-            this.ConverterPanel = new System.Windows.Forms.Panel();
-            this.Foliage_HeaderLabel = new System.Windows.Forms.Label();
-            this.FoliageHLine = new System.Windows.Forms.Label();
-            this.FoliagePageTitle = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.AudioPanel = new System.Windows.Forms.Panel();
-            this.Audio_HeaderLabel = new System.Windows.Forms.Label();
-            this.AudioHLine = new System.Windows.Forms.Label();
-            this.AudioPageTitle = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.FaunaPanel = new System.Windows.Forms.Panel();
             this.Fauna_HeaderLabel = new System.Windows.Forms.Label();
             this.FaunaHLine = new System.Windows.Forms.Label();
@@ -93,11 +94,12 @@
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
-            this.ENVPanel.SuspendLayout();
-            this.ConverterPanel.SuspendLayout();
             this.AudioPanel.SuspendLayout();
+            this.ConverterPanel.SuspendLayout();
+            this.ENVPanel.SuspendLayout();
             this.FaunaPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -189,9 +191,9 @@
             // 
             this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
             this.ToolsPanel.Controls.Add(this.richTextBox1);
-            this.ToolsPanel.Controls.Add(this.ENVPanel);
-            this.ToolsPanel.Controls.Add(this.ConverterPanel);
             this.ToolsPanel.Controls.Add(this.AudioPanel);
+            this.ToolsPanel.Controls.Add(this.ConverterPanel);
+            this.ToolsPanel.Controls.Add(this.ENVPanel);
             this.ToolsPanel.Controls.Add(this.FaunaPanel);
             this.ToolsPanel.Controls.Add(this.button11);
             this.ToolsPanel.Controls.Add(this.button8);
@@ -220,204 +222,98 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "Launcher opened...";
             // 
-            // ENVPanel
+            // AudioPanel
             // 
-            this.ENVPanel.BackColor = System.Drawing.Color.Black;
-            this.ENVPanel.Controls.Add(this.Game_NoteLabel);
-            this.ENVPanel.Controls.Add(this.comboBox3);
-            this.ENVPanel.Controls.Add(this.Game_ShadowLabel);
-            this.ENVPanel.Controls.Add(this.comboBox2);
-            this.ENVPanel.Controls.Add(this.Game_AALabel);
-            this.ENVPanel.Controls.Add(this.Game_ResolutionLabel);
-            this.ENVPanel.Controls.Add(this.comboBox1);
-            this.ENVPanel.Controls.Add(this.checkBox2);
-            this.ENVPanel.Controls.Add(this.checkBox1);
-            this.ENVPanel.Controls.Add(this.ResolutionBox);
-            this.ENVPanel.Controls.Add(this.Game_DetailLabel);
-            this.ENVPanel.Controls.Add(this.GamePageTitle);
-            this.ENVPanel.Controls.Add(this.Game_HeaderLabel);
-            this.ENVPanel.Controls.Add(this.GameHLine);
-            this.ENVPanel.Location = new System.Drawing.Point(199, 3);
-            this.ENVPanel.Name = "ENVPanel";
-            this.ENVPanel.Size = new System.Drawing.Size(798, 363);
-            this.ENVPanel.TabIndex = 39;
+            this.AudioPanel.BackColor = System.Drawing.Color.Black;
+            this.AudioPanel.Controls.Add(this.waveViewer1);
+            this.AudioPanel.Controls.Add(this.Audio_HeaderLabel);
+            this.AudioPanel.Controls.Add(this.AudioHLine);
+            this.AudioPanel.Controls.Add(this.AudioPageTitle);
+            this.AudioPanel.Controls.Add(this.button6);
+            this.AudioPanel.Controls.Add(this.button7);
+            this.AudioPanel.Location = new System.Drawing.Point(199, 3);
+            this.AudioPanel.Name = "AudioPanel";
+            this.AudioPanel.Size = new System.Drawing.Size(798, 363);
+            this.AudioPanel.TabIndex = 38;
             // 
-            // Game_NoteLabel
+            // waveViewer1
             // 
-            this.Game_NoteLabel.AutoSize = true;
-            this.Game_NoteLabel.Font = new System.Drawing.Font("Morris Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Game_NoteLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Game_NoteLabel.Location = new System.Drawing.Point(546, 342);
-            this.Game_NoteLabel.Name = "Game_NoteLabel";
-            this.Game_NoteLabel.Size = new System.Drawing.Size(246, 15);
-            this.Game_NoteLabel.TabIndex = 50;
-            this.Game_NoteLabel.Text = "These settings can be further modified in-game";
-            this.Game_NoteLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.waveViewer1.BackColor = System.Drawing.Color.Gray;
+            this.waveViewer1.Location = new System.Drawing.Point(289, 91);
+            this.waveViewer1.Name = "waveViewer1";
+            this.waveViewer1.SamplesPerPixel = 128;
+            this.waveViewer1.Size = new System.Drawing.Size(426, 157);
+            this.waveViewer1.StartPosition = ((long)(0));
+            this.waveViewer1.TabIndex = 48;
+            this.waveViewer1.WaveStream = null;
             // 
-            // comboBox3
+            // Audio_HeaderLabel
             // 
-            this.comboBox3.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "1920 x 1080",
-            "1280 x 720"});
-            this.comboBox3.Location = new System.Drawing.Point(561, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(154, 29);
-            this.comboBox3.TabIndex = 49;
-            this.comboBox3.Text = "Ultra";
+            this.Audio_HeaderLabel.AutoSize = true;
+            this.Audio_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Audio_HeaderLabel.Location = new System.Drawing.Point(64, 47);
+            this.Audio_HeaderLabel.Name = "Audio_HeaderLabel";
+            this.Audio_HeaderLabel.Size = new System.Drawing.Size(156, 24);
+            this.Audio_HeaderLabel.TabIndex = 46;
+            this.Audio_HeaderLabel.Text = "Audio Processing";
             // 
-            // Game_ShadowLabel
+            // AudioHLine
             // 
-            this.Game_ShadowLabel.AutoSize = true;
-            this.Game_ShadowLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Game_ShadowLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Game_ShadowLabel.Location = new System.Drawing.Point(557, 86);
-            this.Game_ShadowLabel.Name = "Game_ShadowLabel";
-            this.Game_ShadowLabel.Size = new System.Drawing.Size(73, 21);
-            this.Game_ShadowLabel.TabIndex = 48;
-            this.Game_ShadowLabel.Text = "Shadows";
-            this.Game_ShadowLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "1920 x 1080",
-            "1280 x 720"});
-            this.comboBox2.Location = new System.Drawing.Point(317, 205);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(154, 29);
-            this.comboBox2.TabIndex = 47;
-            this.comboBox2.Text = "Ultra";
-            // 
-            // Game_AALabel
-            // 
-            this.Game_AALabel.AutoSize = true;
-            this.Game_AALabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Game_AALabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Game_AALabel.Location = new System.Drawing.Point(317, 174);
-            this.Game_AALabel.Name = "Game_AALabel";
-            this.Game_AALabel.Size = new System.Drawing.Size(107, 21);
-            this.Game_AALabel.TabIndex = 46;
-            this.Game_AALabel.Text = "Anti-Aliasing";
-            this.Game_AALabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // Game_ResolutionLabel
-            // 
-            this.Game_ResolutionLabel.AutoSize = true;
-            this.Game_ResolutionLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Game_ResolutionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Game_ResolutionLabel.Location = new System.Drawing.Point(54, 86);
-            this.Game_ResolutionLabel.Name = "Game_ResolutionLabel";
-            this.Game_ResolutionLabel.Size = new System.Drawing.Size(86, 21);
-            this.Game_ResolutionLabel.TabIndex = 45;
-            this.Game_ResolutionLabel.Text = "Resolution";
-            this.Game_ResolutionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1920 x 1080",
-            "1280 x 720"});
-            this.comboBox1.Location = new System.Drawing.Point(318, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(154, 29);
-            this.comboBox1.TabIndex = 44;
-            this.comboBox1.Text = "Ultra";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(58, 210);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(71, 25);
-            this.checkBox2.TabIndex = 43;
-            this.checkBox2.Text = "Vsync";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(58, 167);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(97, 25);
-            this.checkBox1.TabIndex = 42;
-            this.checkBox1.Text = "Fullscreen";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // ResolutionBox
-            // 
-            this.ResolutionBox.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ResolutionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResolutionBox.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResolutionBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ResolutionBox.FormattingEnabled = true;
-            this.ResolutionBox.Items.AddRange(new object[] {
-            "1920 x 1080",
-            "1280 x 720"});
-            this.ResolutionBox.Location = new System.Drawing.Point(57, 116);
-            this.ResolutionBox.Name = "ResolutionBox";
-            this.ResolutionBox.Size = new System.Drawing.Size(154, 29);
-            this.ResolutionBox.TabIndex = 41;
-            this.ResolutionBox.Text = "1920 x 1080";
-            this.ResolutionBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // Game_DetailLabel
-            // 
-            this.Game_DetailLabel.AutoSize = true;
-            this.Game_DetailLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Game_DetailLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Game_DetailLabel.Location = new System.Drawing.Point(314, 86);
-            this.Game_DetailLabel.Name = "Game_DetailLabel";
-            this.Game_DetailLabel.Size = new System.Drawing.Size(51, 21);
-            this.Game_DetailLabel.TabIndex = 40;
-            this.Game_DetailLabel.Text = "Detail";
-            this.Game_DetailLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // GamePageTitle
-            // 
-            this.GamePageTitle.AutoSize = true;
-            this.GamePageTitle.Font = new System.Drawing.Font("Kelly", 22F);
-            this.GamePageTitle.Location = new System.Drawing.Point(295, 13);
-            this.GamePageTitle.Name = "GamePageTitle";
-            this.GamePageTitle.Size = new System.Drawing.Size(195, 41);
-            this.GamePageTitle.TabIndex = 39;
-            this.GamePageTitle.Text = "Game Options";
-            // 
-            // Game_HeaderLabel
-            // 
-            this.Game_HeaderLabel.AutoSize = true;
-            this.Game_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Game_HeaderLabel.Location = new System.Drawing.Point(52, 47);
-            this.Game_HeaderLabel.Name = "Game_HeaderLabel";
-            this.Game_HeaderLabel.Size = new System.Drawing.Size(155, 24);
-            this.Game_HeaderLabel.TabIndex = 37;
-            this.Game_HeaderLabel.Text = "Graphics Presets";
-            // 
-            // GameHLine
-            // 
-            this.GameHLine.AutoSize = true;
-            this.GameHLine.Location = new System.Drawing.Point(53, 61);
-            this.GameHLine.Name = "GameHLine";
-            this.GameHLine.Size = new System.Drawing.Size(667, 13);
-            this.GameHLine.TabIndex = 38;
-            this.GameHLine.Text = "_________________________________________________________________________________" +
+            this.AudioHLine.AutoSize = true;
+            this.AudioHLine.Location = new System.Drawing.Point(53, 61);
+            this.AudioHLine.Name = "AudioHLine";
+            this.AudioHLine.Size = new System.Drawing.Size(667, 13);
+            this.AudioHLine.TabIndex = 47;
+            this.AudioHLine.Text = "_________________________________________________________________________________" +
     "_____________________________";
+            // 
+            // AudioPageTitle
+            // 
+            this.AudioPageTitle.AutoSize = true;
+            this.AudioPageTitle.Font = new System.Drawing.Font("Kelly", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AudioPageTitle.Location = new System.Drawing.Point(340, 17);
+            this.AudioPageTitle.Name = "AudioPageTitle";
+            this.AudioPageTitle.Size = new System.Drawing.Size(173, 41);
+            this.AudioPageTitle.TabIndex = 45;
+            this.AudioPageTitle.Text = "Audio Data";
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Lime;
+            this.button6.BackgroundImage = global::Launcher.Properties.Resources.button;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(67, 155);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(206, 54);
+            this.button6.TabIndex = 30;
+            this.button6.Text = "Process Audio";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Lime;
+            this.button7.BackgroundImage = global::Launcher.Properties.Resources.button;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(67, 90);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(206, 54);
+            this.button7.TabIndex = 34;
+            this.button7.Text = "Visualizer";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // ConverterPanel
             // 
@@ -620,86 +516,204 @@
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
-            // AudioPanel
+            // ENVPanel
             // 
-            this.AudioPanel.BackColor = System.Drawing.Color.Black;
-            this.AudioPanel.Controls.Add(this.Audio_HeaderLabel);
-            this.AudioPanel.Controls.Add(this.AudioHLine);
-            this.AudioPanel.Controls.Add(this.AudioPageTitle);
-            this.AudioPanel.Controls.Add(this.button6);
-            this.AudioPanel.Controls.Add(this.button7);
-            this.AudioPanel.Location = new System.Drawing.Point(199, 3);
-            this.AudioPanel.Name = "AudioPanel";
-            this.AudioPanel.Size = new System.Drawing.Size(798, 363);
-            this.AudioPanel.TabIndex = 38;
+            this.ENVPanel.BackColor = System.Drawing.Color.Black;
+            this.ENVPanel.Controls.Add(this.Game_NoteLabel);
+            this.ENVPanel.Controls.Add(this.comboBox3);
+            this.ENVPanel.Controls.Add(this.Game_ShadowLabel);
+            this.ENVPanel.Controls.Add(this.comboBox2);
+            this.ENVPanel.Controls.Add(this.Game_AALabel);
+            this.ENVPanel.Controls.Add(this.Game_ResolutionLabel);
+            this.ENVPanel.Controls.Add(this.comboBox1);
+            this.ENVPanel.Controls.Add(this.checkBox2);
+            this.ENVPanel.Controls.Add(this.checkBox1);
+            this.ENVPanel.Controls.Add(this.ResolutionBox);
+            this.ENVPanel.Controls.Add(this.Game_DetailLabel);
+            this.ENVPanel.Controls.Add(this.GamePageTitle);
+            this.ENVPanel.Controls.Add(this.Game_HeaderLabel);
+            this.ENVPanel.Controls.Add(this.GameHLine);
+            this.ENVPanel.Location = new System.Drawing.Point(199, 3);
+            this.ENVPanel.Name = "ENVPanel";
+            this.ENVPanel.Size = new System.Drawing.Size(798, 363);
+            this.ENVPanel.TabIndex = 39;
             // 
-            // Audio_HeaderLabel
+            // Game_NoteLabel
             // 
-            this.Audio_HeaderLabel.AutoSize = true;
-            this.Audio_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Audio_HeaderLabel.Location = new System.Drawing.Point(64, 47);
-            this.Audio_HeaderLabel.Name = "Audio_HeaderLabel";
-            this.Audio_HeaderLabel.Size = new System.Drawing.Size(156, 24);
-            this.Audio_HeaderLabel.TabIndex = 46;
-            this.Audio_HeaderLabel.Text = "Audio Processing";
+            this.Game_NoteLabel.AutoSize = true;
+            this.Game_NoteLabel.Font = new System.Drawing.Font("Morris Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_NoteLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Game_NoteLabel.Location = new System.Drawing.Point(546, 342);
+            this.Game_NoteLabel.Name = "Game_NoteLabel";
+            this.Game_NoteLabel.Size = new System.Drawing.Size(246, 15);
+            this.Game_NoteLabel.TabIndex = 50;
+            this.Game_NoteLabel.Text = "These settings can be further modified in-game";
+            this.Game_NoteLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // AudioHLine
+            // comboBox3
             // 
-            this.AudioHLine.AutoSize = true;
-            this.AudioHLine.Location = new System.Drawing.Point(53, 61);
-            this.AudioHLine.Name = "AudioHLine";
-            this.AudioHLine.Size = new System.Drawing.Size(667, 13);
-            this.AudioHLine.TabIndex = 47;
-            this.AudioHLine.Text = "_________________________________________________________________________________" +
+            this.comboBox3.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox3.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "1920 x 1080",
+            "1280 x 720"});
+            this.comboBox3.Location = new System.Drawing.Point(561, 116);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(154, 29);
+            this.comboBox3.TabIndex = 49;
+            this.comboBox3.Text = "Ultra";
+            // 
+            // Game_ShadowLabel
+            // 
+            this.Game_ShadowLabel.AutoSize = true;
+            this.Game_ShadowLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_ShadowLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Game_ShadowLabel.Location = new System.Drawing.Point(557, 86);
+            this.Game_ShadowLabel.Name = "Game_ShadowLabel";
+            this.Game_ShadowLabel.Size = new System.Drawing.Size(73, 21);
+            this.Game_ShadowLabel.TabIndex = 48;
+            this.Game_ShadowLabel.Text = "Shadows";
+            this.Game_ShadowLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "1920 x 1080",
+            "1280 x 720"});
+            this.comboBox2.Location = new System.Drawing.Point(317, 205);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(154, 29);
+            this.comboBox2.TabIndex = 47;
+            this.comboBox2.Text = "Ultra";
+            // 
+            // Game_AALabel
+            // 
+            this.Game_AALabel.AutoSize = true;
+            this.Game_AALabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_AALabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Game_AALabel.Location = new System.Drawing.Point(317, 174);
+            this.Game_AALabel.Name = "Game_AALabel";
+            this.Game_AALabel.Size = new System.Drawing.Size(107, 21);
+            this.Game_AALabel.TabIndex = 46;
+            this.Game_AALabel.Text = "Anti-Aliasing";
+            this.Game_AALabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // Game_ResolutionLabel
+            // 
+            this.Game_ResolutionLabel.AutoSize = true;
+            this.Game_ResolutionLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_ResolutionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Game_ResolutionLabel.Location = new System.Drawing.Point(54, 86);
+            this.Game_ResolutionLabel.Name = "Game_ResolutionLabel";
+            this.Game_ResolutionLabel.Size = new System.Drawing.Size(86, 21);
+            this.Game_ResolutionLabel.TabIndex = 45;
+            this.Game_ResolutionLabel.Text = "Resolution";
+            this.Game_ResolutionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1920 x 1080",
+            "1280 x 720"});
+            this.comboBox1.Location = new System.Drawing.Point(318, 116);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(154, 29);
+            this.comboBox1.TabIndex = 44;
+            this.comboBox1.Text = "Ultra";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(58, 210);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(71, 25);
+            this.checkBox2.TabIndex = 43;
+            this.checkBox2.Text = "Vsync";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(58, 167);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(97, 25);
+            this.checkBox1.TabIndex = 42;
+            this.checkBox1.Text = "Fullscreen";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // ResolutionBox
+            // 
+            this.ResolutionBox.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ResolutionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResolutionBox.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResolutionBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ResolutionBox.FormattingEnabled = true;
+            this.ResolutionBox.Items.AddRange(new object[] {
+            "1920 x 1080",
+            "1280 x 720"});
+            this.ResolutionBox.Location = new System.Drawing.Point(57, 116);
+            this.ResolutionBox.Name = "ResolutionBox";
+            this.ResolutionBox.Size = new System.Drawing.Size(154, 29);
+            this.ResolutionBox.TabIndex = 41;
+            this.ResolutionBox.Text = "1920 x 1080";
+            this.ResolutionBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // Game_DetailLabel
+            // 
+            this.Game_DetailLabel.AutoSize = true;
+            this.Game_DetailLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_DetailLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Game_DetailLabel.Location = new System.Drawing.Point(314, 86);
+            this.Game_DetailLabel.Name = "Game_DetailLabel";
+            this.Game_DetailLabel.Size = new System.Drawing.Size(51, 21);
+            this.Game_DetailLabel.TabIndex = 40;
+            this.Game_DetailLabel.Text = "Detail";
+            this.Game_DetailLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // GamePageTitle
+            // 
+            this.GamePageTitle.AutoSize = true;
+            this.GamePageTitle.Font = new System.Drawing.Font("Kelly", 22F);
+            this.GamePageTitle.Location = new System.Drawing.Point(295, 13);
+            this.GamePageTitle.Name = "GamePageTitle";
+            this.GamePageTitle.Size = new System.Drawing.Size(195, 41);
+            this.GamePageTitle.TabIndex = 39;
+            this.GamePageTitle.Text = "Game Options";
+            // 
+            // Game_HeaderLabel
+            // 
+            this.Game_HeaderLabel.AutoSize = true;
+            this.Game_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_HeaderLabel.Location = new System.Drawing.Point(52, 47);
+            this.Game_HeaderLabel.Name = "Game_HeaderLabel";
+            this.Game_HeaderLabel.Size = new System.Drawing.Size(155, 24);
+            this.Game_HeaderLabel.TabIndex = 37;
+            this.Game_HeaderLabel.Text = "Graphics Presets";
+            // 
+            // GameHLine
+            // 
+            this.GameHLine.AutoSize = true;
+            this.GameHLine.Location = new System.Drawing.Point(53, 61);
+            this.GameHLine.Name = "GameHLine";
+            this.GameHLine.Size = new System.Drawing.Size(667, 13);
+            this.GameHLine.TabIndex = 38;
+            this.GameHLine.Text = "_________________________________________________________________________________" +
     "_____________________________";
-            // 
-            // AudioPageTitle
-            // 
-            this.AudioPageTitle.AutoSize = true;
-            this.AudioPageTitle.Font = new System.Drawing.Font("Kelly", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AudioPageTitle.Location = new System.Drawing.Point(340, 17);
-            this.AudioPageTitle.Name = "AudioPageTitle";
-            this.AudioPageTitle.Size = new System.Drawing.Size(173, 41);
-            this.AudioPageTitle.TabIndex = 45;
-            this.AudioPageTitle.Text = "Audio Data";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Lime;
-            this.button6.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(67, 155);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(206, 54);
-            this.button6.TabIndex = 30;
-            this.button6.Text = "Process Audio";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Lime;
-            this.button7.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(67, 90);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(206, 54);
-            this.button7.TabIndex = 34;
-            this.button7.Text = "Visualizer";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // FaunaPanel
             // 
@@ -1104,6 +1118,15 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(0, 543);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(998, 5);
+            this.progressBar1.Step = 100;
+            this.progressBar1.TabIndex = 32;
+            this.progressBar1.Value = 1;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1113,6 +1136,7 @@
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
             this.Controls.Add(this.ToolsPanel);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.ToPanelButton);
@@ -1137,12 +1161,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.font)).EndInit();
             this.ToolsPanel.ResumeLayout(false);
             this.ToolsPanel.PerformLayout();
-            this.ENVPanel.ResumeLayout(false);
-            this.ENVPanel.PerformLayout();
-            this.ConverterPanel.ResumeLayout(false);
-            this.ConverterPanel.PerformLayout();
             this.AudioPanel.ResumeLayout(false);
             this.AudioPanel.PerformLayout();
+            this.ConverterPanel.ResumeLayout(false);
+            this.ConverterPanel.PerformLayout();
+            this.ENVPanel.ResumeLayout(false);
+            this.ENVPanel.PerformLayout();
             this.FaunaPanel.ResumeLayout(false);
             this.FaunaPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -1213,6 +1237,8 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label Game_AALabel;
         private System.Windows.Forms.Label Game_NoteLabel;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private NAudio.Gui.WaveViewer waveViewer1;
     }
 }
 

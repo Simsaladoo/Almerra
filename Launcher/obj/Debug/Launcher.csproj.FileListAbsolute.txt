@@ -71,7 +71,7 @@ D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Models.dll
 D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Recognition.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Models.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CopyComplete
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\Cardinal.ttf
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\KellyAnnGothic.ttf
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
