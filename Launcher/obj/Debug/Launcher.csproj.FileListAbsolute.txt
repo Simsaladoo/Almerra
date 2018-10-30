@@ -74,7 +74,6 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\greetings.wav
-D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
 D:\Reposit\Almerra\Launcher\bin\Debug\HtmlAgilityPack.dll
 D:\Reposit\Almerra\Launcher\bin\Debug\HtmlAgilityPack.pdb
 D:\Reposit\Almerra\Launcher\bin\Debug\HtmlAgilityPack.xml

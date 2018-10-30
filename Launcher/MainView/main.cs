@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -10,13 +11,10 @@ using System.Data;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
-using NAudio.Wave;
-using NAudio.MediaFoundation;
 using System.Collections.Generic;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
 using System.Drawing.Text;
-using System.Speech.AudioFormat;
 using System.Xml;
 using HtmlAgilityPack;
 
@@ -4684,28 +4682,14 @@ namespace Launcher
             }
 
 
-           //   foreach (var node in nodes)
-           //   {
-           //       if (node.NodeType == HtmlNodeType.Element)
-           //       {
-           //           Console.WriteLine(node.InnerText);
-           //       }
-           //       else
-           //       {
-           //           Console.WriteLine("No build info found");
-           //       }
-           //   }
-
-
-            
-
-
-
-
-
             //writes out into the log what we returned
             //Console.WriteLine(downloadString);
             response.Close();
+
+
+
+
+
 
 
 
@@ -4722,7 +4706,7 @@ namespace Launcher
                 }
             }
 
-
+            progressBar1.Visible = false;
 
         }
 
@@ -4785,21 +4769,37 @@ namespace Launcher
                 // it is already running 
 
                 // Initializes the variables to pass to the MessageBox.Show method.
-                string message = "No Winds of Almerra builds were found in " + gdirectory + ", close application?";
+                string message = "No Winds of Almerra builds were found in " + gdirectory + " , download latest?";
                 string caption = "Project not found!";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result;
                 result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
-                { Application.Exit(); }
-                if (result == DialogResult.No)
+                {
+                    // Startup a web client to download the zip
+                    progressBar1.Visible = true;
+                    using (WebClient wc = new WebClient())
+                    {
+                        wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                        wc.DownloadFileAsync(
+                            // Param1 = Link of file
+                            new System.Uri("https://drive.google.com/uc?export=view&id=1NhBfHk9uqDJOwRiF1mPqlclct5A4jWPP"), "Game/WoA_0055.zip");
+                    }
+
+
+                }
+                    if (result == DialogResult.No)
                 { Console.WriteLine("Ignoring error '" + caption + "'"); }
 
             }
 
         }
 
-
+        // Event to track the progress
+        void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
 
 
         /******************************************* THE LOAD ENGINE BUTTON ************************************/
