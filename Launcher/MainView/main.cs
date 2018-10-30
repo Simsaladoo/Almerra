@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Drawing;
 using System.Data;
@@ -16,7 +17,8 @@ using System.Speech.Synthesis;
 using System.Speech.Recognition;
 using System.Drawing.Text;
 using System.Speech.AudioFormat;
-
+using System.Xml;
+using HtmlAgilityPack;
 
 
 
@@ -4622,8 +4624,103 @@ namespace Launcher
             }
 
 
-            Directory.CreateDirectory(Path.Combine("Game"));
 
+
+            /*******************************
+                Startup items for the launcher -- 
+                
+                make game folder to download files into, and add a help file there
+                If nothing there, setup buttons to download instead of play.
+                Connect to website to pull latest build #
+                check for that build# in game folder.
+
+            /********************************/
+            //create the folder
+            Directory.CreateDirectory(Path.Combine("Game"));
+            //create the readme file
+            string path = "Game/ReadMe.txt";
+            var html = "http://www.almerra.com/updates";
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+                Console.WriteLine("ReadMe File Created");
+            }
+            else if (File.Exists(path))
+            {
+                Console.WriteLine("ReadMe File Exists");
+            }
+
+            // ... Say stuff within teh readme.
+            string[] lines = {
+                "First line",
+                "Second line",
+                "Third line"
+            };
+
+            System.IO.File.WriteAllLines("Game/ReadMe.txt", lines);
+
+
+
+            // access almerra.com
+            WebClient myClient = new WebClient();
+            Stream response = myClient.OpenRead(html);
+            // The stream data is used here.  
+            Console.WriteLine("Asking for latest build from server");
+            HtmlWeb web = new HtmlWeb();
+            var htmlDoc = web.Load(html);
+            string downloadString = myClient.DownloadString(html);
+            //entire web document loaded as a string
+            var htmlBody = htmlDoc.DocumentNode.SelectNodes("//body//div");
+            // select parts of html doc to read
+
+            var nodes = htmlBody.Elements("p");
+            string search = Convert.ToString(htmlBody);
+
+
+
+            foreach (var word in search)
+            {
+                System.Console.WriteLine($"<{word}>");
+            }
+
+
+           //   foreach (var node in nodes)
+           //   {
+           //       if (node.NodeType == HtmlNodeType.Element)
+           //       {
+           //           Console.WriteLine(node.InnerText);
+           //       }
+           //       else
+           //       {
+           //           Console.WriteLine("No build info found");
+           //       }
+           //   }
+
+
+            
+
+
+
+
+
+            //writes out into the log what we returned
+            //Console.WriteLine(downloadString);
+            response.Close();
+
+
+
+            // only add specific shit to ReadmE
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                foreach (string line in lines)
+                {
+                    // If the line doesn't contain the word 'Second', write the line to the file.
+                    if (!line.Contains("Second"))
+                    {
+                        file.WriteLine(line);
+                    }
+                }
+            }
 
 
 
