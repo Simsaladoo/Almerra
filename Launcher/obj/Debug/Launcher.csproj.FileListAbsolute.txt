@@ -38,24 +38,6 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\done.wav
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\start.wav
-D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.exe.config
-D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.exe
-D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.pdb
-D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.Design.dll
-D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.dll
-D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.Fonts.dll
-D:\Reposit\Almerra\Launcher\bin\Debug\NAudio.dll
-D:\Reposit\Almerra\Launcher\bin\Debug\NAudio.xml
-D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.main.resources
-D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.Properties.Resources.resources
-D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
-D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
-D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CopyComplete
-D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.exe
-D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.pdb
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\zulu.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\NAudio.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\NAudio.xml
@@ -63,17 +45,47 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\patsoft.wav
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\patwarning.wav
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\speakerOFF.png
-D:\Reposit\Almerra\Launcher\bin\Debug\Resources\speakerON.png
-D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Models.dll
-D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Recognition.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Models.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\greetings.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\done.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\patsoft.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\patwarning.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\speakerOFF.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\speakerON.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\start.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\zulu.wav
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\button.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\buttonUpdate.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\font.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\settingsFont.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\close.png
+D:\Reposit\Almerra\Launcher\bin\Debug\Resources\font1.ico
+D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.exe.config
+D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.exe
+D:\Reposit\Almerra\Launcher\bin\Debug\Winds of Almerra.pdb
 D:\Reposit\Almerra\Launcher\bin\Debug\HtmlAgilityPack.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\LinqToExcel.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.Design.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\MetroFramework.Fonts.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\NAudio.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\Remotion.Data.Linq.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\Remotion.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\Remotion.Interfaces.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Models.dll
+D:\Reposit\Almerra\Launcher\bin\Debug\SpeechLib.Recognition.dll
 D:\Reposit\Almerra\Launcher\bin\Debug\HtmlAgilityPack.pdb
 D:\Reposit\Almerra\Launcher\bin\Debug\HtmlAgilityPack.xml
+D:\Reposit\Almerra\Launcher\bin\Debug\LinqToExcel.xml
+D:\Reposit\Almerra\Launcher\bin\Debug\NAudio.xml
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.main.resources
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CopyComplete
+D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.exe
+D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.pdb

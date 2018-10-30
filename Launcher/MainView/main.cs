@@ -4782,11 +4782,38 @@ namespace Launcher
                     {
                         wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                         wc.DownloadFileAsync(
-                            // Param1 = Link of file
-                            new System.Uri("https://drive.google.com/uc?export=view&id=1NhBfHk9uqDJOwRiF1mPqlclct5A4jWPP"), "Game/WoA_0055.zip");
+                            // First download the Excel spreadsheet off foogle drive, so we can find our current build's web path to download
+
+                            //so even wix makes dynamic links -- we really need somewhere on Wix where we can find a <a href> we can parse
+
+                            new System.Uri("https://docs.wixstatic.com/ugd/0cc0b4_2cc17f6c3fd64d09b9a15e490665b79c.xlsx?dn=Latest.xlsx"), "Game/Latest.xlsx");
+
+                        var book = new LinqToExcel.ExcelQueryFactory("Game/Latest.xlsx");
+
+                        var query =
+                            from row in book.Worksheet("WoA_0055")
+                            let item = new
+                            {
+                                Code = row["Code"].Cast<string>(),
+                                Supplier = row["Supplier"].Cast<string>(),
+                                Ref = row["Ref"].Cast<string>(),
+                            }
+                            where item.Supplier == "Walmart"
+                            select item;
+
+
+
+
+
+
+
+
+
+
+
                     }
 
-
+                    // new System.Uri("https://drive.google.com/uc?export=view&id=1NhBfHk9uqDJOwRiF1mPqlclct5A4jWPP"), "Game/WoA_0055.zip");
                 }
                     if (result == DialogResult.No)
                 { Console.WriteLine("Ignoring error '" + caption + "'"); }

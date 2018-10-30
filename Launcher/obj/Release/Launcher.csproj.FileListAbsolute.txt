@@ -89,4 +89,15 @@ D:\Reposit\Almerra\Launcher\bin\Release\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Release\HtmlAgilityPack.dll
 D:\Reposit\Almerra\Launcher\bin\Release\HtmlAgilityPack.pdb
 D:\Reposit\Almerra\Launcher\bin\Release\HtmlAgilityPack.xml
-D:\Reposit\Almerra\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\Knowts.txt
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\button.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\buttonUpdate.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\font.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\settingsFont.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\close.png
+D:\Reposit\Almerra\Launcher\bin\Release\Resources\font1.ico
+D:\Reposit\Almerra\Launcher\bin\Release\LinqToExcel.dll
+D:\Reposit\Almerra\Launcher\bin\Release\Remotion.Data.Linq.dll
+D:\Reposit\Almerra\Launcher\bin\Release\Remotion.dll
+D:\Reposit\Almerra\Launcher\bin\Release\Remotion.Interfaces.dll
+D:\Reposit\Almerra\Launcher\bin\Release\LinqToExcel.xml
