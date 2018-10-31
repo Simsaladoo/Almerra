@@ -4664,66 +4664,36 @@ namespace Launcher
             Stream response = myClient.OpenRead(html);
             // The stream data is used here.  
             Console.WriteLine("Asking for latest build from server");
-            HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load(html);
-            string downloadString = myClient.DownloadString(html);
+
+            // REAALLY SLOW PART
+
+            // HtmlWeb web = new HtmlWeb();
+            // var htmlDoc = web.Load(html);
+            // string downloadString = myClient.DownloadString(html);
+
             //entire web document loaded as a string
-            var htmlBody = htmlDoc.DocumentNode.SelectNodes("//body//div");
+
+            // var htmlBody = htmlDoc.DocumentNode.SelectNodes("//body//div");
+
             // select parts of html doc to read
 
-            var nodes = htmlBody.Elements("p");
-            string search = Convert.ToString(htmlBody);
+            // var nodes = htmlBody.Elements("p");
+            // string search = Convert.ToString(htmlBody);
 
 
 
-            foreach (var word in search)
-            {
-                System.Console.WriteLine($"<{word}>");
-            }
+            //foreach (var word in search)
+            //{
+            //    System.Console.WriteLine($"<{word}>");
+            //}
 
 
             //writes out into the log what we returned
             //Console.WriteLine(downloadString);
             response.Close();
-
-
-
-
-
-
-
-
-            // only add specific shit to ReadmE
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
-            {
-                foreach (string line in lines)
-                {
-                    // If the line doesn't contain the word 'Second', write the line to the file.
-                    if (!line.Contains("Second"))
-                    {
-                        file.WriteLine(line);
-                    }
-                }
-            }
-
             progressBar1.Visible = false;
 
         }
-
-
-
-
-
-
-        /****************** Setup for Shadowing below window ***************************/
-
-
-
-
-
-
-
-
 
 
         /******************************************* THE PLAY GAME BUTTON ************************************/
@@ -4745,7 +4715,8 @@ namespace Launcher
 
 
 
-
+            // Teh default function of clicking the Play button -- first we see if there is already a game local to play
+            // If NOT then go to catch which gives user a prompt to ignore or download latest
             try
             {
                 string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
@@ -4762,72 +4733,75 @@ namespace Launcher
                 }
             }
 
-
-
+            // No game build .exe was found, so we need to download the game, first look locally to see if we have the latest
+            // text file containing the link to the latest version.  
+            // download text file from github, read that text file and save link as a string, use string to download zip
             catch
             {
-                // it is already running 
-
-                // Initializes the variables to pass to the MessageBox.Show method.
-                string message = "No Winds of Almerra builds were found in " + gdirectory + " , download latest?";
-                string caption = "Project not found!";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
-                result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
+                // First see if we have the txt file -- perhaps we have opened the launcher but not yet downloaded a build
+                try
                 {
-                    // Startup a web client to download the zip
-                    progressBar1.Visible = true;
+                    //read text file if it exists
+
+                    string latestlink = File.ReadAllText("Game/Knowts.txt");
+                    Console.WriteLine("We have no game, but do have a link:" + latestlink);
                     using (WebClient wc = new WebClient())
                     {
                         wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                        wc.DownloadFileAsync(
-                            // First download the Excel spreadsheet off foogle drive, so we can find our current build's web path to download
-
-                            //so even wix makes dynamic links -- we really need somewhere on Wix where we can find a <a href> we can parse
-
-                            new System.Uri("https://docs.wixstatic.com/ugd/0cc0b4_2cc17f6c3fd64d09b9a15e490665b79c.xlsx?dn=Latest.xlsx"), "Game/Latest.xlsx");
-
-                        var book = new LinqToExcel.ExcelQueryFactory("Game/Latest.xlsx");
-
-                        var query =
-                            from row in book.Worksheet("WoA_0055")
-                            let item = new
-                            {
-                                Code = row["Code"].Cast<string>(),
-                                Supplier = row["Supplier"].Cast<string>(),
-                                Ref = row["Ref"].Cast<string>(),
-                            }
-                            where item.Supplier == "Walmart"
-                            select item;
-
-
-
-
-
-
-
-
-
-
-
+                        wc.DownloadFileAsync(new System.Uri(latestlink), "Game/WoA_0055.zip");
                     }
 
-                    // new System.Uri("https://drive.google.com/uc?export=view&id=1NhBfHk9uqDJOwRiF1mPqlclct5A4jWPP"), "Game/WoA_0055.zip");
                 }
-                    if (result == DialogResult.No)
-                { Console.WriteLine("Ignoring error '" + caption + "'"); }
 
+                //Otherwise we have nothing, and we need to first download the Knowts.txt
+                catch
+                {
+
+
+                    // show a prompt
+                    string message = "No Winds of Almerra builds were found in " + gdirectory + " , download latest?";
+                    string caption = "Project not found!";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Startup a web client to download the Knowts.txt file containing the link
+                        progressBar1.Visible = true;
+                        using (WebClient wc = new WebClient())
+                        {
+                            wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                            wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+
+                        }
+                    }
+
+                    // If user selects 'NO' at prompt then nothing happens, closes prompt and goes back to launcher to wait
+
+                    if (result == DialogResult.No)
+                    {
+                        Console.WriteLine("Ignoring error '" + caption + "'");
+                    }
+                }
             }
+
+
+
+
+
+
+
+            //string latestlink = File.ReadAllText("Game/Knowts.txt");
+            //Console.WriteLine(latestlink);
 
         }
 
         // Event to track the progress
+
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
         }
-
 
         /******************************************* THE LOAD ENGINE BUTTON ************************************/
 
