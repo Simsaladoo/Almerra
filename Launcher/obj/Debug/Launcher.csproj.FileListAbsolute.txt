@@ -89,3 +89,4 @@ D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csproj.CopyComplete
 D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.exe
 D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.pdb
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\Knowts.txt
+D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
