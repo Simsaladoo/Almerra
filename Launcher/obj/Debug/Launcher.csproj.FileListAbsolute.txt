@@ -90,3 +90,18 @@ D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.exe
 D:\Reposit\Almerra\Launcher\obj\Debug\Winds of Almerra.pdb
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\Knowts.txt
 D:\Reposit\Almerra\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Knowts.txt
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\button.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\buttonUpdate.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\settingsFont.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\close.png
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font1.ico
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Data.Linq.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Interfaces.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.pdb
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.xml
