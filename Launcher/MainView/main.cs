@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
-using System.Net;
 using System.Text;
 using System.Drawing;
 using System.Data;
@@ -5198,37 +5197,24 @@ namespace Launcher
         }
 
 
-        // Visualizer for audio testing of frequencies
-        public int ZoomAmount = 200;
+
 
         private void button7_Click(object sender, EventArgs e)
         {
-            int ZoomAmount = 100;
-            // open a demo file
-
-            //var maxPeakProvider = new MaxPeakProvider();
-            //var rmsPeakProvider = new RmsPeakProvider(blockSize); // e.g. 200
-            //var samplingPeakProvider = new SamplingPeakProvider(sampleInterval); // e.g. 200
-            //var averagePeakProvider = new AveragePeakProvider(scaleFactor); // e.g. 4
             string path = @"Resources/greetings.wav";
 
 
-            waveViewer1.SamplesPerPixel = ZoomAmount;
-            waveViewer1.WaveStream = new NAudio.Wave.WaveFileReader(path);
-            //waveViewer1.WaveStream.Read
 
 
         }
         private void button5_Click_1(object sender, EventArgs e)
         {
-            waveViewer1.SamplesPerPixel = ZoomAmount + 50;
-            // plus sign to zoom into visualizer
+
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
-            // minus sign to zoom out of visualizer
-            waveViewer1.SamplesPerPixel = ZoomAmount - 50;
+
         }
 
         /******************************************* NAVIGATION BUTTONS ************************************/

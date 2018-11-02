@@ -38,7 +38,6 @@
             this.ToolsPanel = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AudioPanel = new System.Windows.Forms.Panel();
-            this.waveViewer1 = new NAudio.Gui.WaveViewer();
             this.Audio_HeaderLabel = new System.Windows.Forms.Label();
             this.AudioHLine = new System.Windows.Forms.Label();
             this.AudioPageTitle = new System.Windows.Forms.Label();
@@ -225,7 +224,6 @@
             // AudioPanel
             // 
             this.AudioPanel.BackColor = System.Drawing.Color.Black;
-            this.AudioPanel.Controls.Add(this.waveViewer1);
             this.AudioPanel.Controls.Add(this.Audio_HeaderLabel);
             this.AudioPanel.Controls.Add(this.AudioHLine);
             this.AudioPanel.Controls.Add(this.AudioPageTitle);
@@ -235,17 +233,6 @@
             this.AudioPanel.Name = "AudioPanel";
             this.AudioPanel.Size = new System.Drawing.Size(798, 363);
             this.AudioPanel.TabIndex = 38;
-            // 
-            // waveViewer1
-            // 
-            this.waveViewer1.BackColor = System.Drawing.Color.Gray;
-            this.waveViewer1.Location = new System.Drawing.Point(289, 91);
-            this.waveViewer1.Name = "waveViewer1";
-            this.waveViewer1.SamplesPerPixel = 128;
-            this.waveViewer1.Size = new System.Drawing.Size(426, 157);
-            this.waveViewer1.StartPosition = ((long)(0));
-            this.waveViewer1.TabIndex = 48;
-            this.waveViewer1.WaveStream = null;
             // 
             // Audio_HeaderLabel
             // 
@@ -1238,7 +1225,6 @@
         private System.Windows.Forms.Label Game_AALabel;
         private System.Windows.Forms.Label Game_NoteLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private NAudio.Gui.WaveViewer waveViewer1;
     }
 }
 
