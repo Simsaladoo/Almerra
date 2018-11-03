@@ -908,6 +908,7 @@
             this.button11.BackColor = System.Drawing.Color.Lime;
             this.button11.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.Enabled = false;
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
@@ -927,6 +928,7 @@
             this.button8.BackColor = System.Drawing.Color.Lime;
             this.button8.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.Enabled = false;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
@@ -965,6 +967,7 @@
             this.button10.BackColor = System.Drawing.Color.Lime;
             this.button10.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.Enabled = false;
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
@@ -1112,7 +1115,6 @@
             this.progressBar1.Size = new System.Drawing.Size(1000, 1);
             this.progressBar1.Step = 100;
             this.progressBar1.TabIndex = 32;
-            this.progressBar1.Visible = false;
             // 
             // main
             // 

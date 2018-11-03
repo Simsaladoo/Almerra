@@ -1,3 +1,3 @@
-First line
-Second line
-Third line
+Almerra Launcher Readme
+
+Wow, this readme sucks

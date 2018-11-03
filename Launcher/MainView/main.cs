@@ -16,7 +16,16 @@ using System.Speech.Recognition;
 using System.Drawing.Text;
 using System.Xml;
 using HtmlAgilityPack;
-
+using Google.Apis.Drive;
+using Google.Apis.Drive.v3;
+using DotNetOpenAuth.GoogleOAuth2;
+using Google.Apis.Requests;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3.Data;
+using Google.Apis.Util.Store;
+using Google.Apis.Services;
+using Google.Apis.Download;
+using Google.Apis.Discovery;
 
 
 //                    .____                                    .__                                   //
@@ -41,11 +50,6 @@ namespace Launcher
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
-        private SpeechRecognitionEngine recognitionEngine;
-
-
-
-
 
 
         /***********************************************  Wave File shit ****************************************************/
@@ -73,7 +77,7 @@ namespace Launcher
         public Button _button13 { get { return play; } }
         bool mastercancel = false;
 
-         /* 12s */
+        /* 12s */
 
         public static string intVar { get; set; }
 
@@ -128,7 +132,7 @@ namespace Launcher
         public static string aX003Y009 { get; set; }
         public static string aX003Y010 { get; set; }
         public static string aX003Y011 { get; set; }
-                             
+
         public static string aX004Y000 { get; set; }
         public static string aX004Y001 { get; set; }
         public static string aX004Y002 { get; set; }
@@ -141,7 +145,7 @@ namespace Launcher
         public static string aX004Y009 { get; set; }
         public static string aX004Y010 { get; set; }
         public static string aX004Y011 { get; set; }
-                             
+
         public static string aX005Y000 { get; set; }
         public static string aX005Y001 { get; set; }
         public static string aX005Y002 { get; set; }
@@ -154,7 +158,7 @@ namespace Launcher
         public static string aX005Y009 { get; set; }
         public static string aX005Y010 { get; set; }
         public static string aX005Y011 { get; set; }
-                             
+
         public static string aX006Y000 { get; set; }
         public static string aX006Y001 { get; set; }
         public static string aX006Y002 { get; set; }
@@ -167,7 +171,7 @@ namespace Launcher
         public static string aX006Y009 { get; set; }
         public static string aX006Y010 { get; set; }
         public static string aX006Y011 { get; set; }
-                             
+
         public static string aX007Y000 { get; set; }
         public static string aX007Y001 { get; set; }
         public static string aX007Y002 { get; set; }
@@ -180,7 +184,7 @@ namespace Launcher
         public static string aX007Y009 { get; set; }
         public static string aX007Y010 { get; set; }
         public static string aX007Y011 { get; set; }
-                             
+
         public static string aX008Y000 { get; set; }
         public static string aX008Y001 { get; set; }
         public static string aX008Y002 { get; set; }
@@ -193,7 +197,7 @@ namespace Launcher
         public static string aX008Y009 { get; set; }
         public static string aX008Y010 { get; set; }
         public static string aX008Y011 { get; set; }
-                             
+
         public static string aX009Y000 { get; set; }
         public static string aX009Y001 { get; set; }
         public static string aX009Y002 { get; set; }
@@ -206,7 +210,7 @@ namespace Launcher
         public static string aX009Y009 { get; set; }
         public static string aX009Y010 { get; set; }
         public static string aX009Y011 { get; set; }
-                             
+
         public static string aX010Y000 { get; set; }
         public static string aX010Y001 { get; set; }
         public static string aX010Y002 { get; set; }
@@ -219,7 +223,7 @@ namespace Launcher
         public static string aX010Y009 { get; set; }
         public static string aX010Y010 { get; set; }
         public static string aX010Y011 { get; set; }
-                             
+
         public static string aX011Y000 { get; set; }
         public static string aX011Y001 { get; set; }
         public static string aX011Y002 { get; set; }
@@ -4374,7 +4378,6 @@ namespace Launcher
         SoundPlayer patsoft = new SoundPlayer("Resources/patsoft.wav");
         SoundPlayer patwarnings = new SoundPlayer("Resources/patwarning.wav");
         bool soundenabled = true;
-        bool isShowingViz = false;
         int loopnum = 10;
 
         /* Unused Settings for message box to close itself, n shit */
@@ -4545,7 +4548,7 @@ namespace Launcher
                 notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
-            
+
             if (VolumeOn == true)
             {
                 soundenabled = true;
@@ -4553,7 +4556,7 @@ namespace Launcher
                 sp.Play();
                 button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
             }
-            
+
             else
             {
                 soundenabled = false;
@@ -4619,83 +4622,130 @@ namespace Launcher
                 Console.WriteLine("Multiple instances detected");
                 Application.Exit();
             }
-
-
-
-
-            /*******************************
-                Startup items for the launcher -- 
-                
-                make game folder to download files into, and add a help file there
-                If nothing there, setup buttons to download instead of play.
-                Connect to website to pull latest build #
-                check for that build# in game folder.
-
-            /********************************/
+//*******************************/*******************************/*******************************/*******************************/
+//              Startup items for the launcher -- 
+//              
+//              make game folder to download files into, and add a help file there
+//              If nothing there, setup buttons to download instead of play.
+//              Connect to website to pull latest build #
+//              check for that build# in game folder.
+//
+//********************************/*******************************/*******************************/*******************************/
             //create the folder
             Directory.CreateDirectory(Path.Combine("Game"));
             //create the readme file
             string path = "Game/ReadMe.txt";
             var html = "http://www.almerra.com/updates";
-            if (!File.Exists(path))
+            if (!System.IO.File.Exists(path))
             {
-                File.Create(path);
+                System.IO.File.Create(path);
                 Console.WriteLine("ReadMe File Created");
             }
-            else if (File.Exists(path))
+            else if (System.IO.File.Exists(path))
             {
                 Console.WriteLine("ReadMe File Exists");
             }
 
             // ... Say stuff within teh readme.
+            // .. this is a final update area to log changes once we go live and offset faq on things as needed.
             string[] lines = {
-                "First line",
-                "Second line",
-                "Third line"
+                "Almerra Launcher Readme",
+                "",
+                "Wow, this readme sucks"
+
             };
 
             System.IO.File.WriteAllLines("Game/ReadMe.txt", lines);
+            string latestlink = System.IO.File.ReadAllText("Game/Knowts.txt");
 
 
 
-            // access almerra.com
-            WebClient myClient = new WebClient();
-            Stream response = myClient.OpenRead(html);
-            // The stream data is used here.  
-            Console.WriteLine("Asking for latest build from server");
-
-            // REAALLY SLOW PART
-
-            // HtmlWeb web = new HtmlWeb();
-            // var htmlDoc = web.Load(html);
-            // string downloadString = myClient.DownloadString(html);
-
-            //entire web document loaded as a string
-
-            // var htmlBody = htmlDoc.DocumentNode.SelectNodes("//body//div");
-
-            // select parts of html doc to read
-
-            // var nodes = htmlBody.Elements("p");
-            // string search = Convert.ToString(htmlBody);
-
-
-
-            //foreach (var word in search)
-            //{
-            //    System.Console.WriteLine($"<{word}>");
-            //}
-
-
-            //writes out into the log what we returned
-            //Console.WriteLine(downloadString);
-            response.Close();
-            progressBar1.Visible = false;
+            //response.Close();
+            // progressBar1.Visible = false;
 
         }
 
 
+        public static DriveService AuthenticateOauth(string clientSecretJson, string userName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(userName))
+                    throw new ArgumentNullException("userName");
+                if (string.IsNullOrEmpty(clientSecretJson))
+                    throw new ArgumentNullException("clientSecretJson");
+                if (!System.IO.File.Exists(clientSecretJson))
+                    throw new Exception("clientSecretJson file does not exist.");
+
+                // These are the scopes of permissions you need. It is best to request only what you need and not all of them
+                string[] scopes = new string[] { DriveService.Scope.DriveReadonly };         	//View the files in your Google Drive                                                 
+                UserCredential credential;
+                using (var stream = new FileStream(clientSecretJson, FileMode.Open, FileAccess.Read))
+                {
+                    string credPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+                    credPath = Path.Combine(credPath, ".credentials/", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+
+                    // Requesting Authentication or loading previously stored authentication for userName
+                    credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets,
+                                                                             scopes,
+                                                                             userName,
+                                                                             CancellationToken.None,
+                                                                             new FileDataStore(credPath, true)).Result;
+                }
+
+                // Create Drive API service.
+                return new DriveService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "Drive Oauth2 Authentication Sample"
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Create Oauth2 account DriveService failed" + ex.Message);
+                throw new Exception("CreateServiceAccountDriveFailed", ex);
+            }
+        }
+
+
+
+        private static void DownloadFile(Google.Apis.Drive.v3.DriveService service, Google.Apis.Drive.v3.Data.File file, string saveTo)
+        {
+
+            var request = service.Files.Get(file.Id);
+            var stream = new System.IO.MemoryStream();
+
+            // Add a handler which will be notified on progress changes.
+            // It will notify on each chunk download and when the
+            // download is completed or failed.
+            request.MediaDownloader.ProgressChanged += (Google.Apis.Download.IDownloadProgress progress) =>
+            {
+                switch (progress.Status)
+                {
+                    case Google.Apis.Download.DownloadStatus.Downloading:
+                        {
+                            Console.WriteLine(progress.BytesDownloaded);
+                            break;
+                        }
+                    case Google.Apis.Download.DownloadStatus.Completed:
+                        {
+                            Console.WriteLine("Download complete.");
+                            break;
+                        }
+                    case Google.Apis.Download.DownloadStatus.Failed:
+                        {
+                            Console.WriteLine("Download failed.");
+                            break;
+                        }
+                }
+            };
+            request.Download(stream);
+        }
+
+
+
         /******************************************* THE PLAY GAME BUTTON ************************************/
+
 
         /*******************************
             play latest build button pressed
@@ -4711,6 +4761,7 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patsoft);
                 sp.Play();
             };
+
 
 
 
@@ -4742,15 +4793,10 @@ namespace Launcher
                 {
                     //read text file if it exists
 
-                    string latestlink = File.ReadAllText("Game/Knowts.txt");
-                    Console.WriteLine("We have no game, but do have a link:" + latestlink);
-                    using (WebClient wc = new WebClient())
-                    {
-                        wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                        wc.DownloadFileAsync(new System.Uri(latestlink), "Game/WoA_0055.zip");
-                    }
+                    
 
                 }
+
 
                 //Otherwise we have nothing, and we need to first download the Knowts.txt
                 catch
@@ -4799,6 +4845,7 @@ namespace Launcher
 
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
+            progressBar1.Visible = true;
             progressBar1.Value = e.ProgressPercentage;
         }
 
@@ -5199,12 +5246,11 @@ namespace Launcher
 
 
 
+
+
+
         private void button7_Click(object sender, EventArgs e)
         {
-            string path = @"Resources/greetings.wav";
-
-
-
 
         }
         private void button5_Click_1(object sender, EventArgs e)
@@ -5216,6 +5262,11 @@ namespace Launcher
         {
 
         }
+
+
+
+
+
 
         /******************************************* NAVIGATION BUTTONS ************************************/
         // Close 'X' Button clicked
@@ -5798,7 +5849,7 @@ namespace Launcher
                 try
                 {
                     // name csv from images, this goes off for every file converted --commented out the richtextbox updater for performance
-                    File.WriteAllText(path + file + ".csv", sb.ToString());
+                    System.IO.File.WriteAllText(path + file + ".csv", sb.ToString());
                     // richTextBox1.AppendText(Environment.NewLine + file + " Written...");
                     // richTextBox1.Focus();
                     // richTextBox1.SelectionStart = richTextBox1.Text.Length;
@@ -10785,7 +10836,7 @@ namespace Launcher
                 try
                 {
                     // name csv from images, this goes off for every file converted --commented out the richtextbox updater for performance
-                    File.WriteAllText(path + file + ".csv", sb.ToString());
+                    System.IO.File.WriteAllText(path + file + ".csv", sb.ToString());
                     // richTextBox1.AppendText(Environment.NewLine + file + " Written...");
                     // richTextBox1.Focus();
                     // richTextBox1.SelectionStart = richTextBox1.Text.Length;
