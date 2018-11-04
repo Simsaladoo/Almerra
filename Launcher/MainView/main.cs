@@ -4511,7 +4511,14 @@ namespace Launcher
         }
 
 
+        
+        string latestpath = "Game/Knowts.txt";
+        public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+        public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
+        public string zippath = "Game/WoA_0055.zip";
 
+        public string gamepath = "Game/Knowts.txt";
+        public string latestlink = String.Empty;
 
 
 
@@ -4649,20 +4656,67 @@ namespace Launcher
             // ... Say stuff within teh readme.
             // .. this is a final update area to log changes once we go live and offset faq on things as needed.
             string[] lines = {
-                "Almerra Launcher Readme",
-                "",
-                "Wow, this readme sucks"
-
-            };
+                            "Almerra Launcher Readme",
+                            "",
+                            "Wow, this readme sucks"
+                            };
 
             System.IO.File.WriteAllLines("Game/ReadMe.txt", lines);
-            string latestlink = System.IO.File.ReadAllText("Game/Knowts.txt");
+
+            // public string latestpath = "Game/Knowts.txt";
+            // public bool Exists = (System.IO.File.Exists(latestpath));
+            // public string zippath = "Game/WoA_0055.zip";
+            // public string gamepath = "Game/Knowts.txt";
+            // public string latestlink = String.Empty;
+
+
+            if (LatestPathExists)
+            {
+
+                //varibles for the reads
+                string latestlink = System.IO.File.ReadAllText(latestpath);
+                var client = new WebClient();
+                var latestonlinelink = client.DownloadString(KnowtsOnline);
+
+
+                //read the string link from Knowts.txt online to check against local
+                WebRequest request = WebRequest.Create(KnowtsOnline);
+                WebResponse response = request.GetResponse();
+                Stream data = response.GetResponseStream();
+                using (StreamReader sr = new StreamReader(data))
+                {
+                    html = sr.ReadToEnd();
+                }
 
 
 
+                if (html == latestlink)
+                {
+                    play.Text = ("Play Latest");
+                    Console.WriteLine("Knowts is up to date"); // now confirmed, we can read the latest link
+                }
+                
+                else 
+                {
+                    play.Text = ("Get Latest");
+                    Console.WriteLine("Newer Knowts is online"); // download new knowts file and re-read
+
+                }
+
+
+
+            }
+            // this should only happen when no local Knowts.txt file exists
+            else
+            {
+
+                play.Text = ("Get Updated");
+                Console.WriteLine("No Knowts exists...");
+            }
+               
             //response.Close();
             // progressBar1.Visible = false;
-
+            //End of startup loading
         }
 
 
