@@ -4513,12 +4513,17 @@ namespace Launcher
 
         
         string latestpath = "Game/Knowts.txt";
+        string buildpath = "Game/Build.txt";
         public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
         public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
+        public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
+        public bool cacheisdone = false;
+        public bool gameisunzipped = false;
         public string zippath = "Game/WoA_0055.zip";
-
         public string gamepath = "Game/Knowts.txt";
         public string latestlink = String.Empty;
+        public string latestbuild = String.Empty;
+        public string onlinelatesthtml = String.Empty;
 
 
 
@@ -4642,7 +4647,7 @@ namespace Launcher
             Directory.CreateDirectory(Path.Combine("Game"));
             //create the readme file
             string path = "Game/ReadMe.txt";
-            var html = "http://www.almerra.com/updates";
+            var onlinelatesthtml = KnowtsOnline;
             if (!System.IO.File.Exists(path))
             {
                 System.IO.File.Create(path);
@@ -4658,25 +4663,21 @@ namespace Launcher
             string[] lines = {
                             "Almerra Launcher Readme",
                             "",
-                            "Wow, this readme sucks"
+                            "wuh, dis rEaDmE SuX lul gIt guuD"
                             };
 
             System.IO.File.WriteAllLines("Game/ReadMe.txt", lines);
-
-            // public string latestpath = "Game/Knowts.txt";
-            // public bool Exists = (System.IO.File.Exists(latestpath));
-            // public string zippath = "Game/WoA_0055.zip";
-            // public string gamepath = "Game/Knowts.txt";
-            // public string latestlink = String.Empty;
+            // aaaaaand we're done with the readme.  i dunno idgaf
 
 
-            if (LatestPathExists)
+            // now startup messages so we can change the state of the play button
+            // as long as we have SOMETHING local nnowts will alwusa bea truh
+            if (LatestPathExists) // as long as we have a local knowts file... always truh
             {
-
                 //varibles for the reads
                 string latestlink = System.IO.File.ReadAllText(latestpath);
                 var client = new WebClient();
-                var latestonlinelink = client.DownloadString(KnowtsOnline);
+                var latestonlinelink = client.DownloadString(KnowtsOnline); // the contents of the file that is online isnt called here, just a link reference
 
 
                 //read the string link from Knowts.txt online to check against local
@@ -4685,21 +4686,40 @@ namespace Launcher
                 Stream data = response.GetResponseStream();
                 using (StreamReader sr = new StreamReader(data))
                 {
-                    html = sr.ReadToEnd();
+                    onlinelatesthtml = sr.ReadToEnd();
                 }
+                //as of right now the onlinelatesthtml should be filled with the last link on the github within resources/knowts.txt
 
 
-
-                if (html == latestlink)
+                if (onlinelatesthtml == latestlink)
                 {
+
                     play.Text = ("Play Latest");
                     Console.WriteLine("Knowts is up to date"); // now confirmed, we can read the latest link
+                    Console.WriteLine(latestlink);
+
+                    if (cacheisdone)
+                    {
+
+                    }
+                    if (gameisunzipped)
+                    {
+
+                    }
+
+                    else
+                    {
+
+                    }
+
+
                 }
                 
                 else 
                 {
                     play.Text = ("Get Latest");
                     Console.WriteLine("Newer Knowts is online"); // download new knowts file and re-read
+                    Console.WriteLine(onlinelatesthtml + " =/= " + latestlink);
 
                 }
 
@@ -4719,84 +4739,7 @@ namespace Launcher
             //End of startup loading
         }
 
-
-        public static DriveService AuthenticateOauth(string clientSecretJson, string userName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(userName))
-                    throw new ArgumentNullException("userName");
-                if (string.IsNullOrEmpty(clientSecretJson))
-                    throw new ArgumentNullException("clientSecretJson");
-                if (!System.IO.File.Exists(clientSecretJson))
-                    throw new Exception("clientSecretJson file does not exist.");
-
-                // These are the scopes of permissions you need. It is best to request only what you need and not all of them
-                string[] scopes = new string[] { DriveService.Scope.DriveReadonly };         	//View the files in your Google Drive                                                 
-                UserCredential credential;
-                using (var stream = new FileStream(clientSecretJson, FileMode.Open, FileAccess.Read))
-                {
-                    string credPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-                    credPath = Path.Combine(credPath, ".credentials/", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
-
-                    // Requesting Authentication or loading previously stored authentication for userName
-                    credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets,
-                                                                             scopes,
-                                                                             userName,
-                                                                             CancellationToken.None,
-                                                                             new FileDataStore(credPath, true)).Result;
-                }
-
-                // Create Drive API service.
-                return new DriveService(new BaseClientService.Initializer()
-                {
-                    HttpClientInitializer = credential,
-                    ApplicationName = "Drive Oauth2 Authentication Sample"
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Create Oauth2 account DriveService failed" + ex.Message);
-                throw new Exception("CreateServiceAccountDriveFailed", ex);
-            }
-        }
-
-
-
-        private static void DownloadFile(Google.Apis.Drive.v3.DriveService service, Google.Apis.Drive.v3.Data.File file, string saveTo)
-        {
-
-            var request = service.Files.Get(file.Id);
-            var stream = new System.IO.MemoryStream();
-
-            // Add a handler which will be notified on progress changes.
-            // It will notify on each chunk download and when the
-            // download is completed or failed.
-            request.MediaDownloader.ProgressChanged += (Google.Apis.Download.IDownloadProgress progress) =>
-            {
-                switch (progress.Status)
-                {
-                    case Google.Apis.Download.DownloadStatus.Downloading:
-                        {
-                            Console.WriteLine(progress.BytesDownloaded);
-                            break;
-                        }
-                    case Google.Apis.Download.DownloadStatus.Completed:
-                        {
-                            Console.WriteLine("Download complete.");
-                            break;
-                        }
-                    case Google.Apis.Download.DownloadStatus.Failed:
-                        {
-                            Console.WriteLine("Download failed.");
-                            break;
-                        }
-                }
-            };
-            request.Download(stream);
-        }
-
-
+        
 
         /******************************************* THE PLAY GAME BUTTON ************************************/
 
@@ -4809,7 +4752,8 @@ namespace Launcher
         {
 
             /*      play our last build -- first make sure its even there, if not display the messgae box */
-            var gdirectory = (@"H:\UE4\Builds\Archive\WoA_0055\");
+            var gdirectory = "Game/";
+            var cdirectory = "Game/cache/";
             if (soundenabled == true)
             {
                 System.Media.SoundPlayer sp = (patsoft);
@@ -4821,7 +4765,7 @@ namespace Launcher
 
             // Teh default function of clicking the Play button -- first we see if there is already a game local to play
             // If NOT then go to catch which gives user a prompt to ignore or download latest
-            try
+            if (onlinelatesthtml == latestlink)
             {
                 string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
                 Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
@@ -4831,6 +4775,7 @@ namespace Launcher
                     Console.WriteLine(dir);
                     if (dir != null)
                     {
+                        // WE have teh file! start the gaame and minimize the launcher
                         System.Diagnostics.Process.Start(dir);
                         this.WindowState = FormWindowState.Minimized;
                     }
@@ -4840,20 +4785,39 @@ namespace Launcher
             // No game build .exe was found, so we need to download the game, first look locally to see if we have the latest
             // text file containing the link to the latest version.  
             // download text file from github, read that text file and save link as a string, use string to download zip
-            catch
+            else
             {
                 // First see if we have the txt file -- perhaps we have opened the launcher but not yet downloaded a build
-                try
+                if (onlinelatesthtml == latestlink)
                 {
-                    //read text file if it exists
+                    Console.WriteLine("Knowts is up to date so we have the latest local path");
 
-                    
+                    string[] dirs = Directory.GetFiles(cdirectory, "*WoA_1902*", SearchOption.TopDirectoryOnly);
+                    Console.WriteLine(gdirectory + ", The number of zips starting with W is " + dirs.Length);
+                    foreach (string dir in dirs)
+                    {
+                        string letsdothis = dir;
+                        Console.WriteLine(dir);
+                        if (dir != null)
+                        {
+                            // WE have some locals zips! use as offset to download from correct zip onward
+
+
+                        }
+                        else
+                        {
+                            //download some shit! 
+
+
+                        }
+                    }
+
 
                 }
 
 
                 //Otherwise we have nothing, and we need to first download the Knowts.txt
-                catch
+                else
                 {
 
 

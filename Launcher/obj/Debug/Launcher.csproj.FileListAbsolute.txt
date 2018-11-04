@@ -45,7 +45,6 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Models.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\done.wav
@@ -141,3 +140,5 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.WebRequest.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Org.Mentalis.Security.Cryptography.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Mono.Math.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt

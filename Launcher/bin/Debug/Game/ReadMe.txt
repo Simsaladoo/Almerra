@@ -1,3 +1,3 @@
 Almerra Launcher Readme
 
-Wow, this readme sucks
+wuh, dis rEaDmE SuX lul gIt guuD
