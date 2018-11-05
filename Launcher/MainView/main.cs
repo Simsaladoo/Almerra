@@ -4760,7 +4760,7 @@ namespace Launcher
                 play.Text = ("Get Updated");
                 Console.WriteLine("No Knowts exists...");
                 var client = new WebClient();
-                var latestonlinelink = client.DownloadString(KnowtsOnline);   
+                var latestonlinelink = client.DownloadString(KnowtsOnline);    // gets the newest link it needs from online
                 onlinelatesthtml = KnowtsOnline;
             }
                
@@ -4921,7 +4921,33 @@ namespace Launcher
                             wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                             wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
                             wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+
                         }
+                        using (WebClient wc = new System.Net.WebClient())
+                        {
+                            wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                            wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
+                            wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt"), "Game/Build.txt");
+
+                        }
+
+                        using (WebClient wc = new System.Net.WebClient())
+                        {
+                            wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                            wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
+                            wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Manifest.txt"), "Game/Manifest.txt");
+
+                        }
+                        using (WebClient wc = new System.Net.WebClient())
+                        {
+                            wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                            wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
+                            wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/ZipsManifest.txt"), "Game/ZipsManifest.txt");
+
+                        }
+
+
+
                     }
 
                     // If user selects 'NO' at prompt then nothing happens, closes prompt and goes back to launcher to wait
@@ -4948,7 +4974,8 @@ namespace Launcher
         {
             // shit
             progressBar1.Visible = false;
-            play.Text = "Download";
+            LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+            play.Text = "Download Game";
             play.Enabled = true;
         }
 
