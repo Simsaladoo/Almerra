@@ -153,3 +153,4 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Org.Mentalis.Securi
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Mono.Math.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\Build.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\Manifest.txt
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\ZipsManifest.txt

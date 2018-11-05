@@ -143,3 +143,4 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Mono.Math.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\ZipsManifest.txt
