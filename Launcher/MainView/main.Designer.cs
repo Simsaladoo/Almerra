@@ -1115,6 +1115,7 @@
             this.progressBar1.Size = new System.Drawing.Size(1000, 1);
             this.progressBar1.Step = 100;
             this.progressBar1.TabIndex = 32;
+            this.progressBar1.Visible = false;
             // 
             // main
             // 

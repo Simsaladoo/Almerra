@@ -4511,7 +4511,7 @@ namespace Launcher
         }
 
 
-        
+
         string latestpath = "Game/Knowts.txt";
         string buildpath = "Game/Build.txt";
         public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
@@ -4524,8 +4524,10 @@ namespace Launcher
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
-
-
+        public string gdirectory = "Game/";
+        public string cdirectory = "Game/cache/";
+        public string dir = String.Empty;
+        public string[] dirs = new string[] {""};
 
 
 
@@ -4552,7 +4554,6 @@ namespace Launcher
             this.FormBorderStyle = FormBorderStyle.None;
             bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
             this.FormBorderStyle = FormBorderStyle.None;
-
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
@@ -4560,7 +4561,6 @@ namespace Launcher
                 notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
-
             if (VolumeOn == true)
             {
                 soundenabled = true;
@@ -4568,13 +4568,11 @@ namespace Launcher
                 sp.Play();
                 button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
             }
-
             else
             {
                 soundenabled = false;
                 button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
             }
-
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
@@ -4582,35 +4580,20 @@ namespace Launcher
                 notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
-
             if (VolumeOn == true)
             {
-
                 soundenabled = true;
                 System.Media.SoundPlayer sp = (startupsong);
                 sp.Play();
                 button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
             }
-
             else
             {
                 soundenabled = false;
                 button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
-
             }
-
         }
-
-
-
-
-
-
-
-
-
         private void notifyIcon1_LoadCompleted(object sender, EventArgs e)
-
         {
             ShowInTaskbar = true;
             notifyIcon1.Visible = false;
@@ -4620,9 +4603,27 @@ namespace Launcher
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*******************************
             called AFTER the window is created
         /********************************/
+
+
+
+
+
         private void AfterLoading(object sender, EventArgs e)
         {
             Console.WriteLine("Post Load Completed");
@@ -4634,6 +4635,8 @@ namespace Launcher
                 Console.WriteLine("Multiple instances detected");
                 Application.Exit();
             }
+
+
 //*******************************/*******************************/*******************************/*******************************/
 //              Startup items for the launcher -- 
 //              
@@ -4643,9 +4646,13 @@ namespace Launcher
 //              check for that build# in game folder.
 //
 //********************************/*******************************/*******************************/*******************************/
-            //create the folder
+
+
+            //create the folders for shit
             Directory.CreateDirectory(Path.Combine("Game"));
-            //create the readme file
+            Directory.CreateDirectory(Path.Combine("Game/cache"));
+
+            //create the readme file for no real reason 
             string path = "Game/ReadMe.txt";
             var onlinelatesthtml = KnowtsOnline;
             if (!System.IO.File.Exists(path))
@@ -4657,7 +4664,6 @@ namespace Launcher
             {
                 Console.WriteLine("ReadMe File Exists");
             }
-
             // ... Say stuff within teh readme.
             // .. this is a final update area to log changes once we go live and offset faq on things as needed.
             string[] lines = {
@@ -4670,9 +4676,21 @@ namespace Launcher
             // aaaaaand we're done with the readme.  i dunno idgaf
 
 
-            // now startup messages so we can change the state of the play button
-            // as long as we have SOMETHING local nnowts will alwusa bea truh
-            if (LatestPathExists) // as long as we have a local knowts file... always truh
+
+
+
+            //*******************************/*******************************/*******************************/*******************************/
+            //              Startup items for the launcher as a program -- 
+            //              
+            //              here we'll add all the startup shit for downaloading new files and everything
+            //              if then else, all that shit -- but we'll also addin searches for engine.ini files for the options menu here
+            //
+            //********************************/*******************************/*******************************/*******************************/
+
+            
+            // as long as we have a knowts.txt file locally this will alwusa be true
+
+            if (LatestPathExists) 
             {
                 //varibles for the reads
                 string latestlink = System.IO.File.ReadAllText(latestpath);
@@ -4693,23 +4711,32 @@ namespace Launcher
 
                 if (onlinelatesthtml == latestlink)
                 {
-
-                    play.Text = ("Play Latest");
                     Console.WriteLine("Knowts is up to date"); // now confirmed, we can read the latest link
-                    Console.WriteLine(latestlink);
-
                     if (cacheisdone)
                     {
-
+                        Console.WriteLine("Do we have the zip for this");
+                        play.Text = ("Unzip");
                     }
                     if (gameisunzipped)
                     {
-
+                        Console.WriteLine("Game is unzipped, starting");
+                        play.Text = ("Play Latest");
+                        string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
+                        Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
+                        foreach (string dir in dirs)
+                        {
+                            string letsdothis = dir;
+                            Console.WriteLine(dir);
+                            if (dir != null)
+                            {
+                                gameisunzipped = true;
+                            }
+                        }
                     }
 
                     else
                     {
-
+                        play.Text = ("Get Zips");
                     }
 
 
@@ -4717,10 +4744,8 @@ namespace Launcher
                 
                 else 
                 {
-                    play.Text = ("Get Latest");
-                    Console.WriteLine("Newer Knowts is online"); // download new knowts file and re-read
-                    Console.WriteLine(onlinelatesthtml + " =/= " + latestlink);
-
+                    play.Text = ("Mssing");
+                    Console.WriteLine("Knowts file not found"); // download new knowts file and re-read
                 }
 
 
@@ -4734,8 +4759,8 @@ namespace Launcher
                 Console.WriteLine("No Knowts exists...");
             }
                
-            //response.Close();
-            // progressBar1.Visible = false;
+            // response.Close();
+            progressBar1.Visible = false;
             //End of startup loading
         }
 
@@ -4765,19 +4790,46 @@ namespace Launcher
 
             // Teh default function of clicking the Play button -- first we see if there is already a game local to play
             // If NOT then go to catch which gives user a prompt to ignore or download latest
-            if (onlinelatesthtml == latestlink)
+            if (LatestPathExists) // is valid base levelcheck
             {
-                string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
-                Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
-                foreach (string dir in dirs)
+                if (onlinelatesthtml == latestlink) // we have the latest version link
                 {
-                    string letsdothis = dir;
-                    Console.WriteLine(dir);
-                    if (dir != null)
+                    if(cacheisdone) // we have downloaded all the files already
                     {
-                        // WE have teh file! start the gaame and minimize the launcher
-                        System.Diagnostics.Process.Start(dir);
-                        this.WindowState = FormWindowState.Minimized;
+                        if (gameisunzipped) // we are done unzipping all the files for the game
+                        {
+                            // WE have teh file! start the gaame and minimize the launcher
+                            System.Diagnostics.Process.Start(dir);
+                            this.WindowState = FormWindowState.Minimized;
+                        }
+                    }
+                    else // cache not done, so download zips
+                    {
+                        // need check for which zip is last right here, then update the current ones name
+
+
+                        string currentzipname = "WoA_1902_0055.zip.000";
+                        Console.WriteLine("no local zips, downloading...");
+                        progressBar1.Visible = true;
+                        using (WebClient wc = new WebClient())
+                        {
+
+                            wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                            wc.DownloadFileAsync(new System.Uri("https://drive.google.com/uc?export=download&confirm=7o6p&id=1AUZXlZ1lBgBsOdQuzU8M5RObXB__6Nf4"), (cdirectory + currentzipname));
+                        }
+                    }
+                }
+
+                else
+                {
+                    //not the latest version
+                    //download some shit! 
+                    Console.WriteLine("Knowts is not up to date so we download new knowts");
+                    progressBar1.Visible = true;
+                    using (WebClient wc = new WebClient())
+                    {
+                        wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                        wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
                     }
                 }
             }
@@ -4785,7 +4837,7 @@ namespace Launcher
             // No game build .exe was found, so we need to download the game, first look locally to see if we have the latest
             // text file containing the link to the latest version.  
             // download text file from github, read that text file and save link as a string, use string to download zip
-            else
+            else // latest path does not exist, download the latest knowts
             {
                 // First see if we have the txt file -- perhaps we have opened the launcher but not yet downloaded a build
                 if (onlinelatesthtml == latestlink)
@@ -4806,12 +4858,18 @@ namespace Launcher
                         }
                         else
                         {
-                            //download some shit! 
+                            progressBar1.Visible = true;
+                            using (WebClient wc = new WebClient())
+                            {
+                                //download some shit! 
+                                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                                wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+
+                            }
 
 
                         }
                     }
-
 
                 }
 
@@ -4856,7 +4914,7 @@ namespace Launcher
 
             //string latestlink = File.ReadAllText("Game/Knowts.txt");
             //Console.WriteLine(latestlink);
-
+            //very end of play-click
         }
 
         // Event to track the progress
