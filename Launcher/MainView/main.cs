@@ -26,6 +26,7 @@ using Google.Apis.Util.Store;
 using Google.Apis.Services;
 using Google.Apis.Download;
 using Google.Apis.Discovery;
+using System.ComponentModel;
 
 
 //                    .____                                    .__                                   //
@@ -4514,6 +4515,8 @@ namespace Launcher
 
         string latestpath = "Game/Knowts.txt";
         string buildpath = "Game/Build.txt";
+        public string manifestpath = "Game/Manifest.txt";
+        public string ziplinkpaths = "Game/ZipsManifest.txt";
         public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
         public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
@@ -4528,7 +4531,7 @@ namespace Launcher
         public string cdirectory = "Game/cache/";
         public string dir = String.Empty;
         public string[] dirs = new string[] {""};
-
+        public int currentziplink = 0;
 
 
         /*******************************
@@ -4744,7 +4747,7 @@ namespace Launcher
                 
                 else 
                 {
-                    play.Text = ("Mssing");
+                    play.Text = ("Missing");
                     Console.WriteLine("Knowts file not found"); // download new knowts file and re-read
                 }
 
@@ -4754,9 +4757,11 @@ namespace Launcher
             // this should only happen when no local Knowts.txt file exists
             else
             {
-
                 play.Text = ("Get Updated");
                 Console.WriteLine("No Knowts exists...");
+                var client = new WebClient();
+                var latestonlinelink = client.DownloadString(KnowtsOnline);   
+                onlinelatesthtml = KnowtsOnline;
             }
                
             // response.Close();
@@ -4792,11 +4797,11 @@ namespace Launcher
             // If NOT then go to catch which gives user a prompt to ignore or download latest
             if (LatestPathExists) // is valid base levelcheck
             {
-                if (onlinelatesthtml == latestlink) // we have the latest version link
+                if (onlinelatesthtml == latestlink) // if we have the latest version link
                 {
-                    if(cacheisdone) // we have downloaded all the files already
+                    if(cacheisdone) // if we have downloaded all the files already
                     {
-                        if (gameisunzipped) // we are done unzipping all the files for the game
+                        if (gameisunzipped) // if we are done unzipping all the files for the game
                         {
                             // WE have teh file! start the gaame and minimize the launcher
                             System.Diagnostics.Process.Start(dir);
@@ -4806,17 +4811,40 @@ namespace Launcher
                     else // cache not done, so download zips
                     {
                         // need check for which zip is last right here, then update the current ones name
-
-
-                        string currentzipname = "WoA_1902_0055.zip.000";
-                        Console.WriteLine("no local zips, downloading...");
+                        string currentzipname = String.Empty;
+                        Console.WriteLine("We have latest link.  No local zips, downloading new zip files...");
+                        play.Text = "Wait";
+                        play.Enabled = false;
                         progressBar1.Visible = true;
-                        using (WebClient wc = new WebClient())
-                        {
+                        string[] zipnames = System.IO.File.ReadAllLines(manifestpath);
+                        string[] ziplinks = System.IO.File.ReadAllLines(ziplinkpaths);
 
-                            wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                            wc.DownloadFileAsync(new System.Uri("https://drive.google.com/uc?export=download&confirm=7o6p&id=1AUZXlZ1lBgBsOdQuzU8M5RObXB__6Nf4"), (cdirectory + currentzipname));
+                        foreach (string zip in zipnames)
+                        {
+                            for (int i = 0; currentziplink < 66; ++i)
+                            {
+                                using (WebClient wc = new WebClient())
+                                {
+                                    
+                                    currentziplink = currentziplink + 1;
+                                    currentzipname = zip;
+                                    wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                                    wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadZipsCompleted);
+                                    wc.DownloadFileAsync(new System.Uri(ziplinks[currentziplink]), (cdirectory + currentzipname));
+
+                                }
+                            }
+
                         }
+
+
+
+
+
+
+
+
+
                     }
                 }
 
@@ -4826,10 +4854,13 @@ namespace Launcher
                     //download some shit! 
                     Console.WriteLine("Knowts is not up to date so we download new knowts");
                     progressBar1.Visible = true;
+                    play.Enabled = false;
                     using (WebClient wc = new WebClient())
                     {
                         wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                        wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
                         wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+
                     }
                 }
             }
@@ -4839,13 +4870,14 @@ namespace Launcher
             // download text file from github, read that text file and save link as a string, use string to download zip
             else // latest path does not exist, download the latest knowts
             {
+                Console.WriteLine("No local exe so we need to download something");
                 // First see if we have the txt file -- perhaps we have opened the launcher but not yet downloaded a build
-                if (onlinelatesthtml == latestlink)
+                if (latestlink != "")
                 {
-                    Console.WriteLine("Knowts is up to date so we have the latest local path");
-
+                    Console.WriteLine(onlinelatesthtml + " == " + latestlink);
+                    Console.WriteLine("Knowts is up to date so we have the latest local download link");
                     string[] dirs = Directory.GetFiles(cdirectory, "*WoA_1902*", SearchOption.TopDirectoryOnly);
-                    Console.WriteLine(gdirectory + ", The number of zips starting with W is " + dirs.Length);
+                    Console.WriteLine(gdirectory + ", The number of zips starting with W is " + dirs.Length + ", listing their names here:");
                     foreach (string dir in dirs)
                     {
                         string letsdothis = dir;
@@ -4853,7 +4885,6 @@ namespace Launcher
                         if (dir != null)
                         {
                             // WE have some locals zips! use as offset to download from correct zip onward
-
 
                         }
                         else
@@ -4863,22 +4894,18 @@ namespace Launcher
                             {
                                 //download some shit! 
                                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                                wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
                                 wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
 
+
                             }
-
-
                         }
-                    }
-
-                }
-
+                    } // end of loop
+                } // end of if (onlinelatesthtml == latestlink)
 
                 //Otherwise we have nothing, and we need to first download the Knowts.txt
-                else
+                else // NOT latest (onlinelatesthtml =/= latestlink)
                 {
-
-
                     // show a prompt
                     string message = "No Winds of Almerra builds were found in " + gdirectory + " , download latest?";
                     string caption = "Project not found!";
@@ -4889,11 +4916,11 @@ namespace Launcher
                     {
                         // Startup a web client to download the Knowts.txt file containing the link
                         progressBar1.Visible = true;
-                        using (WebClient wc = new WebClient())
+                        using (WebClient wc = new System.Net.WebClient())
                         {
                             wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                            wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
                             wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
-
                         }
                     }
 
@@ -4917,13 +4944,32 @@ namespace Launcher
             //very end of play-click
         }
 
+        void wc_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // shit
+            progressBar1.Visible = false;
+            play.Text = "Download";
+            play.Enabled = true;
+        }
+
+        void wc_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // called when a zip is done fownloading
+
+            progressBar1.Visible = false;
+            play.Enabled = true;
+            play.Text = "Unzip";
+        }
+
         // Event to track the progress
 
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar1.Visible = true;
             progressBar1.Value = e.ProgressPercentage;
+            play.Text = progressBar1.Value.ToString() + "%";
+
         }
+
 
         /******************************************* THE LOAD ENGINE BUTTON ************************************/
 

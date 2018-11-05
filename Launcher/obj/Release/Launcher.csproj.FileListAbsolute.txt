@@ -114,7 +114,6 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.pdb
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\LinqToExcel.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\CloudrailSI.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.AspNet.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.Core.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.GoogleOAuth2.dll
