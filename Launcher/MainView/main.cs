@@ -4516,7 +4516,7 @@ namespace Launcher
         string latestpath = "Game/Knowts.txt";
         string buildpath = "Game/Build.txt";
         public string manifestpath = "Game/Manifest.txt";
-        public string ziplinkpaths = "Game/ZipsManifest.txt";
+        public string ziplinkspath = "Game/ZipsManifest.txt";
         public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
         public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
@@ -4757,7 +4757,7 @@ namespace Launcher
             // this should only happen when no local Knowts.txt file exists
             else
             {
-                play.Text = ("Get Updated");
+                play.Text = ("Update");
                 Console.WriteLine("No Knowts exists...");
                 var client = new WebClient();
                 var latestonlinelink = client.DownloadString(KnowtsOnline);    // gets the newest link it needs from online
@@ -4816,28 +4816,36 @@ namespace Launcher
                         play.Text = "Wait";
                         play.Enabled = false;
                         progressBar1.Visible = true;
-                        string[] zipnames = System.IO.File.ReadAllLines(manifestpath);
-                        string[] ziplinks = System.IO.File.ReadAllLines(ziplinkpaths);
+                        string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_0055.zip.001)
+                        string[] ziplinks = System.IO.File.ReadAllLines(ziplinkspath); // read all lines of http links from the zipsmanifest for download (link pathing for each .zip.0xx)
 
                         foreach (string zip in zipnames)
                         {
-                            for (int i = 0; currentziplink < 66; ++i)
+                            using (WebClient wc = new WebClient())
                             {
-                                using (WebClient wc = new WebClient())
+                                for (int i = 0; i < 67; ++i)
                                 {
-                                    
-                                    currentziplink = currentziplink + 1;
-                                    currentzipname = zip;
-                                    wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                                    wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadZipsCompleted);
-                                    wc.DownloadFileAsync(new System.Uri(ziplinks[currentziplink]), (cdirectory + currentzipname));
-
+                                    currentziplink = i;
+                                    int x = i;
+                                    if (System.IO.File.Exists(cdirectory + zip))
+                                    {
+                                    // alreday have this file
+                                    }
+                                    else
+                                    {
+                                        wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                                        wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadZipsCompleted);
+                                        wc.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
+                                    }
                                 }
+
                             }
+
+                            Console.WriteLine(zip + " set");
 
                         }
 
-
+                        Console.WriteLine("Done with zipnames loop");
 
 
 
@@ -4945,8 +4953,8 @@ namespace Launcher
                             wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/ZipsManifest.txt"), "Game/ZipsManifest.txt");
 
                         }
-
-
+                        ziplinkspath = "Game/ZipsManifest.txt";
+                        manifestpath = "Game/Manifest.txt";
 
                     }
 
@@ -4975,7 +4983,7 @@ namespace Launcher
             // shit
             progressBar1.Visible = false;
             LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
-            play.Text = "Download Game";
+            play.Text = "Get Zips";
             play.Enabled = true;
         }
 
@@ -4983,9 +4991,9 @@ namespace Launcher
         {
             // called when a zip is done fownloading
 
-            progressBar1.Visible = false;
-            play.Enabled = true;
-            play.Text = "Unzip";
+            progressBar1.Visible = true;
+            play.Enabled = false;
+            play.Text = (currentziplink.ToString() + "%");
         }
 
         // Event to track the progress
@@ -4993,7 +5001,7 @@ namespace Launcher
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            play.Text = progressBar1.Value.ToString() + "%";
+            play.Text = (currentziplink.ToString() + "%");
 
         }
 
