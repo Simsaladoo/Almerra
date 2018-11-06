@@ -143,3 +143,48 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Mono.Math.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\ZipsManifest.txt
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe.config
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.exe
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\done.wav
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Knowts.txt
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\start.wav
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\ZipsManifest.txt
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\button.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\buttonUpdate.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\settingsFont.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\close.png
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font1.ico
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.pdb
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Design.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Data.Linq.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Interfaces.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Models.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.pdb
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.xml
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.xml
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.dll
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.xml
+D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.xml

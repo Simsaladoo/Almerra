@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Text;
@@ -10,22 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 using System.Speech.Synthesis;
-using System.Speech.Recognition;
-using System.Drawing.Text;
-using System.Xml;
-using HtmlAgilityPack;
-using Google.Apis.Drive;
-using Google.Apis.Drive.v3;
-using DotNetOpenAuth.GoogleOAuth2;
-using Google.Apis.Requests;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Drive.v3.Data;
-using Google.Apis.Util.Store;
-using Google.Apis.Services;
-using Google.Apis.Download;
-using Google.Apis.Discovery;
 using System.ComponentModel;
 
 
@@ -78,7 +61,20 @@ namespace Launcher
         public Button _button13 { get { return play; } }
         bool mastercancel = false;
 
-        /* 12s */
+//                              /* 12s */                               //
+//                                                                      //
+//                        $$\    $$$$$$\                                //
+//                      $$$$ |  $$  __$$\                               //
+//                      \_$$ |  \__/  $$ | $$$$$$$\                     //
+//                        $$ |   $$$$$$  |$$  _____|                    //
+//                        $$ |  $$  ____/ \$$$$$$\                      //
+//                        $$ |  $$ |       \____$$\                     //
+//                      $$$$$$\ $$$$$$$$\ $$$$$$$  |                    //
+//                      \______|\________|\_______/                     //
+//                                                                      //
+//                                                                      //
+
+
 
         public static string intVar { get; set; }
 
@@ -239,6 +235,19 @@ namespace Launcher
         public static string aX011Y011 { get; set; }
 
         /* 64s */
+
+//                                                             //
+//                                                             //
+//                   $$$$$$\  $$\   $$\                        //
+//                  $$  __$$\ $$ |  $$ |                       //
+//                  $$ /  \__|$$ |  $$ | $$$$$$$\              //
+//                  $$$$$$$\  $$$$$$$$ |$$  _____|             //
+//                  $$  __$$\ \_____$$ |\$$$$$$\               //
+//                  $$ /  $$ |      $$ | \____$$\              //
+//                   $$$$$$  |      $$ |$$$$$$$  |             //
+//                   \______/       \__|\_______/              //
+//                                                             //
+//                                                             //
 
 
         public static string bX000Y000 { get; set; }
@@ -4372,6 +4381,18 @@ namespace Launcher
         public static string bX063Y063 { get; set; }
 
 
+//                                                                                                                                  //
+//                                                                                                                                  //
+//            _________ __                 __                 ____   ____            .__      ___.   .__                            //
+//           /   _____//  |______ ________/  |_ __ ________   \   \ /   /____ _______|__|____ \_ |__ |  |   ____   ______           //
+//           \_____  \\   __\__  \\_  __ \   __\  |  \____ \   \   Y   /\__  \\_  __ \  \__  \ | __ \|  | _/ __ \ /  ___/           //
+//           /        \|  |  / __ \|  | \/|  | |  |  /  |_> >   \     /  / __ \|  | \/  |/ __ \| \_\ \  |_\  ___/ \___ \            //
+//          /_______  /|__| (____  /__|   |__| |____/|   __/     \___/  (____  /__|  |__(____  /___  /____/\___  >____  >           //
+//                  \/           \/                  |__|                    \/              \/    \/          \/     \/            //
+//                                                                                                                                  //
+//                                                                                                                                  //
+
+
         private StateHandler myState = new StateHandler();
         private DateTime startTime = DateTime.Now;
         SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
@@ -4380,15 +4401,40 @@ namespace Launcher
         SoundPlayer patwarnings = new SoundPlayer("Resources/patwarning.wav");
         bool soundenabled = true;
         int loopnum = 10;
+        string latestpath = "Game/Knowts.txt";
+        string buildpath = "Game/Build.txt";
+        public string manifestpath = "Game/Manifest.txt";
+        public string ziplinkspath = "Game/ZipsManifest.txt";
+        public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+        public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
+        public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
+        public bool cacheisdone = false;
+        public bool gameisunzipped = false;
+        public string zippath = "Game/WoA_0055.zip";
+        public string gamepath = "Game/Knowts.txt";
+        public string latestlink = String.Empty;
+        public string latestbuild = String.Empty;
+        public string onlinelatesthtml = String.Empty;
+        public string gdirectory = "Game/";
+        public string cdirectory = "Game/cache/";
+        public string dir = String.Empty;
+        public string[] dirs = new string[] { "" };
+        public int currentziplink = 0;
 
-        /* Unused Settings for message box to close itself, n shit */
-        //  private bool m_killHim;
-        //  private bool m_threadAlive;
-        //  private Thread m_killThread;
-        //  private const uint GW_HWNDFIRST = 0;
-        //  private const int WM_CLOSE = 0x0010;
-        //  [DllImport("coredll.dll", EntryPoint = "FindWindowW", SetLastError = true)]
-        //  private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+
+
+//                                                                                                                          //
+//          _________                                   ___________                     __   .__                            //
+//          \_   ___ \ __ _________  _________________  \__    ___/___________    ____ |  | _|__| ____    ____              //
+//          /    \  \/|  |  \_  __ \/  ___/  _ \_  __ \   |    |  \_  __ \__  \ _/ ___\|  |/ /  |/    \  / ___\             //
+//          \     \___|  |  /|  | \/\___ (  <_> )  | \/   |    |   |  | \// __ \\  \___|    <|  |   |  \/ /_/  >            //
+//           \______  /____/ |__|  /____  >____/|__|      |____|   |__|  (____  /\___  >__|_ \__|___|  /\___  /             //
+//                  \/                  \/                                    \/     \/     \/       \//_____/              //
+//                                                                                                                          //
+//                                                                                                                          //            
+
+
 
         //This is a replacement for Cursor.Position in WinForms
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -4405,16 +4451,8 @@ namespace Launcher
             mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
 
-
-        // We need to use unmanaged code
-
         [DllImport("user32.dll")]
-
-        // GetCursorPos() makes everything possible
-
         static extern bool GetCursorPos(ref Point lpPoint);
-
-
         public const int MOUSEEVENTF_LEFTDOWN = 0x02;
         public const int MOUSEEVENTF_LEFTUP = 0x04;
 
@@ -4513,27 +4551,17 @@ namespace Launcher
 
 
 
-        string latestpath = "Game/Knowts.txt";
-        string buildpath = "Game/Build.txt";
-        public string manifestpath = "Game/Manifest.txt";
-        public string ziplinkspath = "Game/ZipsManifest.txt";
-        public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
-        public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
-        public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
-        public bool cacheisdone = false;
-        public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_0055.zip";
-        public string gamepath = "Game/Knowts.txt";
-        public string latestlink = String.Empty;
-        public string latestbuild = String.Empty;
-        public string onlinelatesthtml = String.Empty;
-        public string gdirectory = "Game/";
-        public string cdirectory = "Game/cache/";
-        public string dir = String.Empty;
-        public string[] dirs = new string[] {""};
-        public int currentziplink = 0;
 
-
+//                                                                                                          //
+//                                                                                                          //
+//              .___       .__  __  .__       .__  .__                __  .__                               //
+//              |   | ____ |__|/  |_|__|____  |  | |__|____________ _/  |_|__| ____   ____                  //
+//              |   |/    \|  \   __\  \__  \ |  | |  \___   /\__  \\   __\  |/  _ \ /    \                 //
+//              |   |   |  \  ||  | |  |/ __ \|  |_|  |/    /  / __ \|  | |  (  <_> )   |  \                //
+//              |___|___|  /__||__| |__(____  /____/__/_____ \(____  /__| |__|\____/|___|  /                //
+//                       \/                 \/              \/     \/                    \/                 //
+//                                                                                                          //
+//                                                                                                          //
         /*******************************
             this is our main startup function for the program
         /********************************/
@@ -4543,16 +4571,6 @@ namespace Launcher
             //myState.changeButtonState(LauncherState.Idle, this);
             this.Shown += new System.EventHandler(this.AfterLoading);
             Console.WriteLine("main loaded");
-            /////////////////////////                *Startup media                     *///////////////////////////
-            //                                                                                                                          //
-            //                                    _________  __                    __                                                   //
-            //                                   /   _____/_/  |_ _____  _______ _/  |_  __ __ ______                                   //
-            //                                   \_____  \ \   __\\__  \ \_  __ \\   __\|  |  \\____ \                                  //
-            //                                   /        \ |  |   / __ \_|  | \/ |  |  |  |  /|  |_> >                                 //
-            //                                  /_______  / |__|  (____  /|__|    |__|  |____/ |   __/                                  //
-            //                                          \/             \/                      |__|                                     //
-            //                                                                                                                          //
-
             m_aeroEnabled = false;
             this.FormBorderStyle = FormBorderStyle.None;
             bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
@@ -4610,21 +4628,14 @@ namespace Launcher
 
 
 
-
-
-
-
-
-
-
-
-
-        /*******************************
-            called AFTER the window is created
-        /********************************/
-
-
-
+//                                                                                                          //
+//                  __________               __            .____                     .___                   //
+//                  \______   \____  _______/  |_          |    |    _________     __| _/                   //
+//                   |     ___/  _ \/  ___/\   __\  ______ |    |   /  _ \__  \   / __ |                    //
+//                   |    |  (  <_> )___ \  |  |   /_____/ |    |__(  <_> ) __ \_/ /_/ |                    //
+//                   |____|   \____/____  > |__|           |_______ \____(____  /\____ |                    //
+//                                      \/                         \/         \/      \/                    //
+//                                                                                                          //
 
 
         private void AfterLoading(object sender, EventArgs e)
@@ -4638,18 +4649,6 @@ namespace Launcher
                 Console.WriteLine("Multiple instances detected");
                 Application.Exit();
             }
-
-
-//*******************************/*******************************/*******************************/*******************************/
-//              Startup items for the launcher -- 
-//              
-//              make game folder to download files into, and add a help file there
-//              If nothing there, setup buttons to download instead of play.
-//              Connect to website to pull latest build #
-//              check for that build# in game folder.
-//
-//********************************/*******************************/*******************************/*******************************/
-
 
             //create the folders for shit
             Directory.CreateDirectory(Path.Combine("Game"));
@@ -4682,14 +4681,24 @@ namespace Launcher
 
 
 
-            //*******************************/*******************************/*******************************/*******************************/
-            //              Startup items for the launcher as a program -- 
-            //              
-            //              here we'll add all the startup shit for downaloading new files and everything
-            //              if then else, all that shit -- but we'll also addin searches for engine.ini files for the options menu here
-            //
-            //********************************/*******************************/*******************************/*******************************/
+//*******************************/*******************************/*******************************/*******************************//
+//              Startup items for the launcher as a program --                                                                   //
+//                                                                                                                               //
+//              here we'll add all the startup shit for downaloading new files and everything                                    //
+//              if then else, all that shit -- but we'll also addin searches for engine.ini files for the options menu here      //
+//                                                                                                                               //
+//********************************/*******************************/*******************************/******************************//
 
+
+//                                                                                                      //
+//                   ____ ___            .___       __  .__                                             //
+//                  |    |   \______   __| _/____ _/  |_|__| ____    ____                               //
+//                  |    |   /\____ \ / __ |\__  \\   __\  |/    \  / ___\                              //
+//                  |    |  / |  |_> > /_/ | / __ \|  | |  |   |  \/ /_/  >                             //
+//                  |______/  |   __/\____ |(____  /__| |__|___|  /\___  /                              //
+//                            |__|        \/     \/             \//_____/                               //
+//                                                                                                      //
+//                                                                                                      //
             
             // as long as we have a knowts.txt file locally this will alwusa be true
 
@@ -4771,8 +4780,15 @@ namespace Launcher
 
         
 
-        /******************************************* THE PLAY GAME BUTTON ************************************/
-
+//                                                                                                           //
+//                __________.__                 __________        __    __                                   //
+//                \______   \  | _____  ___.__. \______   \__ ___/  |__/  |_  ____   ____                    //
+//                 |     ___/  | \__  \<   |  |  |    |  _/  |  \   __\   __\/  _ \ /    \                   //
+//                 |    |   |  |__/ __ \\___  |  |    |   \  |  /|  |  |  | (  <_> )   |  \                  //
+//                 |____|   |____(____  / ____|  |______  /____/ |__|  |__|  \____/|___|  /                  //
+//                                    \/\/              \/                              \/                   //
+//                                                                                                           //
+//                                                                                                           //
 
         /*******************************
             play latest build button pressed
@@ -4789,9 +4805,6 @@ namespace Launcher
                 System.Media.SoundPlayer sp = (patsoft);
                 sp.Play();
             };
-
-
-
 
             // Teh default function of clicking the Play button -- first we see if there is already a game local to play
             // If NOT then go to catch which gives user a prompt to ignore or download latest
@@ -4840,19 +4853,9 @@ namespace Launcher
                                 }
 
                             }
-
                             Console.WriteLine(zip + " set");
-
                         }
-
                         Console.WriteLine("Done with zipnames loop");
-
-
-
-
-
-
-
                     }
                 }
 
@@ -4966,17 +4969,24 @@ namespace Launcher
                     }
                 }
             }
-
-
-
-
-
-
-
             //string latestlink = File.ReadAllText("Game/Knowts.txt");
             //Console.WriteLine(latestlink);
             //very end of play-click
         }
+
+
+                                                                                                                    
+//                                                                                                                  //
+//               ____ ___            .___       __           ___________                    __                      //
+//              |    |   \______   __| _/____ _/  |_  ____   \_   _____/__  __ ____   _____/  |_  ______            //
+//              |    |   /\____ \ / __ |\__  \\   __\/ __ \   |    __)_\  \/ // __ \ /    \   __\/  ___/            //
+//              |    |  / |  |_> > /_/ | / __ \|  | \  ___/   |        \\   /\  ___/|   |  \  |  \___ \             //
+//              |______/  |   __/\____ |(____  /__|  \___  > /_______  / \_/  \___  >___|  /__| /____  >            //
+//                        |__|        \/     \/          \/          \/           \/     \/          \/             //
+//                                                                                                                  //
+//                                                                                                                  //
+//                                                                                                                  //
+
 
         void wc_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
@@ -5006,11 +5016,18 @@ namespace Launcher
         }
 
 
-        /******************************************* THE LOAD ENGINE BUTTON ************************************/
 
-        /*******************************
-            start engine button pressed
-        /********************************/
+                                                                                                             
+//                                                                                                           //
+//                  .____                     .___ ___________              .__                              //
+//                  |    |    _________     __| _/ \_   _____/ ____    ____ |__| ____   ____                 //
+//                  |    |   /  _ \__  \   / __ |   |    __)_ /    \  / ___\|  |/    \_/ __ \                //
+//                  |    |__(  <_> ) __ \_/ /_/ |   |        \   |  \/ /_/  >  |   |  \  ___/                //
+//                  |_______ \____(____  /\____ |  /_______  /___|  /\___  /|__|___|  /\___  >               //
+//                          \/         \/      \/          \/     \//_____/         \/     \/                //
+//                                                                                                           //
+//                                                                                                           //
+                 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -5053,10 +5070,6 @@ namespace Launcher
                     // end of start engine button
 
                 }
-
-
-                
-
             }
             catch
             {
@@ -5071,31 +5084,24 @@ namespace Launcher
                 if (result == DialogResult.No)
                 { Console.WriteLine("Ignoring error '" + caption + "'"); }
             }
-
-
-
-
             Console.WriteLine("Project already running");
-
-
-
-
         }
 
 
 
 
 
+//                                                                                                                  //
+//            _________ __          .__             _________       __    __  .__                                   //
+//           /   _____//  |_ ___.__.|  |   ____    /   _____/ _____/  |__/  |_|__| ____    ____  ______             //
+//           \_____  \\   __<   |  ||  | _/ __ \   \_____  \_/ __ \   __\   __\  |/    \  / ___\/  ___/             //
+//           /        \|  |  \___  ||  |_\  ___/   /        \  ___/|  |  |  | |  |   |  \/ /_/  >___ \              //
+//          /_______  /|__|  / ____||____/\___  > /_______  /\___  >__|  |__| |__|___|  /\___  /____  >             //
+//                  \/       \/               \/          \/     \/                   \//_____/     \/              //
+//                                                                                                                  //
+//                                                                                                                  //
 
-
-
-
-
-
-
-        /*******************************
-            Set transparency  -- this is basically like a css section for button settings
-        /********************************/
+        
         private void main_Load(object sender, EventArgs e)
         {
             Console.WriteLine("Main Window Loaded");
@@ -5132,7 +5138,6 @@ namespace Launcher
             button25.BackColor = Color.Transparent;
             button26.BackColor = Color.Transparent;
 
-
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
@@ -5142,15 +5147,6 @@ namespace Launcher
             AudioPanel.Visible = false;
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
-
-
-
-            //       __________        __    __                    _________ __          .__                           //
-            //       \______   \__ ___/  |__/  |_  ____   ____    /   _____//  |_ ___.__.|  |   ___________            //
-            //        |    |  _/  |  \   __\   __\/  _ \ /    \   \_____  \\   __<   |  ||  | _/ __ \_  __ \           //
-            //        |    |   \  |  /|  |  |  | (  <_> )   |  \  /        \|  |  \___  ||  |_\  ___/|  | \/           //
-            //        |______  /____/ |__|  |__|  \____/|___|  / /_______  /|__|  / ____||____/\___  >__|              //
-            //               \/                              \/          \/       \/               \/                  //
 
             play.Parent = font;
             button1.Parent = font;
@@ -5216,13 +5212,12 @@ namespace Launcher
 
         private void font_LoadCompleted(object sender, EventArgs e)
         {
-            Console.WriteLine("Background image loaded");
             
         }
 
         private void notifyIcon1_LoadCompleted(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("NotifyIcon (The Taskbar Icon) Loaded");
+
         }
 
 
@@ -5313,7 +5308,7 @@ namespace Launcher
         }
 
 
-        /******************************************* NAVIGATION BUTTONS ************************************/
+        /******************************************* NAVIGATION BUTTONS CONTINUED************************************/
         /******************************************* Tools menus ************************************/
 
         private void button10_Click(object sender, EventArgs e)
@@ -5338,7 +5333,7 @@ namespace Launcher
 
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e) // shows the ENVPanel
         {
             ENVPanel.Visible = true; // ENVPanel is now the Options Menu for swapping configs and golobal shit
             ConverterPanel.Visible = false;
@@ -5358,7 +5353,7 @@ namespace Launcher
             richTextBox1.ScrollToCaret();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e) // Shows the Audio Panel
         {
 
             AudioPanel.Visible = true;
@@ -5380,7 +5375,7 @@ namespace Launcher
         }
 
 
-        private void button11_Click_1(object sender, EventArgs e)
+        private void button11_Click_1(object sender, EventArgs e) // Shows the Converter Panel
         {
             ConverterPanel.Visible = true;
             AudioPanel.Visible = false;
@@ -5400,12 +5395,6 @@ namespace Launcher
             richTextBox1.ScrollToCaret();
         }
 
-
-
-
-
-
-
         private void button7_Click(object sender, EventArgs e)
         {
 
@@ -5420,12 +5409,8 @@ namespace Launcher
 
         }
 
-
-
-
-
-
-        /******************************************* NAVIGATION BUTTONS ************************************/
+        /******************************************* NAVIGATION BUTTONS CONTINUED ************************************/
+        /******************************************* Form menu ************************************/
         // Close 'X' Button clicked
         private void button2_Click(object sender, EventArgs e)
         {
@@ -5476,7 +5461,18 @@ namespace Launcher
 
 
         /******************************************* Fauna Type 12s ************************************/
-
+        //                              /* 12s */                               //
+        //                                                                      //
+        //                        $$\    $$$$$$\                                //
+        //                      $$$$ |  $$  __$$\                               //
+        //                      \_$$ |  \__/  $$ | $$$$$$$\                     //
+        //                        $$ |   $$$$$$  |$$  _____|                    //
+        //                        $$ |  $$  ____/ \$$$$$$\                      //
+        //                        $$ |  $$ |       \____$$\                     //
+        //                      $$$$$$\ $$$$$$$$\ $$$$$$$  |                    //
+        //                      \______|\________|\_______/                     //
+        //                                                                      //
+        //                                                                      //
 
 
 
@@ -6062,7 +6058,18 @@ namespace Launcher
 
 
         /******************************************* Fauna Type 64s ************************************/
-
+        //                                                             //
+        //                                                             //
+        //                   $$$$$$\  $$\   $$\                        //
+        //                  $$  __$$\ $$ |  $$ |                       //
+        //                  $$ /  \__|$$ |  $$ | $$$$$$$\              //
+        //                  $$$$$$$\  $$$$$$$$ |$$  _____|             //
+        //                  $$  __$$\ \_____$$ |\$$$$$$\               //
+        //                  $$ /  $$ |      $$ | \____$$\              //
+        //                   $$$$$$  |      $$ |$$$$$$$  |             //
+        //                   \______/       \__|\_______/              //
+        //                                                             //
+        //                                                             //
 
         private void button4_Click(object sender, EventArgs e)
         {
