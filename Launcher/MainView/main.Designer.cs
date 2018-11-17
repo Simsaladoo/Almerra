@@ -37,24 +37,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolsPanel = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.AudioPanel = new System.Windows.Forms.Panel();
-            this.Audio_HeaderLabel = new System.Windows.Forms.Label();
-            this.AudioHLine = new System.Windows.Forms.Label();
-            this.AudioPageTitle = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.ConverterPanel = new System.Windows.Forms.Panel();
-            this.Foliage_HeaderLabel = new System.Windows.Forms.Label();
-            this.FoliageHLine = new System.Windows.Forms.Label();
-            this.FoliagePageTitle = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.ENVPanel = new System.Windows.Forms.Panel();
             this.Game_NoteLabel = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -71,9 +53,6 @@
             this.Game_HeaderLabel = new System.Windows.Forms.Label();
             this.GameHLine = new System.Windows.Forms.Label();
             this.FaunaPanel = new System.Windows.Forms.Panel();
-            this.Fauna_HeaderLabel = new System.Windows.Forms.Label();
-            this.FaunaHLine = new System.Windows.Forms.Label();
-            this.FaunaPageTitle = new System.Windows.Forms.Label();
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -82,8 +61,6 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.Pick_A_Label = new System.Windows.Forms.Label();
@@ -96,8 +73,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
-            this.AudioPanel.SuspendLayout();
-            this.ConverterPanel.SuspendLayout();
             this.ENVPanel.SuspendLayout();
             this.FaunaPanel.SuspendLayout();
             this.SuspendLayout();
@@ -190,12 +165,8 @@
             // 
             this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
             this.ToolsPanel.Controls.Add(this.richTextBox1);
-            this.ToolsPanel.Controls.Add(this.AudioPanel);
-            this.ToolsPanel.Controls.Add(this.ConverterPanel);
-            this.ToolsPanel.Controls.Add(this.ENVPanel);
             this.ToolsPanel.Controls.Add(this.FaunaPanel);
-            this.ToolsPanel.Controls.Add(this.button11);
-            this.ToolsPanel.Controls.Add(this.button8);
+            this.ToolsPanel.Controls.Add(this.ENVPanel);
             this.ToolsPanel.Controls.Add(this.button9);
             this.ToolsPanel.Controls.Add(this.button10);
             this.ToolsPanel.Controls.Add(this.Pick_A_Label);
@@ -220,288 +191,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(1001, 107);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "Launcher opened...";
-            // 
-            // AudioPanel
-            // 
-            this.AudioPanel.BackColor = System.Drawing.Color.Black;
-            this.AudioPanel.Controls.Add(this.Audio_HeaderLabel);
-            this.AudioPanel.Controls.Add(this.AudioHLine);
-            this.AudioPanel.Controls.Add(this.AudioPageTitle);
-            this.AudioPanel.Controls.Add(this.button6);
-            this.AudioPanel.Controls.Add(this.button7);
-            this.AudioPanel.Location = new System.Drawing.Point(199, 3);
-            this.AudioPanel.Name = "AudioPanel";
-            this.AudioPanel.Size = new System.Drawing.Size(798, 363);
-            this.AudioPanel.TabIndex = 38;
-            // 
-            // Audio_HeaderLabel
-            // 
-            this.Audio_HeaderLabel.AutoSize = true;
-            this.Audio_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Audio_HeaderLabel.Location = new System.Drawing.Point(64, 47);
-            this.Audio_HeaderLabel.Name = "Audio_HeaderLabel";
-            this.Audio_HeaderLabel.Size = new System.Drawing.Size(156, 24);
-            this.Audio_HeaderLabel.TabIndex = 46;
-            this.Audio_HeaderLabel.Text = "Audio Processing";
-            // 
-            // AudioHLine
-            // 
-            this.AudioHLine.AutoSize = true;
-            this.AudioHLine.Location = new System.Drawing.Point(53, 61);
-            this.AudioHLine.Name = "AudioHLine";
-            this.AudioHLine.Size = new System.Drawing.Size(667, 13);
-            this.AudioHLine.TabIndex = 47;
-            this.AudioHLine.Text = "_________________________________________________________________________________" +
-    "_____________________________";
-            // 
-            // AudioPageTitle
-            // 
-            this.AudioPageTitle.AutoSize = true;
-            this.AudioPageTitle.Font = new System.Drawing.Font("Kelly", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AudioPageTitle.Location = new System.Drawing.Point(340, 17);
-            this.AudioPageTitle.Name = "AudioPageTitle";
-            this.AudioPageTitle.Size = new System.Drawing.Size(173, 41);
-            this.AudioPageTitle.TabIndex = 45;
-            this.AudioPageTitle.Text = "Audio Data";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Lime;
-            this.button6.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(67, 155);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(206, 54);
-            this.button6.TabIndex = 30;
-            this.button6.Text = "Process Audio";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Lime;
-            this.button7.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(67, 90);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(206, 54);
-            this.button7.TabIndex = 34;
-            this.button7.Text = "Visualizer";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // ConverterPanel
-            // 
-            this.ConverterPanel.BackColor = System.Drawing.Color.Black;
-            this.ConverterPanel.Controls.Add(this.Foliage_HeaderLabel);
-            this.ConverterPanel.Controls.Add(this.FoliageHLine);
-            this.ConverterPanel.Controls.Add(this.FoliagePageTitle);
-            this.ConverterPanel.Controls.Add(this.button21);
-            this.ConverterPanel.Controls.Add(this.button22);
-            this.ConverterPanel.Controls.Add(this.button23);
-            this.ConverterPanel.Controls.Add(this.button24);
-            this.ConverterPanel.Controls.Add(this.button25);
-            this.ConverterPanel.Controls.Add(this.button26);
-            this.ConverterPanel.Controls.Add(this.button19);
-            this.ConverterPanel.Controls.Add(this.button20);
-            this.ConverterPanel.Location = new System.Drawing.Point(199, 3);
-            this.ConverterPanel.Name = "ConverterPanel";
-            this.ConverterPanel.Size = new System.Drawing.Size(798, 363);
-            this.ConverterPanel.TabIndex = 40;
-            // 
-            // Foliage_HeaderLabel
-            // 
-            this.Foliage_HeaderLabel.AutoSize = true;
-            this.Foliage_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Foliage_HeaderLabel.Location = new System.Drawing.Point(52, 47);
-            this.Foliage_HeaderLabel.Name = "Foliage_HeaderLabel";
-            this.Foliage_HeaderLabel.Size = new System.Drawing.Size(243, 21);
-            this.Foliage_HeaderLabel.TabIndex = 43;
-            this.Foliage_HeaderLabel.Text = "Foliage PNG -> CSV Processor";
-            // 
-            // FoliageHLine
-            // 
-            this.FoliageHLine.AutoSize = true;
-            this.FoliageHLine.Location = new System.Drawing.Point(53, 61);
-            this.FoliageHLine.Name = "FoliageHLine";
-            this.FoliageHLine.Size = new System.Drawing.Size(667, 13);
-            this.FoliageHLine.TabIndex = 44;
-            this.FoliageHLine.Text = "_________________________________________________________________________________" +
-    "_____________________________";
-            // 
-            // FoliagePageTitle
-            // 
-            this.FoliagePageTitle.AutoSize = true;
-            this.FoliagePageTitle.Font = new System.Drawing.Font("Kelly", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FoliagePageTitle.Location = new System.Drawing.Point(322, 13);
-            this.FoliagePageTitle.Name = "FoliagePageTitle";
-            this.FoliagePageTitle.Size = new System.Drawing.Size(181, 41);
-            this.FoliagePageTitle.TabIndex = 42;
-            this.FoliagePageTitle.Text = "Foliage Data";
-            // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.Color.Lime;
-            this.button21.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.Location = new System.Drawing.Point(669, 151);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(30, 54);
-            this.button21.TabIndex = 41;
-            this.button21.Text = ">";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.Color.Lime;
-            this.button22.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button22.FlatAppearance.BorderSize = 0;
-            this.button22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.ForeColor = System.Drawing.Color.White;
-            this.button22.Location = new System.Drawing.Point(505, 151);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(30, 54);
-            this.button22.TabIndex = 40;
-            this.button22.Text = "<";
-            this.button22.UseVisualStyleBackColor = true;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.Color.Lime;
-            this.button23.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.ForeColor = System.Drawing.Color.White;
-            this.button23.Location = new System.Drawing.Point(541, 151);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(122, 54);
-            this.button23.TabIndex = 39;
-            this.button23.Text = "Run (10)";
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.Color.Lime;
-            this.button24.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.ForeColor = System.Drawing.Color.White;
-            this.button24.Location = new System.Drawing.Point(237, 151);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(30, 54);
-            this.button24.TabIndex = 38;
-            this.button24.Text = ">";
-            this.button24.UseVisualStyleBackColor = true;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
-            // button25
-            // 
-            this.button25.BackColor = System.Drawing.Color.Lime;
-            this.button25.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button25.FlatAppearance.BorderSize = 0;
-            this.button25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.ForeColor = System.Drawing.Color.White;
-            this.button25.Location = new System.Drawing.Point(73, 151);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(30, 54);
-            this.button25.TabIndex = 37;
-            this.button25.Text = "<";
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
-            // 
-            // button26
-            // 
-            this.button26.BackColor = System.Drawing.Color.Lime;
-            this.button26.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button26.FlatAppearance.BorderSize = 0;
-            this.button26.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button26.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.ForeColor = System.Drawing.Color.White;
-            this.button26.Location = new System.Drawing.Point(109, 151);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(122, 54);
-            this.button26.TabIndex = 36;
-            this.button26.Text = "Run (10)";
-            this.button26.UseVisualStyleBackColor = true;
-            this.button26.Click += new System.EventHandler(this.button26_Click);
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.Lime;
-            this.button19.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(73, 90);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(194, 54);
-            this.button19.TabIndex = 29;
-            this.button19.Text = "Write 12s CSVs";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.BackColor = System.Drawing.Color.Lime;
-            this.button20.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.ForeColor = System.Drawing.Color.White;
-            this.button20.Location = new System.Drawing.Point(505, 90);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(194, 54);
-            this.button20.TabIndex = 30;
-            this.button20.Text = "Write 64s CSVs";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // ENVPanel
             // 
@@ -705,9 +394,6 @@
             // FaunaPanel
             // 
             this.FaunaPanel.BackColor = System.Drawing.Color.Black;
-            this.FaunaPanel.Controls.Add(this.Fauna_HeaderLabel);
-            this.FaunaPanel.Controls.Add(this.FaunaHLine);
-            this.FaunaPanel.Controls.Add(this.FaunaPageTitle);
             this.FaunaPanel.Controls.Add(this.button17);
             this.FaunaPanel.Controls.Add(this.button18);
             this.FaunaPanel.Controls.Add(this.button16);
@@ -720,36 +406,6 @@
             this.FaunaPanel.Name = "FaunaPanel";
             this.FaunaPanel.Size = new System.Drawing.Size(798, 363);
             this.FaunaPanel.TabIndex = 37;
-            // 
-            // Fauna_HeaderLabel
-            // 
-            this.Fauna_HeaderLabel.AutoSize = true;
-            this.Fauna_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fauna_HeaderLabel.Location = new System.Drawing.Point(52, 47);
-            this.Fauna_HeaderLabel.Name = "Fauna_HeaderLabel";
-            this.Fauna_HeaderLabel.Size = new System.Drawing.Size(276, 24);
-            this.Fauna_HeaderLabel.TabIndex = 41;
-            this.Fauna_HeaderLabel.Text = "Fauna PNG -> CSV Processor";
-            // 
-            // FaunaHLine
-            // 
-            this.FaunaHLine.AutoSize = true;
-            this.FaunaHLine.Location = new System.Drawing.Point(53, 61);
-            this.FaunaHLine.Name = "FaunaHLine";
-            this.FaunaHLine.Size = new System.Drawing.Size(667, 13);
-            this.FaunaHLine.TabIndex = 42;
-            this.FaunaHLine.Text = "_________________________________________________________________________________" +
-    "_____________________________";
-            // 
-            // FaunaPageTitle
-            // 
-            this.FaunaPageTitle.AutoSize = true;
-            this.FaunaPageTitle.Font = new System.Drawing.Font("Kelly", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FaunaPageTitle.Location = new System.Drawing.Point(338, 17);
-            this.FaunaPageTitle.Name = "FaunaPageTitle";
-            this.FaunaPageTitle.Size = new System.Drawing.Size(174, 41);
-            this.FaunaPageTitle.TabIndex = 40;
-            this.FaunaPageTitle.Text = "Fauna Data";
             // 
             // button17
             // 
@@ -903,46 +559,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.Lime;
-            this.button11.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.Enabled = false;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(-1, 180);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(193, 54);
-            this.button11.TabIndex = 40;
-            this.button11.Text = "Foliage";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click_1);
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Lime;
-            this.button8.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.Enabled = false;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(0, 120);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(193, 54);
-            this.button8.TabIndex = 33;
-            this.button8.Text = "Audio";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Lime;
@@ -954,7 +570,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(-1, 60);
+            this.button9.Location = new System.Drawing.Point(-1, 1);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(194, 54);
             this.button9.TabIndex = 32;
@@ -974,11 +590,11 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(-1, 0);
+            this.button10.Location = new System.Drawing.Point(-1, 58);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(194, 54);
             this.button10.TabIndex = 31;
-            this.button10.Text = "Fauna";
+            this.button10.Text = "Other";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -1151,14 +767,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.font)).EndInit();
             this.ToolsPanel.ResumeLayout(false);
             this.ToolsPanel.PerformLayout();
-            this.AudioPanel.ResumeLayout(false);
-            this.AudioPanel.PerformLayout();
-            this.ConverterPanel.ResumeLayout(false);
-            this.ConverterPanel.PerformLayout();
             this.ENVPanel.ResumeLayout(false);
             this.ENVPanel.PerformLayout();
             this.FaunaPanel.ResumeLayout(false);
-            this.FaunaPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1174,21 +785,15 @@
         private System.Windows.Forms.Button ToMainButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel ENVPanel;
-        private System.Windows.Forms.Panel AudioPanel;
         private System.Windows.Forms.Panel FaunaPanel;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Panel ConverterPanel;
         private System.Windows.Forms.Label Pick_A_Label;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button15;
@@ -1196,26 +801,9 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Label Game_HeaderLabel;
         private System.Windows.Forms.Label GameHLine;
         private System.Windows.Forms.Label GamePageTitle;
-        private System.Windows.Forms.Label FoliagePageTitle;
-        private System.Windows.Forms.Label Foliage_HeaderLabel;
-        private System.Windows.Forms.Label FoliageHLine;
-        private System.Windows.Forms.Label Fauna_HeaderLabel;
-        private System.Windows.Forms.Label FaunaHLine;
-        private System.Windows.Forms.Label FaunaPageTitle;
-        private System.Windows.Forms.Label Audio_HeaderLabel;
-        private System.Windows.Forms.Label AudioHLine;
-        private System.Windows.Forms.Label AudioPageTitle;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox ResolutionBox;
         private System.Windows.Forms.CheckBox checkBox2;

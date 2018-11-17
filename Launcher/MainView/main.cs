@@ -10,6 +10,7 @@ using System.Media;
 using System.Runtime.InteropServices;
 using System.Speech.Synthesis;
 using System.ComponentModel;
+using System.IO.Compression;
 
 
 //                    .____                                    .__                                   //
@@ -32,7 +33,7 @@ namespace Launcher
     public partial class main : Form   //MetroFramework.Forms.MetroForm
 
     {
-        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int WM_NCLBUTTONDOWN = 0xA1;  // not sure
         public const int HT_CAPTION = 0x2;
 
 
@@ -61,18 +62,18 @@ namespace Launcher
         public Button _button13 { get { return play; } }
         bool mastercancel = false;
 
-//                              /* 12s */                               //
-//                                                                      //
-//                        $$\    $$$$$$\                                //
-//                      $$$$ |  $$  __$$\                               //
-//                      \_$$ |  \__/  $$ | $$$$$$$\                     //
-//                        $$ |   $$$$$$  |$$  _____|                    //
-//                        $$ |  $$  ____/ \$$$$$$\                      //
-//                        $$ |  $$ |       \____$$\                     //
-//                      $$$$$$\ $$$$$$$$\ $$$$$$$  |                    //
-//                      \______|\________|\_______/                     //
-//                                                                      //
-//                                                                      //
+        //                              /* 12s */                               //
+        //                                                                      //
+        //                        $$\    $$$$$$\                                //
+        //                      $$$$ |  $$  __$$\                               //
+        //                      \_$$ |  \__/  $$ | $$$$$$$\                     //
+        //                        $$ |   $$$$$$  |$$  _____|                    //
+        //                        $$ |  $$  ____/ \$$$$$$\                      //
+        //                        $$ |  $$ |       \____$$\                     //
+        //                      $$$$$$\ $$$$$$$$\ $$$$$$$  |                    //
+        //                      \______|\________|\_______/                     //
+        //                                                                      //
+        //                                                                      //
 
 
 
@@ -236,18 +237,18 @@ namespace Launcher
 
         /* 64s */
 
-//                                                             //
-//                                                             //
-//                   $$$$$$\  $$\   $$\                        //
-//                  $$  __$$\ $$ |  $$ |                       //
-//                  $$ /  \__|$$ |  $$ | $$$$$$$\              //
-//                  $$$$$$$\  $$$$$$$$ |$$  _____|             //
-//                  $$  __$$\ \_____$$ |\$$$$$$\               //
-//                  $$ /  $$ |      $$ | \____$$\              //
-//                   $$$$$$  |      $$ |$$$$$$$  |             //
-//                   \______/       \__|\_______/              //
-//                                                             //
-//                                                             //
+        //                                                             //
+        //                                                             //
+        //                   $$$$$$\  $$\   $$\                        //
+        //                  $$  __$$\ $$ |  $$ |                       //
+        //                  $$ /  \__|$$ |  $$ | $$$$$$$\              //
+        //                  $$$$$$$\  $$$$$$$$ |$$  _____|             //
+        //                  $$  __$$\ \_____$$ |\$$$$$$\               //
+        //                  $$ /  $$ |      $$ | \____$$\              //
+        //                   $$$$$$  |      $$ |$$$$$$$  |             //
+        //                   \______/       \__|\_______/              //
+        //                                                             //
+        //                                                             //
 
 
         public static string bX000Y000 { get; set; }
@@ -4380,17 +4381,40 @@ namespace Launcher
         public static string bX063Y062 { get; set; }
         public static string bX063Y063 { get; set; }
 
+        //                                                                                                                                  //
+        //                                                                                                                                  //
+        //            _________ __                 __                 ____   ____            .__      ___.   .__                            //
+        //           /   _____//  |______ ________/  |_ __ ________   \   \ /   /____ _______|__|____ \_ |__ |  |   ____   ______           //
+        //           \_____  \\   __\__  \\_  __ \   __\  |  \____ \   \   Y   /\__  \\_  __ \  \__  \ | __ \|  | _/ __ \ /  ___/           //
+        //           /        \|  |  / __ \|  | \/|  | |  |  /  |_> >   \     /  / __ \|  | \/  |/ __ \| \_\ \  |_\  ___/ \___ \            //
+        //          /_______  /|__| (____  /__|   |__| |____/|   __/     \___/  (____  /__|  |__(____  /___  /____/\___  >____  >           //
+        //                  \/           \/                  |__|                    \/              \/    \/          \/     \/            //
+        //                                                                                                                                  //
+        //                                                                                                                                  //
 
-//                                                                                                                                  //
-//                                                                                                                                  //
-//            _________ __                 __                 ____   ____            .__      ___.   .__                            //
-//           /   _____//  |______ ________/  |_ __ ________   \   \ /   /____ _______|__|____ \_ |__ |  |   ____   ______           //
-//           \_____  \\   __\__  \\_  __ \   __\  |  \____ \   \   Y   /\__  \\_  __ \  \__  \ | __ \|  | _/ __ \ /  ___/           //
-//           /        \|  |  / __ \|  | \/|  | |  |  /  |_> >   \     /  / __ \|  | \/  |/ __ \| \_\ \  |_\  ___/ \___ \            //
-//          /_______  /|__| (____  /__|   |__| |____/|   __/     \___/  (____  /__|  |__(____  /___  /____/\___  >____  >           //
-//                  \/           \/                  |__|                    \/              \/    \/          \/     \/            //
-//                                                                                                                                  //
-//                                                                                                                                  //
+
+        //                                                                                                                                  //
+        //                                                                                                                                  //
+        //            _________ __                 __                 ____   ____            .__      ___.   .__                            //
+        //           /   _____//  |______ ________/  |_ __ ________   \   \ /   /____ _______|__|____ \_ |__ |  |   ____   ______           //
+        //           \_____  \\   __\__  \\_  __ \   __\  |  \____ \   \   Y   /\__  \\_  __ \  \__  \ | __ \|  | _/ __ \ /  ___/           //
+        //           /        \|  |  / __ \|  | \/|  | |  |  /  |_> >   \     /  / __ \|  | \/  |/ __ \| \_\ \  |_\  ___/ \___ \            //
+        //          /_______  /|__| (____  /__|   |__| |____/|   __/     \___/  (____  /__|  |__(____  /___  /____/\___  >____  >           //
+        //                  \/           \/                  |__|                    \/              \/    \/          \/     \/            //
+        //                                                                                                                                  //
+        //                                                                                                                                  //
+
+
+        //                                                                                                                                  //
+        //                                                                                                                                  //
+        //            _________ __                 __                 ____   ____            .__      ___.   .__                            //
+        //           /   _____//  |______ ________/  |_ __ ________   \   \ /   /____ _______|__|____ \_ |__ |  |   ____   ______           //
+        //           \_____  \\   __\__  \\_  __ \   __\  |  \____ \   \   Y   /\__  \\_  __ \  \__  \ | __ \|  | _/ __ \ /  ___/           //
+        //           /        \|  |  / __ \|  | \/|  | |  |  /  |_> >   \     /  / __ \|  | \/  |/ __ \| \_\ \  |_\  ___/ \___ \            //
+        //          /_______  /|__| (____  /__|   |__| |____/|   __/     \___/  (____  /__|  |__(____  /___  /____/\___  >____  >           //
+        //                  \/           \/                  |__|                    \/              \/    \/          \/     \/            //
+        //                                                                                                                                  //
+        //                                                                                                                                  //
 
 
         private StateHandler myState = new StateHandler();
@@ -4420,8 +4444,9 @@ namespace Launcher
         public string dir = String.Empty;
         public string[] dirs = new string[] { "" };
         public int currentziplink = 0;
-
-
+        public string startPath = "Game/";
+        public string zipPath = "Game/cache/";
+        public string extractPath = "Game/";
 
 
 //                                                                                                                          //
@@ -4780,6 +4805,11 @@ namespace Launcher
 
         
 
+
+
+
+
+
 //                                                                                                           //
 //                __________.__                 __________        __    __                                   //
 //                \______   \  | _____  ___.__. \______   \__ ___/  |__/  |_  ____   ____                    //
@@ -4832,28 +4862,78 @@ namespace Launcher
                         string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_0055.zip.001)
                         string[] ziplinks = System.IO.File.ReadAllLines(ziplinkspath); // read all lines of http links from the zipsmanifest for download (link pathing for each .zip.0xx)
 
+
+
+
+
+                        // Zips Download
+
+
+
+
+
                         foreach (string zip in zipnames)
                         {
-                            using (WebClient wc = new WebClient())
+
+                            for (int i = 0; i < 67; ++i)
                             {
-                                for (int i = 0; i < 67; ++i)
+                                currentziplink = i;
+                                int x = i;
+                                if (System.IO.File.Exists(cdirectory + zip))
                                 {
-                                    currentziplink = i;
-                                    int x = i;
-                                    if (System.IO.File.Exists(cdirectory + zip))
+                                // alreday have this file
+                                }
+
+                                if (currentziplink == 0)
+                                {
+                                    //specific downloaders
+                                    using (WebClient wc0 = new WebClient())
                                     {
-                                    // alreday have this file
-                                    }
-                                    else
-                                    {
-                                        wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                                        wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadZipsCompleted);
-                                        wc.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
+                                        wc0.DownloadProgressChanged += wc0_DownloadProgressChanged;
+                                        wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
+                                        wc0.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
+                                        Console.WriteLine(zip + " set as wc0 #" + x);
                                     }
                                 }
 
+                                if (currentziplink == 1)
+                                {
+                                    using (WebClient wc1 = new WebClient())
+                                    {
+                                        wc1.DownloadProgressChanged += wc1_DownloadProgressChanged;
+                                        wc1.DownloadFileCompleted += new AsyncCompletedEventHandler(wc1_DownloadZipsCompleted);
+                                        wc1.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
+                                        Console.WriteLine(zip + " set as wc1 #" + x);
+                                    }
+                                }
+
+                                if (currentziplink == 2)
+                                {
+                                    using (WebClient wc2 = new WebClient())
+                                    {
+                                        wc2.DownloadProgressChanged += wc2_DownloadProgressChanged;
+                                        wc2.DownloadFileCompleted += new AsyncCompletedEventHandler(wc2_DownloadZipsCompleted);
+                                        wc2.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
+                                        Console.WriteLine(zip + " set as wc2 #" + x);
+                                    }
+                                }
+
+
+                                else
+                                {
+                                    // nothing
+                                }
+
+
+
+
+
+
+                                    
+
+                                
+
                             }
-                            Console.WriteLine(zip + " set");
                         }
                         Console.WriteLine("Done with zipnames loop");
                     }
@@ -4889,29 +4969,45 @@ namespace Launcher
                     Console.WriteLine("Knowts is up to date so we have the latest local download link");
                     string[] dirs = Directory.GetFiles(cdirectory, "*WoA_1902*", SearchOption.TopDirectoryOnly);
                     Console.WriteLine(gdirectory + ", The number of zips starting with W is " + dirs.Length + ", listing their names here:");
-                    foreach (string dir in dirs)
-                    {
-                        string letsdothis = dir;
-                        Console.WriteLine(dir);
-                        if (dir != null)
-                        {
-                            // WE have some locals zips! use as offset to download from correct zip onward
-
-                        }
-                        else
-                        {
-                            progressBar1.Visible = true;
-                            using (WebClient wc = new WebClient())
-                            {
-                                //download some shit! 
-                                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                                wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadKnowtsCompleted);
-                                wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
 
 
-                            }
-                        }
-                    } // end of loop
+
+
+                      foreach (string dir in dirs)
+                      {
+                          string letsdothis = dir;
+                          Console.WriteLine(dir);
+                          if (dir != null)
+                          {
+                              // WE have some locals zips! use as offset to download from correct zip onward
+                    
+                          }
+                          else
+                          {
+                              progressBar1.Visible = true;
+                              using (WebClient wc = new WebClient())
+                              {
+                                  //download some shit! 
+                                  wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                                   // event called for the startup of all downloads
+                                  wc.DownloadFile(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+                                  play.Text = dir;
+                    
+                    
+                    
+                              }
+                          }
+                      } // end of loop
+
+
+
+
+
+
+
+
+
+
                 } // end of if (onlinelatesthtml == latestlink)
 
                 //Otherwise we have nothing, and we need to first download the Knowts.txt
@@ -4975,18 +5071,19 @@ namespace Launcher
         }
 
 
-                                                                                                                    
-//                                                                                                                  //
-//               ____ ___            .___       __           ___________                    __                      //
-//              |    |   \______   __| _/____ _/  |_  ____   \_   _____/__  __ ____   _____/  |_  ______            //
-//              |    |   /\____ \ / __ |\__  \\   __\/ __ \   |    __)_\  \/ // __ \ /    \   __\/  ___/            //
-//              |    |  / |  |_> > /_/ | / __ \|  | \  ___/   |        \\   /\  ___/|   |  \  |  \___ \             //
-//              |______/  |   __/\____ |(____  /__|  \___  > /_______  / \_/  \___  >___|  /__| /____  >            //
-//                        |__|        \/     \/          \/          \/           \/     \/          \/             //
-//                                                                                                                  //
-//                                                                                                                  //
-//                                                                                                                  //
 
+        //                                                                                                                  //
+        //               ____ ___            .___       __           ___________                    __                      //
+        //              |    |   \______   __| _/____ _/  |_  ____   \_   _____/__  __ ____   _____/  |_  ______            //
+        //              |    |   /\____ \ / __ |\__  \\   __\/ __ \   |    __)_\  \/ // __ \ /    \   __\/  ___/            //
+        //              |    |  / |  |_> > /_/ | / __ \|  | \  ___/   |        \\   /\  ___/|   |  \  |  \___ \             //
+        //              |______/  |   __/\____ |(____  /__|  \___  > /_______  / \_/  \___  >___|  /__| /____  >            //
+        //                        |__|        \/     \/          \/          \/           \/     \/          \/             //
+        //                                                                                                                  //
+        //                                                                                                                  //
+        //                                                                                                                  //
+
+            //first ones are for the txt files
 
         void wc_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
@@ -5004,6 +5101,22 @@ namespace Launcher
             progressBar1.Visible = true;
             play.Enabled = false;
             play.Text = (currentziplink.ToString() + "%");
+
+            if (currentziplink == 66)
+            {
+
+                //Try to inzup the last one
+                Console.WriteLine("Unzipping " + currentziplink);
+
+                ZipFile.CreateFromDirectory(startPath, zipPath);
+
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+
+            }
+            else
+            {
+
+            }
         }
 
         // Event to track the progress
@@ -5012,22 +5125,143 @@ namespace Launcher
         {
             progressBar1.Value = e.ProgressPercentage;
             play.Text = (currentziplink.ToString() + "%");
+            Console.WriteLine("Unzipping " + currentziplink);
 
         }
 
 
 
-                                                                                                             
-//                                                                                                           //
-//                  .____                     .___ ___________              .__                              //
-//                  |    |    _________     __| _/ \_   _____/ ____    ____ |__| ____   ____                 //
-//                  |    |   /  _ \__  \   / __ |   |    __)_ /    \  / ___\|  |/    \_/ __ \                //
-//                  |    |__(  <_> ) __ \_/ /_/ |   |        \   |  \/ /_/  >  |   |  \  ___/                //
-//                  |_______ \____(____  /\____ |  /_______  /___|  /\___  /|__|___|  /\___  >               //
-//                          \/         \/      \/          \/     \//_____/         \/     \/                //
-//                                                                                                           //
-//                                                                                                           //
-                 
+
+
+
+        // zip file progress indicators
+
+        void wc0_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // shit
+            progressBar1.Visible = false;
+            LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+            play.Text = "Get Zips";
+            play.Enabled = true;
+        }
+
+        void wc0_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // called when a zip is done fownloading
+            progressBar1.Visible = true;
+            play.Enabled = false;
+            play.Text = (currentziplink.ToString() + "%");
+            if (currentziplink == 66)
+            {
+                // //Try to inzup the last one
+                // Console.WriteLine("Unzipping " + currentziplink);
+                // ZipFile.CreateFromDirectory(startPath, zipPath);
+                // ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+            else
+            {
+                //nothing
+            }
+        }
+        // Event to track the progress
+        void wc0_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            play.Text = (currentziplink.ToString() + "%");
+            Console.WriteLine("Unzipping " + currentziplink);
+
+        }
+
+
+        // zip file progress indicators
+
+        void wc1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // shit
+            progressBar1.Visible = false;
+            LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+            play.Text = "Get Zips";
+            play.Enabled = true;
+        }
+
+        void wc1_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // called when a zip is done fownloading
+            progressBar1.Visible = true;
+            play.Enabled = false;
+            play.Text = (currentziplink.ToString() + "%");
+            if (currentziplink == 66)
+            {
+                // //Try to inzup the last one
+                // Console.WriteLine("Unzipping " + currentziplink);
+                // ZipFile.CreateFromDirectory(startPath, zipPath);
+                // ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+            else
+            {
+            //nothing
+            }
+        }
+        // Event to track the progress
+        void wc1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            play.Text = (currentziplink.ToString() + "%");
+            Console.WriteLine("Unzipping " + currentziplink);
+
+        }
+
+
+        // zip file progress indicators
+
+        void wc2_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // shit
+            progressBar1.Visible = false;
+            LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+            play.Text = "Get Zips";
+            play.Enabled = true;
+        }
+
+        void wc2_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // called when a zip is done fownloading
+            progressBar1.Visible = true;
+            play.Enabled = false;
+            play.Text = (currentziplink.ToString() + "%");
+            if (currentziplink == 66)
+            {
+                //Try to inzup the last one
+                // Console.WriteLine("Unzipping " + currentziplink);
+                // ZipFile.CreateFromDirectory(startPath, zipPath);
+                // ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+            else
+            {
+                //nothing
+            }
+        }
+        // Event to track the progress
+        void wc2_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            play.Text = (currentziplink.ToString() + "%");
+            Console.WriteLine("Unzipping " + currentziplink);
+
+        }
+
+
+
+        //                                                                                                           //
+        //                  .____                     .___ ___________              .__                              //
+        //                  |    |    _________     __| _/ \_   _____/ ____    ____ |__| ____   ____                 //
+        //                  |    |   /  _ \__  \   / __ |   |    __)_ /    \  / ___\|  |/    \_/ __ \                //
+        //                  |    |__(  <_> ) __ \_/ /_/ |   |        \   |  \/ /_/  >  |   |  \  ___/                //
+        //                  |_______ \____(____  /\____ |  /_______  /___|  /\___  /|__|___|  /\___  >               //
+        //                          \/         \/      \/          \/     \//_____/         \/     \/                //
+        //                                                                                                           //
+        //                                                                                                           //
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -5113,14 +5347,12 @@ namespace Launcher
             button3.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
-            button6.BackColor = Color.Transparent;
-            button7.BackColor = Color.Transparent;
-            button8.BackColor = Color.Transparent;
+
             button9.BackColor = Color.Transparent;
             button10.BackColor = Color.Transparent;
 
             MinimizeButton.BackColor = Color.Transparent;
-            button11.BackColor = Color.Transparent;
+
             button12.BackColor = Color.Transparent;
             button13.BackColor = Color.Transparent;
             button14.BackColor = Color.Transparent;
@@ -5129,22 +5361,13 @@ namespace Launcher
             button17.BackColor = Color.Transparent;
             button18.BackColor = Color.Transparent;
 
-            button19.BackColor = Color.Transparent;
-            button20.BackColor = Color.Transparent;
-            button21.BackColor = Color.Transparent;
-            button22.BackColor = Color.Transparent;
-            button23.BackColor = Color.Transparent;
-            button24.BackColor = Color.Transparent;
-            button25.BackColor = Color.Transparent;
-            button26.BackColor = Color.Transparent;
 
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
             ToolsPanel.Visible = false;
             ToMainButton.Visible = false;
-            ConverterPanel.Visible = false;
-            AudioPanel.Visible = false;
+
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
 
@@ -5253,8 +5476,6 @@ namespace Launcher
             button12.Visible = true;
 
 
-            ConverterPanel.Visible = false;
-            AudioPanel.Visible = false;
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
 
@@ -5278,8 +5499,6 @@ namespace Launcher
             webBrowser1.Visible = false;
             button12.Visible = true;
 
-            ConverterPanel.Visible = false;
-            AudioPanel.Visible = false;
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
 
@@ -5300,8 +5519,6 @@ namespace Launcher
             ToPanelButton.Visible = false;
             button12.Visible = false;
 
-            ConverterPanel.Visible = false;
-            AudioPanel.Visible = false;
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
 
@@ -5314,8 +5531,7 @@ namespace Launcher
         private void button10_Click(object sender, EventArgs e)
         {
             FaunaPanel.Visible = true;
-            ConverterPanel.Visible = false;
-            AudioPanel.Visible = false;
+
             ENVPanel.Visible = false;
             if (soundenabled == true)
             {
@@ -5336,8 +5552,7 @@ namespace Launcher
         private void button9_Click(object sender, EventArgs e) // shows the ENVPanel
         {
             ENVPanel.Visible = true; // ENVPanel is now the Options Menu for swapping configs and golobal shit
-            ConverterPanel.Visible = false;
-            AudioPanel.Visible = false;
+
             FaunaPanel.Visible = false;
 
             if (soundenabled == true)
@@ -5355,11 +5570,10 @@ namespace Launcher
 
         private void button8_Click(object sender, EventArgs e) // Shows the Audio Panel
         {
-
-            AudioPanel.Visible = true;
+            
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
-            ConverterPanel.Visible = false;
+
 
             if (soundenabled == true)
             {
@@ -5377,8 +5591,7 @@ namespace Launcher
 
         private void button11_Click_1(object sender, EventArgs e) // Shows the Converter Panel
         {
-            ConverterPanel.Visible = true;
-            AudioPanel.Visible = false;
+
             FaunaPanel.Visible = false;
             ENVPanel.Visible = false;
 
@@ -11084,27 +11297,6 @@ namespace Launcher
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Audio Processing... doing nothing");
-            richTextBox1.AppendText(Environment.NewLine + "Audio Processing...");
-            richTextBox1.Focus();
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            richTextBox1.ScrollToCaret();
-
-            // test wav file
-            // var fileName = ("Resources/zulu.wav");
-
-
-
-            // Initialize a new instance of the SpeechSynthesizer.
-            SpeechSynthesizer synth = new SpeechSynthesizer();
-
-            // Configure the audio output. 
-            synth.SetOutputToDefaultAudioDevice();
-
-            // Speak a string.
-            synth.Speak("Good Evening.");
-
-            Console.WriteLine("Audio Spoken");
             
         }
 

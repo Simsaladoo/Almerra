@@ -113,48 +113,11 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Remotion.Interfaces
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.pdb
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\LinqToExcel.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\CloudrailSI.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.AspNet.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.Core.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.GoogleOAuth2.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OAuth.Consumer.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OAuth.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OpenId.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OpenId.RelyingParty.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Auth.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Auth.PlatformServices.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Core.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Drive.v3.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.PlatformServices.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Newtonsoft.Json.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.WebRequest.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Org.Mentalis.Security.Cryptography.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Mono.Math.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.AspNet.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.Core.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OAuth.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OAuth.Consumer.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OpenId.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetOpenAuth.OpenId.RelyingParty.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.pdb
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Auth.pdb
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Auth.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Core.pdb
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Core.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Drive.v3.pdb
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Google.Apis.Drive.v3.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Newtonsoft.Json.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.WebRequest.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Org.Mentalis.Security.Cryptography.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Mono.Math.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\Build.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\Manifest.txt
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\ZipsManifest.txt
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
 D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.exe.config
 D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 D:\GitHub\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
@@ -201,3 +164,8 @@ D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensi
 D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.dll
 D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.xml
 D:\GitHub\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.IO.Compression.ZipFile.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.dll
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.xml
