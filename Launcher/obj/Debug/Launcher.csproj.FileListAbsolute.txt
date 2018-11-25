@@ -43,8 +43,6 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Models.dll
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SpeechLib.Recognition.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Almerra\Launcher\bin\Debug\Resources\done.wav
@@ -157,3 +155,4 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Exten
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache

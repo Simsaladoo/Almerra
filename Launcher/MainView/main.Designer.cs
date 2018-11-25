@@ -1,4 +1,6 @@
-﻿namespace Launcher
+﻿using System;
+
+namespace Launcher
 {
     partial class main
     {
@@ -36,8 +38,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolsPanel = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.ENVPanel = new System.Windows.Forms.Panel();
+            this.OtherPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.GeneralPanel = new System.Windows.Forms.Panel();
             this.Game_NoteLabel = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.Game_ShadowLabel = new System.Windows.Forms.Label();
@@ -52,15 +57,6 @@
             this.GamePageTitle = new System.Windows.Forms.Label();
             this.Game_HeaderLabel = new System.Windows.Forms.Label();
             this.GameHLine = new System.Windows.Forms.Label();
-            this.FaunaPanel = new System.Windows.Forms.Panel();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.Pick_A_Label = new System.Windows.Forms.Label();
@@ -71,10 +67,20 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBar3 = new System.Windows.Forms.ProgressBar();
+            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.progressBar5 = new System.Windows.Forms.ProgressBar();
+            this.progressBar6 = new System.Windows.Forms.ProgressBar();
+            this.progressBar7 = new System.Windows.Forms.ProgressBar();
+            this.progressBar8 = new System.Windows.Forms.ProgressBar();
+            this.progressBar9 = new System.Windows.Forms.ProgressBar();
+            this.progressBar0 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
-            this.ENVPanel.SuspendLayout();
-            this.FaunaPanel.SuspendLayout();
+            this.OtherPanel.SuspendLayout();
+            this.GeneralPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -132,7 +138,6 @@
             this.font.TabStop = false;
             this.font.Click += new System.EventHandler(this.font_Click);
             this.font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.font_MouseDown);
-            this.font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.font_MouseMove);
             // 
             // button1
             // 
@@ -152,6 +157,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Engine";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // notifyIcon1
@@ -163,10 +169,10 @@
             // 
             // ToolsPanel
             // 
+            this.ToolsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
-            this.ToolsPanel.Controls.Add(this.richTextBox1);
-            this.ToolsPanel.Controls.Add(this.FaunaPanel);
-            this.ToolsPanel.Controls.Add(this.ENVPanel);
+            this.ToolsPanel.Controls.Add(this.OtherPanel);
+            this.ToolsPanel.Controls.Add(this.GeneralPanel);
             this.ToolsPanel.Controls.Add(this.button9);
             this.ToolsPanel.Controls.Add(this.button10);
             this.ToolsPanel.Controls.Add(this.Pick_A_Label);
@@ -176,43 +182,68 @@
             this.ToolsPanel.Size = new System.Drawing.Size(1000, 476);
             this.ToolsPanel.TabIndex = 24;
             // 
-            // richTextBox1
+            // OtherPanel
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.DetectUrls = false;
-            this.richTextBox1.Font = new System.Drawing.Font("Morris Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 368);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ShortcutsEnabled = false;
-            this.richTextBox1.Size = new System.Drawing.Size(1001, 107);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "Launcher opened...";
+            this.OtherPanel.BackColor = System.Drawing.Color.Black;
+            this.OtherPanel.Controls.Add(this.label1);
+            this.OtherPanel.Controls.Add(this.label2);
+            this.OtherPanel.Controls.Add(this.label3);
+            this.OtherPanel.Location = new System.Drawing.Point(199, 3);
+            this.OtherPanel.Name = "OtherPanel";
+            this.OtherPanel.Size = new System.Drawing.Size(798, 363);
+            this.OtherPanel.TabIndex = 37;
             // 
-            // ENVPanel
+            // label1
             // 
-            this.ENVPanel.BackColor = System.Drawing.Color.Black;
-            this.ENVPanel.Controls.Add(this.Game_NoteLabel);
-            this.ENVPanel.Controls.Add(this.comboBox3);
-            this.ENVPanel.Controls.Add(this.Game_ShadowLabel);
-            this.ENVPanel.Controls.Add(this.comboBox2);
-            this.ENVPanel.Controls.Add(this.Game_AALabel);
-            this.ENVPanel.Controls.Add(this.Game_ResolutionLabel);
-            this.ENVPanel.Controls.Add(this.comboBox1);
-            this.ENVPanel.Controls.Add(this.checkBox2);
-            this.ENVPanel.Controls.Add(this.checkBox1);
-            this.ENVPanel.Controls.Add(this.ResolutionBox);
-            this.ENVPanel.Controls.Add(this.Game_DetailLabel);
-            this.ENVPanel.Controls.Add(this.GamePageTitle);
-            this.ENVPanel.Controls.Add(this.Game_HeaderLabel);
-            this.ENVPanel.Controls.Add(this.GameHLine);
-            this.ENVPanel.Location = new System.Drawing.Point(199, 3);
-            this.ENVPanel.Name = "ENVPanel";
-            this.ENVPanel.Size = new System.Drawing.Size(798, 363);
-            this.ENVPanel.TabIndex = 39;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Kelly", 22F);
+            this.label1.Location = new System.Drawing.Point(280, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(246, 41);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Launcher Options";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(52, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 24);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Graphics Presets";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(667, 13);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "_________________________________________________________________________________" +
+    "_____________________________";
+            // 
+            // GeneralPanel
+            // 
+            this.GeneralPanel.BackColor = System.Drawing.Color.Black;
+            this.GeneralPanel.Controls.Add(this.Game_NoteLabel);
+            this.GeneralPanel.Controls.Add(this.comboBox3);
+            this.GeneralPanel.Controls.Add(this.Game_ShadowLabel);
+            this.GeneralPanel.Controls.Add(this.comboBox2);
+            this.GeneralPanel.Controls.Add(this.Game_AALabel);
+            this.GeneralPanel.Controls.Add(this.Game_ResolutionLabel);
+            this.GeneralPanel.Controls.Add(this.comboBox1);
+            this.GeneralPanel.Controls.Add(this.checkBox2);
+            this.GeneralPanel.Controls.Add(this.checkBox1);
+            this.GeneralPanel.Controls.Add(this.ResolutionBox);
+            this.GeneralPanel.Controls.Add(this.Game_DetailLabel);
+            this.GeneralPanel.Controls.Add(this.GamePageTitle);
+            this.GeneralPanel.Controls.Add(this.Game_HeaderLabel);
+            this.GeneralPanel.Controls.Add(this.GameHLine);
+            this.GeneralPanel.Location = new System.Drawing.Point(199, 3);
+            this.GeneralPanel.Name = "GeneralPanel";
+            this.GeneralPanel.Size = new System.Drawing.Size(798, 363);
+            this.GeneralPanel.TabIndex = 39;
             // 
             // Game_NoteLabel
             // 
@@ -347,7 +378,6 @@
             this.ResolutionBox.Size = new System.Drawing.Size(154, 29);
             this.ResolutionBox.TabIndex = 41;
             this.ResolutionBox.Text = "1920 x 1080";
-            this.ResolutionBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Game_DetailLabel
             // 
@@ -390,174 +420,6 @@
             this.GameHLine.TabIndex = 38;
             this.GameHLine.Text = "_________________________________________________________________________________" +
     "_____________________________";
-            // 
-            // FaunaPanel
-            // 
-            this.FaunaPanel.BackColor = System.Drawing.Color.Black;
-            this.FaunaPanel.Controls.Add(this.button17);
-            this.FaunaPanel.Controls.Add(this.button18);
-            this.FaunaPanel.Controls.Add(this.button16);
-            this.FaunaPanel.Controls.Add(this.button15);
-            this.FaunaPanel.Controls.Add(this.button14);
-            this.FaunaPanel.Controls.Add(this.button13);
-            this.FaunaPanel.Controls.Add(this.button3);
-            this.FaunaPanel.Controls.Add(this.button4);
-            this.FaunaPanel.Location = new System.Drawing.Point(199, 3);
-            this.FaunaPanel.Name = "FaunaPanel";
-            this.FaunaPanel.Size = new System.Drawing.Size(798, 363);
-            this.FaunaPanel.TabIndex = 37;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.Lime;
-            this.button17.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(669, 148);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(30, 54);
-            this.button17.TabIndex = 35;
-            this.button17.Text = ">";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.Lime;
-            this.button18.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.ForeColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(505, 148);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(30, 54);
-            this.button18.TabIndex = 34;
-            this.button18.Text = "<";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.Lime;
-            this.button16.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(541, 148);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(122, 54);
-            this.button16.TabIndex = 33;
-            this.button16.Text = "Run (10)";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.Lime;
-            this.button15.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(234, 153);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(30, 54);
-            this.button15.TabIndex = 32;
-            this.button15.Text = ">";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Lime;
-            this.button14.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(70, 153);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(30, 54);
-            this.button14.TabIndex = 31;
-            this.button14.Text = "<";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.Lime;
-            this.button13.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(106, 153);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(122, 54);
-            this.button13.TabIndex = 30;
-            this.button13.Text = "Run (10)";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Lime;
-            this.button3.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(70, 91);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 54);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Write 12s CSVs";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Lime;
-            this.button4.BackgroundImage = global::Launcher.Properties.Resources.button;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Morris Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(505, 86);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(194, 54);
-            this.button4.TabIndex = 28;
-            this.button4.Text = "Write 64s CSVs";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button9
             // 
@@ -726,12 +588,132 @@
             // 
             // progressBar1
             // 
+            this.progressBar1.BackColor = System.Drawing.Color.Lime;
+            this.progressBar1.ForeColor = System.Drawing.Color.Red;
             this.progressBar1.Location = new System.Drawing.Point(0, 548);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1000, 1);
             this.progressBar1.Step = 100;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 32;
-            this.progressBar1.Visible = false;
+            this.progressBar1.Value = 1;
+            // 
+            // VersionLabel
+            // 
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.VersionLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VersionLabel.Font = new System.Drawing.Font("Morris Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.VersionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.VersionLabel.Location = new System.Drawing.Point(720, 8);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(106, 18);
+            this.VersionLabel.TabIndex = 51;
+            this.VersionLabel.Text = "WoA_1902_0059";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.BackColor = System.Drawing.Color.Lime;
+            this.progressBar2.ForeColor = System.Drawing.Color.Red;
+            this.progressBar2.Location = new System.Drawing.Point(0, 547);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar2.Step = 100;
+            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar2.TabIndex = 52;
+            this.progressBar2.Value = 1;
+            // 
+            // progressBar3
+            // 
+            this.progressBar3.BackColor = System.Drawing.Color.Lime;
+            this.progressBar3.Location = new System.Drawing.Point(0, 546);
+            this.progressBar3.Name = "progressBar3";
+            this.progressBar3.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar3.Step = 100;
+            this.progressBar3.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar3.TabIndex = 53;
+            this.progressBar3.Value = 1;
+            // 
+            // progressBar4
+            // 
+            this.progressBar4.BackColor = System.Drawing.Color.Lime;
+            this.progressBar4.Location = new System.Drawing.Point(0, 545);
+            this.progressBar4.Name = "progressBar4";
+            this.progressBar4.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar4.Step = 100;
+            this.progressBar4.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar4.TabIndex = 54;
+            this.progressBar4.Value = 1;
+            // 
+            // progressBar5
+            // 
+            this.progressBar5.BackColor = System.Drawing.Color.Lime;
+            this.progressBar5.Location = new System.Drawing.Point(0, 544);
+            this.progressBar5.Name = "progressBar5";
+            this.progressBar5.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar5.Step = 100;
+            this.progressBar5.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar5.TabIndex = 55;
+            this.progressBar5.Value = 1;
+            // 
+            // progressBar6
+            // 
+            this.progressBar6.BackColor = System.Drawing.Color.Lime;
+            this.progressBar6.Location = new System.Drawing.Point(0, 543);
+            this.progressBar6.Name = "progressBar6";
+            this.progressBar6.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar6.Step = 100;
+            this.progressBar6.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar6.TabIndex = 56;
+            this.progressBar6.Value = 1;
+            // 
+            // progressBar7
+            // 
+            this.progressBar7.BackColor = System.Drawing.Color.Lime;
+            this.progressBar7.Location = new System.Drawing.Point(0, 542);
+            this.progressBar7.Name = "progressBar7";
+            this.progressBar7.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar7.Step = 100;
+            this.progressBar7.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar7.TabIndex = 57;
+            this.progressBar7.Value = 1;
+            // 
+            // progressBar8
+            // 
+            this.progressBar8.BackColor = System.Drawing.Color.Lime;
+            this.progressBar8.Location = new System.Drawing.Point(0, 541);
+            this.progressBar8.Name = "progressBar8";
+            this.progressBar8.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar8.Step = 100;
+            this.progressBar8.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar8.TabIndex = 58;
+            this.progressBar8.Value = 1;
+            // 
+            // progressBar9
+            // 
+            this.progressBar9.BackColor = System.Drawing.Color.Lime;
+            this.progressBar9.Location = new System.Drawing.Point(0, 540);
+            this.progressBar9.Name = "progressBar9";
+            this.progressBar9.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar9.Step = 100;
+            this.progressBar9.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar9.TabIndex = 59;
+            this.progressBar9.Value = 1;
+            // 
+            // progressBar0
+            // 
+            this.progressBar0.BackColor = System.Drawing.Color.Lime;
+            this.progressBar0.Cursor = System.Windows.Forms.Cursors.Default;
+            this.progressBar0.ForeColor = System.Drawing.Color.Red;
+            this.progressBar0.Location = new System.Drawing.Point(0, 549);
+            this.progressBar0.Name = "progressBar0";
+            this.progressBar0.Size = new System.Drawing.Size(1000, 1);
+            this.progressBar0.Step = 100;
+            this.progressBar0.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar0.TabIndex = 60;
+            this.progressBar0.Value = 1;
             // 
             // main
             // 
@@ -741,17 +723,27 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
-            this.Controls.Add(this.ToolsPanel);
+            this.Controls.Add(this.progressBar0);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.progressBar3);
+            this.Controls.Add(this.progressBar4);
+            this.Controls.Add(this.progressBar5);
+            this.Controls.Add(this.progressBar6);
+            this.Controls.Add(this.progressBar7);
+            this.Controls.Add(this.progressBar8);
+            this.Controls.Add(this.progressBar9);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.play);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.ToMainButton);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.CloseButton);
+            this.Controls.Add(this.ToolsPanel);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.font);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -767,10 +759,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.font)).EndInit();
             this.ToolsPanel.ResumeLayout(false);
             this.ToolsPanel.PerformLayout();
-            this.ENVPanel.ResumeLayout(false);
-            this.ENVPanel.PerformLayout();
-            this.FaunaPanel.ResumeLayout(false);
+            this.OtherPanel.ResumeLayout(false);
+            this.OtherPanel.PerformLayout();
+            this.GeneralPanel.ResumeLayout(false);
+            this.GeneralPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -783,24 +777,15 @@
         private System.Windows.Forms.Panel ToolsPanel;
         private System.Windows.Forms.Button ToPanelButton;
         private System.Windows.Forms.Button ToMainButton;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel ENVPanel;
-        private System.Windows.Forms.Panel FaunaPanel;
+        private System.Windows.Forms.Panel GeneralPanel;
+        private System.Windows.Forms.Panel OtherPanel;
         private System.Windows.Forms.Label Pick_A_Label;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Label Game_HeaderLabel;
         private System.Windows.Forms.Label GameHLine;
         private System.Windows.Forms.Label GamePageTitle;
@@ -816,6 +801,21 @@
         private System.Windows.Forms.Label Game_AALabel;
         private System.Windows.Forms.Label Game_NoteLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label VersionLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private EventHandler comboBox3_SelectedIndexChanged;
+        private EventHandler comboBox1_SelectedIndexChanged;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar progressBar3;
+        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar progressBar5;
+        private System.Windows.Forms.ProgressBar progressBar6;
+        private System.Windows.Forms.ProgressBar progressBar7;
+        private System.Windows.Forms.ProgressBar progressBar8;
+        private System.Windows.Forms.ProgressBar progressBar9;
+        private System.Windows.Forms.ProgressBar progressBar0;
     }
 }
 

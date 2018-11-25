@@ -169,3 +169,4 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Ext
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.xml
+H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
