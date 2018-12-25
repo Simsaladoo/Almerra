@@ -69,13 +69,6 @@ namespace Launcher
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
-            this.progressBar5 = new System.Windows.Forms.ProgressBar();
-            this.progressBar6 = new System.Windows.Forms.ProgressBar();
-            this.progressBar7 = new System.Windows.Forms.ProgressBar();
-            this.progressBar8 = new System.Windows.Forms.ProgressBar();
-            this.progressBar9 = new System.Windows.Forms.ProgressBar();
             this.progressBar0 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
@@ -608,9 +601,9 @@ namespace Launcher
             this.VersionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.VersionLabel.Location = new System.Drawing.Point(720, 8);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(106, 18);
+            this.VersionLabel.Size = new System.Drawing.Size(102, 18);
             this.VersionLabel.TabIndex = 51;
-            this.VersionLabel.Text = "WoA_1902_0059";
+            this.VersionLabel.Text = "WoA_1902_0001";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // progressBar2
@@ -624,83 +617,6 @@ namespace Launcher
             this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar2.TabIndex = 52;
             this.progressBar2.Value = 1;
-            // 
-            // progressBar3
-            // 
-            this.progressBar3.BackColor = System.Drawing.Color.Lime;
-            this.progressBar3.Location = new System.Drawing.Point(0, 546);
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar3.Step = 100;
-            this.progressBar3.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar3.TabIndex = 53;
-            this.progressBar3.Value = 1;
-            // 
-            // progressBar4
-            // 
-            this.progressBar4.BackColor = System.Drawing.Color.Lime;
-            this.progressBar4.Location = new System.Drawing.Point(0, 545);
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar4.Step = 100;
-            this.progressBar4.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar4.TabIndex = 54;
-            this.progressBar4.Value = 1;
-            // 
-            // progressBar5
-            // 
-            this.progressBar5.BackColor = System.Drawing.Color.Lime;
-            this.progressBar5.Location = new System.Drawing.Point(0, 544);
-            this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar5.Step = 100;
-            this.progressBar5.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar5.TabIndex = 55;
-            this.progressBar5.Value = 1;
-            // 
-            // progressBar6
-            // 
-            this.progressBar6.BackColor = System.Drawing.Color.Lime;
-            this.progressBar6.Location = new System.Drawing.Point(0, 543);
-            this.progressBar6.Name = "progressBar6";
-            this.progressBar6.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar6.Step = 100;
-            this.progressBar6.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar6.TabIndex = 56;
-            this.progressBar6.Value = 1;
-            // 
-            // progressBar7
-            // 
-            this.progressBar7.BackColor = System.Drawing.Color.Lime;
-            this.progressBar7.Location = new System.Drawing.Point(0, 542);
-            this.progressBar7.Name = "progressBar7";
-            this.progressBar7.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar7.Step = 100;
-            this.progressBar7.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar7.TabIndex = 57;
-            this.progressBar7.Value = 1;
-            // 
-            // progressBar8
-            // 
-            this.progressBar8.BackColor = System.Drawing.Color.Lime;
-            this.progressBar8.Location = new System.Drawing.Point(0, 541);
-            this.progressBar8.Name = "progressBar8";
-            this.progressBar8.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar8.Step = 100;
-            this.progressBar8.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar8.TabIndex = 58;
-            this.progressBar8.Value = 1;
-            // 
-            // progressBar9
-            // 
-            this.progressBar9.BackColor = System.Drawing.Color.Lime;
-            this.progressBar9.Location = new System.Drawing.Point(0, 540);
-            this.progressBar9.Name = "progressBar9";
-            this.progressBar9.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar9.Step = 100;
-            this.progressBar9.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar9.TabIndex = 59;
-            this.progressBar9.Value = 1;
             // 
             // progressBar0
             // 
@@ -726,13 +642,6 @@ namespace Launcher
             this.Controls.Add(this.progressBar0);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar3);
-            this.Controls.Add(this.progressBar4);
-            this.Controls.Add(this.progressBar5);
-            this.Controls.Add(this.progressBar6);
-            this.Controls.Add(this.progressBar7);
-            this.Controls.Add(this.progressBar8);
-            this.Controls.Add(this.progressBar9);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.MinimizeButton);
@@ -808,13 +717,6 @@ namespace Launcher
         private EventHandler comboBox3_SelectedIndexChanged;
         private EventHandler comboBox1_SelectedIndexChanged;
         private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.ProgressBar progressBar3;
-        private System.Windows.Forms.ProgressBar progressBar4;
-        private System.Windows.Forms.ProgressBar progressBar5;
-        private System.Windows.Forms.ProgressBar progressBar6;
-        private System.Windows.Forms.ProgressBar progressBar7;
-        private System.Windows.Forms.ProgressBar progressBar8;
-        private System.Windows.Forms.ProgressBar progressBar9;
         private System.Windows.Forms.ProgressBar progressBar0;
     }
 }

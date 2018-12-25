@@ -26,10 +26,6 @@ namespace Launcher
 {
 
 
-
-
-
-
     public partial class main : Form   //MetroFramework.Forms.MetroForm
 
     {
@@ -113,7 +109,7 @@ namespace Launcher
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
         public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_0055.zip";
+        public string zippath = "Game/WoA_0059.zip";
         public string gamepath = "Game/Knowts.txt";
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
@@ -126,7 +122,7 @@ namespace Launcher
         public string startPath = "Game/";
         public string zipPath = "Game/cache/";
         public string extractPath = "Game/";
-        public string VersionText = "Build" + " " + "WoA_1902_0058";
+        public string VersionText = "Build" + " " + "WoA_1902_0059";
 
 
 //                                                                                                                          //
@@ -462,7 +458,7 @@ namespace Launcher
                 
                 else 
                 {
-                    play.Text = ("Missing");
+                    play.Text = ("Update");
                     Console.WriteLine("Knowts file not found"); // download new knowts file and re-read
                     ToPanelButton.Enabled = false;
                 }
@@ -481,8 +477,8 @@ namespace Launcher
                 ToPanelButton.Enabled = false;
             }
                
-            // response.Close();
-            progressBar1.Visible = false;
+            
+            progressBar0.Visible = false;
             //End of startup loading
         }
 
@@ -541,878 +537,44 @@ namespace Launcher
                         Console.WriteLine("We have latest link.  No local zips, downloading new zip files...");
                         play.Text = "Wait";
                         play.Enabled = false;
-                        progressBar1.Visible = true;
+                        progressBar0.Visible = true;
                         string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_0055.zip.001)
                         string[] ziplinks = System.IO.File.ReadAllLines(ziplinkspath); // read all lines of http links from the zipsmanifest for download (link pathing for each .zip.0xx)
 
 
 
-///              ____ ___            .___       __           __________.__                              ///
-///             |    |   \______   __| _/____ _/  |_  ____   \____    /|__|_____  ______                ///
-///             |    |   /\____ \ / __ |\__  \\   __\/ __ \    /     / |  \____ \/  ___/                ///
-///             |    |  / |  |_> > /_/ | / __ \|  | \  ___/   /     /_ |  |  |_> >___ \                 ///
-///             |______/  |   __/\____ |(____  /__|  \___  > /_______ \|__|   __/____  >                ///
-///                       |__|        \/     \/          \/          \/   |__|       \/                 ///
-                                                                                                        
-
-
-                        foreach (string zip in zipnames)
-                        {
-
-                            for (int i = 0; i < 67; ++i)
-                            {
-                                currentziplink = i;
-                                int x = i;
-                                if (System.IO.File.Exists(cdirectory + zip))
-                                {
-                                // alreday have this file
-                                }
-
-                                if (currentziplink == 0)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc0 = new WebClient())
-                                    {
-                                        wc0.DownloadProgressChanged += wc0_DownloadProgressChanged;
-                                        wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
-                                        wc0.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc0 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 1)
-                                {
-                                    using (WebClient wc1 = new WebClient())
-                                    {
-                                        wc1.DownloadProgressChanged += wc1_DownloadProgressChanged;
-                                        wc1.DownloadFileCompleted += new AsyncCompletedEventHandler(wc1_DownloadZipsCompleted);
-                                        wc1.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc1 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 2)
-                                {
-                                    using (WebClient wc2 = new WebClient())
-                                    {
-                                        wc2.DownloadProgressChanged += wc2_DownloadProgressChanged;
-                                        wc2.DownloadFileCompleted += new AsyncCompletedEventHandler(wc2_DownloadZipsCompleted);
-                                        wc2.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc2 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 3)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc3 = new WebClient())
-                                    {
-                                        wc3.DownloadProgressChanged += wc3_DownloadProgressChanged;
-                                        wc3.DownloadFileCompleted += new AsyncCompletedEventHandler(wc3_DownloadZipsCompleted);
-                                        wc3.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc3 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 4)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc4 = new WebClient())
-                                    {
-                                        wc4.DownloadProgressChanged += wc4_DownloadProgressChanged;
-                                        wc4.DownloadFileCompleted += new AsyncCompletedEventHandler(wc4_DownloadZipsCompleted);
-                                        wc4.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc4 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 5)
-                                {
-                                    using (WebClient wc5 = new WebClient())
-                                    {
-                                        wc5.DownloadProgressChanged += wc5_DownloadProgressChanged;
-                                        wc5.DownloadFileCompleted += new AsyncCompletedEventHandler(wc5_DownloadZipsCompleted);
-                                        wc5.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc5 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 6)
-                                {
-                                    using (WebClient wc6 = new WebClient())
-                                    {
-                                        wc6.DownloadProgressChanged += wc6_DownloadProgressChanged;
-                                        wc6.DownloadFileCompleted += new AsyncCompletedEventHandler(wc6_DownloadZipsCompleted);
-                                        wc6.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc6 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 7)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc7 = new WebClient())
-                                    {
-                                        wc7.DownloadProgressChanged += wc7_DownloadProgressChanged;
-                                        wc7.DownloadFileCompleted += new AsyncCompletedEventHandler(wc7_DownloadZipsCompleted);
-                                        wc7.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc7 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 8)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc8 = new WebClient())
-                                    {
-                                        wc8.DownloadProgressChanged += wc8_DownloadProgressChanged;
-                                        wc8.DownloadFileCompleted += new AsyncCompletedEventHandler(wc8_DownloadZipsCompleted);
-                                        wc8.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc8 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 9)
-                                {
-                                    using (WebClient wc9 = new WebClient())
-                                    {
-                                        wc9.DownloadProgressChanged += wc9_DownloadProgressChanged;
-                                        wc9.DownloadFileCompleted += new AsyncCompletedEventHandler(wc9_DownloadZipsCompleted);
-                                        wc9.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc9 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 10)
-                                {
-                                    using (WebClient wc10 = new WebClient())
-                                    {
-                                        wc10.DownloadProgressChanged += wc10_DownloadProgressChanged;
-                                        wc10.DownloadFileCompleted += new AsyncCompletedEventHandler(wc10_DownloadZipsCompleted);
-                                        wc10.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc10 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 11)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc11 = new WebClient())
-                                    {
-                                        wc11.DownloadProgressChanged += wc11_DownloadProgressChanged;
-                                        wc11.DownloadFileCompleted += new AsyncCompletedEventHandler(wc11_DownloadZipsCompleted);
-                                        wc11.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc11 #" + x);
-                                    }
-                                }
-
-
-                                if (currentziplink == 12)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc12 = new WebClient())
-                                    {
-                                        wc12.DownloadProgressChanged += wc12_DownloadProgressChanged;
-                                        wc12.DownloadFileCompleted += new AsyncCompletedEventHandler(wc12_DownloadZipsCompleted);
-                                        wc12.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc12 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 13)
-                                {
-                                    using (WebClient wc13 = new WebClient())
-                                    {
-                                        wc13.DownloadProgressChanged += wc13_DownloadProgressChanged;
-                                        wc13.DownloadFileCompleted += new AsyncCompletedEventHandler(wc13_DownloadZipsCompleted);
-                                        wc13.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc13 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 14)
-                                {
-                                    using (WebClient wc14 = new WebClient())
-                                    {
-                                        wc14.DownloadProgressChanged += wc14_DownloadProgressChanged;
-                                        wc14.DownloadFileCompleted += new AsyncCompletedEventHandler(wc14_DownloadZipsCompleted);
-                                        wc14.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc14 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 15)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc15 = new WebClient())
-                                    {
-                                        wc15.DownloadProgressChanged += wc15_DownloadProgressChanged;
-                                        wc15.DownloadFileCompleted += new AsyncCompletedEventHandler(wc15_DownloadZipsCompleted);
-                                        wc15.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc15 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 16)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc16 = new WebClient())
-                                    {
-                                        wc16.DownloadProgressChanged += wc16_DownloadProgressChanged;
-                                        wc16.DownloadFileCompleted += new AsyncCompletedEventHandler(wc16_DownloadZipsCompleted);
-                                        wc16.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc16 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 17)
-                                {
-                                    using (WebClient wc17 = new WebClient())
-                                    {
-                                        wc17.DownloadProgressChanged += wc17_DownloadProgressChanged;
-                                        wc17.DownloadFileCompleted += new AsyncCompletedEventHandler(wc17_DownloadZipsCompleted);
-                                        wc17.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc17 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 18)
-                                {
-                                    using (WebClient wc18 = new WebClient())
-                                    {
-                                        wc18.DownloadProgressChanged += wc18_DownloadProgressChanged;
-                                        wc18.DownloadFileCompleted += new AsyncCompletedEventHandler(wc18_DownloadZipsCompleted);
-                                        wc18.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc18 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 19)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc19 = new WebClient())
-                                    {
-                                        wc19.DownloadProgressChanged += wc19_DownloadProgressChanged;
-                                        wc19.DownloadFileCompleted += new AsyncCompletedEventHandler(wc19_DownloadZipsCompleted);
-                                        wc19.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc19 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 20)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc20 = new WebClient())
-                                    {
-                                        wc20.DownloadProgressChanged += wc20_DownloadProgressChanged;
-                                        wc20.DownloadFileCompleted += new AsyncCompletedEventHandler(wc20_DownloadZipsCompleted);
-                                        wc20.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc20 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 21)
-                                {
-                                    using (WebClient wc21 = new WebClient())
-                                    {
-                                        wc21.DownloadProgressChanged += wc21_DownloadProgressChanged;
-                                        wc21.DownloadFileCompleted += new AsyncCompletedEventHandler(wc21_DownloadZipsCompleted);
-                                        wc21.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc21 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 22)
-                                {
-                                    using (WebClient wc22 = new WebClient())
-                                    {
-                                        wc22.DownloadProgressChanged += wc22_DownloadProgressChanged;
-                                        wc22.DownloadFileCompleted += new AsyncCompletedEventHandler(wc22_DownloadZipsCompleted);
-                                        wc22.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc22 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 23)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc23 = new WebClient())
-                                    {
-                                        wc23.DownloadProgressChanged += wc23_DownloadProgressChanged;
-                                        wc23.DownloadFileCompleted += new AsyncCompletedEventHandler(wc23_DownloadZipsCompleted);
-                                        wc23.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc23 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 24)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc24 = new WebClient())
-                                    {
-                                        wc24.DownloadProgressChanged += wc24_DownloadProgressChanged;
-                                        wc24.DownloadFileCompleted += new AsyncCompletedEventHandler(wc24_DownloadZipsCompleted);
-                                        wc24.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc24 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 25)
-                                {
-                                    using (WebClient wc25 = new WebClient())
-                                    {
-                                        wc25.DownloadProgressChanged += wc25_DownloadProgressChanged;
-                                        wc25.DownloadFileCompleted += new AsyncCompletedEventHandler(wc25_DownloadZipsCompleted);
-                                        wc25.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc25 #" + x);
-                                    }
-                                }
-
-
-
-
-
-                                if (currentziplink == 26)
-                                {
-                                    using (WebClient wc26 = new WebClient())
-                                    {
-                                        wc26.DownloadProgressChanged += wc26_DownloadProgressChanged;
-                                        wc26.DownloadFileCompleted += new AsyncCompletedEventHandler(wc26_DownloadZipsCompleted);
-                                        wc26.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc26 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 27)
-                                {
-                                    using (WebClient wc27 = new WebClient())
-                                    {
-                                        wc27.DownloadProgressChanged += wc27_DownloadProgressChanged;
-                                        wc27.DownloadFileCompleted += new AsyncCompletedEventHandler(wc27_DownloadZipsCompleted);
-                                        wc27.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc27 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 28)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc28 = new WebClient())
-                                    {
-                                        wc28.DownloadProgressChanged += wc28_DownloadProgressChanged;
-                                        wc28.DownloadFileCompleted += new AsyncCompletedEventHandler(wc28_DownloadZipsCompleted);
-                                        wc28.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc28 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 29)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc29 = new WebClient())
-                                    {
-                                        wc29.DownloadProgressChanged += wc29_DownloadProgressChanged;
-                                        wc29.DownloadFileCompleted += new AsyncCompletedEventHandler(wc29_DownloadZipsCompleted);
-                                        wc29.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc29 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 30)
-                                {
-                                    using (WebClient wc30 = new WebClient())
-                                    {
-                                        wc30.DownloadProgressChanged += wc30_DownloadProgressChanged;
-                                        wc30.DownloadFileCompleted += new AsyncCompletedEventHandler(wc30_DownloadZipsCompleted);
-                                        wc30.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc30 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 31)
-                                {
-                                    using (WebClient wc31 = new WebClient())
-                                    {
-                                        wc31.DownloadProgressChanged += wc31_DownloadProgressChanged;
-                                        wc31.DownloadFileCompleted += new AsyncCompletedEventHandler(wc31_DownloadZipsCompleted);
-                                        wc31.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc31 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 32)
-                                {
-                                    using (WebClient wc32 = new WebClient())
-                                    {
-                                        wc32.DownloadProgressChanged += wc32_DownloadProgressChanged;
-                                        wc32.DownloadFileCompleted += new AsyncCompletedEventHandler(wc32_DownloadZipsCompleted);
-                                        wc32.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc32 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 33)
-                                {
-                                    using (WebClient wc33 = new WebClient())
-                                    {
-                                        wc33.DownloadProgressChanged += wc33_DownloadProgressChanged;
-                                        wc33.DownloadFileCompleted += new AsyncCompletedEventHandler(wc33_DownloadZipsCompleted);
-                                        wc33.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc33 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 34)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc34 = new WebClient())
-                                    {
-                                        wc34.DownloadProgressChanged += wc34_DownloadProgressChanged;
-                                        wc34.DownloadFileCompleted += new AsyncCompletedEventHandler(wc34_DownloadZipsCompleted);
-                                        wc34.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc34 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 35)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc35 = new WebClient())
-                                    {
-                                        wc35.DownloadProgressChanged += wc35_DownloadProgressChanged;
-                                        wc35.DownloadFileCompleted += new AsyncCompletedEventHandler(wc35_DownloadZipsCompleted);
-                                        wc35.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc35 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 36)
-                                {
-                                    using (WebClient wc36 = new WebClient())
-                                    {
-                                        wc36.DownloadProgressChanged += wc36_DownloadProgressChanged;
-                                        wc36.DownloadFileCompleted += new AsyncCompletedEventHandler(wc36_DownloadZipsCompleted);
-                                        wc36.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc36 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 37)
-                                {
-                                    using (WebClient wc37 = new WebClient())
-                                    {
-                                        wc37.DownloadProgressChanged += wc37_DownloadProgressChanged;
-                                        wc37.DownloadFileCompleted += new AsyncCompletedEventHandler(wc37_DownloadZipsCompleted);
-                                        wc37.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc37 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 38)
-                                {
-                                    using (WebClient wc38 = new WebClient())
-                                    {
-                                        wc38.DownloadProgressChanged += wc38_DownloadProgressChanged;
-                                        wc38.DownloadFileCompleted += new AsyncCompletedEventHandler(wc38_DownloadZipsCompleted);
-                                        wc38.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc38 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 39)
-                                {
-                                    using (WebClient wc39 = new WebClient())
-                                    {
-                                        wc39.DownloadProgressChanged += wc39_DownloadProgressChanged;
-                                        wc39.DownloadFileCompleted += new AsyncCompletedEventHandler(wc39_DownloadZipsCompleted);
-                                        wc39.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc39 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 40)
-                                {
-                                    using (WebClient wc40 = new WebClient())
-                                    {
-                                        wc40.DownloadProgressChanged += wc40_DownloadProgressChanged;
-                                        wc40.DownloadFileCompleted += new AsyncCompletedEventHandler(wc40_DownloadZipsCompleted);
-                                        wc40.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc40 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 41)
-                                {
-                                    using (WebClient wc41 = new WebClient())
-                                    {
-                                        wc41.DownloadProgressChanged += wc41_DownloadProgressChanged;
-                                        wc41.DownloadFileCompleted += new AsyncCompletedEventHandler(wc41_DownloadZipsCompleted);
-                                        wc41.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc41 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 42)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc42 = new WebClient())
-                                    {
-                                        wc42.DownloadProgressChanged += wc42_DownloadProgressChanged;
-                                        wc42.DownloadFileCompleted += new AsyncCompletedEventHandler(wc42_DownloadZipsCompleted);
-                                        wc42.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc42 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 43)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc43 = new WebClient())
-                                    {
-                                        wc43.DownloadProgressChanged += wc43_DownloadProgressChanged;
-                                        wc43.DownloadFileCompleted += new AsyncCompletedEventHandler(wc43_DownloadZipsCompleted);
-                                        wc43.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc43 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 44)
-                                {
-                                    using (WebClient wc44 = new WebClient())
-                                    {
-                                        wc44.DownloadProgressChanged += wc44_DownloadProgressChanged;
-                                        wc44.DownloadFileCompleted += new AsyncCompletedEventHandler(wc44_DownloadZipsCompleted);
-                                        wc44.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc44 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 45)
-                                {
-                                    using (WebClient wc45 = new WebClient())
-                                    {
-                                        wc45.DownloadProgressChanged += wc45_DownloadProgressChanged;
-                                        wc45.DownloadFileCompleted += new AsyncCompletedEventHandler(wc45_DownloadZipsCompleted);
-                                        wc45.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc45 #" + x);
-                                    }
-                                }
-
-
-                                if (currentziplink == 46)
-                                {
-                                    using (WebClient wc46 = new WebClient())
-                                    {
-                                        wc46.DownloadProgressChanged += wc46_DownloadProgressChanged;
-                                        wc46.DownloadFileCompleted += new AsyncCompletedEventHandler(wc46_DownloadZipsCompleted);
-                                        wc46.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc46 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 47)
-                                {
-                                    using (WebClient wc47 = new WebClient())
-                                    {
-                                        wc47.DownloadProgressChanged += wc47_DownloadProgressChanged;
-                                        wc47.DownloadFileCompleted += new AsyncCompletedEventHandler(wc47_DownloadZipsCompleted);
-                                        wc47.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc47 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 48)
-                                {
-                                    using (WebClient wc48 = new WebClient())
-                                    {
-                                        wc48.DownloadProgressChanged += wc48_DownloadProgressChanged;
-                                        wc48.DownloadFileCompleted += new AsyncCompletedEventHandler(wc48_DownloadZipsCompleted);
-                                        wc48.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc48 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 49)
-                                {
-                                    using (WebClient wc49 = new WebClient())
-                                    {
-                                        wc49.DownloadProgressChanged += wc49_DownloadProgressChanged;
-                                        wc49.DownloadFileCompleted += new AsyncCompletedEventHandler(wc49_DownloadZipsCompleted);
-                                        wc49.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc49 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 50)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc50 = new WebClient())
-                                    {
-                                        wc50.DownloadProgressChanged += wc50_DownloadProgressChanged;
-                                        wc50.DownloadFileCompleted += new AsyncCompletedEventHandler(wc50_DownloadZipsCompleted);
-                                        wc50.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc50 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 51)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc51 = new WebClient())
-                                    {
-                                        wc51.DownloadProgressChanged += wc51_DownloadProgressChanged;
-                                        wc51.DownloadFileCompleted += new AsyncCompletedEventHandler(wc51_DownloadZipsCompleted);
-                                        wc51.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc51 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 52)
-                                {
-                                    using (WebClient wc52 = new WebClient())
-                                    {
-                                        wc52.DownloadProgressChanged += wc52_DownloadProgressChanged;
-                                        wc52.DownloadFileCompleted += new AsyncCompletedEventHandler(wc52_DownloadZipsCompleted);
-                                        wc52.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc52 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 53)
-                                {
-                                    using (WebClient wc53 = new WebClient())
-                                    {
-                                        wc53.DownloadProgressChanged += wc53_DownloadProgressChanged;
-                                        wc53.DownloadFileCompleted += new AsyncCompletedEventHandler(wc53_DownloadZipsCompleted);
-                                        wc53.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc53 #" + x);
-                                    }
-                                }
-
-
-                                if (currentziplink == 54)
-                                {
-                                    using (WebClient wc54 = new WebClient())
-                                    {
-                                        wc54.DownloadProgressChanged += wc54_DownloadProgressChanged;
-                                        wc54.DownloadFileCompleted += new AsyncCompletedEventHandler(wc54_DownloadZipsCompleted);
-                                        wc54.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc54 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 55)
-                                {
-                                    using (WebClient wc55 = new WebClient())
-                                    {
-                                        wc55.DownloadProgressChanged += wc55_DownloadProgressChanged;
-                                        wc55.DownloadFileCompleted += new AsyncCompletedEventHandler(wc55_DownloadZipsCompleted);
-                                        wc55.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc55 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 56)
-                                {
-                                    using (WebClient wc56 = new WebClient())
-                                    {
-                                        wc56.DownloadProgressChanged += wc56_DownloadProgressChanged;
-                                        wc56.DownloadFileCompleted += new AsyncCompletedEventHandler(wc56_DownloadZipsCompleted);
-                                        wc56.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc56 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 57)
-                                {
-                                    using (WebClient wc57 = new WebClient())
-                                    {
-                                        wc57.DownloadProgressChanged += wc57_DownloadProgressChanged;
-                                        wc57.DownloadFileCompleted += new AsyncCompletedEventHandler(wc57_DownloadZipsCompleted);
-                                        wc57.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc57 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 58)
-                                {
-                                    using (WebClient wc58 = new WebClient())
-                                    {
-                                        wc58.DownloadProgressChanged += wc58_DownloadProgressChanged;
-                                        wc58.DownloadFileCompleted += new AsyncCompletedEventHandler(wc58_DownloadZipsCompleted);
-                                        wc58.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc58 #" + x);
-                                    }
-                                }
-
-
-
-                                if (currentziplink == 59)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc59 = new WebClient())
-                                    {
-                                        wc59.DownloadProgressChanged += wc59_DownloadProgressChanged;
-                                        wc59.DownloadFileCompleted += new AsyncCompletedEventHandler(wc59_DownloadZipsCompleted);
-                                        wc59.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc59 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 60)
-                                {
-                                    //specific downloaders
-                                    using (WebClient wc60 = new WebClient())
-                                    {
-                                        wc60.DownloadProgressChanged += wc60_DownloadProgressChanged;
-                                        wc60.DownloadFileCompleted += new AsyncCompletedEventHandler(wc60_DownloadZipsCompleted);
-                                        wc60.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc60 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 61)
-                                {
-                                    using (WebClient wc61 = new WebClient())
-                                    {
-                                        wc61.DownloadProgressChanged += wc61_DownloadProgressChanged;
-                                        wc61.DownloadFileCompleted += new AsyncCompletedEventHandler(wc61_DownloadZipsCompleted);
-                                        wc61.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc61 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 62)
-                                {
-                                    using (WebClient wc62 = new WebClient())
-                                    {
-                                        wc62.DownloadProgressChanged += wc62_DownloadProgressChanged;
-                                        wc62.DownloadFileCompleted += new AsyncCompletedEventHandler(wc62_DownloadZipsCompleted);
-                                        wc62.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc62 #" + x);
-                                    }
-                                }
-
-
-
-
-
-
-                                if (currentziplink == 63)
-                                {
-                                    using (WebClient wc63 = new WebClient())
-                                    {
-                                        wc63.DownloadProgressChanged += wc63_DownloadProgressChanged;
-                                        wc63.DownloadFileCompleted += new AsyncCompletedEventHandler(wc63_DownloadZipsCompleted);
-                                        wc63.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc63 #" + x);
-                                    }
-                                }
-
-                                if (currentziplink == 64)
-                                {
-                                    using (WebClient wc64 = new WebClient())
-                                    {
-                                        wc64.DownloadProgressChanged += wc64_DownloadProgressChanged;
-                                        wc64.DownloadFileCompleted += new AsyncCompletedEventHandler(wc64_DownloadZipsCompleted);
-                                        wc64.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc64 #" + x);
-                                    }
-                                }
-
-
-
-
-                                if (currentziplink == 65)
-                                {
-                                    using (WebClient wc65 = new WebClient())
-                                    {
-                                        wc65.DownloadProgressChanged += wc65_DownloadProgressChanged;
-                                        wc65.DownloadFileCompleted += new AsyncCompletedEventHandler(wc65_DownloadZipsCompleted);
-                                        wc65.DownloadFileAsync(new System.Uri(ziplinks[x]), (cdirectory + zip));
-                                        Console.WriteLine(zip + " set as wc65 #" + x);
-                                    }
-                                }
-
-
-
-
-
-
-
-                                else
-                                {
-                                    // nothing
-
-                                    Console.WriteLine("else: currentziplink not equal to anything..." + currentziplink + " ???");
-                                }
-
-
-                            }
-                        }
-                        Console.WriteLine("Done with zipnames loop");
+                    ///              ____ ___            .___       __           __________.__                              ///
+                    ///             |    |   \______   __| _/____ _/  |_  ____   \____    /|__|_____  ______                ///
+                    ///             |    |   /\____ \ / __ |\__  \\   __\/ __ \    /     / |  \____ \/  ___/                ///
+                    ///             |    |  / |  |_> > /_/ | / __ \|  | \  ___/   /     /_ |  |  |_> >___ \                 ///
+                    ///             |______/  |   __/\____ |(____  /__|  \___  > /_______ \|__|   __/____  >                ///
+                    ///                       |__|        \/     \/          \/          \/   |__|       \/                 ///
+
+                    
+                         string currentziplink = ("https://drive.google.com/uc?export=download&confirm=7o6p&id=1U7jEhG2YC2pI2VW6riVBHgpqkSLqM1Jo");
+                         int x = 0;
+                         if (System.IO.File.Exists(cdirectory + ".zip"))
+                         {
+                         Console.WriteLine("File already exists");
+                             // alreday have this file
+                         }
+
+                         else
+                         {
+
+
+                             //specific downloaders
+                             using (WebClient wc0 = new WebClient())
+                             {
+
+                                 wc0.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc0_DownloadProgressChanged);
+                                 wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
+                                 wc0.DownloadFileAsync(new System.Uri(currentziplink), (cdirectory + "WoA_1902_0060.zip" + ".001"));
+                                 Console.WriteLine(currentziplink + " set as wc0 #" + x);
+                             }
+                         }
+                            
+    
                     }
                 }
 
@@ -1421,7 +583,7 @@ namespace Launcher
                     //not the latest version
                     //download some shit! 
                     Console.WriteLine("Knowts is not up to date so we download new knowts");
-                    progressBar1.Visible = true;
+                    progressBar0.Visible = true;
                     play.Enabled = false;
                     using (WebClient wc = new WebClient())
                     {
@@ -1459,7 +621,7 @@ namespace Launcher
                           }
                           else
                           {
-                              progressBar1.Visible = true;
+                              progressBar0.Visible = true;
                               using (WebClient wc = new WebClient())
                               {
                                   //download some shit! 
@@ -1496,7 +658,7 @@ namespace Launcher
                     if (result == DialogResult.Yes)
                     {
                         // Startup a web client to download the Knowts.txt file containing the link
-                        progressBar1.Visible = true;
+                        progressBar0.Visible = true;
                         using (WebClient wctext1 = new System.Net.WebClient())
                         {
                             wctext1.DownloadProgressChanged += wctext1_DownloadProgressChanged;
@@ -1573,7 +735,7 @@ namespace Launcher
         void wctext1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             // shit
-            progressBar1.Visible = false;
+            progressBar0.Visible = false;
             LatestPathExists = (System.IO.File.Exists("Game/Build.txt"));
             //play.Text = "Get Zips";
             play.Enabled = true;
@@ -1582,7 +744,7 @@ namespace Launcher
         void wctext2_DownloadBuildCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             // shit
-            progressBar1.Visible = false;
+            progressBar0.Visible = false;
             LatestPathExists = (System.IO.File.Exists("Game/Build.txt"));
             //play.Text = "Get Zips";
             play.Enabled = true;
@@ -1590,7 +752,7 @@ namespace Launcher
         void wctext3_DownloadManifestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             // shit
-            progressBar1.Visible = false;
+            progressBar0.Visible = false;
             LatestPathExists = (System.IO.File.Exists("Game/Manifest.txt"));
             //play.Text = "Get Zips";
             play.Enabled = true;
@@ -1598,7 +760,7 @@ namespace Launcher
         void wctext4_DownloadZipsManifestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             // shit
-            progressBar1.Visible = false;
+            progressBar0.Visible = false;
             LatestPathExists = (System.IO.File.Exists("Game/ZipsManifest.txt"));
             play.Text = "Get Zips";
             play.Enabled = true;
@@ -1623,25 +785,25 @@ namespace Launcher
 
         void wctext1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage;
+            progressBar0.Value = e.ProgressPercentage;
             //play.Text = (currentziplink.ToString() + "%");
 
         }
         void wctext2_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar2.Value = e.ProgressPercentage;
+            progressBar0.Value = e.ProgressPercentage;
             //play.Text = (currentziplink.ToString() + "%");
 
         }
         void wctext3_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar3.Value = e.ProgressPercentage;
+            progressBar0.Value = e.ProgressPercentage;
             //play.Text = (currentziplink.ToString() + "%");
 
         }
         void wctext4_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar4.Value = e.ProgressPercentage;
+            progressBar0.Value = e.ProgressPercentage;
             play.Text = (currentziplink.ToString() + "%");
 
         }
@@ -1660,231 +822,13 @@ namespace Launcher
 
 
 
-        //// Event to track the progress
-        //void wc1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        //{
-        //    progressBar1.Value = e.ProgressPercentage;
-        //    play.Text = (currentziplink.ToString() + "%");
-        //    Console.WriteLine("Unzippingd de " + currentziplink);
-        //{
-
         void wc0_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
         }
 
 
-        void wc1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar1.Value = e.ProgressPercentage;
-        }
-        void wc2_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar2.Value = e.ProgressPercentage;
-        }
-        void wc3_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar3.Value = e.ProgressPercentage;
-        }
-        void wc4_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar4.Value = e.ProgressPercentage;
-        }
-        void wc5_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar5.Value = e.ProgressPercentage;
-        }
-        void wc6_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar6.Value = e.ProgressPercentage;
-        }
-
-        void wc7_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar7.Value = e.ProgressPercentage;
-        }
-        void wc8_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar8.Value = e.ProgressPercentage;
-        }
-        void wc9_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar9.Value = e.ProgressPercentage;
-        }
-        void wc10_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc11_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc12_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc13_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc14_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-
-        }
-        void wc15_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc16_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc17_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc18_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc19_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc20_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc21_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc22_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc23_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc24_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc25_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-
-        void wc26_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc27_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc28_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-
-        void wc29_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-
-        void wc30_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc31_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc32_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc33_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc34_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc35_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc36_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-
-        void wc37_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc38_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc39_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc40_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc41_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc42_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc43_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc44_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc45_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-
-        {
-        }
-        void wc46_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc47_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc48_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc49_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc50_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc51_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc52_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc53_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc54_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc55_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc56_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc57_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc58_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc59_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc60_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc61_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc62_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc63_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc64_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
-        void wc65_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-        }
+        
 
 
 
@@ -1899,14 +843,6 @@ namespace Launcher
 
 // zip file progress indicators
 
-// void wc1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-// {
-//     // shit
-//     progressBar1.Visible = false;
-//     LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
-//     play.Text = "Get Zips";
-//     play.Enabled = true;
-// }
 
 
             
@@ -1918,159 +854,7 @@ namespace Launcher
 
         }
 
-
-        void wc1_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc2_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc3_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc4_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc5_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc6_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc7_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc8_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-        void wc9_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-
-        }
-
-        void wc10_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc11_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc12_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc13_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc14_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc15_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc16_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc17_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc18_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc19_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc20_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc21_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc22_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc23_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc24_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc25_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc26_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc27_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc28_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc29_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc30_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc31_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc32_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc33_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc34_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc35_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc36_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc37_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc38_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc39_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc40_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc41_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc42_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc43_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc44_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc45_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc46_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc47_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc48_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc49_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc50_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc51_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc52_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc53_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc54_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc55_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc56_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc57_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc58_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc59_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc60_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc61_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc62_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc63_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc64_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-        void wc65_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
-        }
-
-
-
+        
 
     
 
