@@ -199,6 +199,5 @@ G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primi
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
-G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\SplashVersion.png
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\mini.png

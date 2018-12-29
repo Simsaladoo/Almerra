@@ -109,6 +109,7 @@ namespace Launcher
         public string manifestpath = "Game/Manifest.txt";
         public string ziplinkspath = "Game/ZipsManifest.txt";
         public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+        public string VersionURL = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/SplashVersion.png";
         public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
@@ -412,7 +413,14 @@ namespace Launcher
                 string latestlink = System.IO.File.ReadAllText(latestpath);
                 var client = new WebClient();
                 var latestonlinelink = client.DownloadString(KnowtsOnline); // the contents of the file that is online isnt called here, just a link reference
+                using (WebClient versionclient = new WebClient())
+                {
+                    versionclient.DownloadFileCompleted += new AsyncCompletedEventHandler(versionclient_DownloadZipsCompleted);
+                    versionclient.DownloadFileAsync(new Uri(VersionURL), "Resources/SplashVersion.png");          // always update the version label from url
 
+                }
+
+                
 
                 //read the string link from Knowts.txt online to check against local
                 WebRequest request = WebRequest.Create(KnowtsOnline);
@@ -712,16 +720,26 @@ namespace Launcher
         // Download completed Events for Knowts, Build, and the Manifests 
 
 
-        //      ___________              __    ________                      .__                    .___                  //
-        //      \__    ___/___ ___  ____/  |_  \______ \   ______  _  ______ |  |   _________     __| _/______            //
-        //        |    |_/ __ \\  \/  /\   __\  |    |  \ /  _ \ \/ \/ /    \|  |  /  _ \__  \   / __ |/  ___/            //
-        //        |    |\  ___/ >    <  |  |    |    `   (  <_> )     /   |  \  |_(  <_> ) __ \_/ /_/ |\___ \             //
-        //        |____| \___  >__/\_ \ |__|   /_______  /\____/ \/\_/|___|  /____/\____(____  /\____ /____  >            //
-        //                   \/      \/                \/                  \/                \/      \/    \/             //
-        //                                                                                                                //
+        void versionclient_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+
+            VersionPic.BackgroundImage = new Bitmap ("Resources/SplashVersion.png");
+            Console.WriteLine("Version updated");
+        }
 
 
-        void wctext1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+
+
+            //      ___________              __    ________                      .__                    .___                  //
+            //      \__    ___/___ ___  ____/  |_  \______ \   ______  _  ______ |  |   _________     __| _/______            //
+            //        |    |_/ __ \\  \/  /\   __\  |    |  \ /  _ \ \/ \/ /    \|  |  /  _ \__  \   / __ |/  ___/            //
+            //        |    |\  ___/ >    <  |  |    |    `   (  <_> )     /   |  \  |_(  <_> ) __ \_/ /_/ |\___ \             //
+            //        |____| \___  >__/\_ \ |__|   /_______  /\____/ \/\_/|___|  /____/\____(____  /\____ /____  >            //
+            //                   \/      \/                \/                  \/                \/      \/    \/             //
+            //                                                                                                                //
+
+
+            void wctext1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             // shit
             progressBar0.Visible = false;
