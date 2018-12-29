@@ -155,50 +155,47 @@ H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Exten
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.dll
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.xml
 H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.xml
-H:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\done.wav
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Knowts.txt
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\start.wav
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\ZipsManifest.txt
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\button.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\buttonUpdate.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\settingsFont.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\close.png
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font1.ico
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe.config
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.pdb
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Design.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Data.Linq.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Interfaces.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.IO.Compression.ZipFile.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.dll
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.pdb
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.xml
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.xml
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.xml
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.xml
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.xml
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CopyComplete
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.exe
-C:\Users\simsa\Downloads\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe.config
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.exe
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\done.wav
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Knowts.txt
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\start.wav
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\ZipsManifest.txt
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\button.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\buttonUpdate.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\settingsFont.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\close.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font1.ico
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.pdb
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Design.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Data.Linq.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Interfaces.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.IO.Compression.ZipFile.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.dll
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.pdb
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.xml
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.xml
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.xml
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.xml
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.xml
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache

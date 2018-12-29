@@ -26,6 +26,10 @@ namespace Launcher
 {
 
 
+
+
+
+
     public partial class main : Form   //MetroFramework.Forms.MetroForm
 
     {
@@ -109,7 +113,7 @@ namespace Launcher
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
         public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_0059.zip";
+        public string zippath = "Game/WoA_0055.zip";
         public string gamepath = "Game/Knowts.txt";
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
@@ -122,7 +126,7 @@ namespace Launcher
         public string startPath = "Game/";
         public string zipPath = "Game/cache/";
         public string extractPath = "Game/";
-        public string VersionText = "Build" + " " + "WoA_1902_0059";
+        public string VersionText = "Build" + " " + "WoA_1902_0058";
 
 
 //                                                                                                                          //
@@ -458,7 +462,7 @@ namespace Launcher
                 
                 else 
                 {
-                    play.Text = ("Update");
+                    play.Text = ("No Knowts");
                     Console.WriteLine("Knowts file not found"); // download new knowts file and re-read
                     ToPanelButton.Enabled = false;
                 }
@@ -477,13 +481,13 @@ namespace Launcher
                 ToPanelButton.Enabled = false;
             }
                
-            
+            // response.Close();
             progressBar0.Visible = false;
             //End of startup loading
         }
 
         
-
+        
 
 
 
@@ -533,7 +537,7 @@ namespace Launcher
                     else // cache not done, so download zips
                     {
                         // need check for which zip is last right here, then update the current ones name
-                        string currentzipname = String.Empty;
+                        string currentzipname = ("https://drive.google.com/uc?export=download&confirm=7o6p&id=1U7jEhG2YC2pI2VW6riVBHgpqkSLqM1Jo");                 // was: String.Empty;
                         Console.WriteLine("We have latest link.  No local zips, downloading new zip files...");
                         play.Text = "Wait";
                         play.Enabled = false;
@@ -543,38 +547,26 @@ namespace Launcher
 
 
 
-                    ///              ____ ___            .___       __           __________.__                              ///
-                    ///             |    |   \______   __| _/____ _/  |_  ____   \____    /|__|_____  ______                ///
-                    ///             |    |   /\____ \ / __ |\__  \\   __\/ __ \    /     / |  \____ \/  ___/                ///
-                    ///             |    |  / |  |_> > /_/ | / __ \|  | \  ___/   /     /_ |  |  |_> >___ \                 ///
-                    ///             |______/  |   __/\____ |(____  /__|  \___  > /_______ \|__|   __/____  >                ///
-                    ///                       |__|        \/     \/          \/          \/   |__|       \/                 ///
-
-                    
-                         string currentziplink = ("https://drive.google.com/uc?export=download&confirm=7o6p&id=1U7jEhG2YC2pI2VW6riVBHgpqkSLqM1Jo");
-                         int x = 0;
-                         if (System.IO.File.Exists(cdirectory + ".zip"))
-                         {
-                         Console.WriteLine("File already exists");
-                             // alreday have this file
-                         }
-
-                         else
-                         {
+                        ///              ____ ___            .___       __           __________.__                              ///
+                        ///             |    |   \______   __| _/____ _/  |_  ____   \____    /|__|_____  ______                ///
+                        ///             |    |   /\____ \ / __ |\__  \\   __\/ __ \    /     / |  \____ \/  ___/                ///
+                        ///             |    |  / |  |_> > /_/ | / __ \|  | \  ___/   /     /_ |  |  |_> >___ \                 ///
+                        ///             |______/  |   __/\____ |(____  /__|  \___  > /_______ \|__|   __/____  >                ///
+                        ///                       |__|        \/     \/          \/          \/   |__|       \/                 ///
 
 
-                             //specific downloaders
-                             using (WebClient wc0 = new WebClient())
-                             {
 
-                                 wc0.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc0_DownloadProgressChanged);
-                                 wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
-                                 wc0.DownloadFileAsync(new System.Uri(currentziplink), (cdirectory + "WoA_1902_0060.zip" + ".001"));
-                                 Console.WriteLine(currentziplink + " set as wc0 #" + x);
-                             }
-                         }
-                            
-    
+
+                        using (WebClient wc0 = new WebClient())
+                        {
+
+                            wc0.DownloadProgressChanged += wc0_DownloadProgressChanged;
+                            wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
+                            wc0.DownloadFileAsync(new System.Uri(currentzipname), (cdirectory + "WoA_1902_0060.zip.000"));
+                            Console.WriteLine(currentzipname + " set as wc0 #");
+
+                        }
+                        Console.WriteLine("Done with zipnames loop");
                     }
                 }
 
@@ -585,11 +577,11 @@ namespace Launcher
                     Console.WriteLine("Knowts is not up to date so we download new knowts");
                     progressBar0.Visible = true;
                     play.Enabled = false;
-                    using (WebClient wc = new WebClient())
+                    using (WebClient wc0 = new WebClient())
                     {
-                        wc.DownloadProgressChanged += wctext1_DownloadProgressChanged;
-                        wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext1_DownloadKnowtsCompleted);
-                        wc.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+                        wc0.DownloadProgressChanged += wctext1_DownloadProgressChanged;
+                        wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext1_DownloadKnowtsCompleted);
+                        wc0.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
 
                     }
                 }
@@ -661,14 +653,12 @@ namespace Launcher
                         progressBar0.Visible = true;
                         using (WebClient wctext1 = new System.Net.WebClient())
                         {
-                            wctext1.DownloadProgressChanged += wctext1_DownloadProgressChanged;
                             wctext1.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext1_DownloadKnowtsCompleted);
                             wctext1.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
 
                         }
                         using (WebClient wctext2 = new System.Net.WebClient())
                         {
-                            wctext2.DownloadProgressChanged += wctext2_DownloadProgressChanged;
                             wctext2.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext2_DownloadBuildCompleted);
                             wctext2.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt"), "Game/Build.txt");
 
@@ -676,14 +666,13 @@ namespace Launcher
 
                         using (WebClient wctext3 = new System.Net.WebClient())
                         {
-                            wctext3.DownloadProgressChanged += wctext3_DownloadProgressChanged;
                             wctext3.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext3_DownloadManifestCompleted);
                             wctext3.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Manifest.txt"), "Game/Manifest.txt");
 
                         }
                         using (WebClient wctext4 = new System.Net.WebClient())
                         {
-                            wctext4.DownloadProgressChanged += wctext4_DownloadProgressChanged;
+                            wctext4.DownloadProgressChanged += wc0_DownloadProgressChanged;
                             wctext4.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext4_DownloadZipsManifestCompleted);
                             wctext4.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/ZipsManifest.txt"), "Game/ZipsManifest.txt");
 
@@ -786,19 +775,19 @@ namespace Launcher
         void wctext1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            //play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "%");
 
         }
         void wctext2_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            //play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "%");
 
         }
         void wctext3_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            //play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "%");
 
         }
         void wctext4_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -822,12 +811,19 @@ namespace Launcher
 
 
 
+        //// Event to track the progress
+        //void wc1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        //{
+        //    progressBar1.Value = e.ProgressPercentage;
+        //    play.Text = (currentziplink.ToString() + "%");
+        //    Console.WriteLine("Unzippingd de " + currentziplink);
+        //{
+
         void wc0_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
+            play.Text = (currentziplink.ToString() + "/66");
         }
-
-
         
 
 
@@ -843,6 +839,14 @@ namespace Launcher
 
 // zip file progress indicators
 
+// void wc1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+// {
+//     // shit
+//     progressBar1.Visible = false;
+//     LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+//     play.Text = "Get Zips";
+//     play.Enabled = true;
+// }
 
 
             
@@ -852,11 +856,71 @@ namespace Launcher
         void wc0_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
 
+            int adder = 1;
+            adder = (currentziplink + 1);
+            currentziplink = adder;
+            //Console.WriteLine("New download # set to... " + currentziplink);
+
+            if (currentziplink < 67)
+            {
+                //download next in loop
+                this.ExpDownloadLooper();
+            }
+
+            else
+            {
+                // done?
+                Console.WriteLine("Download Complete");
+                play.Enabled = true;
+                progressBar0.Visible = false;
+                play.Text = "Unzip";
+            }
+            
         }
 
         
+        //              ________                      .__                    .___ .____                                                     //
+        //              \______ \   ______  _  ______ |  |   _________     __| _/ |    |    ____   ____ ______   ___________                //
+        //               |    |  \ /  _ \ \/ \/ /    \|  |  /  _ \__  \   / __ |  |    |   /  _ \ /  _ \\____ \_/ __ \_  __ \               //
+        //               |    `   (  <_> )     /   |  \  |_(  <_> ) __ \_/ /_/ |  |    |__(  <_> |  <_> )  |_> >  ___/|  | \/               //
+        //              /_______  /\____/ \/\_/|___|  /____/\____(____  /\____ |  |_______ \____/ \____/|   __/ \___  >__|                  //
+        //                      \/                  \/                \/      \/          \/            |__|        \/                      //
+        //                                                                                                                                  //
 
-    
+         public void ExpDownloadLooper ()
+
+        {
+            Console.WriteLine("regular void Download Looper Fired off with # " + currentziplink );
+
+            int linetoread = currentziplink - 1;
+            // need check for which zip is last right here, then update the current ones name
+            string newtextlabel = linetoread + "/66";
+            play.Text = (newtextlabel);
+            play.Enabled = false;
+            progressBar0.Visible = true;
+            string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_0055.zip.001)
+            string[] ziplinks = System.IO.File.ReadAllLines(ziplinkspath); // read all lines of http links from the zipsmanifest for download (link pathing for each .zip.0xx)
+
+            string downloadlink = File.ReadLines(ziplinkspath).Skip(linetoread).Take(1).First(); // get specific line # relevant to that download link
+            string filename = File.ReadLines(manifestpath).Skip(linetoread).Take(1).First(); // specific download link name
+
+
+
+
+            using (WebClient wc1 = new WebClient())
+            {
+
+                wc1.DownloadProgressChanged += wc0_DownloadProgressChanged;
+                wc1.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
+                wc1.DownloadFileAsync(new System.Uri(downloadlink), (cdirectory + filename));
+                Console.WriteLine(downloadlink + " set as wc0 with manifest " + filename + " on line " + linetoread);
+
+            }
+            
+
+        }
+
+
 
 
 
@@ -1231,6 +1295,11 @@ namespace Launcher
         private void label1_Click(object sender, EventArgs e)
         {
             // nothing
+        }
+
+        private void VersionLabel_Click(object sender, EventArgs e)
+        {
+
         }
 
 
