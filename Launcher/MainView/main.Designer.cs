@@ -66,14 +66,13 @@ namespace Launcher
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.VersionLabel = new System.Windows.Forms.Label();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar0 = new System.Windows.Forms.ProgressBar();
+            this.VersionPic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.OtherPanel.SuspendLayout();
             this.GeneralPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VersionPic)).BeginInit();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -121,14 +120,16 @@ namespace Launcher
             this.font.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.font.BackColor = System.Drawing.Color.Black;
-            this.font.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.font.BackColor = System.Drawing.Color.Transparent;
+            this.font.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.font.Image = global::Launcher.Properties.Resources.font;
+            this.font.InitialImage = ((System.Drawing.Image)(resources.GetObject("font.InitialImage")));
             this.font.Location = new System.Drawing.Point(0, 0);
             this.font.Name = "font";
             this.font.Size = new System.Drawing.Size(1000, 600);
             this.font.TabIndex = 16;
             this.font.TabStop = false;
+            this.font.WaitOnLoad = true;
             this.font.Click += new System.EventHandler(this.font_Click);
             this.font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.font_MouseDown);
             // 
@@ -164,8 +165,8 @@ namespace Launcher
             // 
             this.ToolsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
-            this.ToolsPanel.Controls.Add(this.OtherPanel);
             this.ToolsPanel.Controls.Add(this.GeneralPanel);
+            this.ToolsPanel.Controls.Add(this.OtherPanel);
             this.ToolsPanel.Controls.Add(this.button9);
             this.ToolsPanel.Controls.Add(this.button10);
             this.ToolsPanel.Controls.Add(this.Pick_A_Label);
@@ -579,45 +580,6 @@ namespace Launcher
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.BackColor = System.Drawing.Color.Lime;
-            this.progressBar1.ForeColor = System.Drawing.Color.Red;
-            this.progressBar1.Location = new System.Drawing.Point(0, 548);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar1.Step = 100;
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 32;
-            this.progressBar1.Value = 1;
-            // 
-            // VersionLabel
-            // 
-            this.VersionLabel.AutoSize = true;
-            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.VersionLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VersionLabel.Font = new System.Drawing.Font("Morris Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.VersionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.VersionLabel.Location = new System.Drawing.Point(720, 8);
-            this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(102, 18);
-            this.VersionLabel.TabIndex = 51;
-            this.VersionLabel.Text = "WoA_1902_0001";
-            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.BackColor = System.Drawing.Color.Lime;
-            this.progressBar2.ForeColor = System.Drawing.Color.Red;
-            this.progressBar2.Location = new System.Drawing.Point(0, 547);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(1000, 1);
-            this.progressBar2.Step = 100;
-            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar2.TabIndex = 52;
-            this.progressBar2.Value = 1;
-            // 
             // progressBar0
             // 
             this.progressBar0.BackColor = System.Drawing.Color.Lime;
@@ -631,6 +593,18 @@ namespace Launcher
             this.progressBar0.TabIndex = 60;
             this.progressBar0.Value = 1;
             // 
+            // VersionPic
+            // 
+            this.VersionPic.BackColor = System.Drawing.Color.Transparent;
+            this.VersionPic.BackgroundImage = global::Launcher.Properties.Resources.SplashVersion;
+            this.VersionPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.VersionPic.InitialImage = null;
+            this.VersionPic.Location = new System.Drawing.Point(915, 495);
+            this.VersionPic.Name = "VersionPic";
+            this.VersionPic.Size = new System.Drawing.Size(80, 48);
+            this.VersionPic.TabIndex = 61;
+            this.VersionPic.TabStop = false;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,10 +614,7 @@ namespace Launcher
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
             this.Controls.Add(this.progressBar0);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.button1);
@@ -653,6 +624,7 @@ namespace Launcher
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ToolsPanel);
             this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.VersionPic);
             this.Controls.Add(this.font);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -672,8 +644,8 @@ namespace Launcher
             this.OtherPanel.PerformLayout();
             this.GeneralPanel.ResumeLayout(false);
             this.GeneralPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VersionPic)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -709,15 +681,13 @@ namespace Launcher
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label Game_AALabel;
         private System.Windows.Forms.Label Game_NoteLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private EventHandler comboBox3_SelectedIndexChanged;
         private EventHandler comboBox1_SelectedIndexChanged;
-        private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.ProgressBar progressBar0;
+        private System.Windows.Forms.PictureBox VersionPic;
     }
 }
 

@@ -140,6 +140,16 @@ namespace Launcher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SplashVersion {
+            get {
+                object obj = ResourceManager.GetObject("SplashVersion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://www.almerra.com/updates.html.
         /// </summary>
         internal static string UrlLocation {

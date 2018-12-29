@@ -910,8 +910,7 @@ namespace Launcher
             using (WebClient wc1 = new WebClient())
             {
 
-                wc1.DownloadProgressChanged += wc0_DownloadProgressChanged;
-                wc1.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
+                wc1.DownloadProgressChanged += wc0_DownloadProgressChanged; // using same update method on the progress bar
                 wc1.DownloadFileAsync(new System.Uri(downloadlink), (cdirectory + filename));
                 Console.WriteLine(downloadlink + " set as wc0 with manifest " + filename + " on line " + linetoread);
 
@@ -1029,8 +1028,6 @@ namespace Launcher
 
             button12.BackColor = Color.Transparent;
             
-            VersionLabel.BackColor = System.Drawing.Color.Transparent;
-
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
             ToPanelButton.BackColor = Color.Transparent;
@@ -1049,8 +1046,6 @@ namespace Launcher
             ToPanelButton.Parent = font;
             button12.Parent = font;
             button2.Parent = font;
-
-
 
         }
 
@@ -1134,7 +1129,7 @@ namespace Launcher
             webBrowser1.Visible = false;
             button12.Visible = true;
 
-
+            VersionPic.Visible = false;
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
 
@@ -1157,7 +1152,7 @@ namespace Launcher
             ToPanelButton.Visible = true; // back to main only shows tools button
             webBrowser1.Visible = false;
             button12.Visible = true;
-
+            VersionPic.Visible = true;
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
 
@@ -1292,15 +1287,7 @@ namespace Launcher
 
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // nothing
-        }
 
-        private void VersionLabel_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
 
