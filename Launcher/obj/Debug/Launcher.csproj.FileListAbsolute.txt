@@ -201,3 +201,4 @@ G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.R
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\SplashVersion.png
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\mini.png
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
