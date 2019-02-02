@@ -216,3 +216,5 @@ G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Pri
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.main.resources
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.Cache
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\Cardinal-Alternate.ttf
+G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\KellyAnnGothic.ttf

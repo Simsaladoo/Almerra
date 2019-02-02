@@ -39,6 +39,8 @@ namespace Launcher
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolsPanel = new System.Windows.Forms.Panel();
             this.OtherPanel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.CacheSizeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -149,7 +151,7 @@ namespace Launcher
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 54);
             this.button1.TabIndex = 29;
-            this.button1.Text = "Engine";
+            this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -165,8 +167,8 @@ namespace Launcher
             // 
             this.ToolsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.ToolsPanel.BackgroundImage = global::Launcher.Properties.Resources.settingsFont;
-            this.ToolsPanel.Controls.Add(this.GeneralPanel);
             this.ToolsPanel.Controls.Add(this.OtherPanel);
+            this.ToolsPanel.Controls.Add(this.GeneralPanel);
             this.ToolsPanel.Controls.Add(this.button9);
             this.ToolsPanel.Controls.Add(this.button10);
             this.ToolsPanel.Controls.Add(this.Pick_A_Label);
@@ -179,6 +181,8 @@ namespace Launcher
             // OtherPanel
             // 
             this.OtherPanel.BackColor = System.Drawing.Color.Black;
+            this.OtherPanel.Controls.Add(this.button3);
+            this.OtherPanel.Controls.Add(this.CacheSizeLabel);
             this.OtherPanel.Controls.Add(this.label1);
             this.OtherPanel.Controls.Add(this.label2);
             this.OtherPanel.Controls.Add(this.label3);
@@ -186,6 +190,37 @@ namespace Launcher
             this.OtherPanel.Name = "OtherPanel";
             this.OtherPanel.Size = new System.Drawing.Size(798, 363);
             this.OtherPanel.TabIndex = 37;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Lime;
+            this.button3.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(56, 84);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(194, 54);
+            this.button3.TabIndex = 44;
+            this.button3.Text = "Clear Cache";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // CacheSizeLabel
+            // 
+            this.CacheSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CacheSizeLabel.AutoSize = true;
+            this.CacheSizeLabel.Font = new System.Drawing.Font("Kelly", 24F);
+            this.CacheSizeLabel.Location = new System.Drawing.Point(539, 90);
+            this.CacheSizeLabel.Name = "CacheSizeLabel";
+            this.CacheSizeLabel.Size = new System.Drawing.Size(145, 43);
+            this.CacheSizeLabel.TabIndex = 43;
+            this.CacheSizeLabel.Text = "0.0 MB";
+            this.CacheSizeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label1
             // 
@@ -203,9 +238,9 @@ namespace Launcher
             this.label2.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(52, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 24);
+            this.label2.Size = new System.Drawing.Size(172, 24);
             this.label2.TabIndex = 40;
-            this.label2.Text = "Graphics Presets";
+            this.label2.Text = "Current Cache Size";
             // 
             // label3
             // 
@@ -439,7 +474,6 @@ namespace Launcher
             this.button10.BackColor = System.Drawing.Color.Lime;
             this.button10.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.Enabled = false;
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
@@ -688,6 +722,8 @@ namespace Launcher
         private EventHandler comboBox1_SelectedIndexChanged;
         private System.Windows.Forms.ProgressBar progressBar0;
         private System.Windows.Forms.PictureBox VersionPic;
+        private System.Windows.Forms.Label CacheSizeLabel;
+        private System.Windows.Forms.Button button3;
     }
 }
 

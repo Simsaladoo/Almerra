@@ -181,11 +181,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Cardinal-Alternate.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\font.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\KellyAnnGothic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\settingsFont.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -4,7 +4,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Drawing;
-using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
@@ -104,11 +104,12 @@ namespace Launcher
         SoundPlayer patsoft = new SoundPlayer("Resources/patsoft.wav");
         SoundPlayer patwarnings = new SoundPlayer("Resources/patwarning.wav");
         bool soundenabled = true;
-        string latestpath = "Game/Knowts.txt";
-        string buildpath = "Game/Build.txt";
-        public string manifestpath = "Game/Manifest.txt";
-        public string ziplinkspath = "Game/ZipsManifest.txt";
-        public bool LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
+        public bool nocancel = false;
+        string latestpath = "Cache/Knowts.txt";
+        string buildpath = "Cache/Build.txt";
+        public string manifestpath = "Cache/Manifest.txt";
+        public string ziplinkspath = "Cache/ZipsManifest.txt";
+        public bool LatestPathExists = (System.IO.File.Exists("Cache/Knowts.txt"));
         public string VersionURL = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/SplashVersion.png";
         public string KnowtsOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt";
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
@@ -119,15 +120,18 @@ namespace Launcher
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
-        public string gdirectory = "Game/";
-        public string cdirectory = "Game/cache/";
+        public string gdirectory = "Cache/";
+        public string cdirectory = "Cache/zips/";
         public string dir = String.Empty;
         public string[] dirs = new string[] { "" };
-        public int currentziplink = 0;
-        public string startPath = "Game/";
-        public string zipPath = "Game/cache/";
+        public int currentziplink = 1;
+        public string startPath = "Cache/";
+        public string zipPath = "Cache/";
         public string extractPath = "Game/";
-        public string VersionText = "Build" + " " + "WoA_1902_0058";
+        public string VersionText = "Build" + " " + "WoA_1902_0066";
+        public int TotalZips = 67;
+        public int DoneZipsToSkip = 0;
+        public long CacheSize = 000;
 
 
 //                                                                                                                          //
@@ -358,7 +362,8 @@ namespace Launcher
 
             //create the folders for shit
             Directory.CreateDirectory(Path.Combine("Game"));
-            Directory.CreateDirectory(Path.Combine("Game/cache"));
+            Directory.CreateDirectory(Path.Combine("Cache"));
+            Directory.CreateDirectory(Path.Combine("Cache/zips"));
             string[] lines = {
                             "Almerra Launcher Readme",
                             "",
@@ -366,7 +371,7 @@ namespace Launcher
                             };
 
             //create the readme file for no real reason 
-            string path = "Game/ReadMe.txt";
+            string path = "Cache/ReadMe.txt";
             var onlinelatesthtml = KnowtsOnline;
             if (!System.IO.File.Exists(path))
             {
@@ -377,12 +382,12 @@ namespace Launcher
             else if (System.IO.File.Exists(path))
             {
                 Console.WriteLine("ReadMe File Exists");
-                File.WriteAllLines("Game/ReadMe.txt", lines);
+                File.WriteAllLines("Cache/ReadMe.txt", lines);
 
             }
             // ... Say stuff within teh readme.
 
-
+            
 
 
 
@@ -436,34 +441,8 @@ namespace Launcher
                 if (onlinelatesthtml == latestlink)
                 {
                     Console.WriteLine("Knowts is up to date"); // now confirmed, we can read the latest link
-                    if (cacheisdone)
-                    {
-                        Console.WriteLine("Do we have the zip for this");
-                        play.Text = ("Unzip");
-                        ToPanelButton.Enabled = false;
-                    }
-                    if (gameisunzipped)
-                    {
-                        Console.WriteLine("Game is unzipped, starting");
-                        play.Text = ("Play Latest");
-                        string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
-                        Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
-                        foreach (string dir in dirs)
-                        {
-                            string letsdothis = dir;
-                            Console.WriteLine(dir);
-                            if (dir != null)
-                            {
-                                gameisunzipped = true;
-                            }
-                        }
-                    }
 
-                    else
-                    {
-                        play.Text = ("Get Zips");
-                        //ToPanelButton.Enabled = false;
-                    }
+                    CheckForZips();                    
 
 
                 }
@@ -519,8 +498,8 @@ namespace Launcher
         {
 
             /*      play our last build -- first make sure its even there, if not display the messgae box */
-            var gdirectory = "Game/";
-            var cdirectory = "Game/cache/";
+            //var gdirectory = "Game/";
+            //var cdirectory = "Cache/";
             if (soundenabled == true)
             {
                 System.Media.SoundPlayer sp = (patsoft);
@@ -544,16 +523,6 @@ namespace Launcher
                     }
                     else // cache not done, so download zips
                     {
-                        // need check for which zip is last right here, then update the current ones name
-                        string currentzipname = ("https://drive.google.com/uc?export=download&confirm=7o6p&id=1U7jEhG2YC2pI2VW6riVBHgpqkSLqM1Jo");                 // was: String.Empty;
-                        Console.WriteLine("We have latest link.  No local zips, downloading new zip files...");
-                        play.Text = "Wait";
-                        play.Enabled = false;
-                        progressBar0.Visible = true;
-                        string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_0055.zip.001)
-                        string[] ziplinks = System.IO.File.ReadAllLines(ziplinkspath); // read all lines of http links from the zipsmanifest for download (link pathing for each .zip.0xx)
-
-
 
                         ///              ____ ___            .___       __           __________.__                              ///
                         ///             |    |   \______   __| _/____ _/  |_  ____   \____    /|__|_____  ______                ///
@@ -564,17 +533,7 @@ namespace Launcher
 
 
 
-
-                        using (WebClient wc0 = new WebClient())
-                        {
-
-                            wc0.DownloadProgressChanged += wc0_DownloadProgressChanged;
-                            wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
-                            wc0.DownloadFileAsync(new System.Uri(currentzipname), (cdirectory + "WoA_1902_0060.zip.000"));
-                            Console.WriteLine(currentzipname + " set as wc0 #");
-
-                        }
-                        Console.WriteLine("Done with zipnames loop");
+                        ExpDownloadLooper();
                     }
                 }
 
@@ -589,7 +548,7 @@ namespace Launcher
                     {
                         wc0.DownloadProgressChanged += wctext1_DownloadProgressChanged;
                         wc0.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext1_DownloadKnowtsCompleted);
-                        wc0.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+                        wc0.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Cache/Knowts.txt");
 
                     }
                 }
@@ -627,7 +586,7 @@ namespace Launcher
                                   //download some shit! 
                                   wc.DownloadProgressChanged += wctext1_DownloadProgressChanged;
                                    // event called for downlading new knowts
-                                  wc.DownloadFile(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+                                  wc.DownloadFile(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Cache/Knowts.txt");
                                   play.Text = dir;
                     
 
@@ -662,27 +621,27 @@ namespace Launcher
                         using (WebClient wctext1 = new System.Net.WebClient())
                         {
                             wctext1.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext1_DownloadKnowtsCompleted);
-                            wctext1.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Game/Knowts.txt");
+                            wctext1.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Knowts.txt"), "Cache/Knowts.txt");
 
                         }
                         using (WebClient wctext2 = new System.Net.WebClient())
                         {
                             wctext2.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext2_DownloadBuildCompleted);
-                            wctext2.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt"), "Game/Build.txt");
+                            wctext2.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt"), "Cache/Build.txt");
 
                         }
 
                         using (WebClient wctext3 = new System.Net.WebClient())
                         {
                             wctext3.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext3_DownloadManifestCompleted);
-                            wctext3.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Manifest.txt"), "Game/Manifest.txt");
+                            wctext3.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Manifest.txt"), "Cache/Manifest.txt");
 
                         }
                         using (WebClient wctext4 = new System.Net.WebClient())
                         {
                             wctext4.DownloadProgressChanged += wc0_DownloadProgressChanged;
                             wctext4.DownloadFileCompleted += new AsyncCompletedEventHandler(wctext4_DownloadZipsManifestCompleted);
-                            wctext4.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/ZipsManifest.txt"), "Game/ZipsManifest.txt");
+                            wctext4.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/ZipsManifest.txt"), "Cache/ZipsManifest.txt");
 
                         }
                         ziplinkspath = "Game/ZipsManifest.txt";
@@ -743,7 +702,7 @@ namespace Launcher
         {
             // shit
             progressBar0.Visible = false;
-            LatestPathExists = (System.IO.File.Exists("Game/Build.txt"));
+            LatestPathExists = (System.IO.File.Exists("Cache/Build.txt"));
             //play.Text = "Get Zips";
             play.Enabled = true;
         }
@@ -752,7 +711,7 @@ namespace Launcher
         {
             // shit
             progressBar0.Visible = false;
-            LatestPathExists = (System.IO.File.Exists("Game/Build.txt"));
+            LatestPathExists = (System.IO.File.Exists("Cache/Build.txt"));
             //play.Text = "Get Zips";
             play.Enabled = true;
         }
@@ -760,7 +719,7 @@ namespace Launcher
         {
             // shit
             progressBar0.Visible = false;
-            LatestPathExists = (System.IO.File.Exists("Game/Manifest.txt"));
+            LatestPathExists = (System.IO.File.Exists("Cache/Manifest.txt"));
             //play.Text = "Get Zips";
             play.Enabled = true;
         }
@@ -768,7 +727,7 @@ namespace Launcher
         {
             // shit
             progressBar0.Visible = false;
-            LatestPathExists = (System.IO.File.Exists("Game/ZipsManifest.txt"));
+            LatestPathExists = (System.IO.File.Exists("Cache/ZipsManifest.txt"));
             play.Text = "Get Zips";
             play.Enabled = true;
         }
@@ -828,21 +787,31 @@ namespace Launcher
         //                                                                                                                                      //
 
 
-
-        //// Event to track the progress
-        //void wc1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        //{
-        //    progressBar1.Value = e.ProgressPercentage;
-        //    play.Text = (currentziplink.ToString() + "%");
-        //    Console.WriteLine("Unzippingd de " + currentziplink);
-        //{
-
         void wc0_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar0.Value = e.ProgressPercentage;
-            play.Text = (currentziplink.ToString() + "/66");
+
+
+
+            //progressBar0.Value = e.ProgressPercentage;           --  this only somewhat works for each file
+            progressBar0.Value = currentziplink;
+            if (nocancel == true)
+            {
+                play.Text = ("Get Zips");
+                play.Enabled = true;
+                progressBar0.Visible = false;
+                button1.Visible = false;
+
+            }
+
+            else
+            {
+                play.Text = (currentziplink.ToString() + "%");
+               
+                // keeps going
+            }
+
         }
-        
+
 
 
 
@@ -855,40 +824,47 @@ namespace Launcher
         //          \/             \/|__|             \/          \/     \/          \/   |__|             \/           \/     \/          \/   //
         //                                                                                                                                      //
 
-// zip file progress indicators
-
-// void wc1_DownloadKnowtsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-// {
-//     // shit
-//     progressBar1.Visible = false;
-//     LatestPathExists = (System.IO.File.Exists("Game/Knowts.txt"));
-//     play.Text = "Get Zips";
-//     play.Enabled = true;
-// }
-
-
-            
-
+        // zip file progress indicators
 
 
         void wc0_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
+            button3.Enabled = true;
+            if (currentziplink > 1)
+            {
+
+                CheckCacheSize();
+            }
 
             int adder = 1;
             adder = (currentziplink + 1);
             currentziplink = adder;
-            //Console.WriteLine("New download # set to... " + currentziplink);
+            Console.WriteLine("DownloadZipsCompleted " + currentziplink + "completed...");
 
-            if (currentziplink < 67)
+            if (currentziplink <= TotalZips)
             {
-                //download next in loop
-                this.ExpDownloadLooper();
+                if (nocancel == false)
+                {
+                    //download next in loop
+                    this.ExpDownloadLooper();
+                    Console.WriteLine("ExpDownladLoop Called");
+                }
+
+                else
+                {
+                    // stop the loop
+                    Console.WriteLine("ExpDownladLoop cancelled...");
+                    button1.Enabled = true;
+                    button1.Visible = false;
+                    
+                }
+
             }
 
             else
             {
                 // done?
-                Console.WriteLine("Download Complete");
+                Console.WriteLine("Download Complete, ExpDownladLoop stopped.");
                 play.Enabled = true;
                 progressBar0.Visible = false;
                 play.Text = "Unzip";
@@ -904,25 +880,33 @@ namespace Launcher
         //              /_______  /\____/ \/\_/|___|  /____/\____(____  /\____ |  |_______ \____/ \____/|   __/ \___  >__|                  //
         //                      \/                  \/                \/      \/          \/            |__|        \/                      //
         //                                                                                                                                  //
+        public void SkipDoneZips ()
+        {
+            currentziplink = currentziplink + DoneZipsToSkip;
+        }
 
-         public void ExpDownloadLooper ()
+
+
+         public void ExpDownloadLooper()
 
         {
             Console.WriteLine("regular void Download Looper Fired off with # " + currentziplink );
 
-            int linetoread = currentziplink - 1;
+            int linetoread = currentziplink;
+            int linetoskip = currentziplink - 1;
             // need check for which zip is last right here, then update the current ones name
-            string newtextlabel = linetoread + "/66";
+            string newtextlabel = linetoread + "%";
             play.Text = (newtextlabel);
             play.Enabled = false;
             progressBar0.Visible = true;
-            string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_0055.zip.001)
+            string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_xxxx.zip.001)
             string[] ziplinks = System.IO.File.ReadAllLines(ziplinkspath); // read all lines of http links from the zipsmanifest for download (link pathing for each .zip.0xx)
 
             string downloadlink = File.ReadLines(ziplinkspath).Skip(linetoread).Take(1).First(); // get specific line # relevant to that download link
-            string filename = File.ReadLines(manifestpath).Skip(linetoread).Take(1).First(); // specific download link name
+            string filename = File.ReadLines(manifestpath).Skip(linetoskip).Take(1).First(); // specific download link name
 
-
+            button1.Visible = true;
+            nocancel = false;
 
 
             using (WebClient wc1 = new WebClient())
@@ -930,10 +914,12 @@ namespace Launcher
 
                 wc1.DownloadProgressChanged += wc0_DownloadProgressChanged; // using same update method on the progress bar
                 wc1.DownloadFileAsync(new System.Uri(downloadlink), (cdirectory + filename));
-                Console.WriteLine(downloadlink + " set as wc0 with manifest " + filename + " on line " + linetoread);
-
+                wc1.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
+                Console.WriteLine(downloadlink + " set as wc1 with manifest " + filename + " on line " + linetoread);
+                
             }
             
+
 
         }
 
@@ -943,90 +929,173 @@ namespace Launcher
 
 
 
-        //                                                                                                           //
-        //                  .____                     .___ ___________              .__                              //
-        //                  |    |    _________     __| _/ \_   _____/ ____    ____ |__| ____   ____                 //
-        //                  |    |   /  _ \__  \   / __ |   |    __)_ /    \  / ___\|  |/    \_/ __ \                //
-        //                  |    |__(  <_> ) __ \_/ /_/ |   |        \   |  \/ /_/  >  |   |  \  ___/                //
-        //                  |_______ \____(____  /\____ |  /_______  /___|  /\___  /|__|___|  /\___  >               //
-        //                          \/         \/      \/          \/     \//_____/         \/     \/                //
-        //                                                                                                           //
-        //                                                                                                           //
+        //                  Cancel              //
+        //                  Cancel              //
+        //                  Cancel              //
+        //                  Cancel              //
+        //                  Cancel     ?        //
+        //                  Cancel              //
+        //                  Cancel              //
+        //                  Cancel              //
+        //                  Cancel              //
 
 
         private void button1_Click(object sender, EventArgs e)
         {
+            nocancel = true;
 
-            /*     startup the engine    */
-            var pdirectory = (@"H:\UE4\Projects\WoA_1902");
-            var processExists = System.Diagnostics.Process.GetProcesses().Any(p => p.ProcessName.Contains("WoA_1902.exe"));
-            if (soundenabled == true)
+            button1.Enabled = false;
+
+        }
+
+
+        //                  see if we have any zips              //
+        //                  see if we have any zips              //
+        //                  see if we have any zips              //
+        //                  see if we have any zips              //
+        //                  see if we have any zips     ?        //
+        //                  see if we have any zips              //
+        //                  see if we have any zips              //
+        //                  see if we have any zips              //
+        //                  see if we have any zips              //
+
+
+
+        public void CheckForZips()
+        {
+
+            CheckCacheSize();            // convert total cache size
+           
+            Console.WriteLine("Checking for Zips");
+            string[] zipnames = System.IO.File.ReadAllLines(manifestpath);   // all the file names
+            string[] zipfilesdone = System.IO.Directory.GetFiles(cdirectory);
+
+
+            foreach (string dir in zipfilesdone)
             {
-                System.Media.SoundPlayer sp = (patsoft);
-                sp.Play();
-            };
+                Console.WriteLine("Checking zip " + dir);
+                DoneZipsToSkip = DoneZipsToSkip + 1;
+            }
 
-            try
+            Console.WriteLine("Done looking for Zips... We can skip " + DoneZipsToSkip);
+            currentziplink = currentziplink + DoneZipsToSkip;
+
+            if (currentziplink < 2)
             {
-                var sProcessName = ("UE4Editor");
-                System.Diagnostics.Process[] proc = System.Diagnostics.Process.GetProcessesByName(sProcessName);
-                if (proc.Length > 0)
-                {
-                    MessageBox.Show(String.Format("{0} is already running!", sProcessName), sProcessName);
-                }
-                else
-                {
+                // we dont have a single one, disable the cache button
+                button3.Enabled = false;
+            }
 
-                    // Only get files that begin with the letter "c."
-                    string[] dirs = Directory.GetFiles(pdirectory, "*WoA_1902.uproject*", SearchOption.TopDirectoryOnly);
-                    Console.WriteLine(pdirectory + ", The number of files starting with W is " + dirs.Length);
-                    foreach (string dir in dirs)
+
+
+            if (cacheisdone)
+            {
+                Console.WriteLine("Do we have any zips for this?");
+                play.Text = ("Unzip");
+                ToPanelButton.Enabled = false;
+            }
+
+
+            if (gameisunzipped)
+            {
+                Console.WriteLine("Game is unzipped, starting");
+                play.Text = ("Play Latest");
+                string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
+                Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
+                foreach (string dir in dirs)
+                {
+                    string letsdothis = dir;
+                    Console.WriteLine(dir);
+                    if (dir != null)
                     {
-                        string letsdothis = dir;
-                        Console.WriteLine(dir);
-
-                        if (dir != null)
-                        {
-                            System.Diagnostics.Process.Start(dir);
-                            this.WindowState = FormWindowState.Minimized;
-                        }
+                        gameisunzipped = true;
                     }
-
-                    // end of start engine button
-
                 }
             }
-            catch
+
+
+
+
+            else
             {
-                // Initializes the variables to pass to the MessageBox.Show method.
-                string message = "No Almerra project files were found in " + pdirectory + ", close application?";
-                string caption = "Project not found!";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
-                result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
-                { Application.Exit(); }
-                if (result == DialogResult.No)
-                { Console.WriteLine("Ignoring error '" + caption + "'"); }
+                play.Text = ("Get Zips");
+                //ToPanelButton.Enabled = false;
             }
-            Console.WriteLine("Project already running");
+
+
         }
 
 
 
 
 
-//                                                                                                                  //
-//            _________ __          .__             _________       __    __  .__                                   //
-//           /   _____//  |_ ___.__.|  |   ____    /   _____/ _____/  |__/  |_|__| ____    ____  ______             //
-//           \_____  \\   __<   |  ||  | _/ __ \   \_____  \_/ __ \   __\   __\  |/    \  / ___\/  ___/             //
-//           /        \|  |  \___  ||  |_\  ___/   /        \  ___/|  |  |  | |  |   |  \/ /_/  >___ \              //
-//          /_______  /|__|  / ____||____/\___  > /_______  /\___  >__|  |__| |__|___|  /\___  /____  >             //
-//                  \/       \/               \/          \/     \/                   \//_____/     \/              //
-//                                                                                                                  //
-//                                                                                                                  //
+        public void CheckCacheSize()
+        {
 
-        
+            CacheSize = GetDirectorySize(cdirectory);
+            CacheSize = CacheSize / 1024 / 1024;       //  <-- gives you MB   (another "/ 1024" would be GB)
+            long cachesizedecimal = 0;
+
+            if (CacheSize > 1000)
+            {
+
+                cachesizedecimal = CacheSize - 999;
+                CacheSize = CacheSize / 1024;
+                CacheSizeLabel.Text = (CacheSize + "." + cachesizedecimal + " GB");
+            }
+
+            else
+            {
+                CacheSizeLabel.Text = (CacheSize + "." + cachesizedecimal + " MB");
+            }
+
+            Console.WriteLine(CacheSize);
+        }
+
+
+
+
+
+
+
+        static long GetDirectorySize(string p)
+        {
+
+
+            Directory.CreateDirectory(Path.Combine("Cache/zips"));
+
+            // Get array of all file names.
+            string[] a = Directory.GetFiles(p, "*.*");
+
+            
+            // Calculate total bytes of all files in a loop.
+            long b = 0;
+            foreach (string name in a)
+            {
+                
+                // Use FileInfo to get length of each file.
+                FileInfo info = new FileInfo(name);
+                b += info.Length;
+            }
+            
+            // Return total size
+            return b;
+        }
+
+
+
+
+        //                                                                                                                  //
+        //            _________ __          .__             _________       __    __  .__                                   //
+        //           /   _____//  |_ ___.__.|  |   ____    /   _____/ _____/  |__/  |_|__| ____    ____  ______             //
+        //           \_____  \\   __<   |  ||  | _/ __ \   \_____  \_/ __ \   __\   __\  |/    \  / ___\/  ___/             //
+        //           /        \|  |  \___  ||  |_\  ___/   /        \  ___/|  |  |  | |  |   |  \/ /_/  >___ \              //
+        //          /_______  /|__|  / ____||____/\___  > /_______  /\___  >__|  |__| |__|___|  /\___  /____  >             //
+        //                  \/       \/               \/          \/     \/                   \//_____/     \/              //
+        //                                                                                                                  //
+        //                                                                                                                  //
+
+
         private void main_Load(object sender, EventArgs e)
         {
             Console.WriteLine("Main Window Loaded");
@@ -1035,8 +1104,8 @@ namespace Launcher
             play.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             CloseButton.BackColor = Color.Transparent;
-
             button2.BackColor = Color.Transparent;
+            button3.BackColor = Color.Transparent;
 
 
             button9.BackColor = Color.Transparent;
@@ -1303,6 +1372,54 @@ namespace Launcher
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // deleting all zips...
+
+
+            try
+            {
+                System.IO.DirectoryInfo Directory = new System.IO.DirectoryInfo(cdirectory);
+
+                System.IO.Directory.Delete(cdirectory, true);
+
+                CacheSizeLabel.Text = ("0.0 MB");
+
+                button3.Enabled = false;
+
+            }
+
+            catch
+            {
+
+                Stopwatch sw = new Stopwatch(); // sw cotructor
+                sw.Start(); // starts the stopwatch
+                for (int i = 0; ; i++)
+                {
+                    if (i % 100000 == 0) // if in 100000th iteration (could be any other large number
+                                         // depending on how often you want the time to be checked) 
+                    {
+                        sw.Stop(); // stop the time measurement
+                        if (sw.ElapsedMilliseconds > 5000) // check if desired period of time has elapsed
+                        {
+                             // if more than 5000 milliseconds have passed, stop looping and return
+                                   // to the existing code
+                            Console.WriteLine("Stopwatch stopped");
+                            break;
+
+                        }
+                        else
+                        {
+                            sw.Start(); // if less than 5000 milliseconds have elapsed, continue looping
+                                        // and resume time measurement
+                        }
+                    }
+                }
+
+            }
+
+
+        }
 
 
 
