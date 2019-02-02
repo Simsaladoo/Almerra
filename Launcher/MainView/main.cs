@@ -115,7 +115,7 @@ namespace Launcher
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
         public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_0055.zip";
+        public string zippath = "Game/WoA_0066.zip";
         public string gamepath = "Game/Knowts.txt";
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
@@ -129,7 +129,7 @@ namespace Launcher
         public string zipPath = "Cache/";
         public string extractPath = "Game/";
         public string VersionText = "Build" + " " + "WoA_1902_0066";
-        public int TotalZips = 67;
+        public int TotalZips = 0;
         public int DoneZipsToSkip = 0;
         public long CacheSize = 000;
 
@@ -387,29 +387,27 @@ namespace Launcher
             }
             // ... Say stuff within teh readme.
 
-            
 
 
+            //*******************************/*******************************/*******************************/*******************************//
+            //              Startup items for the launcher as a program --                                                                   //
+            //                                                                                                                               //
+            //              here we'll add all the startup shit for downaloading new files and everything                                    //
+            //              if then else, all that shit -- but we'll also addin searches for engine.ini files for the options menu here      //
+            //                                                                                                                               //
+            //********************************/*******************************/*******************************/******************************//
 
-//*******************************/*******************************/*******************************/*******************************//
-//              Startup items for the launcher as a program --                                                                   //
-//                                                                                                                               //
-//              here we'll add all the startup shit for downaloading new files and everything                                    //
-//              if then else, all that shit -- but we'll also addin searches for engine.ini files for the options menu here      //
-//                                                                                                                               //
-//********************************/*******************************/*******************************/******************************//
 
+            //                                                                                                      //
+            //                   ____ ___            .___       __  .__                                             //
+            //                  |    |   \______   __| _/____ _/  |_|__| ____    ____                               //
+            //                  |    |   /\____ \ / __ |\__  \\   __\  |/    \  / ___\                              //
+            //                  |    |  / |  |_> > /_/ | / __ \|  | |  |   |  \/ /_/  >                             //
+            //                  |______/  |   __/\____ |(____  /__| |__|___|  /\___  /                              //
+            //                            |__|        \/     \/             \//_____/                               //
+            //                                                                                                      //
+            //                                                                                                      //
 
-//                                                                                                      //
-//                   ____ ___            .___       __  .__                                             //
-//                  |    |   \______   __| _/____ _/  |_|__| ____    ____                               //
-//                  |    |   /\____ \ / __ |\__  \\   __\  |/    \  / ___\                              //
-//                  |    |  / |  |_> > /_/ | / __ \|  | |  |   |  \/ /_/  >                             //
-//                  |______/  |   __/\____ |(____  /__| |__|___|  /\___  /                              //
-//                            |__|        \/     \/             \//_____/                               //
-//                                                                                                      //
-//                                                                                                      //
-            
             // as long as we have a knowts.txt file locally this will alwusa be true
 
             if (LatestPathExists) 
@@ -440,8 +438,14 @@ namespace Launcher
 
                 if (onlinelatesthtml == latestlink)
                 {
-                    Console.WriteLine("Knowts is up to date"); // now confirmed, we can read the latest link
-
+                    Console.WriteLine("Knowts and Manifest are up to date"); // now confirmed, we can read the latest link
+                    using (var reader = File.OpenText(manifestpath))
+                    {
+                        while (reader.ReadLine() != null)
+                        {
+                            TotalZips++;
+                        }
+                    }
                     CheckForZips();                    
 
 
@@ -517,8 +521,17 @@ namespace Launcher
                         if (gameisunzipped) // if we are done unzipping all the files for the game
                         {
                             // WE have teh file! start the gaame and minimize the launcher
-                            System.Diagnostics.Process.Start(dir);
+                            System.Diagnostics.Process.Start(dir);                                    // play the game
                             this.WindowState = FormWindowState.Minimized;
+                        }
+
+
+                        else
+                        {
+                            // unzip that shit
+                            System.IO.Compression.ZipFile.CreateFromDirectory(cdirectory, gdirectory);
+                            System.IO.Compression.ZipFile.ExtractToDirectory(gdirectory, gdirectory);
+
                         }
                     }
                     else // cache not done, so download zips
@@ -867,6 +880,7 @@ namespace Launcher
                 Console.WriteLine("Download Complete, ExpDownladLoop stopped.");
                 play.Enabled = true;
                 progressBar0.Visible = false;
+                cacheisdone = true;
                 play.Text = "Unzip";
             }
             
@@ -973,24 +987,41 @@ namespace Launcher
 
             foreach (string dir in zipfilesdone)
             {
-                Console.WriteLine("Checking zip " + dir);
+                Console.WriteLine("Checking zip " + dir);       // for every file it goes up by one
                 DoneZipsToSkip = DoneZipsToSkip + 1;
             }
 
-            Console.WriteLine("Done looking for Zips... We can skip " + DoneZipsToSkip);
-            currentziplink = currentziplink + DoneZipsToSkip;
+            Console.WriteLine("Done looking for Zips... We can skip " + DoneZipsToSkip + " out of " + TotalZips);    // now we add that as an offset for where to restart downloading
+            currentziplink = currentziplink + DoneZipsToSkip;                     // currentziplink permanently changed here
+
+
+            if (DoneZipsToSkip == TotalZips)
+            {
+
+                Console.WriteLine("currentziplink == TotalZips");
+
+                if (DoneZipsToSkip > TotalZips)
+                {
+                    Console.WriteLine("currentziplink > TotalZips");
+
+                    cacheisdone = true;
+                    Console.WriteLine("Max Zips");
+                }
+                
+            }
+
 
             if (currentziplink < 2)
             {
-                // we dont have a single one, disable the cache button
+                // we dont have a single one, disable the cache button in options
                 button3.Enabled = false;
             }
 
 
 
-            if (cacheisdone)
+            if (cacheisdone == true)    
             {
-                Console.WriteLine("Do we have any zips for this?");
+                Console.WriteLine("We have all the zips");
                 play.Text = ("Unzip");
                 ToPanelButton.Enabled = false;
             }
