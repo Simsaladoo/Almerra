@@ -245,9 +245,6 @@
     <Content Include="Resources\speakerON.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\SplashVersion.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\start.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

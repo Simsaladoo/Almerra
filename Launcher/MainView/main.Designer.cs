@@ -69,12 +69,11 @@ namespace Launcher
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.progressBar0 = new System.Windows.Forms.ProgressBar();
-            this.VersionPic = new System.Windows.Forms.PictureBox();
+            this.VersionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.OtherPanel.SuspendLayout();
             this.GeneralPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VersionPic)).BeginInit();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -106,7 +105,7 @@ namespace Launcher
             this.play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.play.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.play.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.play.ForeColor = System.Drawing.Color.White;
             this.play.Location = new System.Drawing.Point(794, 549);
             this.play.Margin = new System.Windows.Forms.Padding(0);
@@ -144,7 +143,7 @@ namespace Launcher
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(588, 549);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
@@ -200,7 +199,7 @@ namespace Launcher
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(56, 84);
             this.button3.Name = "button3";
@@ -214,10 +213,10 @@ namespace Launcher
             // 
             this.CacheSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CacheSizeLabel.AutoSize = true;
-            this.CacheSizeLabel.Font = new System.Drawing.Font("Kelly", 24F);
+            this.CacheSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.CacheSizeLabel.Location = new System.Drawing.Point(539, 90);
             this.CacheSizeLabel.Name = "CacheSizeLabel";
-            this.CacheSizeLabel.Size = new System.Drawing.Size(145, 43);
+            this.CacheSizeLabel.Size = new System.Drawing.Size(118, 37);
             this.CacheSizeLabel.TabIndex = 43;
             this.CacheSizeLabel.Text = "0.0 MB";
             this.CacheSizeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -225,20 +224,20 @@ namespace Launcher
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Kelly", 22F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
             this.label1.Location = new System.Drawing.Point(280, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 41);
+            this.label1.Size = new System.Drawing.Size(251, 36);
             this.label1.TabIndex = 42;
             this.label1.Text = "Launcher Options";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(52, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 24);
+            this.label2.Size = new System.Drawing.Size(220, 26);
             this.label2.TabIndex = 40;
             this.label2.Text = "Current Cache Size";
             // 
@@ -277,11 +276,11 @@ namespace Launcher
             // Game_NoteLabel
             // 
             this.Game_NoteLabel.AutoSize = true;
-            this.Game_NoteLabel.Font = new System.Drawing.Font("Morris Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_NoteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Game_NoteLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Game_NoteLabel.Location = new System.Drawing.Point(546, 342);
             this.Game_NoteLabel.Name = "Game_NoteLabel";
-            this.Game_NoteLabel.Size = new System.Drawing.Size(246, 15);
+            this.Game_NoteLabel.Size = new System.Drawing.Size(306, 17);
             this.Game_NoteLabel.TabIndex = 50;
             this.Game_NoteLabel.Text = "These settings can be further modified in-game";
             this.Game_NoteLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -290,7 +289,7 @@ namespace Launcher
             // 
             this.comboBox3.BackColor = System.Drawing.SystemColors.MenuBar;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
@@ -298,18 +297,18 @@ namespace Launcher
             "1280 x 720"});
             this.comboBox3.Location = new System.Drawing.Point(561, 116);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(154, 29);
+            this.comboBox3.Size = new System.Drawing.Size(154, 32);
             this.comboBox3.TabIndex = 49;
             this.comboBox3.Text = "Ultra";
             // 
             // Game_ShadowLabel
             // 
             this.Game_ShadowLabel.AutoSize = true;
-            this.Game_ShadowLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_ShadowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Game_ShadowLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Game_ShadowLabel.Location = new System.Drawing.Point(557, 86);
             this.Game_ShadowLabel.Name = "Game_ShadowLabel";
-            this.Game_ShadowLabel.Size = new System.Drawing.Size(73, 21);
+            this.Game_ShadowLabel.Size = new System.Drawing.Size(88, 24);
             this.Game_ShadowLabel.TabIndex = 48;
             this.Game_ShadowLabel.Text = "Shadows";
             this.Game_ShadowLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -318,7 +317,7 @@ namespace Launcher
             // 
             this.comboBox2.BackColor = System.Drawing.SystemColors.MenuBar;
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
@@ -326,18 +325,18 @@ namespace Launcher
             "1280 x 720"});
             this.comboBox2.Location = new System.Drawing.Point(317, 205);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(154, 29);
+            this.comboBox2.Size = new System.Drawing.Size(154, 32);
             this.comboBox2.TabIndex = 47;
             this.comboBox2.Text = "Ultra";
             // 
             // Game_AALabel
             // 
             this.Game_AALabel.AutoSize = true;
-            this.Game_AALabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_AALabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Game_AALabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Game_AALabel.Location = new System.Drawing.Point(317, 174);
             this.Game_AALabel.Name = "Game_AALabel";
-            this.Game_AALabel.Size = new System.Drawing.Size(107, 21);
+            this.Game_AALabel.Size = new System.Drawing.Size(114, 24);
             this.Game_AALabel.TabIndex = 46;
             this.Game_AALabel.Text = "Anti-Aliasing";
             this.Game_AALabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -345,11 +344,11 @@ namespace Launcher
             // Game_ResolutionLabel
             // 
             this.Game_ResolutionLabel.AutoSize = true;
-            this.Game_ResolutionLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_ResolutionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Game_ResolutionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Game_ResolutionLabel.Location = new System.Drawing.Point(54, 86);
             this.Game_ResolutionLabel.Name = "Game_ResolutionLabel";
-            this.Game_ResolutionLabel.Size = new System.Drawing.Size(86, 21);
+            this.Game_ResolutionLabel.Size = new System.Drawing.Size(99, 24);
             this.Game_ResolutionLabel.TabIndex = 45;
             this.Game_ResolutionLabel.Text = "Resolution";
             this.Game_ResolutionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -358,7 +357,7 @@ namespace Launcher
             // 
             this.comboBox1.BackColor = System.Drawing.SystemColors.MenuBar;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -366,17 +365,17 @@ namespace Launcher
             "1280 x 720"});
             this.comboBox1.Location = new System.Drawing.Point(318, 116);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(154, 29);
+            this.comboBox1.Size = new System.Drawing.Size(154, 32);
             this.comboBox1.TabIndex = 44;
             this.comboBox1.Text = "Ultra";
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox2.Location = new System.Drawing.Point(58, 210);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(71, 25);
+            this.checkBox2.Size = new System.Drawing.Size(81, 28);
             this.checkBox2.TabIndex = 43;
             this.checkBox2.Text = "Vsync";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -384,10 +383,10 @@ namespace Launcher
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(58, 167);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(97, 25);
+            this.checkBox1.Size = new System.Drawing.Size(118, 28);
             this.checkBox1.TabIndex = 42;
             this.checkBox1.Text = "Fullscreen";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -396,7 +395,7 @@ namespace Launcher
             // 
             this.ResolutionBox.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ResolutionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResolutionBox.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResolutionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResolutionBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.ResolutionBox.FormattingEnabled = true;
             this.ResolutionBox.Items.AddRange(new object[] {
@@ -404,18 +403,18 @@ namespace Launcher
             "1280 x 720"});
             this.ResolutionBox.Location = new System.Drawing.Point(57, 116);
             this.ResolutionBox.Name = "ResolutionBox";
-            this.ResolutionBox.Size = new System.Drawing.Size(154, 29);
+            this.ResolutionBox.Size = new System.Drawing.Size(154, 32);
             this.ResolutionBox.TabIndex = 41;
             this.ResolutionBox.Text = "1920 x 1080";
             // 
             // Game_DetailLabel
             // 
             this.Game_DetailLabel.AutoSize = true;
-            this.Game_DetailLabel.Font = new System.Drawing.Font("Morris Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_DetailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Game_DetailLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Game_DetailLabel.Location = new System.Drawing.Point(314, 86);
             this.Game_DetailLabel.Name = "Game_DetailLabel";
-            this.Game_DetailLabel.Size = new System.Drawing.Size(51, 21);
+            this.Game_DetailLabel.Size = new System.Drawing.Size(56, 24);
             this.Game_DetailLabel.TabIndex = 40;
             this.Game_DetailLabel.Text = "Detail";
             this.Game_DetailLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -423,20 +422,20 @@ namespace Launcher
             // GamePageTitle
             // 
             this.GamePageTitle.AutoSize = true;
-            this.GamePageTitle.Font = new System.Drawing.Font("Kelly", 22F);
+            this.GamePageTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
             this.GamePageTitle.Location = new System.Drawing.Point(295, 13);
             this.GamePageTitle.Name = "GamePageTitle";
-            this.GamePageTitle.Size = new System.Drawing.Size(195, 41);
+            this.GamePageTitle.Size = new System.Drawing.Size(204, 36);
             this.GamePageTitle.TabIndex = 39;
             this.GamePageTitle.Text = "Game Options";
             // 
             // Game_HeaderLabel
             // 
             this.Game_HeaderLabel.AutoSize = true;
-            this.Game_HeaderLabel.Font = new System.Drawing.Font("Morris Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_HeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Game_HeaderLabel.Location = new System.Drawing.Point(52, 47);
             this.Game_HeaderLabel.Name = "Game_HeaderLabel";
-            this.Game_HeaderLabel.Size = new System.Drawing.Size(155, 24);
+            this.Game_HeaderLabel.Size = new System.Drawing.Size(195, 26);
             this.Game_HeaderLabel.TabIndex = 37;
             this.Game_HeaderLabel.Text = "Graphics Presets";
             // 
@@ -459,7 +458,7 @@ namespace Launcher
             this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
             this.button9.Location = new System.Drawing.Point(-1, 1);
             this.button9.Name = "button9";
@@ -478,7 +477,7 @@ namespace Launcher
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
             this.button10.Location = new System.Drawing.Point(-1, 58);
             this.button10.Name = "button10";
@@ -491,10 +490,10 @@ namespace Launcher
             // Pick_A_Label
             // 
             this.Pick_A_Label.AutoSize = true;
-            this.Pick_A_Label.Font = new System.Drawing.Font("Morris Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pick_A_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pick_A_Label.Location = new System.Drawing.Point(440, 199);
             this.Pick_A_Label.Name = "Pick_A_Label";
-            this.Pick_A_Label.Size = new System.Drawing.Size(235, 27);
+            this.Pick_A_Label.Size = new System.Drawing.Size(255, 29);
             this.Pick_A_Label.TabIndex = 41;
             this.Pick_A_Label.Text = "Pick a tool from the left";
             // 
@@ -508,7 +507,7 @@ namespace Launcher
             this.ToPanelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.ToPanelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.ToPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ToPanelButton.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToPanelButton.ForeColor = System.Drawing.Color.White;
             this.ToPanelButton.Location = new System.Drawing.Point(-1, 549);
             this.ToPanelButton.Name = "ToPanelButton";
@@ -527,7 +526,7 @@ namespace Launcher
             this.ToMainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.ToMainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.ToMainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ToMainButton.Font = new System.Drawing.Font("Kelly", 20F);
+            this.ToMainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.ToMainButton.ForeColor = System.Drawing.Color.White;
             this.ToMainButton.Location = new System.Drawing.Point(0, 547);
             this.ToMainButton.Margin = new System.Windows.Forms.Padding(0);
@@ -583,7 +582,7 @@ namespace Launcher
             this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Kelly", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
             this.button12.Location = new System.Drawing.Point(204, 549);
             this.button12.Margin = new System.Windows.Forms.Padding(0);
@@ -627,17 +626,16 @@ namespace Launcher
             this.progressBar0.TabIndex = 60;
             this.progressBar0.Value = 1;
             // 
-            // VersionPic
+            // VersionLabel
             // 
-            this.VersionPic.BackColor = System.Drawing.Color.Transparent;
-            this.VersionPic.BackgroundImage = global::Launcher.Properties.Resources.SplashVersion;
-            this.VersionPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.VersionPic.InitialImage = null;
-            this.VersionPic.Location = new System.Drawing.Point(915, 495);
-            this.VersionPic.Name = "VersionPic";
-            this.VersionPic.Size = new System.Drawing.Size(80, 48);
-            this.VersionPic.TabIndex = 61;
-            this.VersionPic.TabStop = false;
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.VersionLabel.Location = new System.Drawing.Point(781, 9);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(47, 18);
+            this.VersionLabel.TabIndex = 62;
+            this.VersionLabel.Text = "v0000";
             // 
             // main
             // 
@@ -647,6 +645,7 @@ namespace Launcher
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.progressBar0);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.MinimizeButton);
@@ -658,7 +657,6 @@ namespace Launcher
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ToolsPanel);
             this.Controls.Add(this.webBrowser1);
-            this.Controls.Add(this.VersionPic);
             this.Controls.Add(this.font);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -678,8 +676,8 @@ namespace Launcher
             this.OtherPanel.PerformLayout();
             this.GeneralPanel.ResumeLayout(false);
             this.GeneralPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VersionPic)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -721,9 +719,9 @@ namespace Launcher
         private EventHandler comboBox3_SelectedIndexChanged;
         private EventHandler comboBox1_SelectedIndexChanged;
         private System.Windows.Forms.ProgressBar progressBar0;
-        private System.Windows.Forms.PictureBox VersionPic;
         private System.Windows.Forms.Label CacheSizeLabel;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label VersionLabel;
     }
 }
 

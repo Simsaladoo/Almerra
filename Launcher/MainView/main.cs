@@ -285,6 +285,13 @@ namespace Launcher
             this.FormBorderStyle = FormBorderStyle.None;
             bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
             this.FormBorderStyle = FormBorderStyle.None;
+
+            var pos = this.PointToScreen(VersionLabel.Location);
+            pos = font.PointToClient(pos);
+            VersionLabel.Parent = font;
+            VersionLabel.Location = pos;
+            VersionLabel.BackColor = Color.Transparent;
+
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
@@ -695,7 +702,7 @@ namespace Launcher
         void versionclient_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
 
-            VersionPic.BackgroundImage = new Bitmap ("Resources/SplashVersion.png");
+            
             Console.WriteLine("Version updated");
         }
 
@@ -1145,6 +1152,7 @@ namespace Launcher
             MinimizeButton.BackColor = Color.Transparent;
 
             button12.BackColor = Color.Transparent;
+            VersionLabel.BackColor = Color.Transparent;
             
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
@@ -1247,7 +1255,7 @@ namespace Launcher
             webBrowser1.Visible = false;
             button12.Visible = true;
 
-            VersionPic.Visible = false;
+            VersionLabel.Visible = false;
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
 
@@ -1270,7 +1278,7 @@ namespace Launcher
             ToPanelButton.Visible = true; // back to main only shows tools button
             webBrowser1.Visible = false;
             button12.Visible = true;
-            VersionPic.Visible = true;
+            VersionLabel.Visible = true;
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
 

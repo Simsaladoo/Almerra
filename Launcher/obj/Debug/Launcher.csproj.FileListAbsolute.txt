@@ -203,3 +203,52 @@ G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\SplashVersi
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\mini.png
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Cardinal-Alternate.ttf
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\KellyAnnGothic.ttf
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\done.wav
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Knowts.txt
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Manifest.txt
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patsoft.wav
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\patwarning.wav
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerOFF.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\speakerON.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\start.wav
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\ZipsManifest.txt
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\zulu.wav
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\button.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\buttonUpdate.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Cardinal-Alternate.ttf
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\KellyAnnGothic.ttf
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\settingsFont.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\close.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font1.ico
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\mini.png
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe.config
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.exe
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Winds of Almerra.pdb
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Design.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\MetroFramework.Fonts.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Data.Linq.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Remotion.Interfaces.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.IO.Compression.ZipFile.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.pdb
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\HtmlAgilityPack.xml
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\LinqToExcel.xml
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Newtonsoft.Json.xml
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Extensions.xml
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Net.Http.Primitives.xml
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.main.resources
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CopyComplete
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.exe
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb

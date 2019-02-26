@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("WoALauncher")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("4.19.2.0048")]
+[assembly: AssemblyConfiguration("4.19.2.0066")]
 [assembly: AssemblyCompany("SimsLab")]
 [assembly: AssemblyProduct("WoALauncher")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("4.19.2.0048")]
-[assembly: AssemblyFileVersion("4.19.2.0048")]
+[assembly: AssemblyVersion("4.19.2.0066")]
+[assembly: AssemblyFileVersion("4.19.2.0066")]
