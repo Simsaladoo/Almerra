@@ -2,8 +2,10 @@
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using System.Text;
+using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Text;
 using System.Diagnostics;
 using System.Linq;
 using System.Media;
@@ -115,8 +117,9 @@ namespace Launcher
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
         public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_0066.zip";
+        public string zippath = "Game/WoA_0067.zip";
         public string gamepath = "Game/Knowts.txt";
+        public string engineinipath = "Game/WoA_1902/Config/DefaultEngine.ini";
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
@@ -128,21 +131,34 @@ namespace Launcher
         public string startPath = "Cache/";
         public string zipPath = "Cache/";
         public string extractPath = "Game/";
-        public string VersionText = "Build" + " " + "WoA_1902_0066";
+        public string VersionText = "Build" + " " + "WoA_1902_0067";
         public int TotalZips = 0;
         public int DoneZipsToSkip = 0;
         public long CacheSize = 000;
 
 
-//                                                                                                                          //
-//          _________                                   ___________                     __   .__                            //
-//          \_   ___ \ __ _________  _________________  \__    ___/___________    ____ |  | _|__| ____    ____              //
-//          /    \  \/|  |  \_  __ \/  ___/  _ \_  __ \   |    |  \_  __ \__  \ _/ ___\|  |/ /  |/    \  / ___\             //
-//          \     \___|  |  /|  | \/\___ (  <_> )  | \/   |    |   |  | \// __ \\  \___|    <|  |   |  \/ /_/  >            //
-//           \______  /____/ |__|  /____  >____/|__|      |____|   |__|  (____  /\___  >__|_ \__|___|  /\___  /             //
-//                  \/                  \/                                    \/     \/     \/       \//_____/              //
-//                                                                                                                          //
-//                                                                                                                          //            
+        //necessary font shit
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
+        IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
+        private PrivateFontCollection fonts = new PrivateFontCollection();
+        private PrivateFontCollection fonts2 = new PrivateFontCollection();
+        System.Drawing.Font myFontK12;
+        System.Drawing.Font myFontK10;
+        System.Drawing.Font myFont10;
+        System.Drawing.Font myFont12;   // these are the various setups for the font like size, color, etc
+        System.Drawing.Font myFont22;
+        System.Drawing.Font myFont16;
+
+        //                                                                                                                          //
+        //          _________                                   ___________                     __   .__                            //
+        //          \_   ___ \ __ _________  _________________  \__    ___/___________    ____ |  | _|__| ____    ____              //
+        //          /    \  \/|  |  \_  __ \/  ___/  _ \_  __ \   |    |  \_  __ \__  \ _/ ___\|  |/ /  |/    \  / ___\             //
+        //          \     \___|  |  /|  | \/\___ (  <_> )  | \/   |    |   |  | \// __ \\  \___|    <|  |   |  \/ /_/  >            //
+        //           \______  /____/ |__|  /____  >____/|__|      |____|   |__|  (____  /\___  >__|_ \__|___|  /\___  /             //
+        //                  \/                  \/                                    \/     \/     \/       \//_____/              //
+        //                                                                                                                          //
+        //                                                                                                                          //            
 
 
 
@@ -282,55 +298,86 @@ namespace Launcher
             this.Shown += new System.EventHandler(this.AfterLoading);    // this is wher we fire BeginPlay
             Console.WriteLine("Initialization");
             m_aeroEnabled = false;
-            this.FormBorderStyle = FormBorderStyle.None;
-            bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
+
+            // No border around main window
             this.FormBorderStyle = FormBorderStyle.None;
 
-            var pos = this.PointToScreen(VersionLabel.Location);
-            pos = font.PointToClient(pos);
-            VersionLabel.Parent = font;
-            VersionLabel.Location = pos;
-            VersionLabel.BackColor = Color.Transparent;
 
-            if (WindowState == FormWindowState.Minimized)
-            {
-                ShowIcon = false;
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
-                Console.WriteLine("Window State Minimized?");
-            }
-            if (VolumeOn == true)
-            {
-                soundenabled = true;
-                System.Media.SoundPlayer sp = (startupsong);
-                sp.Play();
-                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
-            }
-            else
-            {
-                soundenabled = false;
-                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
-            }
-            if (WindowState == FormWindowState.Minimized)
-            {
-                ShowIcon = false;
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
-                Console.WriteLine("Window State Minimized?");
-            }
-            if (VolumeOn == true)
-            {
-                soundenabled = true;
-                System.Media.SoundPlayer sp = (startupsong);
-                sp.Play();
-                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
-            }
-            else
-            {
-                soundenabled = false;
-                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
-            }
+
+
+            // embedded font shit
+            byte[] fontData = Properties.Resources.MorrisRomanAlternate_Black;
+            IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+            System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+            uint dummy = 0;
+            fonts.AddMemoryFont(fontPtr, Properties.Resources.MorrisRomanAlternate_Black.Length);
+            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.MorrisRomanAlternate_Black.Length, IntPtr.Zero, ref dummy);
+            System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+
+
+            // embedded font shit 2
+            byte[] fontData2 = Properties.Resources.KellyAnnGothic;
+            IntPtr fontPtr2 = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData2.Length);
+            System.Runtime.InteropServices.Marshal.Copy(fontData2, 0, fontPtr2, fontData2.Length);
+            uint dummy2 = 1;
+            fonts2.AddMemoryFont(fontPtr2, Properties.Resources.KellyAnnGothic.Length);
+            AddFontMemResourceEx(fontPtr2, (uint)Properties.Resources.KellyAnnGothic.Length, IntPtr.Zero, ref dummy2);
+            System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr2);
+
+
+
+            // sizing of the new custom font
+            myFont10 = new System.Drawing.Font(fonts.Families[0], 10.0F);
+            myFont12 = new System.Drawing.Font(fonts.Families[0], 12.0F);
+            myFont16 = new System.Drawing.Font(fonts.Families[0], 16.0F);
+            myFont22 = new System.Drawing.Font(fonts.Families[0], 22.0F);
+            myFontK10 = new System.Drawing.Font(fonts2.Families[0], 12.0F);
+            myFontK12 = new System.Drawing.Font(fonts2.Families[0], 20.0F);
+
+
+
+
+            // big buttons Kelly Ann Gothic size 20
+            play.Font = myFontK12;
+            button1.Font = myFontK12;
+            button12.Font = myFontK12;
+            ToMainButton.Font = myFontK12;
+            ToPanelButton.Font = myFontK12;
+            button9.Font = myFontK12;
+            button10.Font = myFontK12;
+            button3.Font = myFontK12;
+            CacheSizeLabel.Font = myFontK12;
+            label1.Font = myFontK12;
+            
+            GamePageTitle.Font = myFontK12;
+
+
+            // other labels Kelly Ann Gothic
+            label4.Font = myFont16;
+
+            // misc Morris Roman ALt
+            ResolutionBox.Font = myFont16;
+            checkBox1.Font = myFont16;
+            checkBox2.Font = myFont16;
+
+            comboBox1.Font = myFont16;
+            comboBox2.Font = myFont16;
+            comboBox3.Font = myFont16;
+            comboBox4.Font = myFont16;
+            Game_AALabel.Font = myFont16;
+            Game_ResolutionLabel.Font = myFont16;
+            Game_NoteLabel.Font = myFont10;
+            Game_ShadowLabel.Font = myFont16;
+            Game_DetailLabel.Font = myFont16;
+
+            Pick_A_Label.Font = myFont16;
+            Game_HeaderLabel.Font = myFont16;
+            label2.Font = myFont16;
+
         }
+
+
+
         private void notifyIcon1_LoadCompleted(object sender, EventArgs e)
         {
             ShowInTaskbar = true;
@@ -391,6 +438,48 @@ namespace Launcher
                 Console.WriteLine("ReadMe File Exists");
                 File.WriteAllLines("Cache/ReadMe.txt", lines);
 
+            }
+
+
+            bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
+            this.FormBorderStyle = FormBorderStyle.None;
+            if (WindowState == FormWindowState.Minimized)
+            {
+                ShowIcon = false;
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(1000);
+                Console.WriteLine("Window State Minimized?");
+            }
+            if (VolumeOn == true)
+            {
+                soundenabled = true;
+                System.Media.SoundPlayer sp = (startupsong);
+                sp.Play();
+                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
+            }
+            else
+            {
+                soundenabled = false;
+                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
+            }
+            if (WindowState == FormWindowState.Minimized)
+            {
+                ShowIcon = false;
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(1000);
+                Console.WriteLine("Window State Minimized?");
+            }
+            if (VolumeOn == true)
+            {
+                soundenabled = true;
+                System.Media.SoundPlayer sp = (startupsong);
+                sp.Play();
+                button2.BackgroundImage = Image.FromFile("Resources/speakerON.png");
+            }
+            else
+            {
+                soundenabled = false;
+                button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
             }
             // ... Say stuff within teh readme.
 
@@ -702,7 +791,7 @@ namespace Launcher
         void versionclient_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
 
-            
+
             Console.WriteLine("Version updated");
         }
 
@@ -816,7 +905,7 @@ namespace Launcher
             progressBar0.Value = currentziplink;
             if (nocancel == true)
             {
-                play.Text = ("Get Zips");
+                play.Text = ("Download");
                 play.Enabled = true;
                 progressBar0.Visible = false;
                 button1.Visible = false;
@@ -1152,7 +1241,6 @@ namespace Launcher
             MinimizeButton.BackColor = Color.Transparent;
 
             button12.BackColor = Color.Transparent;
-            VersionLabel.BackColor = Color.Transparent;
             
             ToolsPanel.BackColor = Color.Transparent;
             ToMainButton.BackColor = Color.Transparent;
@@ -1172,6 +1260,8 @@ namespace Launcher
             ToPanelButton.Parent = font;
             button12.Parent = font;
             button2.Parent = font;
+
+            font.BackgroundImage = Properties.Resources.font;
 
         }
 
@@ -1215,7 +1305,7 @@ namespace Launcher
 
         private void font_LoadCompleted(object sender, EventArgs e)
         {
-            
+            Console.WriteLine("font loaded");
         }
 
         private void notifyIcon1_LoadCompleted(object sender, MouseEventArgs e)
@@ -1254,13 +1344,14 @@ namespace Launcher
             ToPanelButton.Visible = false;
             webBrowser1.Visible = false;
             button12.Visible = true;
-
-            VersionLabel.Visible = false;
+            
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
 
             Point coordinates = Cursor.Position;
             Console.WriteLine("Coordinates are: " + coordinates);
+
+            font.BackgroundImage = Properties.Resources.fontbLUR;
 
         }
 
@@ -1278,9 +1369,10 @@ namespace Launcher
             ToPanelButton.Visible = true; // back to main only shows tools button
             webBrowser1.Visible = false;
             button12.Visible = true;
-            VersionLabel.Visible = true;
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
+
+            font.BackgroundImage = Properties.Resources.font;
 
         }
 
@@ -1301,6 +1393,8 @@ namespace Launcher
 
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
+
+            font.BackgroundImage = Properties.Resources.font;
 
         }
 
@@ -1469,9 +1563,10 @@ namespace Launcher
 
 
 
+        // https://stackoverflow.com/questions/2081827/c-sharp-get-system-network-usage
+        // https://stackoverflow.com/questions/836736/unzip-files-programmatically-in-net
 
-
-
+        // https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchive?view=netframework-4.7.2
 
 
         //Settings for main graphics presets. // will need to find and check config.ini
