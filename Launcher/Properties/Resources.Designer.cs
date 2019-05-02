@@ -111,6 +111,16 @@ namespace Launcher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fontbLUR {
+            get {
+                object obj = ResourceManager.GetObject("fontbLUR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] KellyAnnGothic {
@@ -136,6 +146,16 @@ namespace Launcher.Properties {
             get {
                 object obj = ResourceManager.GetObject("mini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MorrisRomanAlternate_Black {
+            get {
+                object obj = ResourceManager.GetObject("MorrisRomanAlternate_Black", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

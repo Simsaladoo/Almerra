@@ -192,6 +192,9 @@
     <None Include="Resources\KellyAnnGothic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\MorrisRomanAlternate-Black.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\settingsFont.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -216,6 +219,9 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="Resources\Build.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\fontbLUR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\greetings.wav">

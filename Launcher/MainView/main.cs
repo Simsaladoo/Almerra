@@ -101,6 +101,7 @@ namespace Launcher
 
         private StateHandler myState = new StateHandler();
         private DateTime startTime = DateTime.Now;
+
         SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
         SoundPlayer completesong = new SoundPlayer("Resources/start.wav");
         SoundPlayer patsoft = new SoundPlayer("Resources/patsoft.wav");
@@ -304,6 +305,14 @@ namespace Launcher
 
 
 
+            
+
+
+
+
+
+
+
 
             // embedded font shit
             byte[] fontData = Properties.Resources.MorrisRomanAlternate_Black;
@@ -353,17 +362,17 @@ namespace Launcher
 
 
             // other labels Kelly Ann Gothic
-            label4.Font = myFont16;
+            //label4.Font = myFont16;
 
             // misc Morris Roman ALt
             ResolutionBox.Font = myFont16;
-            checkBox1.Font = myFont16;
-            checkBox2.Font = myFont16;
+            checkBox1_Fullscreen.Font = myFont16;
+            checkBox2_Vsync.Font = myFont16;
 
-            comboBox1.Font = myFont16;
-            comboBox2.Font = myFont16;
-            comboBox3.Font = myFont16;
-            comboBox4.Font = myFont16;
+            comboBox1_Detail.Font = myFont16;
+            comboBox2_AA.Font = myFont16;
+            comboBox3_Shadows.Font = myFont16;
+            //comboBox4.Font = myFont16;
             Game_AALabel.Font = myFont16;
             Game_ResolutionLabel.Font = myFont16;
             Game_NoteLabel.Font = myFont10;
@@ -373,6 +382,19 @@ namespace Launcher
             Pick_A_Label.Font = myFont16;
             Game_HeaderLabel.Font = myFont16;
             label2.Font = myFont16;
+
+
+            //transparent version label
+            var pos = this.PointToScreen(VersionLabel.Location);
+            pos = font.PointToClient(pos);
+            VersionLabel.Parent = font;
+            VersionLabel.Location = pos;
+            VersionLabel.BackColor = Color.Transparent;
+            VersionLabel.Font = myFont12;
+
+
+
+
 
         }
 
@@ -481,6 +503,11 @@ namespace Launcher
                 soundenabled = false;
                 button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
             }
+
+
+            // launcher version from github
+            UpdateLauncherVersion();
+
             // ... Say stuff within teh readme.
 
 
@@ -515,7 +542,7 @@ namespace Launcher
                 using (WebClient versionclient = new WebClient())
                 {
                     versionclient.DownloadFileCompleted += new AsyncCompletedEventHandler(versionclient_DownloadZipsCompleted);
-                    versionclient.DownloadFileAsync(new Uri(VersionURL), "Resources/SplashVersion.png");          // always update the version label from url
+                    versionclient.DownloadFileAsync(new Uri(BuildOnline), "Cache/Build.txt");          // always update the version text from url
 
                 }
 
@@ -791,8 +818,10 @@ namespace Launcher
         void versionclient_DownloadZipsCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
 
-
-            Console.WriteLine("Version updated");
+            string text = System.IO.File.ReadAllText("Cache/Build.txt");
+            VersionLabel.Text = text;
+           
+            Console.WriteLine("Client Version updated...");
         }
 
 
@@ -1162,6 +1191,7 @@ namespace Launcher
             CacheSize = GetDirectorySize(cdirectory);
             CacheSize = CacheSize / 1024 / 1024;       //  <-- gives you MB   (another "/ 1024" would be GB)
             long cachesizedecimal = 0;
+            string showsomeshit = "okay";
 
             if (CacheSize > 1000)
             {
@@ -1169,14 +1199,16 @@ namespace Launcher
                 cachesizedecimal = CacheSize - 999;
                 CacheSize = CacheSize / 1024;
                 CacheSizeLabel.Text = (CacheSize + "." + cachesizedecimal + " GB");
+                showsomeshit = (CacheSize + "." + cachesizedecimal + " GB");
             }
 
             else
             {
                 CacheSizeLabel.Text = (CacheSize + "." + cachesizedecimal + " MB");
+                showsomeshit = (CacheSize + "." + cachesizedecimal + " MB");
             }
 
-            Console.WriteLine(CacheSize);
+            Console.WriteLine("Total Cache Size is " + showsomeshit);
         }
 
 
@@ -1554,10 +1586,45 @@ namespace Launcher
 
         }
 
+        private void ResolutionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            // Show the form when the user double clicks on the notify icon.
+
+            // Set the WindowState to normal if the form is minimized.
+            if (this.WindowState == FormWindowState.Minimized)
+                this.WindowState = FormWindowState.Normal;
+
+            // Activate the form.
+            this.Activate();
+        }
 
 
 
 
+
+        private void menuItem1_Click(object Sender, EventArgs e)
+        {
+            // Close the form, which closes the application.
+            this.Close();
+        }
+
+
+
+
+        private void UpdateLauncherVersion()
+        {
+            using (WebClient versionclient = new WebClient())
+            {
+                versionclient.DownloadFileCompleted += new AsyncCompletedEventHandler(versionclient_DownloadZipsCompleted);
+                versionclient.DownloadFileAsync(new Uri(BuildOnline), "Cache/Build.txt");          // always update the version text from url
+
+            }
+        }
 
 
 

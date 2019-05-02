@@ -204,6 +204,7 @@ G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\mini.png
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Cardinal-Alternate.ttf
 G:\UE4\Splash\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\KellyAnnGothic.ttf
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Build.txt
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\fontbLUR.png
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\greetings.wav
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\done.wav
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Knowts.txt
@@ -220,6 +221,7 @@ D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\buttonUpdate.p
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Cardinal-Alternate.ttf
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font.png
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\KellyAnnGothic.ttf
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\MorrisRomanAlternate-Black.ttf
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\settingsFont.png
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\close.png
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\font1.ico
