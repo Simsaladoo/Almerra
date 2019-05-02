@@ -512,6 +512,22 @@ namespace Launcher
 
 
 
+
+            void Main(string[] args)
+            {
+                string zipPath = "Cache/Zips/WoA_1902_0069.zip.000";
+                string extractPath = "Game/";
+
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+
+
+
+
+
+
+
+
             //*******************************/*******************************/*******************************/*******************************//
             //              Startup items for the launcher as a program --                                                                   //
             //                                                                                                                               //
@@ -1033,7 +1049,12 @@ namespace Launcher
 
             int linetoread = currentziplink;
             int linetoskip = currentziplink - 1;
+
+
             // need check for which zip is last right here, then update the current ones name
+
+
+
             string newtextlabel = linetoread + "%";
             play.Text = (newtextlabel);
             play.Enabled = false;
@@ -1051,11 +1072,15 @@ namespace Launcher
             using (WebClient wc1 = new WebClient())
             {
 
-                wc1.DownloadProgressChanged += wc0_DownloadProgressChanged; // using same update method on the progress bar
-                wc1.DownloadFileAsync(new System.Uri(downloadlink), (cdirectory + filename));
+                if (downloadlink != "")
+                {
+                    wc1.DownloadProgressChanged += wc0_DownloadProgressChanged; // using same update method on the progress bar
+                    wc1.DownloadFileAsync(new System.Uri(downloadlink), (cdirectory + filename));
+                    
+                    Console.WriteLine(downloadlink + " set as wc1 with manifest " + filename + " on line " + linetoread);
+                }
+
                 wc1.DownloadFileCompleted += new AsyncCompletedEventHandler(wc0_DownloadZipsCompleted);
-                Console.WriteLine(downloadlink + " set as wc1 with manifest " + filename + " on line " + linetoread);
-                
             }
             
 
@@ -1631,9 +1656,7 @@ namespace Launcher
 
 
         // https://stackoverflow.com/questions/2081827/c-sharp-get-system-network-usage
-        // https://stackoverflow.com/questions/836736/unzip-files-programmatically-in-net
-
-        // https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchive?view=netframework-4.7.2
+        // https://stackoverflow.com/questions/2324626/extract-a-zip-file-programmatically-by-dotnetzip-library
 
 
         //Settings for main graphics presets. // will need to find and check config.ini
