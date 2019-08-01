@@ -254,3 +254,6 @@ D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CoreComp
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csproj.CopyComplete
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.exe
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\DotNetZip.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\DotNetZip.pdb
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\DotNetZip.xml

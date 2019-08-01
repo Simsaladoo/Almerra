@@ -273,3 +273,6 @@ D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Release\Newtonsoft.Json.xml
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.xml
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.xml
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetZip.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetZip.pdb
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetZip.xml
