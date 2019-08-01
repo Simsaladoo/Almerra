@@ -132,7 +132,7 @@ namespace Launcher
         public string startPath = "Cache/";
         public string zipPath = "Cache/";
         public string extractPath = "Game/";
-        public string VersionText = "Build" + " " + "WoA_1902_0067";
+        public string VersionText = "Build" + " " + "WoA_1902_0000";
         public int TotalZips = 0;
         public int DoneZipsToSkip = 0;
         public long CacheSize = 000;
@@ -506,6 +506,7 @@ namespace Launcher
 
 
             // launcher version from github
+
             UpdateLauncherVersion();
 
             // ... Say stuff within teh readme.
@@ -665,13 +666,45 @@ namespace Launcher
                         }
 
 
-                        else
+
+
+
+
+                        else 
+
                         {
-                            // unzip that shit
-                            System.IO.Compression.ZipFile.CreateFromDirectory(cdirectory, gdirectory);
-                            System.IO.Compression.ZipFile.ExtractToDirectory(gdirectory, gdirectory);
+
+                            string zipPath = "Cache/zips";
+                            string extractPath = "Game/";
+                            string[] compressfiles = Directory.GetFiles(zipPath, @"*.zip.*");
+                            
+                            try
+                            {
+
+                                Console.WriteLine("Play Button found cache has finished downloading, unzipping " + compressfiles.Length + " files...");
+
+                                
+                                for (int i = 0; i < compressfiles.Length; i++)
+                                {
+                                    ZipFile.ExtractToDirectory(compressfiles[i], extractPath);
+                                }
+                                
+
+                            }
+
+                            catch (DirectoryNotFoundException dirEx)
+                            {
+                                Console.WriteLine("Directory not found: " + dirEx.Message);
+                            }
+
 
                         }
+
+
+
+
+
+
                     }
                     else // cache not done, so download zips
                     {
@@ -684,7 +717,7 @@ namespace Launcher
                         ///                       |__|        \/     \/          \/          \/   |__|       \/                 ///
 
 
-
+                        Console.WriteLine("Play Button found cache not completed, firing download looper...");
                         ExpDownloadLooper();
                     }
                 }
@@ -796,8 +829,8 @@ namespace Launcher
                             wctext4.DownloadFileAsync(new System.Uri("https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/ZipsManifest.txt"), "Cache/ZipsManifest.txt");
 
                         }
-                        ziplinkspath = "Game/ZipsManifest.txt";
-                        manifestpath = "Game/Manifest.txt";
+                        //ziplinkspath = "Game/ZipsManifest.txt";
+                        //manifestpath = "Game/Manifest.txt";
 
                     }
 
@@ -906,25 +939,25 @@ namespace Launcher
         void wctext1_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "/1");
 
         }
         void wctext2_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "/1");
 
         }
         void wctext3_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "/1");
 
         }
         void wctext4_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar0.Value = e.ProgressPercentage;
-            play.Text = (currentziplink.ToString() + "%");
+            play.Text = (currentziplink.ToString() + "/1");
 
         }
 
@@ -945,9 +978,14 @@ namespace Launcher
         {
 
 
+            float fprogress = (float)currentziplink / (float)TotalZips;
+            fprogress = fprogress * 100.0f;
+            int showprogress = (int)fprogress;
+
+            //Console.WriteLine("Download Progress Changed: " + fprogress + " * 100 = " + showprogress);
 
             //progressBar0.Value = e.ProgressPercentage;           --  this only somewhat works for each file
-            progressBar0.Value = currentziplink;
+            progressBar0.Value = showprogress;
             if (nocancel == true)
             {
                 play.Text = ("Download");
@@ -959,7 +997,7 @@ namespace Launcher
 
             else
             {
-                play.Text = (currentziplink.ToString() + "%");
+                play.Text = (showprogress + "%");
                
                 // keeps going
             }
@@ -990,10 +1028,11 @@ namespace Launcher
                 CheckCacheSize();
             }
 
+            Console.WriteLine("Finished downloading zip link #" + currentziplink + " , continuing...");
             int adder = 1;
             adder = (currentziplink + 1);
             currentziplink = adder;
-            Console.WriteLine("DownloadZipsCompleted " + currentziplink + "completed...");
+            
 
             if (currentziplink <= TotalZips)
             {
@@ -1001,13 +1040,13 @@ namespace Launcher
                 {
                     //download next in loop
                     this.ExpDownloadLooper();
-                    Console.WriteLine("ExpDownladLoop Called");
+                    Console.WriteLine("ExpDownladLoop continuing...");
                 }
 
                 else
                 {
                     // stop the loop
-                    Console.WriteLine("ExpDownladLoop cancelled...");
+                    Console.WriteLine("ExpDownladLoop stopped...");
                     button1.Enabled = true;
                     button1.Visible = false;
                     
@@ -1045,9 +1084,9 @@ namespace Launcher
          public void ExpDownloadLooper()
 
         {
-            Console.WriteLine("regular void Download Looper Fired off with # " + currentziplink );
+            Console.WriteLine("Downloading # " + currentziplink );
 
-            int linetoread = currentziplink;
+            int linetoread = currentziplink - 1;
             int linetoskip = currentziplink - 1;
 
 
@@ -1055,8 +1094,8 @@ namespace Launcher
 
 
 
-            string newtextlabel = linetoread + "%";
-            play.Text = (newtextlabel);
+            //string newtextlabel = linetoread + "/" + TotalZips;
+            //play.Text = (newtextlabel);
             play.Enabled = false;
             progressBar0.Visible = true;
             string[] zipnames = System.IO.File.ReadAllLines(manifestpath); // read all file names from the manifest of names (WoA_1902_xxxx.zip.001)
@@ -1150,12 +1189,12 @@ namespace Launcher
 
                 Console.WriteLine("currentziplink == TotalZips");
 
-                if (DoneZipsToSkip > TotalZips)
+                if (DoneZipsToSkip == TotalZips)
                 {
-                    Console.WriteLine("currentziplink > TotalZips");
 
                     cacheisdone = true;
                     Console.WriteLine("Max Zips");
+
                 }
                 
             }

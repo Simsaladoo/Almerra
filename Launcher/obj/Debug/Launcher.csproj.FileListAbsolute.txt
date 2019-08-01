@@ -257,3 +257,10 @@ D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Winds of Almerra.pdb
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\DotNetZip.dll
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\DotNetZip.pdb
 D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\DotNetZip.xml
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.IO.Compression.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.IO.Compression.FileSystem.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\System.Shim.dll
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Extract.bat
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Resources\Inst.bat
+D:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\SharpCompress.dll
