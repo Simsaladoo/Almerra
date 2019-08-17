@@ -151,11 +151,26 @@
             Gets a given attribute from the list using its name.
             </summary>
         </member>
+        <member name="M:HtmlAgilityPack.HtmlAttributeCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a new attribute to the collection with the given values
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
         <member name="M:HtmlAgilityPack.HtmlAttributeCollection.Add(HtmlAgilityPack.HtmlAttribute)">
             <summary>
             Adds supplied item to collection
             </summary>
             <param name="item"></param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlAttributeCollection.AddRange(System.Collections.Generic.IEnumerable{HtmlAgilityPack.HtmlAttribute})">
+            <summary>Adds a range supplied items to collection.</summary>
+            <param name="items">An IEnumerable&lt;HtmlAttribute&gt; of items to append to this.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlAttributeCollection.AddRange(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Adds a range supplied items to collection using a dictionary.</summary>
+            <param name="items">A Dictionary&lt;string,string&gt; of items to append to this.</param>
         </member>
         <member name="M:HtmlAgilityPack.HtmlAttributeCollection.System#Collections#Generic#ICollection{HtmlAgilityPack#HtmlAttribute}#Clear">
             <summary>
@@ -214,13 +229,6 @@
             Removes the attribute at the specified index.
             </summary>
             <param name="index">The index of the attribute to remove.</param>
-        </member>
-        <member name="M:HtmlAgilityPack.HtmlAttributeCollection.Add(System.String,System.String)">
-            <summary>
-            Adds a new attribute to the collection with the given values
-            </summary>
-            <param name="name"></param>
-            <param name="value"></param>
         </member>
         <member name="M:HtmlAgilityPack.HtmlAttributeCollection.Append(HtmlAgilityPack.HtmlAttribute)">
             <summary>
@@ -938,8 +946,12 @@
         </member>
         <member name="P:HtmlAgilityPack.HtmlNode.InnerText">
             <summary>
-            Gets or Sets the text between the start and end tags of the object.
+            Gets the text between the start and end tags of the object.
             </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetDirectInnerText">
+            <summary>Gets direct inner text.</summary>
+            <returns>The direct inner text.</returns>
         </member>
         <member name="P:HtmlAgilityPack.HtmlNode.LastChild">
             <summary>

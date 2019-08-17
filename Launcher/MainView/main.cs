@@ -514,13 +514,6 @@ namespace Launcher
 
 
 
-            void Main(string[] args)
-            {
-                string zipPath = "Cache/Zips/WoA_1902_0069.zip.000";
-                string extractPath = "Game/";
-
-                ZipFile.ExtractToDirectory(zipPath, extractPath);
-            }
 
 
 
@@ -669,20 +662,69 @@ namespace Launcher
 
                         else 
                         {
+
                             string zipPath = "Cache/zips";
                             string extractPath = "Game/";
-                            
+                            string batDir = "Resources/";
+                            // string SevenZipDir = "Resources/Comp";
+
                             try
                             {
+                                // first we have to setup the paths within the batch regardless of where you are running from
+
+                                string batFilePath = Path.Combine(Application.StartupPath, "Extract.bat");
+                                string SevenZipPath = Path.Combine(Application.StartupPath, "7za.exe");
+
+
+                                if (File.Exists(batFilePath))
+                                {
+                                    File.Delete(batFilePath);
+                                    using (StreamWriter w = new StreamWriter(batFilePath))
+                                    {
+                                        w.WriteLine("\"" + SevenZipPath + "\"" + " x " + zipPath + "*.001 -y -o" + extractPath);
+                                        w.Close();
+                                    }
+                                }
+
+                                //      The bat text we need to write for reference:
+                                //      "Comp\7za.exe" x C:\Users\dmiller\Desktop\Test\*.001 -y -oC:\Users\dmiller\Desktop\Test
+
+
+
+
                                 // unzip that shit with the bat
                                 // we dont need to specify anything for 7zip since its combined -- just need to add our relative paths for zip location as a defined path
+                                Process unzipproc = null;
+                                string FullzipPath = Path.GetFullPath(zipPath);
+                                string FullextractPath = Path.GetFullPath(extractPath);
+                                string batPath = Path.GetFullPath(batDir);
 
-                                string absolute = Path.GetFullPath(zipPath);
-                                
+
+
+
+
+
+
+
+
+
+                                unzipproc = new Process();
+
+                                unzipproc.StartInfo.WorkingDirectory = batPath;
+                                unzipproc.StartInfo.FileName = "Extract.bat";
+                                unzipproc.StartInfo.CreateNoWindow = false;
+                                unzipproc.Start();
+                                unzipproc.WaitForExit();
+                                MessageBox.Show("Bat file executed !!");
 
 
 
                             }
+
+                            // catch (Exception ex)
+                            // {
+                            //     Console.WriteLine(ex.StackTrace.ToString());
+                            // }
 
                             catch (DirectoryNotFoundException dirEx)
                             {
