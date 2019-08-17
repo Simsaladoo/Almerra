@@ -196,6 +196,12 @@
     <None Include="Resources\Cardinal-Alternate.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Comp\Far\7-ZipEng.hlf" />
+    <None Include="Resources\Comp\Far\7-ZipEng.lng" />
+    <None Include="Resources\Comp\Far\7-ZipRus.hlf" />
+    <None Include="Resources\Comp\Far\7-ZipRus.lng" />
+    <None Include="Resources\Comp\Far\7zToFar.ini" />
+    <None Include="Resources\Comp\Far\far7z.reg" />
     <None Include="Resources\Extract.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -204,9 +210,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Inst.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\KellyAnnGothic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -239,6 +242,15 @@
     <Content Include="Resources\Build.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Comp\7za.dll" />
+    <Content Include="Resources\Comp\7za.exe" />
+    <Content Include="Resources\Comp\7zxa.dll" />
+    <Content Include="Resources\Comp\Far\7-ZipFar.dll" />
+    <Content Include="Resources\Comp\Far\7-ZipFar64.dll" />
+    <Content Include="Resources\Comp\Far\far7z.txt" />
+    <Content Include="Resources\Comp\x64\7za.dll" />
+    <Content Include="Resources\Comp\x64\7za.exe" />
+    <Content Include="Resources\Comp\x64\7zxa.dll" />
     <Content Include="Resources\fontbLUR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

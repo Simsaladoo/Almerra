@@ -667,28 +667,20 @@ namespace Launcher
 
 
 
-
-
-
                         else 
-
                         {
-
                             string zipPath = "Cache/zips";
                             string extractPath = "Game/";
-                            string[] compressfiles = Directory.GetFiles(zipPath, @"*.zip.*");
                             
                             try
                             {
+                                // unzip that shit with the bat
+                                // we dont need to specify anything for 7zip since its combined -- just need to add our relative paths for zip location as a defined path
 
-                                Console.WriteLine("Play Button found cache has finished downloading, unzipping " + compressfiles.Length + " files...");
+                                string absolute = Path.GetFullPath(zipPath);
+                                
 
-                                
-                                for (int i = 0; i < compressfiles.Length; i++)
-                                {
-                                    ZipFile.ExtractToDirectory(compressfiles[i], extractPath);
-                                }
-                                
+
 
                             }
 
@@ -696,8 +688,6 @@ namespace Launcher
                             {
                                 Console.WriteLine("Directory not found: " + dirEx.Message);
                             }
-
-
                         }
 
 
@@ -846,6 +836,24 @@ namespace Launcher
             //Console.WriteLine(latestlink);
             //very end of play-click
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
