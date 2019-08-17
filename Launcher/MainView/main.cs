@@ -1035,7 +1035,7 @@ namespace Launcher
             //Console.WriteLine("Download Progress Changed: " + fprogress + " * 100 = " + showprogress);
 
             //progressBar0.Value = e.ProgressPercentage;           --  this only somewhat works for each file
-            progressBar0.Value = showprogress;
+            //progressBar0.Value = showprogress;
             if (nocancel == true)
             {
                 play.Text = ("Download");
