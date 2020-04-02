@@ -1,1 +1,1 @@
-"Comp\7za.exe" x G:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Cache\zips\*.001 -y -oG:\Reposit\Winds-of-Almerra-Launcher\Launcher\bin\Debug\Game
+"Comp\7za.exe" x C:\Users\dmiller\Desktop\Test\*.001 -y -oC:\Users\dmiller\Desktop\Test
