@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Speech.Synthesis;
 using System.ComponentModel;
 using System.IO.Compression;
+using Tulpep.NotificationWindow;
 
 
 //                    .____                                    .__                                   //
@@ -101,6 +102,7 @@ namespace Launcher
 
         private StateHandler myState = new StateHandler();
         private DateTime startTime = DateTime.Now;
+  
 
         SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
         SoundPlayer completesong = new SoundPlayer("Resources/start.wav");
@@ -124,6 +126,7 @@ namespace Launcher
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
+        public string editdirectory = "../../../../../../UE4/Projects/WoA_2301/";
         public string gdirectory = "Cache/";
         public string cdirectory = "Cache/zips/";
         public string dir = String.Empty;
@@ -132,10 +135,12 @@ namespace Launcher
         public string startPath = "Cache/";
         public string zipPath = "Cache/";
         public string extractPath = "Game/";
-        public string VersionText = "Build" + " " + "WoA_1902_0000";
+        public string VersionText = "Build" + " " + "WoA_1501_0000";
         public int TotalZips = 0;
         public int DoneZipsToSkip = 0;
         public long CacheSize = 000;
+
+
 
 
         //necessary font shit
@@ -277,18 +282,18 @@ namespace Launcher
         }
 
 
+  
 
-
-//                                                                                                          //
-//                                                                                                          //
-//              .___       .__  __  .__       .__  .__                __  .__                               //
-//              |   | ____ |__|/  |_|__|____  |  | |__|____________ _/  |_|__| ____   ____                  //
-//              |   |/    \|  \   __\  \__  \ |  | |  \___   /\__  \\   __\  |/  _ \ /    \                 //
-//              |   |   |  \  ||  | |  |/ __ \|  |_|  |/    /  / __ \|  | |  (  <_> )   |  \                //
-//              |___|___|  /__||__| |__(____  /____/__/_____ \(____  /__| |__|\____/|___|  /                //
-//                       \/                 \/              \/     \/                    \/                 //
-//                                                                                                          //
-//                                                                                                          //
+        //                                                                                                          //
+        //                                                                                                          //
+        //              .___       .__  __  .__       .__  .__                __  .__                               //
+        //              |   | ____ |__|/  |_|__|____  |  | |__|____________ _/  |_|__| ____   ____                  //
+        //              |   |/    \|  \   __\  \__  \ |  | |  \___   /\__  \\   __\  |/  _ \ /    \                 //
+        //              |   |   |  \  ||  | |  |/ __ \|  |_|  |/    /  / __ \|  | |  (  <_> )   |  \                //
+        //              |___|___|  /__||__| |__(____  /____/__/_____ \(____  /__| |__|\____/|___|  /                //
+        //                       \/                 \/              \/     \/                    \/                 //
+        //                                                                                                          //
+        //                                                                                                          //
         /*******************************
             this is our main startup function for the program
         /********************************/
@@ -303,17 +308,6 @@ namespace Launcher
             // No border around main window
             this.FormBorderStyle = FormBorderStyle.None;
 
-
-
-            
-
-
-
-
-
-
-
-
             // embedded font shit
             byte[] fontData = Properties.Resources.MorrisRomanAlternate_Black;
             IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
@@ -323,7 +317,6 @@ namespace Launcher
             AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.MorrisRomanAlternate_Black.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
 
-
             // embedded font shit 2
             byte[] fontData2 = Properties.Resources.KellyAnnGothic;
             IntPtr fontPtr2 = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData2.Length);
@@ -332,9 +325,6 @@ namespace Launcher
             fonts2.AddMemoryFont(fontPtr2, Properties.Resources.KellyAnnGothic.Length);
             AddFontMemResourceEx(fontPtr2, (uint)Properties.Resources.KellyAnnGothic.Length, IntPtr.Zero, ref dummy2);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr2);
-
-
-
             // sizing of the new custom font
             myFont10 = new System.Drawing.Font(fonts.Families[0], 10.0F);
             myFont12 = new System.Drawing.Font(fonts.Families[0], 12.0F);
@@ -342,10 +332,6 @@ namespace Launcher
             myFont22 = new System.Drawing.Font(fonts.Families[0], 22.0F);
             myFontK10 = new System.Drawing.Font(fonts2.Families[0], 12.0F);
             myFontK12 = new System.Drawing.Font(fonts2.Families[0], 20.0F);
-
-
-
-
             // big buttons Kelly Ann Gothic size 20
             play.Font = myFontK12;
             button1.Font = myFontK12;
@@ -357,18 +343,14 @@ namespace Launcher
             button3.Font = myFontK12;
             CacheSizeLabel.Font = myFontK12;
             label1.Font = myFontK12;
-            
             GamePageTitle.Font = myFontK12;
-
 
             // other labels Kelly Ann Gothic
             //label4.Font = myFont16;
-
             // misc Morris Roman ALt
             ResolutionBox.Font = myFont16;
             checkBox1_Fullscreen.Font = myFont16;
             checkBox2_Vsync.Font = myFont16;
-
             comboBox1_Detail.Font = myFont16;
             comboBox2_AA.Font = myFont16;
             comboBox3_Shadows.Font = myFont16;
@@ -378,11 +360,9 @@ namespace Launcher
             Game_NoteLabel.Font = myFont10;
             Game_ShadowLabel.Font = myFont16;
             Game_DetailLabel.Font = myFont16;
-
             Pick_A_Label.Font = myFont16;
             Game_HeaderLabel.Font = myFont16;
             label2.Font = myFont16;
-
 
             //transparent version label
             var pos = this.PointToScreen(VersionLabel.Location);
@@ -391,19 +371,27 @@ namespace Launcher
             VersionLabel.Location = pos;
             VersionLabel.BackColor = Color.Transparent;
             VersionLabel.Font = myFont12;
-
-
-
-
-
         }
+
+
+//                                                                                              //
+//              _________               __                   .___                               //
+//             /   _____/__.__. _______/  |_  ____   _____   |   | ____  ____   ____            //
+//             \_____  <   |  |/  ___/\   __\/ __ \ /     \  |   |/ ___\/  _ \ /    \           //
+//             /        \___  |\___ \  |  | \  ___/|  Y Y  \ |   \  \__(  <_> )   |  \          //
+//            /_______  / ____/____  > |__|  \___  >__|_|  / |___|\___  >____/|___|  /          //
+//                    \/\/         \/            \/      \/           \/           \/           //
+//                                                                                              //
+                                                                      
+                                                                        
+                                                   
+                                                                        
 
 
 
         private void notifyIcon1_LoadCompleted(object sender, EventArgs e)
         {
             ShowInTaskbar = true;
-            notifyIcon1.Visible = false;
             WindowState = FormWindowState.Normal;
             Console.WriteLine("Showing Icon In Taskbar");
         }
@@ -463,13 +451,15 @@ namespace Launcher
             }
 
 
+            
+
+
+
             bool VolumeOn = (bool)Properties.Settings.Default["VolumeOn"];
             this.FormBorderStyle = FormBorderStyle.None;
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
             if (VolumeOn == true)
@@ -487,8 +477,6 @@ namespace Launcher
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowIcon = false;
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
                 Console.WriteLine("Window State Minimized?");
             }
             if (VolumeOn == true)
@@ -505,9 +493,10 @@ namespace Launcher
             }
 
 
+            Popupdisshit();
             // launcher version from github
 
-            UpdateLauncherVersion();
+            // UpdateLauncherVersion();
 
             // ... Say stuff within teh readme.
 
@@ -643,6 +632,12 @@ namespace Launcher
                 sp.Play();
             };
 
+            if (gameisunzipped)
+            {
+                StartGame();
+            }
+
+
             // Teh default function of clicking the Play button -- first we see if there is already a game local to play
             // If NOT then go to catch which gives user a prompt to ignore or download latest
             if (LatestPathExists) // is valid base levelcheck
@@ -748,9 +743,15 @@ namespace Launcher
                         ///             |______/  |   __/\____ |(____  /__|  \___  > /_______ \|__|   __/____  >                ///
                         ///                       |__|        \/     \/          \/          \/   |__|       \/                 ///
 
+                        if (!gameisunzipped) // if we are done unzipping all the files for the game
+                        {
+                            // WE have teh file! start the gaame and minimize the launcher
+                            System.Diagnostics.Process.Start(dir);                                    // play the game
+                            this.WindowState = FormWindowState.Minimized;
+                            Console.WriteLine("Play Button found cache not completed, firing download looper...");
+                            ExpDownloadLooper();
+                        }
 
-                        Console.WriteLine("Play Button found cache not completed, firing download looper...");
-                        ExpDownloadLooper();
                     }
                 }
 
@@ -1041,7 +1042,9 @@ namespace Launcher
                 play.Text = ("Download");
                 play.Enabled = true;
                 progressBar0.Visible = false;
-                button1.Visible = false;
+
+
+                // button1.Visible = false;
 
             }
 
@@ -1197,7 +1200,10 @@ namespace Launcher
         {
             nocancel = true;
 
-            button1.Enabled = false;
+            // button1.Enabled = false;
+            Console.WriteLine("No need for updates, opening Editor.");
+            StartEditor();
+
 
         }
 
@@ -1226,20 +1232,26 @@ namespace Launcher
 
             foreach (string dir in zipfilesdone)
             {
-                Console.WriteLine("Checking zip " + dir);       // for every file it goes up by one
+                // Console.WriteLine("Checking zip " + dir);       // for every file it goes up by one
                 DoneZipsToSkip = DoneZipsToSkip + 1;
             }
 
             Console.WriteLine("Done looking for Zips... We can skip " + DoneZipsToSkip + " out of " + TotalZips);    // now we add that as an offset for where to restart downloading
             currentziplink = currentziplink + DoneZipsToSkip;                     // currentziplink permanently changed here
 
+            LookForGames();
+            
+
+
+
+            // Have we finished SOME of the zips? hoe many should we skip down the manifest to start?
 
             if (DoneZipsToSkip == TotalZips)
             {
 
                 Console.WriteLine("currentziplink == TotalZips");
 
-                if (DoneZipsToSkip == TotalZips)
+                if (DoneZipsToSkip >= TotalZips)
                 {
 
                     cacheisdone = true;
@@ -1248,7 +1260,6 @@ namespace Launcher
                 }
                 
             }
-
 
             if (currentziplink < 2)
             {
@@ -1268,21 +1279,20 @@ namespace Launcher
 
             if (gameisunzipped)
             {
-                Console.WriteLine("Game is unzipped, starting");
-                play.Text = ("Play Latest");
-                string[] dirs = Directory.GetFiles(gdirectory, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
-                Console.WriteLine(gdirectory + ", The number of files starting with W is " + dirs.Length);
-                foreach (string dir in dirs)
-                {
-                    string letsdothis = dir;
-                    Console.WriteLine(dir);
-                    if (dir != null)
-                    {
-                        gameisunzipped = true;
-                    }
-                }
+                Console.WriteLine("Game is ready");
+                play.Text = ("Play");
+                // string[] dirs = Directory.GetFiles(extractPath, "*Tailwind_1501.exe*", SearchOption.TopDirectoryOnly);
+                // Console.WriteLine(extractPath + ", The number of files starting with W is " + dirs.Length);
+                // foreach (string dir in dirs)
+                // {
+                //     string letsdothis = dir;
+                //     Console.WriteLine(dir);
+                //     if (dir != null)
+                //     {
+                //         gameisunzipped = true;
+                //     }
+                // }
             }
-
 
 
 
@@ -1297,7 +1307,7 @@ namespace Launcher
 
 
 
-
+        // update size of cache text in options for cleaning
 
         public void CheckCacheSize()
         {
@@ -1329,7 +1339,7 @@ namespace Launcher
 
 
 
-
+        // get directory of all zips size
 
         static long GetDirectorySize(string p)
         {
@@ -1454,10 +1464,6 @@ namespace Launcher
             Console.WriteLine("font loaded");
         }
 
-        private void notifyIcon1_LoadCompleted(object sender, MouseEventArgs e)
-        {
-
-        }
 
 
 
@@ -1729,15 +1735,135 @@ namespace Launcher
 
 
 
+        private void StartEditor()
+        {
+
+            string letsdothis = dir;
+            string absolute = String.Empty;
+            Console.WriteLine("Looking for games...");
+            string[] dirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.TopDirectoryOnly);
+            Console.WriteLine(editdirectory + ", The number of files starting with W is " + dirs.Length);
+            foreach (string dir in dirs)
+            {
+                // Console.WriteLine(dir);
+                if (dir != null)
+                {
+                    gameisunzipped = true;
+                    letsdothis = dir;
+                    absolute = Path.GetFullPath(letsdothis);
+                }
+
+
+            }
+            dir = absolute;
+            Console.WriteLine("New path found: " + absolute);
+
+
+
+            // WE have teh file! start the gaame and minimize the launcher
+            this.WindowState = FormWindowState.Minimized;
+            Console.WriteLine(dir);
+            System.Diagnostics.Process.Start(dir);                                    // launch editor
+
+        }
+
+
+        private void StartGame()
+        {
+            // WE have teh file! start the gaame and minimize the launcher
+            this.WindowState = FormWindowState.Minimized;
+            Console.WriteLine(dir);
+            System.Diagnostics.Process.Start(dir);                                    // play the game
+
+        }
+
+
+        private void LookForGames()
+        {
+            string letsdothis = dir;
+            string absolute = String.Empty;
+            Console.WriteLine("Looking for games...");
+            string[] dirs = Directory.GetFiles(extractPath, "*Tailwind_1501.exe*", SearchOption.AllDirectories);
+            Console.WriteLine(extractPath + ", The number of files starting with W is " + dirs.Length);
+            foreach (string dir in dirs)
+            {
+                // Console.WriteLine(dir);
+                if (dir != null)
+                {
+                    gameisunzipped = true;
+                    letsdothis = dir;
+                    absolute = Path.GetFullPath(letsdothis);
+                }
+
+                
+            }
+            dir = absolute;
+            Console.WriteLine("New path found: " + absolute);
+            LookForEditors();
+        }
+
+
+
+
+
+        private void LookForEditors()
+        {
+            string letsdothis = dir;
+            string absolute = String.Empty;
+            Console.WriteLine("Looking for games...");
+            string[] dirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.TopDirectoryOnly);
+            Console.WriteLine(editdirectory + ", The number of files starting with W is " + dirs.Length);
+            foreach (string dir in dirs)
+            {
+                // Console.WriteLine(dir);
+                if (dir != null)
+                {
+                    gameisunzipped = true;
+                    letsdothis = dir;
+                    absolute = Path.GetFullPath(letsdothis);
+                }
+
+
+            }
+            dir = absolute;
+            Console.WriteLine("New path found: " + absolute);
+        }
+
+
+        private void Popupdisshit()
+        {
+            PopupNotifier popup = new PopupNotifier();
+            popup.Image = Properties.Resources.fReverseRottenLeaf;
+            popup.TitleText = "Winds of Almerra";
+            popup.ContentText = "Now running version " + latestbuild;
+            popup.Popup(); //show
+
+        }
+
 
         private void UpdateLauncherVersion()
         {
+
             using (WebClient versionclient = new WebClient())
             {
                 versionclient.DownloadFileCompleted += new AsyncCompletedEventHandler(versionclient_DownloadZipsCompleted);
                 versionclient.DownloadFileAsync(new Uri(BuildOnline), "Cache/Build.txt");          // always update the version text from url
 
             }
+        }
+
+
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Show the form when the user double clicks on the notify icon.
+
+            // Set the WindowState to normal if the form is minimized.
+            if (this.WindowState == FormWindowState.Minimized)
+                this.WindowState = FormWindowState.Normal;
+
+            // Activate the form.
+            this.Activate();
         }
 
 

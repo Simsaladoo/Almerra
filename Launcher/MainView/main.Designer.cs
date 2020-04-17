@@ -150,17 +150,16 @@ namespace Launcher
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 54);
             this.button1.TabIndex = 29;
-            this.button1.Text = "Cancel";
+            this.button1.Text = "Editor";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "Winds of Almerra";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_LoadCompleted);
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // ToolsPanel
             // 
@@ -635,7 +634,7 @@ namespace Launcher
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(102, 15);
             this.VersionLabel.TabIndex = 62;
-            this.VersionLabel.Text = "WoA_1902_0000";
+            this.VersionLabel.Text = "WoA_1501_0000";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // main
