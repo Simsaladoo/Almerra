@@ -85,13 +85,13 @@ namespace Launcher
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
         public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_2301_0085.zip";
+        public string zippath = "Game/WoA_2301_0085.7z";
         public string gamepath = "Game/Knowts.txt";
         public string engineinipath = "Game/WoA_2301/Config/DefaultEngine.ini";
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
-        public string editdirectory = "../../../../../../UE4/Projects/WoA_2301/";
+        public string editdirectory = @"E:/UE4/Projects";
         public string gdirectory = "Cache/";
         public string cdirectory = "Cache/zips/";
         public string dir = String.Empty;
@@ -488,7 +488,7 @@ namespace Launcher
         {
 
             // button1.Enabled = false;
-            Console.WriteLine("Opening Editor.");
+            Console.WriteLine("Opening Editor...");
             StartEditor();
 
 
@@ -888,7 +888,7 @@ namespace Launcher
             string letsdothis = dir;
             string absolute = String.Empty;
             Console.WriteLine("Looking for games...");
-            string[] dirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.TopDirectoryOnly);
+            string[] dirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.AllDirectories);
             Console.WriteLine(editdirectory + ", The number of files starting with W is " + dirs.Length);
             foreach (string dir in dirs)
             {
