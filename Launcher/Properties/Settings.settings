@@ -5,5 +5,8 @@
     <Setting Name="VolumeOn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ChosenEditor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\UE4\Projects\WoA_2403\WoA_2403.uproject</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

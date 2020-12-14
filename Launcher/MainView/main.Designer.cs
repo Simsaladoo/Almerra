@@ -70,6 +70,8 @@ namespace Launcher
             this.button2 = new System.Windows.Forms.Button();
             this.progressBar0 = new System.Windows.Forms.ProgressBar();
             this.VersionLabel = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.DDpanel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.GeneralPanel.SuspendLayout();
@@ -101,6 +103,7 @@ namespace Launcher
             this.play.BackColor = System.Drawing.Color.Transparent;
             this.play.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.play.Enabled = false;
             this.play.FlatAppearance.BorderSize = 0;
             this.play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -112,7 +115,7 @@ namespace Launcher
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(206, 54);
             this.play.TabIndex = 30;
-            this.play.Text = "Play";
+            this.play.Text = "Builds";
             this.play.UseVisualStyleBackColor = false;
             this.play.Click += new System.EventHandler(this.play_Click);
             // 
@@ -139,18 +142,19 @@ namespace Launcher
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Enabled = false;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(586, 547);
+            this.button1.Location = new System.Drawing.Point(592, 547);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(206, 54);
+            this.button1.Size = new System.Drawing.Size(151, 54);
             this.button1.TabIndex = 29;
-            this.button1.Text = "Editor";
+            this.button1.Text = "Editors";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -627,15 +631,43 @@ namespace Launcher
             // 
             // VersionLabel
             // 
-            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
             this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.VersionLabel.Location = new System.Drawing.Point(886, 521);
+            this.VersionLabel.Location = new System.Drawing.Point(16, 514);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(102, 15);
+            this.VersionLabel.Size = new System.Drawing.Size(972, 22);
             this.VersionLabel.TabIndex = 62;
-            this.VersionLabel.Text = "WoA_1501_0000";
-            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.VersionLabel.Text = "WoA_xxxx_xxxx";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(743, 547);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(49, 54);
+            this.button4.TabIndex = 63;
+            this.button4.Text = "^";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // DDpanel1
+            // 
+            this.DDpanel1.Location = new System.Drawing.Point(592, 349);
+            this.DDpanel1.Name = "DDpanel1";
+            this.DDpanel1.Size = new System.Drawing.Size(197, 200);
+            this.DDpanel1.TabIndex = 64;
+            this.DDpanel1.Visible = false;
             // 
             // main
             // 
@@ -645,11 +677,13 @@ namespace Launcher
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.DDpanel1);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.progressBar0);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.ToPanelButton);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.play);
             this.Controls.Add(this.button12);
@@ -677,7 +711,6 @@ namespace Launcher
             this.OtherPanel.ResumeLayout(false);
             this.OtherPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -722,6 +755,8 @@ namespace Launcher
         private System.Windows.Forms.Label CacheSizeLabel;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label VersionLabel;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel DDpanel1;
     }
 }
 

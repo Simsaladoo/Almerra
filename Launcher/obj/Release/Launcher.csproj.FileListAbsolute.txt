@@ -494,7 +494,6 @@ E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\LinqToExcel.xml
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Newtonsoft.Json.xml
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.xml
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.main.resources
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.cache
@@ -502,3 +501,4 @@ E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.Cor
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache
