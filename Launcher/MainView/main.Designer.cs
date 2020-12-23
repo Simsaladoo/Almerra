@@ -72,6 +72,8 @@ namespace Launcher
             this.VersionLabel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.DDpanel1 = new System.Windows.Forms.Panel();
+            this.DDpanel2 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.font)).BeginInit();
             this.ToolsPanel.SuspendLayout();
             this.GeneralPanel.SuspendLayout();
@@ -113,7 +115,7 @@ namespace Launcher
             this.play.Location = new System.Drawing.Point(792, 547);
             this.play.Margin = new System.Windows.Forms.Padding(0);
             this.play.Name = "play";
-            this.play.Size = new System.Drawing.Size(206, 54);
+            this.play.Size = new System.Drawing.Size(152, 54);
             this.play.TabIndex = 30;
             this.play.Text = "Builds";
             this.play.UseVisualStyleBackColor = false;
@@ -646,6 +648,7 @@ namespace Launcher
             this.button4.BackColor = System.Drawing.Color.Transparent;
             this.button4.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Enabled = false;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
@@ -669,6 +672,35 @@ namespace Launcher
             this.DDpanel1.TabIndex = 64;
             this.DDpanel1.Visible = false;
             // 
+            // DDpanel2
+            // 
+            this.DDpanel2.Location = new System.Drawing.Point(795, 349);
+            this.DDpanel2.Name = "DDpanel2";
+            this.DDpanel2.Size = new System.Drawing.Size(197, 200);
+            this.DDpanel2.TabIndex = 65;
+            this.DDpanel2.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.BackgroundImage = global::Launcher.Properties.Resources.buttonUpdate;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Enabled = false;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(944, 547);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(49, 54);
+            this.button5.TabIndex = 66;
+            this.button5.Text = "^";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,6 +710,7 @@ namespace Launcher
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
             this.Controls.Add(this.DDpanel1);
+            this.Controls.Add(this.DDpanel2);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.progressBar0);
             this.Controls.Add(this.button2);
@@ -685,6 +718,7 @@ namespace Launcher
             this.Controls.Add(this.ToPanelButton);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.play);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.ToMainButton);
@@ -757,6 +791,8 @@ namespace Launcher
         private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel DDpanel1;
+        private System.Windows.Forms.Panel DDpanel2;
+        private System.Windows.Forms.Button button5;
     }
 }
 

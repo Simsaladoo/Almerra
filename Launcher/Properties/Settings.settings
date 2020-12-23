@@ -8,5 +8,8 @@
     <Setting Name="ChosenEditor" Type="System.String" Scope="User">
       <Value Profile="(Default)">E:\UE4\Projects\WoA_2403\WoA_2403.uproject</Value>
     </Setting>
+    <Setting Name="ChosenBuild" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

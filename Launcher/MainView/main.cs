@@ -72,7 +72,7 @@ namespace Launcher
 
         private StateHandler myState = new StateHandler();
         private DateTime startTime = DateTime.Now;
-  
+
 
         SoundPlayer startupsong = new SoundPlayer("Resources/done.wav");
         SoundPlayer completesong = new SoundPlayer("Resources/start.wav");
@@ -97,7 +97,10 @@ namespace Launcher
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
         public string editdirectory = @"E:/UE4/Projects";
+
         public string gdirectory = "Cache/";
+        public string gdirectoryALT = @"E:/UE4/builds/Package";
+
         public string cdirectory = "Cache/zips/";
         public string edir = String.Empty;
         public string[] edirs = new string[] { "" };
@@ -112,7 +115,7 @@ namespace Launcher
         public string buttonuse = String.Empty;
 
         List<string> myButtonCollection = new List<string>();
-
+        List<string> myAltButtonCollection = new List<string>();
 
         public int buttonnum = 0;
         public string VersionText = "WoA_xxxx_xxxx";
@@ -120,10 +123,12 @@ namespace Launcher
         public int DoneZipsToSkip = 0;
         public long CacheSize = 000;
         public bool DropisDown = false;
+        public bool DropareDown = false;
         public bool hasEditor = false;
         public string latestEditor = String.Empty;
+        public string latestGame = String.Empty;
 
-
+        public string[] AllBuilds;
 
 
         //necessary font shit
@@ -253,7 +258,7 @@ namespace Launcher
         }
 
 
-  
+
 
         //                                                                                                          //
         //                                                                                                          //
@@ -273,7 +278,11 @@ namespace Launcher
             InitializeComponent();
             //myState.changeButtonState(LauncherState.Idle, this);
             this.Shown += new System.EventHandler(this.AfterLoading);    // this is wher we fire BeginPlay
-            Console.WriteLine("Initialization");
+            Console.WriteLine("/****************************************************************/");
+            Console.WriteLine("/*********************** Initialization *************************/");
+            Console.WriteLine("/****************************************************************/");
+
+
             m_aeroEnabled = false;
 
             // No border around main window
@@ -297,7 +306,7 @@ namespace Launcher
             AddFontMemResourceEx(fontPtr2, (uint)Properties.Resources.KellyAnnGothic.Length, IntPtr.Zero, ref dummy2);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr2);
 
-            
+
             //  ___________            __             _________       __                    //
             //  \_   _____/___   _____/  |_  ______  /   _____/ _____/  |_ __ ________      //
             //   |    __)/  _ \ /    \   __\/  ___/  \_____  \_/ __ \   __\  |  \____ \     //
@@ -352,18 +361,50 @@ namespace Launcher
             VersionLabel.Location = pos;
             VersionLabel.BackColor = Color.Transparent;
             VersionLabel.Font = myFont12;
+
+
+            play.BackColor = Color.Transparent;
+            button1.BackColor = Color.Transparent;
+            CloseButton.BackColor = Color.Transparent;
+            button2.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
+            button3.BackColor = Color.Transparent;
+            button4.BackColor = Color.Transparent;
+            button9.BackColor = Color.Transparent;
+            button10.BackColor = Color.Transparent;
+            MinimizeButton.BackColor = Color.Transparent;
+            button12.BackColor = Color.Transparent;
+            ToolsPanel.BackColor = Color.Transparent;
+            ToMainButton.BackColor = Color.Transparent;
+            ToPanelButton.BackColor = Color.Transparent;
+            ToolsPanel.Visible = false;
+            ToMainButton.Visible = false;
+            OtherPanel.Visible = false;
+            GeneralPanel.Visible = false;
+            play.Parent = font;
+            button1.Parent = font;
+            CloseButton.Parent = font;
+            MinimizeButton.Parent = font;
+            ToolsPanel.Parent = font;
+            ToMainButton.Parent = font;
+            ToPanelButton.Parent = font;
+            button12.Parent = font;
+            button5.Parent = font;
+            button4.Parent = font;
+            button2.Parent = font;
+            font.BackgroundImage = Properties.Resources.font;
         }
 
 
-//                                                                                              //
-//              _________               __                   .___                               //
-//             /   _____/__.__. _______/  |_  ____   _____   |   | ____  ____   ____            //
-//             \_____  <   |  |/  ___/\   __\/ __ \ /     \  |   |/ ___\/  _ \ /    \           //
-//             /        \___  |\___ \  |  | \  ___/|  Y Y  \ |   \  \__(  <_> )   |  \          //
-//            /_______  / ____/____  > |__|  \___  >__|_|  / |___|\___  >____/|___|  /          //
-//                    \/\/         \/            \/      \/           \/           \/           //
-//                                                                                              //
-                                                                      
+        //                                                                                              //
+        //              _________               __                   .___                               //
+        //             /   _____/__.__. _______/  |_  ____   _____   |   | ____  ____   ____            //
+        //             \_____  <   |  |/  ___/\   __\/ __ \ /     \  |   |/ ___\/  _ \ /    \           //
+        //             /        \___  |\___ \  |  | \  ___/|  Y Y  \ |   \  \__(  <_> )   |  \          //
+        //            /_______  / ____/____  > |__|  \___  >__|_|  / |___|\___  >____/|___|  /          //
+        //                    \/\/         \/            \/      \/           \/           \/           //
+        //                                                                                              //
+
 
         private void notifyIcon1_LoadCompleted(object sender, EventArgs e)
         {
@@ -375,14 +416,14 @@ namespace Launcher
 
 
 
-//                                                                                                          //
-//                  __________               __            .____                     .___                   //
-//                  \______   \____  _______/  |_          |    |    _________     __| _/                   //
-//                   |     ___/  _ \/  ___/\   __\  ______ |    |   /  _ \__  \   / __ |                    //
-//                   |    |  (  <_> )___ \  |  |   /_____/ |    |__(  <_> ) __ \_/ /_/ |                    //
-//                   |____|   \____/____  > |__|           |_______ \____(____  /\____ |                    //
-//                                      \/                         \/         \/      \/                    //
-//                                                                                                          //
+        //                                                                                                          //
+        //                  __________               __            .____                     .___                   //
+        //                  \______   \____  _______/  |_          |    |    _________     __| _/                   //
+        //                   |     ___/  _ \/  ___/\   __\  ______ |    |   /  _ \__  \   / __ |                    //
+        //                   |    |  (  <_> )___ \  |  |   /_____/ |    |__(  <_> ) __ \_/ /_/ |                    //
+        //                   |____|   \____/____  > |__|           |_______ \____(____  /\____ |                    //
+        //                                      \/                         \/         \/      \/                    //
+        //                                                                                                          //
 
 
         private void AfterLoading(object sender, EventArgs e)
@@ -435,34 +476,38 @@ namespace Launcher
                 button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
             }
 
-            Popupdisshit();
-            LookForEditors();
             LookForGames();
+            LookForEditors();
+
             progressBar0.Visible = false;
             //End of startup loading
+
+            Popupdisshit();
         }
 
-        
 
 
 
 
 
-//                                                                                                           //
-//                __________.__                 __________        __    __                                   //
-//                \______   \  | _____  ___.__. \______   \__ ___/  |__/  |_  ____   ____                    //
-//                 |     ___/  | \__  \<   |  |  |    |  _/  |  \   __\   __\/  _ \ /    \                   //
-//                 |    |   |  |__/ __ \\___  |  |    |   \  |  /|  |  |  | (  <_> )   |  \                  //
-//                 |____|   |____(____  / ____|  |______  /____/ |__|  |__|  \____/|___|  /                  //
-//                                    \/\/              \/                              \/                   //
-//                                                                                                           //
-//                                                                                                           //
+
+        //                                                                                                           //
+        //                __________.__                 __________        __    __                                   //
+        //                \______   \  | _____  ___.__. \______   \__ ___/  |__/  |_  ____   ____                    //
+        //                 |     ___/  | \__  \<   |  |  |    |  _/  |  \   __\   __\/  _ \ /    \                   //
+        //                 |    |   |  |__/ __ \\___  |  |    |   \  |  /|  |  |  | (  <_> )   |  \                  //
+        //                 |____|   |____(____  / ____|  |______  /____/ |__|  |__|  \____/|___|  /                  //
+        //                                    \/\/              \/                              \/                   //
+        //                                                                                                           //
+        //                                                                                                           //
         /*******************************
             play latest build button pressed
         /********************************/
 
         private void play_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Latest Chosen Build: " + Properties.Settings.Default.ChosenBuild.ToString());
+
             if (soundenabled == true)
             {
                 System.Media.SoundPlayer sp = (patsoft);
@@ -470,20 +515,20 @@ namespace Launcher
             };
             // WE have teh file! start the gaame and minimize the launcher
             //this.WindowState = FormWindowState.Minimized;
-            Console.WriteLine(gdir);
+            // Console.WriteLine(Properties.Settings.Default.ChosenBuild.ToString());
             //System.Diagnostics.Process.Start(latestbuild);                                    // play the game
         }
 
 
-//                                                                                                             //
-//              ___________    .___.__  __                 __________        __    __                          //
-//              \_   _____/  __| _/|__|/  |_  ___________  \______   \__ ___/  |__/  |_  ____   ____           //
-//               |    __)_  / __ | |  \   __\/  _ \_  __ \  |    |  _/  |  \   __\   __\/  _ \ /    \          //
-//               |        \/ /_/ | |  ||  | (  <_> )  | \/  |    |   \  |  /|  |  |  | (  <_> )   |  \         //
-//              /_______  /\____ | |__||__|  \____/|__|     |______  /____/ |__|  |__|  \____/|___|  /         //
-//                      \/      \/                                 \/                              \/          //
-//                                                                                                             //
-//                                                                                                             //
+        //                                                                                                             //
+        //              ___________    .___.__  __                 __________        __    __                          //
+        //              \_   _____/  __| _/|__|/  |_  ___________  \______   \__ ___/  |__/  |_  ____   ____           //
+        //               |    __)_  / __ | |  \   __\/  _ \_  __ \  |    |  _/  |  \   __\   __\/  _ \ /    \          //
+        //               |        \/ /_/ | |  ||  | (  <_> )  | \/  |    |   \  |  /|  |  |  | (  <_> )   |  \         //
+        //              /_______  /\____ | |__||__|  \____/|__|     |______  /____/ |__|  |__|  \____/|___|  /         //
+        //                      \/      \/                                 \/                              \/          //
+        //                                                                                                             //
+        //                                                                                                             //
         /*******************************
             open selected editor button pressed
         /********************************/
@@ -535,17 +580,17 @@ namespace Launcher
             // Get array of all file names.
             string[] a = Directory.GetFiles(p, "*.*");
 
-            
+
             // Calculate total bytes of all files in a loop.
             long b = 0;
             foreach (string name in a)
             {
-                
+
                 // Use FileInfo to get length of each file.
                 FileInfo info = new FileInfo(name);
                 b += info.Length;
             }
-            
+
             // Return total size
             return b;
         }
@@ -566,35 +611,8 @@ namespace Launcher
 
         private void main_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("Main Window Loaded");
-            play.BackColor = Color.Transparent;
-            button1.BackColor = Color.Transparent;
-            CloseButton.BackColor = Color.Transparent;
-            button2.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button4.BackColor = Color.Transparent;
-            button9.BackColor = Color.Transparent;
-            button10.BackColor = Color.Transparent;
-            MinimizeButton.BackColor = Color.Transparent;
-            button12.BackColor = Color.Transparent;          
-            ToolsPanel.BackColor = Color.Transparent;
-            ToMainButton.BackColor = Color.Transparent;
-            ToPanelButton.BackColor = Color.Transparent;
-            ToolsPanel.Visible = false;
-            ToMainButton.Visible = false;
-            OtherPanel.Visible = false;
-            GeneralPanel.Visible = false;
-            play.Parent = font;
-            button1.Parent = font;
-            CloseButton.Parent = font;
-            MinimizeButton.Parent = font;
-            ToolsPanel.Parent = font;
-            ToMainButton.Parent = font;
-            ToPanelButton.Parent = font;
-            button12.Parent = font;
-            button4.Parent = font;
-            button2.Parent = font;
-            font.BackgroundImage = Properties.Resources.font;
+
+
         }
 
 
@@ -630,7 +648,7 @@ namespace Launcher
 
         private void font_LoadCompleted(object sender, EventArgs e)
         {
-            Console.WriteLine("font loaded");
+
         }
 
 
@@ -665,7 +683,7 @@ namespace Launcher
             ToPanelButton.Visible = false;
             webBrowser1.Visible = false;
             button12.Visible = true;
-            
+
             OtherPanel.Visible = false;
             GeneralPanel.Visible = false;
 
@@ -755,8 +773,8 @@ namespace Launcher
             Console.WriteLine("Options Data Tools");
 
         }
-        
-        
+
+
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -794,9 +812,6 @@ namespace Launcher
         }
 
 
-
-
-
         // speaker icon for sound effect on/off
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -819,46 +834,6 @@ namespace Launcher
         }
 
 
-
-
-
-        private void button3_Click(object sender, EventArgs e)
-        {         
-            // ??
-        }
-
-
-
-
-
-        private void ResolutionBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // res
-        }
-
-
-
-
-        private void CreateEditorButton(int a, string p, string s)
-        {
-
-            Button newButton = new Button();
-            
-            int o = a * 40;
-            newButton.Text = p.ToString();
-            newButton.Location = new Point(0, o);
-            newButton.Size = new Size(200, 40);
-            newButton.FlatStyle = FlatStyle.Flat;
-
-            newButton.Click += (sender, e) => StartEditor0(s, p);
-            DDpanel1.Controls.Add(newButton);
-
-            Console.WriteLine("Created button " + p + " " + s);
-        }
-
-
-
-
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             // Show the form when the user double clicks on the notify icon.
@@ -872,13 +847,82 @@ namespace Launcher
         }
 
 
-
-
-
         private void menuItem1_Click(object Sender, EventArgs e)
         {
             // Close the form, which closes the application.
             this.Close();
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // ??
+        }
+
+
+
+        private void ResolutionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // res
+        }
+
+
+
+
+
+        //                                                                                                                                              //
+        //    _________                           ___________    .___.__  __                 __________        __    __                                 //
+        //   /   _____/__________ __  _  ______   \_   _____/  __| _/|__|/  |_  ___________  \______   \__ ___/  |__/  |_  ____   ____   ______         //
+        //   \_____  \\____ \__  \\ \/ \/ /    \   |    __)_  / __ | |  \   __\/  _ \_  __ \  |    |  _/  |  \   __\   __\/  _ \ /    \ /  ___/         //
+        //   /        \  |_> > __ \\     /   |  \  |        \/ /_/ | |  ||  | (  <_> )  | \/  |    |   \  |  /|  |  |  | (  <_> )   |  \\___ \          //
+        //  /_______  /   __(____  /\/\_/|___|  / /_______  /\____ | |__||__|  \____/|__|     |______  /____/ |__|  |__|  \____/|___|  /____  >         //
+        //          \/|__|       \/           \/          \/      \/                                 \/                              \/     \/          //
+        //                                                                                                                                              //
+
+
+
+
+        private void CreateEditorButton(int a, string p, string s)
+        {
+
+            Button newButton = new Button();
+
+            int o = a * 40;
+
+            newButton.ForeColor = Color.White;
+            newButton.Font = myFont12;
+            newButton.Text = p.ToString();
+            newButton.Location = new Point(0, o);
+            newButton.Size = new Size(198, 40);
+            newButton.FlatStyle = FlatStyle.Flat;
+
+            newButton.BackColor = Color.Transparent;
+
+            newButton.Click += (sender, e) => StartEditor0(s, p);
+            DDpanel1.Controls.Add(newButton);
+            Console.WriteLine("Created Editor button " + p + " " + s);
+        }
+
+
+        private void CreateGameButton(int a, string p, string s)
+        {
+
+            Button newButton2 = new Button();
+
+            int o = a * 40;
+
+            newButton2.ForeColor = Color.White;
+            newButton2.Font = myFont12;
+            newButton2.Text = p.ToString();
+            newButton2.Location = new Point(0, o);
+            newButton2.Size = new Size(198, 40);
+            newButton2.FlatStyle = FlatStyle.Flat;
+
+            newButton2.BackColor = Color.Transparent;
+
+            newButton2.Click += (sender, e) => StartGame0(s, p);
+            DDpanel2.Controls.Add(newButton2);
+            Console.WriteLine("Created Game button " + p + " " + s);
         }
 
 
@@ -889,10 +933,11 @@ namespace Launcher
 
 
 
-        private void StartEditor0(string p, string s)           
+
+        private void StartEditor0(string p, string s)
         {
             // select editor in slot
-            
+
             //get a nicer looking name by splitting and trimming...
             var dataspt = s.Substring(s.LastIndexOf('_') + 1);
             string data = dataspt.ToString();
@@ -908,8 +953,30 @@ namespace Launcher
             DDpanel1.Visible = false;
             DropisDown = false;
             button4.Text = ("^");
-                                                                                //start editor 0 is actually just 'assign' editor
+            //start editor 0 is actually just 'assign' editor
+        }
 
+
+        private void StartGame0(string p, string s)
+        {
+            // select editor in slot
+
+            //get a nicer looking name by splitting and trimming...
+            var dataspt = s.Substring(s.LastIndexOf('_') + 1);
+            string data = dataspt.ToString();
+            int index = dataspt.IndexOf('.');
+            string sub;
+            sub = dataspt.Substring(0, index);
+            // sub is nice looking name
+
+            Console.WriteLine("Selected : " + p);
+            Properties.Settings.Default.ChosenBuild = p;
+            play.Text = sub;
+            latestGame = Path.GetFullPath(p);
+            DDpanel2.Visible = false;
+            DropareDown = false;
+            button5.Text = ("^");
+            //start editor 0 is actually just 'assign' editor
         }
 
 
@@ -918,71 +985,114 @@ namespace Launcher
 
 
 
-
+        // Search for packaged Games
 
         async Task LookForGames()
         {
+            int i = 0;
             await Task.Delay(500);
             string letsdothis = gdir;
             string absolute = String.Empty;
-            UpdateLauncherVersion("Looking for Games...");
-            string[] gdirs = Directory.GetFiles(extractPath, "*Tailwind_1501.exe*", SearchOption.AllDirectories);        
+            UpdateLauncherVersion("Looking for packaged games...");
+
+            string[] gdirs = Directory.GetFiles(extractPath, "*Tailwind_1501.exe*", SearchOption.AllDirectories);           // first pass looks thru Launcher's /Game/ folder for packaged games
+            
+
             foreach (string gdir in gdirs)
             {
-
                 // Console.WriteLine(dir);
                 if (gdir != null)
                 {
-                    Console.WriteLine(extractPath + ", Found game executable ");
-                    gameisunzipped = true;
+                    int count = edir.Count(a => a == '\\');
+
+
+                    if (count < 5)
+                    {
+                        i++;
+                        letsdothis = gdir;
+                        absolute = Path.GetFullPath(letsdothis);
+                        Console.WriteLine(absolute + ", Found packaged game executable at index " + i);
+                        string thispath = Path.GetFileName(absolute);
+
+                        gameisunzipped = true;
+
+                        CreateGameButton(i, thispath, absolute); // pass arguments to event that creates the button
+                        myButtonCollection.Add(absolute);
+                        // found path added to array for buttons
+                    }
+
+                    AllBuilds = gdirs;
+                    Console.WriteLine(absolute + ", Found packaged game executable ");
                     letsdothis = gdir;
                     absolute = Path.GetFullPath(letsdothis);
                 }
-
-                
             }
             gdir = absolute;
-            Console.WriteLine("Game path result: " + absolute);
             latestbuild = absolute;
-            await Task.Delay(1000);
+            await Task.Delay(500);
+
+            // we didnt find anything in the /Game/ folder -- now look in our local area for builds
             if (gdir == String.Empty)
             {
-                Console.WriteLine("No packaged games found");
+                Console.WriteLine("gdir string is empty -- No packaged games found...");
                 UpdateLauncherVersion("Looking for built games...");
-                await Task.Delay(1000);
-                gdirs = Directory.GetFiles(editdirectory, "*Tailwind_1501.exe*", SearchOption.AllDirectories);
+                Console.WriteLine("Now looking for built games in alt directory: " + gdirectoryALT);
+                await Task.Delay(500);
+
+
+                gdirs = Directory.GetFiles(gdirectoryALT, "*Tailwind_1501.exe*", SearchOption.AllDirectories);
                 foreach (string gdir in gdirs)
                 {
                     if (gdir != null)
                     {
-                        // this is teh one
-                        Console.WriteLine(editdirectory + gdir + ", Found game executable ");
-                        gameisunzipped = true;
-                        letsdothis = gdir;
-                        absolute = Path.GetFullPath(letsdothis);
+                        int count = gdir.Count(a => a == '\\');
+                        if (count < 5)
+                        {
+                            i++;
+                            // this is teh one                      
+                            gameisunzipped = true;
+                            letsdothis = gdir;
+                            absolute = Path.GetFullPath(letsdothis);
+                            Console.WriteLine(absolute + ", Found built game executable ");
+                            string thispath = Path.GetFileName(absolute);
+
+                            CreateGameButton(i, thispath, absolute); // pass arguments to event that creates the button
+                            myAltButtonCollection.Add(absolute);
+                            // found path added to array for buttons
+                        }
+
 
                     }
                 }
+                AllBuilds = gdirs;
+                Console.WriteLine("Total built games found: " + myAltButtonCollection.Count);
+                gdir = absolute;
+                latestGame = absolute;
+                latestbuild = absolute;
+                Console.WriteLine("Latest game path result: " + latestGame);             // Properties.Settings.Default.ChosenBuild
+
             }
 
+            ChooseVersions();
+            //  TurnGameButtonToLast();
         }
 
 
 
 
 
-
+        // Search for Editors
 
         async Task LookForEditors()
         {
             int i = 0;
-            await Task.Delay(500);
+            await Task.Delay(2000);
+            Console.WriteLine("Looking for Editor...");
             string letsdothis = edir;
             string absolute = String.Empty;
             UpdateLauncherVersion("Looking for Editors...");
             string[] edirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.AllDirectories);
             foreach (string edir in edirs)
-            
             {
                 // Console.WriteLine(edir);
                 if (edir != null)
@@ -991,30 +1101,24 @@ namespace Launcher
 
                     if (count < 5)
                     {
-
                         i++;
                         letsdothis = edir;
                         absolute = Path.GetFullPath(letsdothis);
                         Console.WriteLine(absolute + ", contains uproject at index " + i);
                         string thispath = Path.GetFileName(absolute);
                         hasEditor = true;
-                        CreateEditorButton(i, thispath, absolute);
+                        CreateEditorButton(i, thispath, absolute); // pass arguments to event that creates the button
                         myButtonCollection.Add(absolute);
-
-
                         // found path added to array for buttons
                     }
-
                 }
             }
-
             Console.WriteLine("Total projects found: " + myButtonCollection.Count);
             edir = absolute;
             latestEditor = absolute;
-            Console.WriteLine("Editor path result: " + latestEditor);
-            await Task.Delay(1000);
+            Console.WriteLine("Editor path result: " + Properties.Settings.Default.ChosenEditor);
+            
             TurnEditorButtonToLast();
-
         }
 
 
@@ -1022,9 +1126,17 @@ namespace Launcher
 
 
 
+
+
+
+        // Custom popup window that shows something
+
         async Task Popupdisshit()
         {
-            await Task.Delay(2000);
+            // fill in other info?
+
+
+            await Task.Delay(5000);
             if (hasEditor)
             {
                 PopupNotifier popup = new PopupNotifier();
@@ -1049,6 +1161,28 @@ namespace Launcher
 
 
 
+        async Task ChooseVersions()
+        {
+            // once we have a list of local builds, if ChosenBuild is empty, choose highest number _000 as current -- then enable control
+            await Task.Delay(1000);
+            Console.WriteLine("Choosing Game Versions...");
+            int i = 0;
+
+            foreach (string agame in AllBuilds)
+            {
+                Console.WriteLine("AllBuilds: [" + i + "]" + agame);
+                i++;
+            }
+
+
+
+
+            TurnGameButtonToLast();
+
+        }
+
+
+
         private void UpdateLauncherVersion(string s)
         {
             // update launcher's game version or say otherwise
@@ -1058,9 +1192,10 @@ namespace Launcher
 
 
 
-        // update editor button to label of current setting where we store the value
+        // update editor button to label of current setting where we store the value -- display current Editor engine in label
         async Task TurnEditorButtonToLast()
         {
+            await Task.Delay(1000);
             //get a nicer looking name by splitting and trimming...
             var dataspt = Properties.Settings.Default.ChosenEditor.Substring(Properties.Settings.Default.ChosenEditor.LastIndexOf('_') + 1);
             string data = dataspt.ToString();
@@ -1068,12 +1203,39 @@ namespace Launcher
             string sub;
             sub = dataspt.Substring(0, index);
             // sub is nice looking name
-
+            Console.WriteLine("Setting Editor Button to Last: " + sub);
             button1.Text = sub;
-            await Task.Delay(500);
+            
             button1.Enabled = true;
+            button4.Enabled = true;
         }
 
+
+
+        // update game button to label of current setting where we store the value -- display current game build in label
+        async Task TurnGameButtonToLast()
+        {
+            
+            await Task.Delay(1000);
+            //get a nicer looking name by splitting and trimming...
+
+
+
+            // Properties.Settings.Default.ChosenBuild
+
+            string sub = Properties.Settings.Default.ChosenBuild.ToString();
+
+
+
+
+
+            // sub is name
+            Console.WriteLine("Setting Game Button to Last: " + sub);
+            play.Text = sub;
+            
+            play.Enabled = true;
+            button5.Enabled = true;
+        }
 
 
         // update debug / build info text on lower right area with latest build found or show the error
@@ -1081,7 +1243,7 @@ namespace Launcher
         {
             //
             await Task.Delay(5000);
-            VersionLabel.Text = gdir;
+            VersionLabel.Text = Properties.Settings.Default.ChosenBuild.ToString();
         }
 
 
@@ -1137,6 +1299,33 @@ namespace Launcher
 
 
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // dropdown
+            string labelup = ("^");
+            string labeldown = ("-");
+
+            if (!DropareDown)
+            {
+                // open
+                Console.WriteLine(DropareDown);
+                DropareDown = true;
+                DDpanel2.Visible = true;
+                button5.Text = labeldown;
+            }
+
+
+
+            else if (DropareDown)
+            {
+                // close
+                Console.WriteLine(DropareDown);
+                DropareDown = false;
+                DDpanel2.Visible = false;
+                button5.Text = labelup;
+            }
         }
     }
 }

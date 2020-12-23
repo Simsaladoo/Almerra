@@ -46,5 +46,17 @@ namespace Launcher.Properties {
                 this["ChosenEditor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ChosenBuild {
+            get {
+                return ((string)(this["ChosenBuild"]));
+            }
+            set {
+                this["ChosenBuild"] = value;
+            }
+        }
     }
 }
