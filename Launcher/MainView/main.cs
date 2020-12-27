@@ -1034,36 +1034,42 @@ namespace Launcher
             // we didnt find anything in the /Game/ folder -- now look in our local area for builds
             if (gdir == String.Empty)
             {
-                Console.WriteLine("gdir string is empty -- No packaged games found...");
-                UpdateLauncherVersion("Looking for built games...");
-                Console.WriteLine("Now looking for built games in alt directory: " + gdirectoryALT);
-                await Task.Delay(500);
 
-
-                gdirs = Directory.GetFiles(gdirectoryALT, "*Tailwind_1501.exe*", SearchOption.AllDirectories);
-                foreach (string gdir in gdirs)
+                if (Directory.Exists(gdirectoryALT))
                 {
-                    if (gdir != null)
+
+                    Console.WriteLine("gdir string is empty -- No packaged games found...");
+                    UpdateLauncherVersion("Looking for built games...");
+                    Console.WriteLine("Now looking for built games in alt directory: " + gdirectoryALT);
+                    await Task.Delay(500);
+
+
+                    gdirs = Directory.GetFiles(gdirectoryALT, "*Tailwind_1501.exe*", SearchOption.AllDirectories);
+                    foreach (string gdir in gdirs)
                     {
-                        int count = gdir.Count(a => a == '\\');
-                        if (count < 5)
+                        if (gdir != null)
                         {
-                            i++;
-                            // this is teh one                      
-                            gameisunzipped = true;
-                            letsdothis = gdir;
-                            absolute = Path.GetFullPath(letsdothis);
-                            Console.WriteLine(absolute + ", Found built game executable ");
-                            string thispath = Path.GetFileName(absolute);
+                            int count = gdir.Count(a => a == '\\');
+                            if (count < 5)
+                            {
+                                i++;
+                                // this is teh one                      
+                                gameisunzipped = true;
+                                letsdothis = gdir;
+                                absolute = Path.GetFullPath(letsdothis);
+                                Console.WriteLine(absolute + ", Found built game executable ");
+                                string thispath = Path.GetFileName(absolute);
 
-                            CreateGameButton(i, thispath, absolute); // pass arguments to event that creates the button
-                            myAltButtonCollection.Add(absolute);
-                            // found path added to array for buttons
+                                CreateGameButton(i, thispath, absolute); // pass arguments to event that creates the button
+                                myAltButtonCollection.Add(absolute);
+                                // found path added to array for buttons
+                            }
+
+
                         }
-
-
                     }
                 }
+                
                 AllBuilds = gdirs;
                 Console.WriteLine("Total built games found: " + myAltButtonCollection.Count);
                 gdir = absolute;

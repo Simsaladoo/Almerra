@@ -501,3 +501,9 @@ E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.Cor
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Buffers.dll
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Memory.dll
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Buffers.xml
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Memory.xml
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Runtime.CompilerServices.Unsafe.xml

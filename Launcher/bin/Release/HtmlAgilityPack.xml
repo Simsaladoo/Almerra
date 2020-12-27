@@ -380,6 +380,11 @@
             Defines the default stream encoding to use. Default is System.Text.Encoding.Default.
             </summary>
         </member>
+        <member name="F:HtmlAgilityPack.HtmlDocument.OptionXmlForceOriginalComment">
+            <summary>
+            Force to take the original comment instead of creating it
+            </summary>
+        </member>
         <member name="F:HtmlAgilityPack.HtmlDocument.OptionExtractErrorSourceText">
             <summary>
             Defines if source text must be extracted while parsing errors.
@@ -973,6 +978,11 @@
             Gets the stream position of the area between the opening and closing tag of the node, relative to the start of the document.
             </summary>
         </member>
+        <member name="P:HtmlAgilityPack.HtmlNode.OuterStartIndex">
+            <summary>
+            Gets the stream position of the area of the beginning of the tag, relative to the start of the document.
+            </summary>
+        </member>
         <member name="P:HtmlAgilityPack.HtmlNode.InnerLength">
             <summary>
             Gets the length of the area between the opening and closing tag of the node.
@@ -1230,6 +1240,31 @@
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetDataAttribute(System.String)">
+            <summary>Gets data attribute.</summary>
+            <param name="key">The key.</param>
+            <returns>The data attribute.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetDataAttributes">
+            <summary>Gets the data attributes in this collection.</summary>
+            <returns>
+            An enumerator that allows foreach to be used to process the data attributes in this
+            collection.
+            </returns>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetAttributes">
+            <summary>Gets the attributes in this collection.</summary>
+            <returns>
+            An enumerator that allows foreach to be used to process the attributes in this collection.
+            </returns>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetAttributes(System.String[])">
+            <summary>Gets the attributes in this collection.</summary>
+            <param name="attributeNames">A variable-length parameters list containing attribute names.</param>
+            <returns>
+            An enumerator that allows foreach to be used to process the attributes in this collection.
+            </returns>
+        </member>
         <member name="M:HtmlAgilityPack.HtmlNode.GetAttributeValue(System.String,System.String)">
             <summary>
             Helper method to get the value of an attribute of this node. If the attribute is not found, the default value will be returned.
@@ -1249,6 +1284,15 @@
         <member name="M:HtmlAgilityPack.HtmlNode.GetAttributeValue(System.String,System.Boolean)">
             <summary>
             Helper method to get the value of an attribute of this node. If the attribute is not found, the default value will be returned.
+            </summary>
+            <param name="name">The name of the attribute to get. May not be <c>null</c>.</param>
+            <param name="def">The default value to return if not found.</param>
+            <returns>The value of the attribute if found, the default value if not found.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetAttributeValue``1(System.String,``0)">
+            <summary>
+            Helper method to get the value of an attribute of this node. If the attribute is not found,
+            the default value will be returned.
             </summary>
             <param name="name">The name of the attribute to get. May not be <c>null</c>.</param>
             <param name="def">The default value to return if not found.</param>
@@ -1433,6 +1477,22 @@
             <param name="class">The class.</param>
             <returns>True if node class has the parameter class, false if not.</returns>
         </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetEncapsulatedData``1">
+            <summary>
+            Fill an object and go through it's properties and fill them too.
+            </summary>
+            <typeparam name="T">Type of object to want to fill. It should have atleast one property that defined XPath.</typeparam>
+            <returns>Returns an object of type T including Encapsulated data.</returns>
+            <exception cref="T:System.ArgumentException">Why it's thrown.</exception>
+            <exception cref="T:System.ArgumentNullException">Why it's thrown.</exception>
+            <exception cref="T:System.MissingMethodException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.MissingXPathException">Why it's thrown.</exception>
+            <exception cref="T:System.Xml.XPath.XPathException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.NodeAttributeNotFoundException">Why it's thrown.</exception>
+            <exception cref="T:System.FormatException">Why it's thrown.</exception>                
+            <exception cref="T:System.Exception">Why it's thrown.</exception>
+        </member>
         <member name="M:HtmlAgilityPack.HtmlNode.GetEncapsulatedData``1(HtmlAgilityPack.HtmlDocument)">
             <summary>
             Fill an object and go through it's properties and fill them too.
@@ -1440,6 +1500,15 @@
             <typeparam name="T">Type of object to want to fill. It should have atleast one property that defined XPath.</typeparam>
             <param name="htmlDocument">If htmlDocument includes data , leave this parameter null. Else pass your specific htmldocument.</param>
             <returns>Returns an object of type T including Encapsulated data.</returns>
+            <exception cref="T:System.ArgumentException">Why it's thrown.</exception>
+            <exception cref="T:System.ArgumentNullException">Why it's thrown.</exception>
+            <exception cref="T:System.MissingMethodException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.MissingXPathException">Why it's thrown.</exception>
+            <exception cref="T:System.Xml.XPath.XPathException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.NodeAttributeNotFoundException">Why it's thrown.</exception>
+            <exception cref="T:System.FormatException">Why it's thrown.</exception>                
+            <exception cref="T:System.Exception">Why it's thrown.</exception>
         </member>
         <member name="M:HtmlAgilityPack.HtmlNode.GetEncapsulatedData(System.Type,HtmlAgilityPack.HtmlDocument)">
             <summary>
@@ -1448,6 +1517,15 @@
             <param name="targetType">Type of object to want to fill. It should have atleast one property that defined XPath.</param>
             <param name="htmlDocument">If htmlDocument includes data , leave this parameter null. Else pass your specific htmldocument.</param>
             <returns>Returns an object of type targetType including Encapsulated data.</returns>
+            <exception cref="T:System.ArgumentException">Why it's thrown.</exception>
+            <exception cref="T:System.ArgumentNullException">Why it's thrown.</exception>
+            <exception cref="T:System.MissingMethodException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.MissingXPathException">Why it's thrown.</exception>
+            <exception cref="T:System.Xml.XPath.XPathException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException">Why it's thrown.</exception>
+            <exception cref="T:HtmlAgilityPack.NodeAttributeNotFoundException">Why it's thrown.</exception>
+            <exception cref="T:System.FormatException">Why it's thrown.</exception>                
+            <exception cref="T:System.Exception">Why it's thrown.</exception>
         </member>
         <member name="M:HtmlAgilityPack.HtmlNode.CreateNavigator">
             <summary>
@@ -1593,6 +1671,21 @@
             Specify which part of <see cref="T:HtmlAgilityPack.HtmlNode"/> is requested.
             </summary>
         </member>
+        <member name="F:HtmlAgilityPack.ReturnType.InnerText">
+            <summary>
+            The text between the start and end tags of the object.        
+            </summary>
+        </member>
+        <member name="F:HtmlAgilityPack.ReturnType.InnerHtml">
+            <summary>
+            The HTML between the start and end tags of the object
+            </summary>
+        </member>
+        <member name="F:HtmlAgilityPack.ReturnType.OuterHtml">
+            <summary>
+            The object and its content in HTML
+            </summary>
+        </member>
         <member name="T:HtmlAgilityPack.HasXPathAttribute">
             <summary>
             Just mark and flag classes to show they have properties that defined <see cref="T:HtmlAgilityPack.XPathAttribute"/>.
@@ -1602,6 +1695,115 @@
             <summary>
             Includes XPath and <see cref="P:HtmlAgilityPack.XPathAttribute.NodeReturnType"/>. XPath for finding html tags and <see cref="P:HtmlAgilityPack.XPathAttribute.NodeReturnType"/> for specify which part of <see cref="T:HtmlAgilityPack.HtmlNode"/> you want to return.
             </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.XPathAttribute.XPath">
+            <summary>
+            XPath Expression that is used to find related html node.
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.XPathAttribute.AttributeName">
+            <summary>
+            Html Attribute name
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.XPathAttribute.NodeReturnType">
+            <summary>
+            The methode of output
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.XPathAttribute.#ctor(System.String)">
+            <summary>
+            Specify Xpath to find related Html Node.
+            </summary>
+            <param name="xpathString"></param>
+        </member>
+        <member name="M:HtmlAgilityPack.XPathAttribute.#ctor(System.String,HtmlAgilityPack.ReturnType)">
+            <summary>
+            Specify Xpath to find related Html Node.
+            </summary>
+            <param name="xpathString"></param>
+            <param name="nodeReturnType">Specify you want the output include html text too.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.XPathAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Specify Xpath and Attribute to find related Html Node and its attribute value.
+            </summary>
+            <param name="xpathString"></param>
+            <param name="attributeName"></param>
+        </member>
+        <member name="T:HtmlAgilityPack.SkipNodeNotFoundAttribute">
+            <summary>
+            Tagging a property with this Attribute make Encapsulator to ignore that property if it causes an error.
+            </summary>
+        </member>
+        <member name="T:HtmlAgilityPack.NodeNotFoundException">
+            <summary>
+            Exception that often occures when there is no way to bind a XPath to a Html Tag.
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.NodeNotFoundException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.NodeNotFoundException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:HtmlAgilityPack.NodeNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="inner"></param>
+        </member>
+        <member name="T:HtmlAgilityPack.NodeAttributeNotFoundException">
+            <summary>
+            Exception that often occures when there is no way to bind a XPath to a HtmlTag Attribute.
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.NodeAttributeNotFoundException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.NodeAttributeNotFoundException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:HtmlAgilityPack.NodeAttributeNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="inner"></param>
+        </member>
+        <member name="T:HtmlAgilityPack.MissingXPathException">
+            <summary>
+            Exception that often occures when there is no property that assigned with XPath Property in Class.
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.MissingXPathException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.MissingXPathException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:HtmlAgilityPack.MissingXPathException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="inner"></param>
         </member>
         <member name="T:HtmlAgilityPack.HtmlNodeCollection">
             <summary>
