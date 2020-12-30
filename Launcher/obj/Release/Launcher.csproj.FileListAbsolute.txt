@@ -468,32 +468,12 @@ E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Resources\mini.png
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.exe.config
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.exe
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Winds of Almerra.pdb
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetZip.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\LinqToExcel.dll
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\MetroFramework.Design.dll
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\MetroFramework.dll
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\MetroFramework.Fonts.dll
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Newtonsoft.Json.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Remotion.Data.Linq.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Remotion.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Remotion.Interfaces.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\SharpCompress.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.IO.Compression.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.IO.Compression.FileSystem.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.IO.Compression.ZipFile.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Shim.dll
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Tulpep.NotificationWindow.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetZip.pdb
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\DotNetZip.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.pdb
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\HtmlAgilityPack.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\LinqToExcel.xml
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\Newtonsoft.Json.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Extensions.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Net.Http.Primitives.xml
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.main.resources
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.cache
@@ -501,9 +481,4 @@ E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.Cor
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Buffers.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Memory.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Buffers.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Memory.xml
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache

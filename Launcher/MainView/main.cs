@@ -10,13 +10,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
-using System.Speech.Synthesis;
-using System.ComponentModel;
-using System.IO.Compression;
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Tulpep.NotificationWindow;
+
 
 
 
@@ -481,8 +478,7 @@ namespace Launcher
 
             progressBar0.Visible = false;
             //End of startup loading
-
-            Popupdisshit();
+            
         }
 
 
@@ -868,6 +864,70 @@ namespace Launcher
 
 
 
+        //      ___________    .___.__  __                 ________                          .___                           //
+        //      \_   _____/  __| _/|__|/  |_  ___________  \______ \_______  ____ ______   __| _/______  _  ______          //
+        //       |    __)_  / __ | |  \   __\/  _ \_  __ \  |    |  \_  __ \/  _ \\____ \ / __ |/  _ \ \/ \/ /    \         //
+        //       |        \/ /_/ | |  ||  | (  <_> )  | \/  |    `   \  | \(  <_> )  |_> > /_/ (  <_> )     /   |  \        //
+        //      /_______  /\____ | |__||__|  \____/|__|    /_______  /__|   \____/|   __/\____ |\____/ \/\_/|___|  /        //
+        //              \/      \/                                 \/             |__|        \/                 \/         //
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // dropdown
+            string labelup = ("^");
+            string labeldown = ("-");
+            if (!DropareDown)
+            {
+                Console.WriteLine(DropareDown);     // open
+                DropareDown = true;
+                DDpanel2.Visible = true;
+                button5.Text = labeldown;
+            }
+            else if (DropareDown)
+            {
+                Console.WriteLine(DropareDown);     // close
+                DropareDown = false;
+                DDpanel2.Visible = false;
+                button5.Text = labelup;
+            }
+        }
+
+
+
+
+        // Dropdown button for editor selector
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // dropdown
+            string labelup = ("^");
+            string labeldown = ("-");
+
+            if (!DropisDown)
+            {
+                // open
+                Console.WriteLine(DropisDown);
+                DropisDown = true;
+                DDpanel1.Visible = true;
+                button4.Text = labeldown;
+            }
+
+
+
+            else if (DropisDown)
+            {
+                // close
+                Console.WriteLine(DropisDown);
+                DropisDown = false;
+                DDpanel1.Visible = false;
+                button4.Text = labelup;
+            }
+        }
+
+
+
+
 
 
         //                                                                                                                                              //
@@ -885,9 +945,10 @@ namespace Launcher
         private void CreateEditorButton(int a, string p, string s)
         {
 
-            Button newButton = new Button();
+            Button newButton = new Button();       // make el buttono
 
             int o = a * 40;
+            o = o - 40;// calc a row
 
             newButton.ForeColor = Color.White;
             newButton.Font = myFont12;
@@ -895,13 +956,16 @@ namespace Launcher
             newButton.Location = new Point(0, o);
             newButton.Size = new Size(198, 40);
             newButton.FlatStyle = FlatStyle.Flat;
-
+            newButton.FlatAppearance.BorderSize = 0;
+            newButton.FlatAppearance.MouseOverBackColor = Color.Chocolate;
             newButton.BackColor = Color.Transparent;
 
-            newButton.Click += (sender, e) => StartEditor0(s, p);
+            newButton.Click += (sender, e) => ClickedEditorButtons(s, p);
             DDpanel1.Controls.Add(newButton);
-            Console.WriteLine("Created Editor button " + p + " " + s);
+            Console.WriteLine("Created Editor button: " + p + " for " + s);
         }
+
+
 
 
         private void CreateGameButton(int a, string p, string s)
@@ -910,6 +974,7 @@ namespace Launcher
             Button newButton2 = new Button();
 
             int o = a * 40;
+            o = o - 40;
 
             newButton2.ForeColor = Color.White;
             newButton2.Font = myFont12;
@@ -917,12 +982,13 @@ namespace Launcher
             newButton2.Location = new Point(0, o);
             newButton2.Size = new Size(198, 40);
             newButton2.FlatStyle = FlatStyle.Flat;
-
+            newButton2.FlatAppearance.BorderSize = 0;
+            newButton2.FlatAppearance.MouseOverBackColor = Color.Chocolate;
             newButton2.BackColor = Color.Transparent;
 
-            newButton2.Click += (sender, e) => StartGame0(s, p);
+            newButton2.Click += (sender, e) => ClickedGameButtons(s, p);
             DDpanel2.Controls.Add(newButton2);
-            Console.WriteLine("Created Game button " + p + " " + s);
+            Console.WriteLine("Created Game button: " + p + " for " + s);
         }
 
 
@@ -934,11 +1000,11 @@ namespace Launcher
 
 
 
-        private void StartEditor0(string p, string s)
+        private void ClickedEditorButtons(string p, string s)
         {
             // select editor in slot
 
-            //get a nicer looking name by splitting and trimming...
+            //get a nicer looking name for button by splitting and trimming...
             var dataspt = s.Substring(s.LastIndexOf('_') + 1);
             string data = dataspt.ToString();
             int index = dataspt.IndexOf('.');
@@ -953,15 +1019,15 @@ namespace Launcher
             DDpanel1.Visible = false;
             DropisDown = false;
             button4.Text = ("^");
-            //start editor 0 is actually just 'assign' editor
+            // is 'assign' editor
         }
 
 
-        private void StartGame0(string p, string s)
+        private void ClickedGameButtons(string p, string s)
         {
-            // select editor in slot
+            // select game in slot
 
-            //get a nicer looking name by splitting and trimming...
+            //get a nicer looking name for button by splitting and trimming...
             var dataspt = s.Substring(s.LastIndexOf('_') + 1);
             string data = dataspt.ToString();
             int index = dataspt.IndexOf('.');
@@ -976,12 +1042,17 @@ namespace Launcher
             DDpanel2.Visible = false;
             DropareDown = false;
             button5.Text = ("^");
-            //start editor 0 is actually just 'assign' editor
+            // is 'assign' game
         }
 
 
 
 
+
+
+        
+
+        
 
 
 
@@ -994,9 +1065,10 @@ namespace Launcher
             string letsdothis = gdir;
             string absolute = String.Empty;
             UpdateLauncherVersion("Looking for packaged games...");
+            Console.WriteLine("Looking for packaged games...");
 
             string[] gdirs = Directory.GetFiles(extractPath, "*Tailwind_1501.exe*", SearchOption.AllDirectories);           // first pass looks thru Launcher's /Game/ folder for packaged games
-            
+
 
             foreach (string gdir in gdirs)
             {
@@ -1005,13 +1077,12 @@ namespace Launcher
                 {
                     int count = edir.Count(a => a == '\\');
 
-
                     if (count < 5)
                     {
                         i++;
                         letsdothis = gdir;
                         absolute = Path.GetFullPath(letsdothis);
-                        Console.WriteLine(absolute + ", Found packaged game executable at index " + i);
+                        Console.WriteLine(absolute + ", Found game executable at index " + i);
                         string thispath = Path.GetFileName(absolute);
 
                         gameisunzipped = true;
@@ -1022,14 +1093,16 @@ namespace Launcher
                     }
 
                     AllBuilds = gdirs;
-                    Console.WriteLine(absolute + ", Found packaged game executable ");
+                    Console.WriteLine(absolute + ", Set latest game executable ");
                     letsdothis = gdir;
-                    absolute = Path.GetFullPath(letsdothis);
+                    // absolute = Path.GetFullPath(letsdothis);
                 }
             }
             gdir = absolute;
             latestbuild = absolute;
+            Properties.Settings.Default.ChosenEditor = latestbuild;
             await Task.Delay(500);
+
 
             // we didnt find anything in the /Game/ folder -- now look in our local area for builds
             if (gdir == String.Empty)
@@ -1069,7 +1142,7 @@ namespace Launcher
                         }
                     }
                 }
-                
+
                 AllBuilds = gdirs;
                 Console.WriteLine("Total built games found: " + myAltButtonCollection.Count);
                 gdir = absolute;
@@ -1087,13 +1160,14 @@ namespace Launcher
 
 
 
+
         // Search for Editors
 
         async Task LookForEditors()
         {
             int i = 0;
-            await Task.Delay(2000);
-            Console.WriteLine("Looking for Editor...");
+            await Task.Delay(3000);
+            Console.WriteLine("Looking for Editors...");
             string letsdothis = edir;
             string absolute = String.Empty;
             UpdateLauncherVersion("Looking for Editors...");
@@ -1110,7 +1184,7 @@ namespace Launcher
                         i++;
                         letsdothis = edir;
                         absolute = Path.GetFullPath(letsdothis);
-                        Console.WriteLine(absolute + ", contains uproject at index " + i);
+                        Console.WriteLine(absolute + ", added uproject at index " + i);
                         string thispath = Path.GetFileName(absolute);
                         hasEditor = true;
                         CreateEditorButton(i, thispath, absolute); // pass arguments to event that creates the button
@@ -1123,7 +1197,7 @@ namespace Launcher
             edir = absolute;
             latestEditor = absolute;
             Console.WriteLine("Editor path result: " + Properties.Settings.Default.ChosenEditor);
-            
+
             TurnEditorButtonToLast();
         }
 
@@ -1134,33 +1208,26 @@ namespace Launcher
 
 
 
-
         // Custom popup window that shows something
 
-        async Task Popupdisshit()
+        async Task Popupdisshit(string p, string r)
         {
             // fill in other info?
+            await Task.Delay(500);
 
-
-            await Task.Delay(5000);
-            if (hasEditor)
-            {
-                PopupNotifier popup = new PopupNotifier();
-                popup.Image = Properties.Resources.fReverseRottenLeaf;
-                popup.TitleText = "Winds of Almerra";
-                popup.ContentText = "Chosen editor version: " + Properties.Settings.Default.ChosenEditor;
-                popup.Popup(); //show
-            }
-
-            else if (!hasEditor)
-            {
-                PopupNotifier popup = new PopupNotifier();
-                popup.Image = Properties.Resources.fReverseRottenLeaf;
-                popup.TitleText = "Winds of Almerra";
-                popup.ContentText = "No local versions found";
-                popup.Popup(); //show
-            }
-
+            PopupNotifier popup = new PopupNotifier();
+            popup.BodyColor = Color.FromArgb(0,0,0,0);
+            popup.HeaderColor = Color.FromArgb(0, 0, 0, 0);
+            popup.GradientPower = 000;
+            popup.BorderColor = Color.FromArgb(0, 0, 0, 0); ;
+            popup.TitleColor = Color.White;
+            popup.ContentColor = Color.White;
+            popup.ShowGrip = false;
+            popup.Image = Properties.Resources.fReverseRottenLeaf;
+            popup.TitleText = "Sim's Lab: Winds of Almerra";
+            popup.ContentText = r + ": " + p;
+            popup.Popup(); //show
+            
 
         }
 
@@ -1176,15 +1243,12 @@ namespace Launcher
 
             foreach (string agame in AllBuilds)
             {
-                Console.WriteLine("AllBuilds: [" + i + "]" + agame);
+                Console.WriteLine("AllBuilds: [" + i + "] " + agame);
                 i++;
             }
 
-
-
-
+            
             TurnGameButtonToLast();
-
         }
 
 
@@ -1201,19 +1265,23 @@ namespace Launcher
         // update editor button to label of current setting where we store the value -- display current Editor engine in label
         async Task TurnEditorButtonToLast()
         {
+
             await Task.Delay(1000);
             //get a nicer looking name by splitting and trimming...
             var dataspt = Properties.Settings.Default.ChosenEditor.Substring(Properties.Settings.Default.ChosenEditor.LastIndexOf('_') + 1);
             string data = dataspt.ToString();
             int index = dataspt.IndexOf('.');
-            string sub;
-            sub = dataspt.Substring(0, index);
             // sub is nice looking name
+            string sub = Properties.Settings.Default.ChosenEditor.ToString();
             Console.WriteLine("Setting Editor Button to Last: " + sub);
             button1.Text = sub;
             
             button1.Enabled = true;
             button4.Enabled = true;
+
+            Popupdisshit("Setting Editor Button to Last: ", sub);
+
+
         }
 
 
@@ -1222,18 +1290,13 @@ namespace Launcher
         async Task TurnGameButtonToLast()
         {
             
-            await Task.Delay(1000);
+            await Task.Delay(2000);
             //get a nicer looking name by splitting and trimming...
-
-
-
+           // var dataspt = Properties.Settings.Default.ChosenBuild.Substring(Properties.Settings.Default.ChosenBuild.LastIndexOf('_') + 1);
+            //string data = dataspt.ToString();
+            // int index = dataspt.IndexOf('.');
             // Properties.Settings.Default.ChosenBuild
-
             string sub = Properties.Settings.Default.ChosenBuild.ToString();
-
-
-
-
 
             // sub is name
             Console.WriteLine("Setting Game Button to Last: " + sub);
@@ -1241,6 +1304,8 @@ namespace Launcher
             
             play.Enabled = true;
             button5.Enabled = true;
+
+            Popupdisshit("Setting Game Button to Last: ", sub);
         }
 
 
@@ -1249,7 +1314,10 @@ namespace Launcher
         {
             //
             await Task.Delay(5000);
-            VersionLabel.Text = Properties.Settings.Default.ChosenBuild.ToString();
+            string sub = Properties.Settings.Default.ChosenBuild.ToString();
+            VersionLabel.Text = sub;
+
+            Popupdisshit("Chosen Build: ", sub);
         }
 
 
@@ -1258,9 +1326,14 @@ namespace Launcher
         {
             // Show the form when the user double clicks on the notify icon.
 
+            if (this.WindowState == FormWindowState.Normal)
+                this.WindowState = FormWindowState.Minimized;
             // Set the WindowState to normal if the form is minimized.
-            if (this.WindowState == FormWindowState.Minimized)
+            else if (this.WindowState == FormWindowState.Minimized)
                 this.WindowState = FormWindowState.Normal;
+
+
+
 
             // Activate the form.
             this.Activate();
@@ -1269,69 +1342,7 @@ namespace Launcher
 
 
 
+        
 
-
-        // Dropdown button for editor selector
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            // dropdown
-            string labelup = ("^");
-            string labeldown = ("-");
-
-            if (!DropisDown)
-            {
-                // open
-                Console.WriteLine(DropisDown);
-                DropisDown = true;
-                DDpanel1.Visible = true;
-                button4.Text = labeldown;
-            }
-
-
-
-            else if (DropisDown)
-            {
-                // close
-                Console.WriteLine(DropisDown);
-                DropisDown = false;
-                DDpanel1.Visible = false;
-                button4.Text = labelup;
-            }
-
-
-
-
-
-
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // dropdown
-            string labelup = ("^");
-            string labeldown = ("-");
-
-            if (!DropareDown)
-            {
-                // open
-                Console.WriteLine(DropareDown);
-                DropareDown = true;
-                DDpanel2.Visible = true;
-                button5.Text = labeldown;
-            }
-
-
-
-            else if (DropareDown)
-            {
-                // close
-                Console.WriteLine(DropareDown);
-                DropareDown = false;
-                DDpanel2.Visible = false;
-                button5.Text = labelup;
-            }
-        }
     }
 }
