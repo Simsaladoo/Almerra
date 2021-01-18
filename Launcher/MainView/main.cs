@@ -77,8 +77,6 @@ namespace Launcher
         SoundPlayer patwarnings = new SoundPlayer("Resources/patwarning.wav");
         bool soundenabled = true;
         public bool nocancel = false;
-        string latestpath = "Cache/Knowts.txt";
-        string buildpath = "Cache/Build.txt";
         public string manifestpath = "Cache/Manifest.txt";
         public string ziplinkspath = "Cache/ZipsManifest.txt";
         public bool LatestPathExists = (System.IO.File.Exists("Cache/Knowts.txt"));
@@ -87,35 +85,30 @@ namespace Launcher
         public string BuildOnline = "https://raw.githubusercontent.com/Simsaladoo/Winds-of-Almerra-Launcher/master/Launcher/Resources/Build.txt";
         public bool cacheisdone = false;
         public bool gameisunzipped = false;
-        public string zippath = "Game/WoA_2301_0085.7z";
-        public string gamepath = "Game/Knowts.txt";
+        public string zippath = "Cache/zips/WoA_2301_0085.7z";
+        public string gamepath = "Cache/Knowts.txt";
         public string engineinipath = "Game/WoA_2301/Config/DefaultEngine.ini";
         public string latestlink = String.Empty;
         public string latestbuild = String.Empty;
         public string onlinelatesthtml = String.Empty;
         public string editdirectory = @"E:/UE4/Projects";
-
-        public string gdirectory = "Cache/";
+        public string gdirectory = "Game/";
         public string gdirectoryALT = @"E:/UE4/builds/Package";
-
-        public string cdirectory = "Cache/zips/";
+        public string cdirectory = "Cache/zips";
         public string edir = String.Empty;
         public string[] edirs = new string[] { "" };
-        public string gdir = String.Empty;
+        public string gdir = "Game/";
         public string[] gdirs = new string[] { "" };
         public int currentziplink = 1;
         public string startPath = "Cache/";
         public string zipPath = "Cache/";
-
         public string extractPath = "Game/";
-
         public string buttonuse = String.Empty;
-
         List<string> myButtonCollection = new List<string>();
         List<string> myAltButtonCollection = new List<string>();
-
         public int buttonnum = 0;
         public string VersionText = "WoA_xxxx_xxxx";
+        public string ChosenBuildDefaultEngineConfig = String.Empty;
         public int TotalZips = 0;
         public int DoneZipsToSkip = 0;
         public long CacheSize = 000;
@@ -124,8 +117,8 @@ namespace Launcher
         public bool hasEditor = false;
         public string latestEditor = String.Empty;
         public string latestGame = String.Empty;
-
         public string[] AllBuilds;
+        public string latestDefaultEngine = String.Empty;
 
 
         //necessary font shit
@@ -274,7 +267,7 @@ namespace Launcher
         {
             InitializeComponent();
             //myState.changeButtonState(LauncherState.Idle, this);
-            this.Shown += new System.EventHandler(this.AfterLoading);    // this is wher we fire BeginPlay
+            this.Shown += new System.EventHandler(this.AfterLoadingAsync);    // this is wher we fire BeginPlay
             Console.WriteLine("/****************************************************************/");
             Console.WriteLine("/*********************** Initialization *************************/");
             Console.WriteLine("/****************************************************************/");
@@ -423,7 +416,7 @@ namespace Launcher
         //                                                                                                          //
 
 
-        private void AfterLoading(object sender, EventArgs e)
+        private async void AfterLoadingAsync(object sender, EventArgs e)
         {
             Console.WriteLine("Post Load Completed");
             // serlf check
@@ -473,8 +466,8 @@ namespace Launcher
                 button2.BackgroundImage = Image.FromFile("Resources/speakerOFF.png");
             }
 
-            LookForGames();
-            LookForEditors();
+            await LookForGames();
+            await LookForEditors();
 
             progressBar0.Visible = false;
             //End of startup loading
@@ -502,17 +495,16 @@ namespace Launcher
 
         private void play_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Latest Chosen Build: " + Properties.Settings.Default.ChosenBuild.ToString());
-
             if (soundenabled == true)
             {
                 System.Media.SoundPlayer sp = (patsoft);
                 sp.Play();
             };
             // WE have teh file! start the gaame and minimize the launcher
-            //this.WindowState = FormWindowState.Minimized;
-            // Console.WriteLine(Properties.Settings.Default.ChosenBuild.ToString());
-            //System.Diagnostics.Process.Start(latestbuild);                                    // play the game
+            this.WindowState = FormWindowState.Minimized;
+            Console.WriteLine("Latest Chosen Build: " + Properties.Settings.Default.ChosenBuild.ToString());
+            // ensure we have the right executable
+            System.Diagnostics.Process.Start(Properties.Settings.Default.ChosenBuild);                                    // play the game
         }
 
 
@@ -543,8 +535,9 @@ namespace Launcher
 
         // update size of cache text in options for cleaning
 
-        public void CheckCacheSize()
+        async Task CheckCacheSize()
         {
+            await Task.Delay(1000);
             CacheSize = GetDirectorySize(cdirectory);
             CacheSize = CacheSize / 1024 / 1024;       //  <-- gives you MB   (another "/ 1024" would be GB)
             long cachesizedecimal = 0;
@@ -571,7 +564,7 @@ namespace Launcher
         {
 
 
-            Directory.CreateDirectory(Path.Combine("Cache/"));
+            Directory.CreateDirectory(Path.Combine("Game/"));
 
             // Get array of all file names.
             string[] a = Directory.GetFiles(p, "*.*");
@@ -792,9 +785,12 @@ namespace Launcher
         private void button2_Click(object sender, EventArgs e)
         {
 
-            Console.WriteLine("Closing Launcher");
+            Console.WriteLine("Closing Launcher...");
+            notifyIcon1.Visible = false;
             Application.Exit();
-            Properties.Settings.Default.VolumeOn = true;
+            
+
+
         }
 
 
@@ -962,7 +958,7 @@ namespace Launcher
 
             newButton.Click += (sender, e) => ClickedEditorButtons(s, p);
             DDpanel1.Controls.Add(newButton);
-            Console.WriteLine("Created Editor button: " + p + " for " + s);
+            //Console.WriteLine("Created Editor button: " + p + " for " + s);
         }
 
 
@@ -988,7 +984,7 @@ namespace Launcher
 
             newButton2.Click += (sender, e) => ClickedGameButtons(s, p);
             DDpanel2.Controls.Add(newButton2);
-            Console.WriteLine("Created Game button: " + p + " for " + s);
+            //Console.WriteLine("Created Game button: " + p + " for " + s);
         }
 
 
@@ -1062,9 +1058,10 @@ namespace Launcher
         {
             int i = 0;
             await Task.Delay(500);
-            string letsdothis = gdir;
-            string absolute = String.Empty;
-            UpdateLauncherVersion("Looking for packaged games...");
+            progressBar0.Value = 25;
+            string gletsdothis = gdir;
+            string gabsolute = String.Empty;
+            UpdateLauncherVersionAsync("Looking for packaged games...");
             Console.WriteLine("Looking for packaged games...");
 
             string[] gdirs = Directory.GetFiles(extractPath, "*Tailwind_1501.exe*", SearchOption.AllDirectories);           // first pass looks thru Launcher's /Game/ folder for packaged games
@@ -1080,27 +1077,27 @@ namespace Launcher
                     if (count < 5)
                     {
                         i++;
-                        letsdothis = gdir;
-                        absolute = Path.GetFullPath(letsdothis);
-                        Console.WriteLine(absolute + ", Found game executable at index " + i);
-                        string thispath = Path.GetFileName(absolute);
+                        gletsdothis = gdir;
+                        gabsolute = Path.GetFullPath(gletsdothis);
+                        Console.WriteLine(gabsolute + ", Found game executable at index " + i);
+                        string gthispath = Path.GetFileName(gabsolute);
 
                         gameisunzipped = true;
 
-                        CreateGameButton(i, thispath, absolute); // pass arguments to event that creates the button
-                        myButtonCollection.Add(absolute);
+                        CreateGameButton(i, gthispath, gabsolute); // pass arguments to event that creates the button
+                        myAltButtonCollection.Add(gabsolute);
                         // found path added to array for buttons
                     }
 
                     AllBuilds = gdirs;
-                    Console.WriteLine(absolute + ", Set latest game executable ");
-                    letsdothis = gdir;
+                    Console.WriteLine(gabsolute + ", Set as latest game executable ");
+                    gletsdothis = gdir;
                     // absolute = Path.GetFullPath(letsdothis);
                 }
             }
-            gdir = absolute;
-            latestbuild = absolute;
-            Properties.Settings.Default.ChosenEditor = latestbuild;
+            //gdir = gabsolute;
+            //latestGame = gabsolute;
+            Properties.Settings.Default.ChosenBuild = gabsolute;
             await Task.Delay(500);
 
 
@@ -1112,7 +1109,7 @@ namespace Launcher
                 {
 
                     Console.WriteLine("gdir string is empty -- No packaged games found...");
-                    UpdateLauncherVersion("Looking for built games...");
+                    UpdateLauncherVersionAsync("Looking for built games...");
                     Console.WriteLine("Now looking for built games in alt directory: " + gdirectoryALT);
                     await Task.Delay(500);
 
@@ -1128,13 +1125,13 @@ namespace Launcher
                                 i++;
                                 // this is teh one                      
                                 gameisunzipped = true;
-                                letsdothis = gdir;
-                                absolute = Path.GetFullPath(letsdothis);
-                                Console.WriteLine(absolute + ", Found built game executable ");
-                                string thispath = Path.GetFileName(absolute);
+                                gletsdothis = gdir;
+                                gabsolute = Path.GetFullPath(gletsdothis);
+                                Console.WriteLine(gabsolute + ", Found built game executable ");
+                                string gthispath = Path.GetFileName(gabsolute);
 
-                                CreateGameButton(i, thispath, absolute); // pass arguments to event that creates the button
-                                myAltButtonCollection.Add(absolute);
+                                CreateGameButton(i, gthispath, gabsolute); // pass arguments to event that creates the button
+                                myAltButtonCollection.Add(gabsolute);
                                 // found path added to array for buttons
                             }
 
@@ -1145,15 +1142,15 @@ namespace Launcher
 
                 AllBuilds = gdirs;
                 Console.WriteLine("Total built games found: " + myAltButtonCollection.Count);
-                gdir = absolute;
-                latestGame = absolute;
-                latestbuild = absolute;
-                Console.WriteLine("Latest game path result: " + latestGame);             // Properties.Settings.Default.ChosenBuild
+                gdir = gabsolute;
+                latestGame = gabsolute;
+                // latestbuild = gabsolute;
+                Console.WriteLine("Game Build path result: " + Properties.Settings.Default.ChosenBuild);
 
             }
 
-            ChooseVersions();
-            //  TurnGameButtonToLast();
+            
+            await TurnGameButtonToLast();
         }
 
 
@@ -1166,43 +1163,165 @@ namespace Launcher
         async Task LookForEditors()
         {
             int i = 0;
-            await Task.Delay(3000);
-            Console.WriteLine("Looking for Editors...");
-            string letsdothis = edir;
-            string absolute = String.Empty;
-            UpdateLauncherVersion("Looking for Editors...");
-            string[] edirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.AllDirectories);
-            foreach (string edir in edirs)
+            await Task.Delay(500);
+            progressBar0.Value = 50;
+            Console.WriteLine("Looking for Editor Drives...");
+            string eletsdothis = edir;
+            string eabsolute = String.Empty;
+            string drive = Path.GetPathRoot(editdirectory);
+            UpdateLauncherVersionAsync("Looking for Editor Drives...");
+            if (!Directory.Exists(drive))                                                 // client launcher
             {
-                // Console.WriteLine(edir);
-                if (edir != null)
-                {
-                    int count = edir.Count(a => a == '\\');
+                Console.WriteLine("No "+ drive + " found, using client path");
+                await RemoveEditorButton();
+            }
 
-                    if (count < 5)
+            else if (Directory.Exists(drive))                                                      // Sim's Lab machine only route
+            {
+                string[] edirs = Directory.GetFiles(editdirectory, "*.uproject*", SearchOption.AllDirectories);
+                foreach (string edir in edirs)
+                {
+                    // Console.WriteLine(edir);
+                    if (edir != null)
                     {
-                        i++;
-                        letsdothis = edir;
-                        absolute = Path.GetFullPath(letsdothis);
-                        Console.WriteLine(absolute + ", added uproject at index " + i);
-                        string thispath = Path.GetFileName(absolute);
-                        hasEditor = true;
-                        CreateEditorButton(i, thispath, absolute); // pass arguments to event that creates the button
-                        myButtonCollection.Add(absolute);
-                        // found path added to array for buttons
+                        int count = edir.Count(a => a == '\\');
+
+                        if (count < 5)
+                        {
+                            i++;
+                            eletsdothis = edir;
+                            eabsolute = Path.GetFullPath(eletsdothis);
+                            Console.WriteLine(eabsolute + ", found uproject at index: " + i);
+                            string thispath = Path.GetFileName(eabsolute);
+                            hasEditor = true;
+
+                            CreateEditorButton(i, thispath, eabsolute); // pass arguments to event that creates the button
+                            myButtonCollection.Add(eabsolute);
+                            // found path added to array for buttons
+                        }
                     }
                 }
-            }
-            Console.WriteLine("Total projects found: " + myButtonCollection.Count);
-            edir = absolute;
-            latestEditor = absolute;
-            Console.WriteLine("Editor path result: " + Properties.Settings.Default.ChosenEditor);
+                Console.WriteLine("Total Editor projects found: " + myButtonCollection.Count);
+                edir = eabsolute;
+                latestEditor = eabsolute;
 
-            TurnEditorButtonToLast();
+                Properties.Settings.Default.ChosenEditor = edirs[0];
+
+                Console.WriteLine("Editor path result: " + Properties.Settings.Default.ChosenEditor);
+
+                await TurnEditorButtonToLast();
+            }
+            
+
+
         }
 
 
 
+
+
+
+
+        // update game button to label of current setting where we store the value -- display current game build in label
+        async Task TurnGameButtonToLast()
+        {
+            
+            await Task.Delay(500);
+            //get a nicer looking name by splitting and trimming...
+
+            string prepresub = Path.GetFileName(Path.GetDirectoryName(Properties.Settings.Default.ChosenBuild));
+            string gsub = prepresub.Substring(prepresub.IndexOf('_') + 1); ;
+            Console.WriteLine("Setting Game Button to Last: " + gsub);
+            play.Text = gsub;         
+            play.Enabled = true;
+            button5.Enabled = true;
+            await FindPackageConfigs();
+            await Popupdisshit(gsub, "Setting Game Button to Last: ");
+        }
+
+
+
+
+
+        // update editor button to label of current setting where we store the value -- display current Editor engine in label
+        async Task TurnEditorButtonToLast()
+        {
+
+            await Task.Delay(500);
+            progressBar0.Value = 100;
+
+            //check if we even have one first!
+
+            //get a nicer looking name by splitting and trimming...
+            string presub = Path.GetFileName(Path.GetDirectoryName(Properties.Settings.Default.ChosenEditor));
+            string esub = presub.Substring(presub.IndexOf('_') + 1); ;
+            Console.WriteLine("Setting Editor Button to chosen: " + esub);
+            button1.Text = esub;          
+            button1.Enabled = true;
+            button4.Enabled = true;
+
+            await Popupdisshit(esub, "Current Engine: ");
+
+
+        }
+
+
+
+        async Task RemoveEditorButton()
+        {
+            await Task.Delay(500);
+            progressBar0.Value = 100;
+
+            // no editor drive paths found so just remove the button
+
+            Console.WriteLine("Setting Editor Button to off");
+            button1.Text = "Off";
+            button1.Enabled = false;
+            button4.Enabled = false;
+
+            button1.Visible = false;
+            button4.Visible = false;
+
+
+        }
+
+
+        private async void AllowConfigEditsNow()
+        {
+            await Task.Delay(500);
+            // use ChosenBuildDefaultEngineConfig as DefaultEngine.ini
+
+
+
+
+
+
+
+        }
+
+
+
+        private async void UpdateLauncherVersionAsync(string s)
+        {
+            // update launcher's game version or say otherwise
+            VersionLabel.Text = s;
+            await ReturnVersionLabelToNormal();
+        }
+
+
+
+
+
+
+        // update debug / build info text on lower right 
+        async Task ReturnVersionLabelToNormal()
+        {
+            //
+            await Task.Delay(5000);
+            string sub = Path.GetFileName(Path.GetDirectoryName(Properties.Settings.Default.ChosenBuild));
+            VersionLabel.Text = sub;
+            
+        }
 
 
 
@@ -1232,96 +1351,6 @@ namespace Launcher
         }
 
 
-
-
-        async Task ChooseVersions()
-        {
-            // once we have a list of local builds, if ChosenBuild is empty, choose highest number _000 as current -- then enable control
-            await Task.Delay(1000);
-            Console.WriteLine("Choosing Game Versions...");
-            int i = 0;
-
-            foreach (string agame in AllBuilds)
-            {
-                Console.WriteLine("AllBuilds: [" + i + "] " + agame);
-                i++;
-            }
-
-            
-            TurnGameButtonToLast();
-        }
-
-
-
-        private void UpdateLauncherVersion(string s)
-        {
-            // update launcher's game version or say otherwise
-            VersionLabel.Text = s;
-            ReturnVersionLabelToNormal();
-        }
-
-
-
-        // update editor button to label of current setting where we store the value -- display current Editor engine in label
-        async Task TurnEditorButtonToLast()
-        {
-
-            await Task.Delay(1000);
-            //get a nicer looking name by splitting and trimming...
-            var dataspt = Properties.Settings.Default.ChosenEditor.Substring(Properties.Settings.Default.ChosenEditor.LastIndexOf('_') + 1);
-            string data = dataspt.ToString();
-            int index = dataspt.IndexOf('.');
-            // sub is nice looking name
-            string sub = Properties.Settings.Default.ChosenEditor.ToString();
-            Console.WriteLine("Setting Editor Button to Last: " + sub);
-            button1.Text = sub;
-            
-            button1.Enabled = true;
-            button4.Enabled = true;
-
-            Popupdisshit("Setting Editor Button to Last: ", sub);
-
-
-        }
-
-
-
-        // update game button to label of current setting where we store the value -- display current game build in label
-        async Task TurnGameButtonToLast()
-        {
-            
-            await Task.Delay(2000);
-            //get a nicer looking name by splitting and trimming...
-           // var dataspt = Properties.Settings.Default.ChosenBuild.Substring(Properties.Settings.Default.ChosenBuild.LastIndexOf('_') + 1);
-            //string data = dataspt.ToString();
-            // int index = dataspt.IndexOf('.');
-            // Properties.Settings.Default.ChosenBuild
-            string sub = Properties.Settings.Default.ChosenBuild.ToString();
-
-            // sub is name
-            Console.WriteLine("Setting Game Button to Last: " + sub);
-            play.Text = sub;
-            
-            play.Enabled = true;
-            button5.Enabled = true;
-
-            Popupdisshit("Setting Game Button to Last: ", sub);
-        }
-
-
-        // update debug / build info text on lower right area with latest build found or show the error
-        async Task ReturnVersionLabelToNormal()
-        {
-            //
-            await Task.Delay(5000);
-            string sub = Properties.Settings.Default.ChosenBuild.ToString();
-            VersionLabel.Text = sub;
-
-            Popupdisshit("Chosen Build: ", sub);
-        }
-
-
-
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             // Show the form when the user double clicks on the notify icon.
@@ -1331,13 +1360,54 @@ namespace Launcher
             // Set the WindowState to normal if the form is minimized.
             else if (this.WindowState == FormWindowState.Minimized)
                 this.WindowState = FormWindowState.Normal;
-
-
-
-
             // Activate the form.
             this.Activate();
         }
+
+
+
+
+        // from our chosen build--find sub paths to relevant config files we need to edit in settings menu
+        async Task FindPackageConfigs()
+        {
+            //
+            await Task.Delay(1500);
+            string currentthing = Properties.Settings.Default.ChosenBuild.ToString();
+            string dagame = Path.GetFileName(Path.GetDirectoryName(Properties.Settings.Default.ChosenBuild));   // name of folder above tailwinds.exe
+            string searchoption = currentthing;
+            FileInfo fi = new FileInfo(searchoption);
+            Console.WriteLine("Locating settings files for: " + searchoption);
+            DirectoryInfo dir = fi.Directory;
+
+            if (dir.Exists)
+            {
+                Console.WriteLine("Searching directory...");
+                FileInfo[] files = dir.GetFiles("DefaultEngine*", SearchOption.AllDirectories);
+                foreach (var file in files)
+                {
+                    latestDefaultEngine = file.ToString();
+                    ChosenBuildDefaultEngineConfig = latestDefaultEngine;
+                    AllowConfigEditsNow();
+                }
+            }
+
+
+
+            if (!dir.Exists)
+            {
+                Console.WriteLine(currentthing + "ERROR! DefaultEngine.ini directory not found in game build");
+            }
+
+
+
+
+        }
+
+
+
+
+
+
 
 
 

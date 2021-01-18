@@ -481,4 +481,3 @@ E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.Cor
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.exe
 E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Winds of Almerra.pdb
-E:\UE4\builds\Winds-of-Almerra-Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache

@@ -469,7 +469,7 @@ namespace Launcher
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(194, 54);
             this.button9.TabIndex = 32;
-            this.button9.Text = "General";
+            this.button9.Text = "Graphics";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
